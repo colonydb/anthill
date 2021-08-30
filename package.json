@@ -1,0 +1,59 @@
+{
+  "name": "@colonydb/anthill",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "repository": "git@github.com:colonydb/anthill.git",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "babel src -d lib",
+    "storybook:start": "start-storybook -p 6006",
+    "storybook:build": "build-storybook",
+    "test": "yarn test:prettier",
+    "test:prettier": "prettier -c src README.md"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "next": "^11.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-storysource": "^6.3.7",
+    "@storybook/addon-viewport": "^6.3.7",
+    "@storybook/react": "^6.3.7",
+    "babel-loader": "^8.2.2",
+    "next": "^11.1.0",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "storybook-dark-mode": "^1.0.8",
+    "styled-jsx": "^4.0.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "styled-jsx/babel"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "jsxSingleQuote": false,
+    "printWidth": 100,
+    "proseWrap": "never",
+    "quoteProps": "as-needed",
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "useTabs": false
+  }
+}

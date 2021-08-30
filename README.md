@@ -2,14 +2,90 @@
 
 ColonyDB's design system.
 
+## React Components
+
+- Built for [Next.js](https://nextjs.org/)
+- Styled with [styled-jsx](https://github.com/vercel/styled-jsx)
+- Supports the latest 2 versions of Chrome, Safari, Firefox and Edge
+
+### Installation
+
+If not already installed, add [React](https://reactjs.org/) and [Next.js](https://nextjs.org/) to your project:
+
+```shell
+yarn add react react-dom next
+```
+
+Add Anthill to your project:
+
+```shell
+yarn add @colonydb/anthill
+```
+
+### Usage
+
+Use the components in [a Next.js page](https://nextjs.org/docs/basic-features/pages) (such as `pages/index.js`):
+
+```js
+import Button from "@colonydb/anthill/controls/Button";
+import Main from "@colonydb/anthill/layout/Main";
+
+const Page = () => (
+  <Main restricted>
+    <Button>Example Button</Button>
+  </Main>
+);
+
+export default Page;
+```
+
+Start your Next.js app in development mode:
+
+```shell
+yarn next dev
+```
+
+### Modules
+
+- `controls/Action`
+- `controls/Button`
+- `controls/ComboBox`
+- `controls/ContextualMenu`
+- `controls/HuePicker`
+- `controls/RadioButton`
+- `controls/TextInput`
+- `foundation/Global`
+- `foundation/Layer`
+- `foundation/Meta`
+- `foundation/ScrollContext`
+- `icons/ExternalIcon`
+- `icons/GanttChartIcon`
+- `icons/GanttChartItemIcon`
+- `icons/Icon`
+- `icons/MailIcon`
+- `icons/RemoveIcon`
+- `layout/Aside`
+- `layout/EditPage`
+- `layout/Main`
+- `layout/Stack`
+- `presentation/Article`
+- `presentation/Chip`
+- `presentation/Field`
+- `presentation/Heading`
+- `presentation/PrototypeBadge`
+- `presentation/Subheading`
+- `presentation/Table`
+- `presentation/Title`
+- `utils/hueToColor`
+
 ## Collateral
 
-### Sponsorship Badge
+### OSS Sponsorship Badge
 
-![](sponsorship-badge.svg)
+![](collateral/sponsorship-badge.svg)
 
-- [sponsorship-badge.svg](sponsorship-badge.svg)
-- [sponsorship-badge@1x.png](sponsorship-badge@1x.png)
-- [sponsorship-badge@2x.png](sponsorship-badge@2x.png)
+Assets (223px × 44px):
 
-Display dimensions: 223px ✕ 44px
+- [collateral/sponsorship-badge.svg](collateral/sponsorship-badge.svg)
+- [collateral/sponsorship-badge@1x.png](collateral/sponsorship-badge@1x.png)
+- [collateral/sponsorship-badge@2x.png](collateral/sponsorship-badge@2x.png)

@@ -1,0 +1,54 @@
+const Button = ({ children, href, onClick, type }) => {
+  const Component = href ? "a" : "button";
+  return (
+    <>
+      <style jsx>{`
+        .button {
+          cursor: pointer;
+          display: inline-block;
+          background: var(--theme-accent);
+          border-radius: var(--radius-m);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+          color: var(--theme-complementary);
+          font: var(--font-body-bold);
+          padding: var(--size-xs) var(--size-s);
+          text-align: center;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .button:focus {
+          box-shadow: 0px 0px 12px var(--theme-accent);
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
+          }
+          .button:active {
+            transition: none;
+            transform: none;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          .button {
+            box-shadow: none;
+          }
+          .button:focus,
+          .button:hover {
+            transform: none;
+            box-shadow: 0px 0px 12px var(--theme-accent);
+          }
+          .button:active {
+            transition: none;
+            box-shadow: none;
+          }
+        }
+      `}</style>
+      <Component className="button" href={href} onClick={onClick} type={type}>
+        {children}
+      </Component>
+    </>
+  );
+};
+
+export default Button;
