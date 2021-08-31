@@ -6,6 +6,7 @@ ColonyDB's design system.
 
 - Built for [Next.js](https://nextjs.org/)
 - Styled with [styled-jsx](https://github.com/vercel/styled-jsx)
+- ES Modules
 - Supports the latest 2 versions of Chrome, Safari, Firefox and Edge
 
 ### Installation
@@ -24,26 +25,39 @@ yarn add @colonydb/anthill
 
 ### Usage
 
-Use the components in [a Next.js page](https://nextjs.org/docs/basic-features/pages) (such as `pages/index.js`):
+1.  [Customize your app](https://nextjs.org/docs/advanced-features/custom-app) to include the `foundation/Global` component at the root of every page:
 
-```js
-import Button from "@colonydb/anthill/controls/Button";
-import Main from "@colonydb/anthill/layout/Main";
+    ```js
+    // pages/_app.js
 
-const Page = () => (
-  <Main restricted>
-    <Button>Example Button</Button>
-  </Main>
-);
+    import Global from "@colonydb/anthill/foundation/Global";
 
-export default Page;
-```
+    const App = ({ Component, pageProps }) => (
+      <>
+        <Global />
+        <Component {...pageProps} />
+      </>
+    );
 
-Start your Next.js app in development mode:
+    export default App;
+    ```
 
-```shell
-yarn next dev
-```
+2.  Use components on any [Next.js page](https://nextjs.org/docs/basic-features/pages):
+
+    ```js
+    // pages/index.js
+
+    import Button from "@colonydb/anthill/controls/Button";
+    import Main from "@colonydb/anthill/layout/Main";
+
+    const Page = () => (
+      <Main restricted>
+        <Button>Example Button</Button>
+      </Main>
+    );
+
+    export default Page;
+    ```
 
 ### Modules
 

@@ -1,16 +1,24 @@
 {
   "name": "@colonydb/anthill",
   "version": "0.0.0",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:colonydb/anthill.git",
   "license": "MIT",
   "private": false,
+  "type": "module",
+  "files": [
+    "dist/**/*"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "scripts": {
-    "build": "babel src -d lib",
-    "storybook:start": "start-storybook -p 6006",
+    "build": "babel src -d dist --ignore \"src/**/*.stories.js\"",
+    "release": "np --no-2fa",
     "storybook:build": "build-storybook",
-    "test": "yarn test:prettier",
-    "test:prettier": "prettier -c src README.md"
+    "storybook:start": "start-storybook -p 6006",
+    "test:prettier": "prettier -c src README.md",
+    "test": "yarn build && yarn test:prettier && yarn storybook:build"
   },
   "dependencies": {},
   "peerDependencies": {
@@ -26,8 +34,8 @@
     "@storybook/addon-storysource": "^6.3.7",
     "@storybook/addon-viewport": "^6.3.7",
     "@storybook/react": "^6.3.7",
-    "babel-loader": "^8.2.2",
     "next": "^11.1.0",
+    "np": "^7.5.0",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -36,7 +44,12 @@
   },
   "babel": {
     "presets": [
-      "@babel/preset-react"
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
     ],
     "plugins": [
       "styled-jsx/babel"

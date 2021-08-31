@@ -99,7 +99,7 @@ const HuePicker = ({ id = undefined, value, onChange }) => (
         }
       />
       <input
-      tabIndex="-1"
+        tabIndex="-1"
         className="slider"
         type="range"
         min="0"
