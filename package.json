@@ -1,14 +1,11 @@
 {
   "name": "@colonydb/anthill",
   "version": "0.1.0-2",
-  "main": "dist/index.js",
+  "main": "index.js",
   "repository": "git@github.com:colonydb/anthill.git",
   "license": "MIT",
   "private": false,
   "type": "module",
-  "files": [
-    "dist/**/*"
-  ],
   "scripts": {
     "build": "babel src -d dist --ignore \"src/**/*.stories.js\"",
     "release": "yarn version && git push --tags && open \"https://github.com/colonydb/anthill/releases/new?tag=v$(jq '.version' package.json --raw-output)\"",
