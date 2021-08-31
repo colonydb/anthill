@@ -6,7 +6,13 @@ ColonyDB's design system.
 
 - Built for [Next.js](https://nextjs.org/)
 - Styled with [styled-jsx](https://github.com/vercel/styled-jsx)
-- Supports the latest 2 versions of Chrome, Safari, Firefox and Edge
+- Supports the latest 2 versions of:
+  - Chrome
+  - Chrome for Android
+  - Safari
+  - Safari for iOS
+  - Firefox
+  - Edge
 
 ### Installation
 
