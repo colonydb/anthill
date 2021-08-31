@@ -9,12 +9,8 @@
   "files": [
     "dist/**/*"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
   "scripts": {
     "build": "babel src -d dist --ignore \"src/**/*.stories.js\"",
-    "release": "np --no-2fa",
     "storybook:build": "build-storybook",
     "storybook:start": "start-storybook -p 6006",
     "test:prettier": "prettier -c src README.md",
@@ -35,7 +31,6 @@
     "@storybook/addon-viewport": "^6.3.7",
     "@storybook/react": "^6.3.7",
     "next": "^11.1.0",
-    "np": "^7.5.0",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
