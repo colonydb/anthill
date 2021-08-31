@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "build": "babel src -d dist --ignore \"src/**/*.stories.js\"",
+    "release": "yarn version && git push --tags && open \"https://github.com/colonydb/anthill/releases/new?tag=v$(jq '.version' package.json --raw-output)\"",
     "storybook:build": "build-storybook",
     "storybook:start": "start-storybook -p 6006",
     "test:prettier": "prettier -c src README.md",
