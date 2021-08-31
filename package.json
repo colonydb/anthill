@@ -1,6 +1,6 @@
 {
   "name": "@colonydb/anthill",
-  "version": "0.1.0-3",
+  "version": "0.1.0",
   "main": "index.js",
   "repository": "git@github.com:colonydb/anthill.git",
   "license": "MIT",
