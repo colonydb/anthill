@@ -8,6 +8,8 @@
   "scripts": {
     "build": "babel src -d dist --ignore \"src/**/*.stories.js\"",
     "release": "yarn version && git push --tags && open \"https://github.com/colonydb/anthill/releases/new?tag=v$(jq '.version' package.json --raw-output)\"",
+    "sketchbook:start": "webpack --config sketchbook/webpack.config.js --mode development && yarn sketchbook start sketchbook/example.json",
+    "sketchbook:build": "webpack --config sketchbook/webpack.config.js --mode production && yarn sketchbook build sketchbook/example.json",
     "storybook:build": "build-storybook",
     "storybook:start": "start-storybook -p 6006",
     "test:prettier": "prettier -c src README.md",
@@ -24,16 +26,20 @@
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
+    "@sketchbook-js/sketchbook": "^0.3.1",
     "@storybook/addon-actions": "^6.3.7",
     "@storybook/addon-storysource": "^6.3.7",
     "@storybook/addon-viewport": "^6.3.7",
     "@storybook/react": "^6.3.7",
+    "babel-loader": "^8.2.2",
     "next": "^11.1.0",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "storybook-dark-mode": "^1.0.8",
-    "styled-jsx": "^4.0.0"
+    "styled-jsx": "^4.0.0",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0"
   },
   "babel": {
     "presets": [
