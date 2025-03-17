@@ -7,13 +7,13 @@
   "private": false,
   "scripts": {
     "build": "babel src -d dist --ignore \"src/**/*.stories.js\"",
-    "release": "yarn version && git push && git push --tags && open \"https://github.com/colonydb/anthill/releases/new?tag=v$(jq '.version' package.json --raw-output)\"",
-    "sketchbook:start": "webpack --config sketchbook/webpack.config.js --mode development && yarn sketchbook start sketchbook/example.json",
-    "sketchbook:build": "webpack --config sketchbook/webpack.config.js --mode production && yarn sketchbook build sketchbook/example.json",
+    "release": "pnpm version && git push && git push --tags && open \"https://github.com/colonydb/anthill/releases/new?tag=v$(jq '.version' package.json --raw-output)\"",
+    "sketchbook:start": "webpack --config sketchbook/webpack.config.js --mode development && pnpm sketchbook start sketchbook/example.json",
+    "sketchbook:build": "webpack --config sketchbook/webpack.config.js --mode production && pnpm sketchbook build sketchbook/example.json",
     "storybook:build": "build-storybook",
     "storybook:start": "start-storybook -p 6006",
     "test:prettier": "prettier -c src README.md",
-    "test": "yarn build && yarn test:prettier && yarn storybook:build"
+    "test": "pnpm build && pnpm test:prettier && pnpm storybook:build"
   },
   "dependencies": {},
   "peerDependencies": {
