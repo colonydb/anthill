@@ -1,7 +1,7 @@
-import Link from "next/link";
-import RemoveIcon from "../icons/RemoveIcon";
 import { useState } from "react";
+import RemoveIcon from "../icons/RemoveIcon";
 import hueToColor from "../utils/hueToColor";
+import useFrameworkContext from "../utils/useFrameworkContext";
 
 const Chip = ({
   children,
@@ -12,6 +12,7 @@ const Chip = ({
   onRemove = null,
 }) => {
   const [status, setStatus] = useState("default");
+  const { Link } = useFrameworkContext();
   return status === "removing" ? (
     "Removing…"
   ) : (
