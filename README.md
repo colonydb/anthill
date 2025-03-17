@@ -75,7 +75,6 @@ yarn add @colonydb/anthill
 - `controls/TextInput`
 - `foundation/Global`
 - `foundation/Layer`
-- `foundation/Meta`
 - `foundation/ScrollContext`
 - `icons/ExternalIcon`
 - `icons/GanttChartIcon`

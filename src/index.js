@@ -17,7 +17,6 @@ export { default as Icon } from "./icons/Icon";
 export { default as Layer } from "./foundation/Layer";
 export { default as MailIcon } from "./icons/MailIcon";
 export { default as Main } from "./layout/Main";
-export { default as Meta } from "./foundation/Meta";
 export { default as PrototypeBadge } from "./presentation/PrototypeBadge";
 export { default as RadioButton } from "./controls/RadioButton";
 export { default as RemoveIcon } from "./icons/RemoveIcon";
