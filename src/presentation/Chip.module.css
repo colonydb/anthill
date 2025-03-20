@@ -1,0 +1,37 @@
+.chip {
+  --theme-background: var(--color-mercury);
+  --theme-text: var(--color-black);
+  --theme-muted: var(--color-wafer);
+}
+@media (prefers-color-scheme: dark) {
+  .chip {
+    --theme-background: var(--color-almond);
+    --theme-text: var(--color-white);
+    --theme-muted: var(--color-schooner);
+  }
+}
+.chip {
+  align-items: center;
+  background: var(--theme-background);
+  border-radius: var(--radius-m);
+  color: var(--theme-text);
+  column-gap: var(--size-xxs);
+  display: grid;
+  font: var(--font-small);
+  max-width: 100%;
+  user-select: none;
+  width: fit-content;
+}
+.label {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  padding-top: var(--size-xxs);
+  padding-bottom: var(--size-xxs);
+  text-overflow: ellipsis;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.label:hover {
+  color: var(--label-hover);
+}

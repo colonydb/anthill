@@ -1,0 +1,52 @@
+.layout {
+  display: grid;
+  grid-template-columns: var(--size-xxl) 1fr calc(var(--column-width) * 4 + var(--column-gap) * 5);
+  grid-template-rows: 100vh;
+}
+.nav {
+  --theme-background: var(--color-froth);
+  padding: var(--column-gap) 0;
+}
+.main {
+  --column-count: 10;
+  column-gap: var(--column-gap);
+  display: grid;
+  grid-template-columns: repeat(var(--column-count), var(--column-width));
+  justify-content: center;
+  overflow-y: scroll;
+  padding: var(--column-gap);
+}
+.aside {
+  --theme-background: var(--color-froth);
+  --column-count: 4;
+  background: var(--theme-background);
+  overflow-y: scroll;
+  padding: var(--column-gap);
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav {
+    --theme-background: var(--color-midnight);
+  }
+  .aside {
+    --theme-background: var(--color-midnight);
+  }
+}
+
+@media (max-width: 1758px) {
+  .main {
+    --column-count: 8;
+  }
+}
+
+@media (max-width: 1518px) {
+  .main {
+    --column-count: 6;
+  }
+}
+
+@media (max-width: 1278px) {
+  .main {
+    --column-count: 4;
+  }
+}

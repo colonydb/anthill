@@ -1,0 +1,51 @@
+.field {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  align-items: center;
+  gap: var(--size-xs);
+}
+.label {
+  font: var(--font-body-bold);
+  grid-column: span 3;
+  order: 0;
+  user-select: none;
+}
+.inline .label {
+  font: var(--font-body);
+  grid-column: span 2;
+  order: 1;
+}
+.description {
+  font: var(--font-small);
+  grid-column: span 3;
+  order: 0;
+}
+.button .description {
+  grid-column: span 2;
+}
+.inline .description {
+  order: 1;
+}
+.input {
+  grid-column: span 3;
+}
+.button .input,
+.inline .input {
+  grid-column: span 1;
+}
+.errors {
+  color: var(--theme-danger);
+  font: var(--font-small);
+  grid-column: span 3;
+  order: 0;
+}
+.inline .errors {
+  grid-column: span 1;
+}
+.errors ul {
+  list-style-type: disc;
+  padding-left: 2em;
+}
+.errors li {
+  display: list-item;
+}

@@ -1,0 +1,30 @@
+.menu {
+  columns: 4;
+}
+
+.menuItem {
+  break-inside: avoid;
+}
+
+.menu a {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: #f0f;
+}
+
+.menu a:hover {
+  text-decoration: none;
+}
+
+.container {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.content {
+  border: 1px solid #ccc;
+  padding: 20px;
+  max-width: 100ch;
+}
