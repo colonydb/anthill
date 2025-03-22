@@ -1,5 +1,5 @@
 .menu {
-  columns: 4;
+  columns: 3;
 }
 
 .menuItem {
@@ -21,10 +21,10 @@
   place-content: center;
   min-height: 100vh;
   padding: 20px;
+  grid-template-columns: minmax(content-min, content-max);
 }
 
 .content {
   border: 1px solid #ccc;
   padding: 20px;
-  max-width: 100ch;
 }

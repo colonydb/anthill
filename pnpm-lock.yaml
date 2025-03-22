@@ -15,10 +15,22 @@ devDependencies:
     version: 1.1.1(@rsbuild/core@1.2.19)
   '@rslib/core':
     specifier: ^0.5.4
-    version: 0.5.4
+    version: 0.5.4(typescript@5.8.2)
   '@sketchbook-js/sketchbook':
     specifier: ^0.3.1
     version: 0.3.1
+  '@total-typescript/tsconfig':
+    specifier: ^1.0.4
+    version: 1.0.4
+  '@types/css-modules':
+    specifier: ^1.0.5
+    version: 1.0.5
+  '@types/react':
+    specifier: ^19.0.12
+    version: 19.0.12
+  '@types/react-dom':
+    specifier: ^19.0.4
+    version: 19.0.4(@types/react@19.0.12)
   '@vitejs/plugin-react-swc':
     specifier: ^3.8.0
     version: 3.8.0(vite@6.2.2)
@@ -31,6 +43,9 @@ devDependencies:
   react-dom:
     specifier: ^19.0.0
     version: 19.0.0(react@19.0.0)
+  typescript:
+    specifier: ^5.8.2
+    version: 5.8.2
   vite:
     specifier: ^6.2.2
     version: 6.2.2
@@ -596,7 +611,7 @@ packages:
       react-refresh: 0.16.0
     dev: true
 
-  /@rslib/core@0.5.4:
+  /@rslib/core@0.5.4(typescript@5.8.2):
     resolution: {integrity: sha512-rJ+wG++/Y8SbyuJB1RhlgnOUPzsxubD0lBivZWXVhOGawAea7mUoI4kZQ6YmF0iybW1QA61wHOf3FY+R1BxvgQ==}
     engines: {node: '>=16.7.0'}
     hasBin: true
@@ -610,8 +625,9 @@ packages:
         optional: true
     dependencies:
       '@rsbuild/core': 1.2.19
-      rsbuild-plugin-dts: 0.5.4(@rsbuild/core@1.2.19)
+      rsbuild-plugin-dts: 0.5.4(@rsbuild/core@1.2.19)(typescript@5.8.2)
       tinyglobby: 0.2.12
+      typescript: 5.8.2
     transitivePeerDependencies:
       - '@rspack/tracing'
     dev: true
@@ -890,6 +906,14 @@ packages:
       '@swc/counter': 0.1.3
     dev: true
 
+  /@total-typescript/tsconfig@1.0.4:
+    resolution: {integrity: sha512-fO4ctMPGz1kOFOQ4RCPBRBfMy3gDn+pegUfrGyUFRMv/Rd0ZM3/SHH3hFCYG4u6bPLG8OlmOGcBLDexvyr3A5w==}
+    dev: true
+
+  /@types/css-modules@1.0.5:
+    resolution: {integrity: sha512-oeKafs/df9lwOvtfiXVliZsocFVOexK9PZtLQWuPeuVCFR7jwiqlg60lu80JTe5NFNtH3tnV6Fs/ySR8BUPHAw==}
+    dev: true
+
   /@types/estree@1.0.6:
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
     dev: true
@@ -897,21 +921,29 @@ packages:
   /@types/hoist-non-react-statics@3.3.6:
     resolution: {integrity: sha512-lPByRJUer/iN/xa4qpyL0qmL11DqNW81iU/IG1S3uvRUq4oKagz8VCxZjiWkumgt66YT3vOdDgZ0o32sGKtCEw==}
     dependencies:
-      '@types/react': 19.0.10
+      '@types/react': 19.0.12
       hoist-non-react-statics: 3.3.2
+    dev: true
+
+  /@types/react-dom@19.0.4(@types/react@19.0.12):
+    resolution: {integrity: sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==}
+    peerDependencies:
+      '@types/react': ^19.0.0
+    dependencies:
+      '@types/react': 19.0.12
     dev: true
 
   /@types/react-redux@7.1.34:
     resolution: {integrity: sha512-GdFaVjEbYv4Fthm2ZLvj1VSCedV7TqE5y1kNwnjSdBOTXuRSgowux6J8TAct15T3CKBr63UMk+2CO7ilRhyrAQ==}
     dependencies:
       '@types/hoist-non-react-statics': 3.3.6
-      '@types/react': 19.0.10
+      '@types/react': 19.0.12
       hoist-non-react-statics: 3.3.2
       redux: 4.2.1
     dev: true
 
-  /@types/react@19.0.10:
-    resolution: {integrity: sha512-JuRQ9KXLEjaUNjTWpzuR231Z2WpIwczOkBEIvbHNCzQefFIT0L8IqE6NV6ULLyC1SI/i234JnDoMkfg+RjQj2g==}
+  /@types/react@19.0.12:
+    resolution: {integrity: sha512-V6Ar115dBDrjbtXSrS+/Oruobc+qVbbUxDFC1RSbRqLt5SYvxxyIDrSC85RWml54g+jfNeEMZhEj7wW07ONQhA==}
     dependencies:
       csstype: 3.1.3
     dev: true
@@ -1717,7 +1749,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /rsbuild-plugin-dts@0.5.4(@rsbuild/core@1.2.19):
+  /rsbuild-plugin-dts@0.5.4(@rsbuild/core@1.2.19)(typescript@5.8.2):
     resolution: {integrity: sha512-8z4gC7/vj2acLb5zdkgQ4N6l4EnFqC16x3tcqkkpsv/C+2W2Jyr6SKHRWbfWrki/hiv9K5WansHlsmL7TKC+BQ==}
     engines: {node: '>=16.7.0'}
     peerDependencies:
@@ -1736,6 +1768,7 @@ packages:
       picocolors: 1.1.1
       tinyglobby: 0.2.12
       tsconfig-paths: 4.2.0
+      typescript: 5.8.2
     dev: true
 
   /safe-buffer@5.1.2:
@@ -1939,6 +1972,12 @@ packages:
     dependencies:
       media-typer: 0.3.0
       mime-types: 2.1.35
+    dev: true
+
+  /typescript@5.8.2:
+    resolution: {integrity: sha512-aJn6wq13/afZp/jT9QZmwEjDqqvSGp1VT5GVg+f/t6/oVyrgXM6BY1h9BRh/O5p3PlUPAe+WuiEZOmb/49RqoQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
     dev: true
 
   /universalify@2.0.1:

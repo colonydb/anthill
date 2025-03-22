@@ -1,0 +1,11 @@
+{
+  "extends": "@total-typescript/tsconfig/bundler/dom",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noUncheckedSideEffectImports": true,
+    "strictNullChecks": true
+  },
+  "include": ["examples", "src", "global.d.ts"]
+}
