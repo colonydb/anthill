@@ -1,6 +1,6 @@
 {
   "name": "@colonydb/anthill",
-  "version": "0.2.0-2",
+  "version": "0.2.0-3",
   "repository": "git@github.com:colonydb/anthill.git",
   "license": "MIT",
   "private": false,
