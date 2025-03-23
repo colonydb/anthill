@@ -15,7 +15,7 @@ export default defineConfig({
   },
   source: {
     entry: {
-      index: ["./src/**", "!src/**/*.stories.jsx", "!src/**/*.test.js", "!src/**/*.test.jsx"],
+      index: "src/**",
     },
   },
   plugins: [pluginReact()],
