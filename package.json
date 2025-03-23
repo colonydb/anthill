@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rslib build",
     "build:examples": "vite build examples",
-    "release": "pnpm version && git push && git push --tags && open \"https://github.com/colonydb/anthill/releases/new?tag=v$(jq '.version' package.json --raw-output)\"",
+    "release": "pnpm version && git push && git push --tags && open \"https://github.com/colonydb/anthill/releases/new?tag=v$(jq '.version' package.json --raw-output)&title=v$(jq '.version' package.json --raw-output)\"",
     "sketchbook:start": "webpack --config sketchbook/webpack.config.js --mode development && pnpm sketchbook start sketchbook/example.json",
     "sketchbook:build": "webpack --config sketchbook/webpack.config.js --mode production && pnpm sketchbook build sketchbook/example.json",
     "test:prettier": "prettier -c src README.md",
@@ -17,7 +17,8 @@
   },
   "files": [
     "dist",
-    "LICENSE"
+    "LICENSE",
+    "README.md"
   ],
   "type": "module",
   "exports": {
