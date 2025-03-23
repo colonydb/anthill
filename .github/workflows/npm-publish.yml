@@ -5,30 +5,20 @@ on:
     types: [created]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-      - run: yarn install --frozen-lockfile
-      - run: yarn test
-
   publish-npm:
-    needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
         with:
-          node-version: 14
-          registry-url: https://registry.npmjs.org/
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: true
+      - run: pnpm build
       - run: cp package.json dist
       - run: cp README.md dist
       - run: cp LICENSE dist
-      - run: yarn publish dist --access public
+      - run: pnpm config set "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NPM_TOKEN: ${{ secrets.npm_token }}
+      - run: pnpm publish dist --access public --no-git-checks

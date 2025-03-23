@@ -5,6 +5,7 @@
   "repository": "git@github.com:colonydb/anthill.git",
   "license": "MIT",
   "private": false,
+  "packageManager": "pnpm@8.14.3",
   "scripts": {
     "build": "rslib build",
     "build:examples": "vite build examples",
