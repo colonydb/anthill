@@ -1,0 +1,20 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["test"]
+    },
+    "dev": {
+      "persistent": true
+    },
+    "fix": {
+      "dependsOn": ["fix:prettier"]
+    },
+    "fix:prettier": {},
+    "test": {
+      "dependsOn": ["test:prettier"]
+    },
+    "test:prettier": {}
+  }
+}
