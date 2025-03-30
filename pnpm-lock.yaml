@@ -14,6 +14,9 @@ importers:
 
   apps/docs:
     dependencies:
+      '@colonydb/anthill':
+        specifier: workspace:0.2.0-4
+        version: link:../../packages/anthill
       next:
         specifier: 15.2.4
         version: 15.2.4(react-dom@19.0.0)(react@19.0.0)

@@ -11,6 +11,7 @@
     "test": "tsc --noEmit"
   },
   "dependencies": {
+    "@colonydb/anthill": "workspace:0.2.0-4",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
