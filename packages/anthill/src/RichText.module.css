@@ -1,185 +1,185 @@
 .container {
-	font: var(--font-regular);
+  font: var(--font-regular);
 
-	h1 {
-		font: var(--font-title);
-	}
+  h1 {
+    font: var(--font-title);
+  }
 
-	h2 {
-		font: var(--font-heading);
-	}
+  h2 {
+    font: var(--font-heading);
+  }
 
-	h3 {
-		font: var(--font-subheading);
-	}
+  h3 {
+    font: var(--font-subheading);
+  }
 
-	h4 {
-		font: var(--font-regular-bold);
-	}
+  h4 {
+    font: var(--font-regular-bold);
+  }
 
-	h5 {
-		font: var(--font-small-bold);
-	}
+  h5 {
+    font: var(--font-small-bold);
+  }
 
-	h6 {
-		font: var(--font-tiny-bold);
-	}
+  h6 {
+    font: var(--font-tiny-bold);
+  }
 
-	:where(b, strong) {
-		font: var(--font-regular-bold);
-	}
+  :where(b, strong) {
+    font: var(--font-regular-bold);
+  }
 
-	:where(i, em) {
-		font: var(--font-regular-italic);
-	}
+  :where(i, em) {
+    font: var(--font-regular-italic);
+  }
 
-	:where(b, strong) :where(i, em),
-	:where(i, em) :where(b, strong) {
-		font: var(--font-regular-bold-italic);
-	}
+  :where(b, strong) :where(i, em),
+  :where(i, em) :where(b, strong) {
+    font: var(--font-regular-bold-italic);
+  }
 
-	a {
-		cursor: pointer;
-		text-decoration-line: underline;
-		text-decoration-color: color-mix(in oklch, var(--color-accent), transparent 40%);
-		text-decoration-thickness: 2px;
-		transition:
-			color 0.2s,
-			text-decoration-color 0.2s;
+  a {
+    cursor: pointer;
+    text-decoration-line: underline;
+    text-decoration-color: color-mix(in oklch, var(--color-accent), transparent 40%);
+    text-decoration-thickness: 2px;
+    transition:
+      color 0.2s,
+      text-decoration-color 0.2s;
 
-		@media screen and (hover: hover) {
-			&:hover {
-				text-decoration-color: transparent;
-				color: var(--color-accent);
-			}
-		}
+    @media screen and (hover: hover) {
+      &:hover {
+        text-decoration-color: transparent;
+        color: var(--color-accent);
+      }
+    }
 
-		&:focus-visible {
-			border-radius: 2px;
-			outline-offset: 2px;
-			outline: 2px solid color-mix(in oklch, var(--color-accent), transparent 40%);
-			text-decoration: unset;
-		}
-	}
+    &:focus-visible {
+      border-radius: 2px;
+      outline-offset: 2px;
+      outline: 2px solid color-mix(in oklch, var(--color-accent), transparent 40%);
+      text-decoration: unset;
+    }
+  }
 
-	:where(ul, ol) {
-		padding-left: 1rlh;
-	}
+  :where(ul, ol) {
+    padding-left: 1rlh;
+  }
 
-	ul {
-		list-style-type: disc;
-	}
+  ul {
+    list-style-type: disc;
+  }
 
-	ol {
-		list-style-type: decimal;
-	}
+  ol {
+    list-style-type: decimal;
+  }
 
-	li {
-		display: list-item;
-	}
+  li {
+    display: list-item;
+  }
 
-	hr {
-		border-top: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
-	}
+  hr {
+    border-top: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
+  }
 
-	code {
-		background: light-dark(var(--color-gray-t6), var(--color-gray-s7));
-		border-radius: 0.25rlh;
-		font: var(--font-regular-monospace);
-		padding: 0.5ch;
-		tab-size: 2;
-		white-space: nowrap;
-	}
+  code {
+    background: light-dark(var(--color-gray-t6), var(--color-gray-s7));
+    border-radius: 0.25rlh;
+    font: var(--font-regular-monospace);
+    padding: 0.5ch;
+    tab-size: 2;
+    white-space: nowrap;
+  }
 
-	pre > code {
-		border-radius: 0.5rlh;
-		padding: 1rlh;
-		white-space: pre;
-	}
+  pre > code {
+    border-radius: 0.5rlh;
+    padding: 1rlh;
+    white-space: pre;
+  }
 
-	& > * + * {
-		margin-top: 1rlh;
-	}
+  & > * + * {
+    margin-top: 1rlh;
+  }
 
-	& > * > * + * {
-		margin-top: 0.5rlh;
-	}
+  & > * > * + * {
+    margin-top: 0.5rlh;
+  }
 
-	& > * > * > * + * {
-		margin-top: 0.25rlh;
-	}
+  & > * > * > * + * {
+    margin-top: 0.25rlh;
+  }
 
-	&.small {
-		font: var(--font-small);
+  &.small {
+    font: var(--font-small);
 
-		:where(b, strong) {
-			font: var(--font-small-bold);
-		}
+    :where(b, strong) {
+      font: var(--font-small-bold);
+    }
 
-		:where(i, em) {
-			font: var(--font-small-italic);
-		}
+    :where(i, em) {
+      font: var(--font-small-italic);
+    }
 
-		:where(b, strong) :where(i, em),
-		:where(i, em) :where(b, strong) {
-			font: var(--font-small-bold-italic);
-		}
+    :where(b, strong) :where(i, em),
+    :where(i, em) :where(b, strong) {
+      font: var(--font-small-bold-italic);
+    }
 
-		code {
-			font: var(--font-small-monospace);
-		}
+    code {
+      font: var(--font-small-monospace);
+    }
 
-		pre > code {
-			padding: 0.5rlh;
-		}
+    pre > code {
+      padding: 0.5rlh;
+    }
 
-		& > * + * {
-			margin-top: 0.5rlh;
-		}
+    & > * + * {
+      margin-top: 0.5rlh;
+    }
 
-		& > * > * + * {
-			margin-top: 0.25rlh;
-		}
+    & > * > * + * {
+      margin-top: 0.25rlh;
+    }
 
-		& > * > * > * + * {
-			margin-top: 0.125rlh;
-		}
-	}
+    & > * > * > * + * {
+      margin-top: 0.125rlh;
+    }
+  }
 
-	&.tiny {
-		font: var(--font-tiny);
+  &.tiny {
+    font: var(--font-tiny);
 
-		:where(b, strong) {
-			font: var(--font-tiny-bold);
-		}
+    :where(b, strong) {
+      font: var(--font-tiny-bold);
+    }
 
-		:where(i, em) {
-			font: var(--font-tiny-italic);
-		}
+    :where(i, em) {
+      font: var(--font-tiny-italic);
+    }
 
-		:where(b, strong) :where(i, em),
-		:where(i, em) :where(b, strong) {
-			font: var(--font-tiny-bold-italic);
-		}
+    :where(b, strong) :where(i, em),
+    :where(i, em) :where(b, strong) {
+      font: var(--font-tiny-bold-italic);
+    }
 
-		code {
-			font: var(--font-tiny-monospace);
-		}
+    code {
+      font: var(--font-tiny-monospace);
+    }
 
-		pre > code {
-			padding: 0.5rlh;
-		}
+    pre > code {
+      padding: 0.5rlh;
+    }
 
-		& > * + * {
-			margin-top: 0.25rlh;
-		}
+    & > * + * {
+      margin-top: 0.25rlh;
+    }
 
-		& > * > * + * {
-			margin-top: 0.125rlh;
-		}
+    & > * > * + * {
+      margin-top: 0.125rlh;
+    }
 
-		& > * > * > * + * {
-			margin-top: 0.125rlh;
-		}
-	}
+    & > * > * > * + * {
+      margin-top: 0.125rlh;
+    }
+  }
 }

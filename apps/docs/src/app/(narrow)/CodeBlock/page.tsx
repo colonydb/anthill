@@ -8,41 +8,41 @@ import { TabBlock } from "@colonydb/anthill/TabBlock";
 import js from "dedent";
 
 const CodeBlockPage = () => (
-	<Card header={<Heading>CodeBlock</Heading>}>
-		<CardContent>
-			<CodeBlock language="tsx">
-				{js`
-					import { CodeBlock } from "@colonydb/anthill/CodeBlock";
-				`}
-			</CodeBlock>
-			<Section title={<Heading>Basic</Heading>}>
-				<TabBlock
-					items={[
-						{
-							key: "specimen",
-							label: "Specimen",
-							content: (
-								<Specimen>
-									<CodeBlock language="tsx">{"console.log('example');"}</CodeBlock>
-								</Specimen>
-							),
-						},
-						{
-							key: "code",
-							label: "Code",
-							content: (
-								<CodeBlock language="tsx">
-									{js`
-										<CodeBlock language="tsx">{"console.log('example');"}</CodeBlock>
-									`}
-								</CodeBlock>
-							),
-						},
-					]}
-				/>
-			</Section>
-		</CardContent>
-	</Card>
+  <Card header={<Heading>CodeBlock</Heading>}>
+    <CardContent>
+      <CodeBlock language="tsx">
+        {js`
+          import { CodeBlock } from "@colonydb/anthill/CodeBlock";
+        `}
+      </CodeBlock>
+      <Section title={<Heading>Basic</Heading>}>
+        <TabBlock
+          items={[
+            {
+              key: "specimen",
+              label: "Specimen",
+              content: (
+                <Specimen>
+                  <CodeBlock language="tsx">{"console.log('example');"}</CodeBlock>
+                </Specimen>
+              ),
+            },
+            {
+              key: "code",
+              label: "Code",
+              content: (
+                <CodeBlock language="tsx">
+                  {js`
+                    <CodeBlock language="tsx">{"console.log('example');"}</CodeBlock>
+                  `}
+                </CodeBlock>
+              ),
+            },
+          ]}
+        />
+      </Section>
+    </CardContent>
+  </Card>
 );
 
 export default CodeBlockPage;

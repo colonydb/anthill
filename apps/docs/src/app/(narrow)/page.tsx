@@ -10,65 +10,65 @@ import { Stack } from "@colonydb/anthill/Stack";
 import md from "dedent";
 
 const HomePage = () => (
-	<Stack>
-		<Card
-			header={
-				<Header description={<PlainText font="small">ColonyDB&apos;s design system.</PlainText>}>
-					<Heading>Anthill</Heading>
-				</Header>
-			}
-		>
-			<CardContent>
-				<Markdown>{md`
-					# Installation
+  <Stack>
+    <Card
+      header={
+        <Header description={<PlainText font="small">ColonyDB&apos;s design system.</PlainText>}>
+          <Heading>Anthill</Heading>
+        </Header>
+      }
+    >
+      <CardContent>
+        <Markdown>{md`
+          # Installation
 
-					PNPM:
+          PNPM:
 
-					\`\`\`bash
-					pnpm add @colonydb/anthill
-					\`\`\`
+          \`\`\`bash
+          pnpm add @colonydb/anthill
+          \`\`\`
 
-					Yarn:
+          Yarn:
 
-					\`\`\`bash
-					yarn add @colonydb/anthill
-					\`\`\`
+          \`\`\`bash
+          yarn add @colonydb/anthill
+          \`\`\`
 
-					npm:
+          npm:
 
-					\`\`\`bash
-					npm install @colonydb/anthill
-					\`\`\`
+          \`\`\`bash
+          npm install @colonydb/anthill
+          \`\`\`
 
-					# Usage
+          # Usage
 
-					\`\`\`tsx
-					import { Base } from '@colonydb/anthill/Base';
-					import { Button } from '@colonydb/anthill/Button';
+          \`\`\`tsx
+          import { Base } from '@colonydb/anthill/Base';
+          import { Button } from '@colonydb/anthill/Button';
 
-					const MyComponent = () => (
-						<Base>
-							<Button
-								onClick={() => {
-									alert('Hello!');
-								}}
-							>
-								Click me
-							</Button>
-						</Base>
-					);
-					\`\`\`
+          const MyComponent = () => (
+            <Base>
+              <Button
+                onClick={() => {
+                  alert('Hello!');
+                }}
+              >
+                Click me
+              </Button>
+            </Base>
+          );
+          \`\`\`
 
-					# Notes
+          # Notes
 
-					A few things to be aware of:
+          A few things to be aware of:
 
-					- Requires React 19 or higher
-					- Only supports evergreen browsers
-				`}</Markdown>
-			</CardContent>
-		</Card>
-	</Stack>
+          - Requires React 19 or higher
+          - Only supports evergreen browsers
+        `}</Markdown>
+      </CardContent>
+    </Card>
+  </Stack>
 );
 
 export default HomePage;

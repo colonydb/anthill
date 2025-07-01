@@ -14,122 +14,122 @@ import { TabBlock } from "@colonydb/anthill/TabBlock";
 import js from "dedent";
 
 const HeadingPage = () => (
-	<Stack>
-		<Card header={<Heading>Heading</Heading>}>
-			<CardContent>
-				<CodeBlock language="tsx">
-					{js`
-						import { Heading } from "@colonydb/anthill/Heading";
-					`}
-				</CodeBlock>
-				<Section title={<Heading>Basic</Heading>}>
-					<TabBlock
-						items={[
-							{
-								key: "specimen",
-								label: "Specimen",
-								content: (
-									<HeadingLevelContext.Provider value={1}>
-										<Specimen>
-											<Heading>Example</Heading>
-										</Specimen>
-									</HeadingLevelContext.Provider>
-								),
-							},
-							{
-								key: "code",
-								label: "Code",
-								content: (
-									<CodeBlock language="tsx">
-										{js`
-											<Heading>Example</Heading>
-										`}
-									</CodeBlock>
-								),
-							},
-						]}
-					/>
-				</Section>
-				<Section title={<Heading>Specifc Level</Heading>}>
-					<TabBlock
-						items={[
-							{
-								key: "specimen",
-								label: "Specimen",
-								content: (
-									<HeadingLevelContext.Provider value={1}>
-										<Specimen>
-											<Heading level={3}>Example</Heading>
-										</Specimen>
-									</HeadingLevelContext.Provider>
-								),
-							},
-							{
-								key: "code",
-								label: "Code",
-								content: (
-									<CodeBlock language="tsx">
-										{js`
-											<Heading level={3}>Example</Heading>
-										`}
-									</CodeBlock>
-								),
-							},
-						]}
-					/>
-				</Section>
-				<Section title={<Heading>Specifc Tag</Heading>}>
-					<TabBlock
-						items={[
-							{
-								key: "specimen",
-								label: "Specimen",
-								content: (
-									<HeadingLevelContext.Provider value={1}>
-										<Specimen>
-											<Heading tagName="h5">Example</Heading>
-										</Specimen>
-									</HeadingLevelContext.Provider>
-								),
-							},
-							{
-								key: "code",
-								label: "Code",
-								content: (
-									<CodeBlock language="tsx">
-										{js`
-											<Heading tagName="h5">Example</Heading>
-										`}
-									</CodeBlock>
-								),
-							},
-						]}
-					/>
-				</Section>
-			</CardContent>
-		</Card>
-		<Card header={<Heading>Heading Levels</Heading>}>
-			<CardTable
-				cols={{
-					level: "Level",
-					specimen: "Specimen",
-				}}
-				rows={([1, 2, 3, 4, 5, 6] as const).map((level) => ({
-					key: level,
-					values: {
-						level: <PlainText font="tiny-monospace">{level.toString()}</PlainText>,
-						specimen: (
-							<Specimen>
-								<Section headingLevel={level} title={<Heading>Example</Heading>}>
-									<p>Lorem</p>
-								</Section>
-							</Specimen>
-						),
-					},
-				}))}
-			/>
-		</Card>
-	</Stack>
+  <Stack>
+    <Card header={<Heading>Heading</Heading>}>
+      <CardContent>
+        <CodeBlock language="tsx">
+          {js`
+            import { Heading } from "@colonydb/anthill/Heading";
+          `}
+        </CodeBlock>
+        <Section title={<Heading>Basic</Heading>}>
+          <TabBlock
+            items={[
+              {
+                key: "specimen",
+                label: "Specimen",
+                content: (
+                  <HeadingLevelContext.Provider value={1}>
+                    <Specimen>
+                      <Heading>Example</Heading>
+                    </Specimen>
+                  </HeadingLevelContext.Provider>
+                ),
+              },
+              {
+                key: "code",
+                label: "Code",
+                content: (
+                  <CodeBlock language="tsx">
+                    {js`
+                      <Heading>Example</Heading>
+                    `}
+                  </CodeBlock>
+                ),
+              },
+            ]}
+          />
+        </Section>
+        <Section title={<Heading>Specifc Level</Heading>}>
+          <TabBlock
+            items={[
+              {
+                key: "specimen",
+                label: "Specimen",
+                content: (
+                  <HeadingLevelContext.Provider value={1}>
+                    <Specimen>
+                      <Heading level={3}>Example</Heading>
+                    </Specimen>
+                  </HeadingLevelContext.Provider>
+                ),
+              },
+              {
+                key: "code",
+                label: "Code",
+                content: (
+                  <CodeBlock language="tsx">
+                    {js`
+                      <Heading level={3}>Example</Heading>
+                    `}
+                  </CodeBlock>
+                ),
+              },
+            ]}
+          />
+        </Section>
+        <Section title={<Heading>Specifc Tag</Heading>}>
+          <TabBlock
+            items={[
+              {
+                key: "specimen",
+                label: "Specimen",
+                content: (
+                  <HeadingLevelContext.Provider value={1}>
+                    <Specimen>
+                      <Heading tagName="h5">Example</Heading>
+                    </Specimen>
+                  </HeadingLevelContext.Provider>
+                ),
+              },
+              {
+                key: "code",
+                label: "Code",
+                content: (
+                  <CodeBlock language="tsx">
+                    {js`
+                      <Heading tagName="h5">Example</Heading>
+                    `}
+                  </CodeBlock>
+                ),
+              },
+            ]}
+          />
+        </Section>
+      </CardContent>
+    </Card>
+    <Card header={<Heading>Heading Levels</Heading>}>
+      <CardTable
+        cols={{
+          level: "Level",
+          specimen: "Specimen",
+        }}
+        rows={([1, 2, 3, 4, 5, 6] as const).map((level) => ({
+          key: level,
+          values: {
+            level: <PlainText font="tiny-monospace">{level.toString()}</PlainText>,
+            specimen: (
+              <Specimen>
+                <Section headingLevel={level} title={<Heading>Example</Heading>}>
+                  <p>Lorem</p>
+                </Section>
+              </Specimen>
+            ),
+          },
+        }))}
+      />
+    </Card>
+  </Stack>
 );
 
 export default HeadingPage;

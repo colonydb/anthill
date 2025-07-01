@@ -9,17 +9,17 @@ export type FontVariant = "bold" | "italic" | "bold-italic" | "monospace";
 export type Font = BaseFont | `${BodyFont}-${FontVariant}`;
 
 export type Hue =
-	| "red"
-	| "orange"
-	| "yellow"
-	| "lime"
-	| "green"
-	| "teal"
-	| "cyan"
-	| "blue"
-	| "violet"
-	| "magenta"
-	| "gray";
+  | "red"
+  | "orange"
+  | "yellow"
+  | "lime"
+  | "green"
+  | "teal"
+  | "cyan"
+  | "blue"
+  | "violet"
+  | "magenta"
+  | "gray";
 
 export type Shade = "s1" | "s2" | "s3" | "s4" | "s5" | "s6" | "s7" | "s8" | "s9";
 

@@ -31,15 +31,15 @@ import { Base } from '@colonydb/anthill/Base';
 import { Button } from '@colonydb/anthill/Button';
 
 const MyComponent = () => (
-	<Base>
-		<Button
-			onClick={() => {
-				alert('Hello!');
-			}}
-		>
-			Click me
-		</Button>
-	</Base>
+  <Base>
+    <Button
+      onClick={() => {
+        alert('Hello!');
+      }}
+    >
+      Click me
+    </Button>
+  </Base>
 );
 ```
 

@@ -1,11 +1,11 @@
 {
-	"$schema": "https://turbo.build/schema.json",
-	"tasks": {
-		"build": {},
-		"dev": {},
-		"fix": {},
-		"lint": {},
-		"release": {},
-		"test": {}
-	}
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {},
+    "dev": {},
+    "fix": {},
+    "lint": {},
+    "release": {},
+    "test": {}
+  }
 }

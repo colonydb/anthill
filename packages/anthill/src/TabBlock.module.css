@@ -1,10 +1,10 @@
 .container {
-	background: light-dark(var(--color-gray-t8), var(--color-gray-s8));
-	border: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s6));
-	border-radius: 0.5lh;
-	overflow: hidden;
+  background: light-dark(var(--color-gray-t8), var(--color-gray-s8));
+  border: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s6));
+  border-radius: 0.5lh;
+  overflow: hidden;
 }
 
 .content {
-	background: light-dark(var(--color-gray-t6), var(--color-gray-s7));
+  background: light-dark(var(--color-gray-t6), var(--color-gray-s7));
 }

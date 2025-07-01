@@ -1,9 +1,9 @@
 .container {
-	&.withActions {
-		display: grid;
-		grid-template-columns: auto min-content;
-		column-gap: 0.5rlh;
-		justify-content: space-between;
-		align-items: center;
-	}
+  &.withActions {
+    display: grid;
+    grid-template-columns: auto min-content;
+    column-gap: 0.5rlh;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

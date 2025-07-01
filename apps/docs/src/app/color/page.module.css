@@ -1,18 +1,18 @@
 .swatchContainer {
-	border-radius: 0.5rlh;
-	border: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
-	display: grid;
-	font: var(--font-tiny-monospace);
-	grid-template-columns: repeat(22, 1fr);
-	overflow: hidden;
+  border-radius: 0.5rlh;
+  border: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
+  display: grid;
+  font: var(--font-tiny-monospace);
+  grid-template-columns: repeat(22, 1fr);
+  overflow: hidden;
 }
 
 .swatch {
-	display: grid;
-	grid-column-end: span 2;
-	overflow: hidden;
-	padding: 0.5lh;
-	place-items: center;
-	text-overflow: ellipsis;
-	text-wrap: nowrap;
+  display: grid;
+  grid-column-end: span 2;
+  overflow: hidden;
+  padding: 0.5lh;
+  place-items: center;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
 }

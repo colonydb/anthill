@@ -1,20 +1,20 @@
 {
-	"$schema": "https://turbo.build/schema.json",
-	"extends": ["//"],
-	"tasks": {
-		"build": {
-			"dependsOn": ["@colonydb/anthill#build", "lint", "test"],
-			"outputs": [".next/**", "!.next/cache/**"]
-		},
-		"dev": {
-			"persistent": true
-		},
-		"fix": {
-			"cache": false
-		},
-		"lint": {},
-		"test": {
-			"dependsOn": ["@colonydb/anthill#build"]
-		}
-	}
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["@colonydb/anthill#build", "lint", "test"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "dev": {
+      "persistent": true
+    },
+    "fix": {
+      "cache": false
+    },
+    "lint": {},
+    "test": {
+      "dependsOn": ["@colonydb/anthill#build"]
+    }
+  }
 }

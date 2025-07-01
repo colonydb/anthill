@@ -1,29 +1,29 @@
 {
-	"dependencies": {
-		"@colonydb/anthill": "workspace:^",
-		"dedent": "^1.5.3",
-		"next": "15.3.0",
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.0.6",
-		"@total-typescript/tsconfig": "^1.0.4",
-		"@types/node": "^20",
-		"@types/react": "^19.1.1",
-		"@types/react-dom": "^19.1.2",
-		"typescript": "^5.8.3"
-	},
-	"license": "MIT",
-	"name": "docs",
-	"private": true,
-	"scripts": {
-		"build": "next build",
-		"dev": "next dev --turbopack",
-		"fix": "biome check --fix",
-		"lint": "biome check",
-		"start": "next start",
-		"test": "tsc --noEmit"
-	},
-	"version": "0.0.0"
+  "dependencies": {
+    "@colonydb/anthill": "workspace:^",
+    "dedent": "^1.5.3",
+    "next": "15.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.0.6",
+    "@total-typescript/tsconfig": "^1.0.4",
+    "@types/node": "^20",
+    "@types/react": "^19.1.1",
+    "@types/react-dom": "^19.1.2",
+    "typescript": "^5.8.3"
+  },
+  "license": "MIT",
+  "name": "docs",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev --turbopack",
+    "fix": "biome check --fix",
+    "lint": "biome check",
+    "start": "next start",
+    "test": "tsc --noEmit"
+  },
+  "version": "0.0.0"
 }
