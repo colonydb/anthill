@@ -1,0 +1,13 @@
+.container {
+	max-height: 100%;
+	overflow-y: auto;
+	padding: 1rlh;
+
+	&.flush {
+		padding: 0;
+	}
+}
+
+.paddedTitle {
+	padding: 0 1rlh;
+}

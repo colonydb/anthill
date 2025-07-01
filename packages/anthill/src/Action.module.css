@@ -1,0 +1,32 @@
+.action {
+	align-items: center;
+	column-gap: 0.5ch;
+	cursor: pointer;
+	display: grid;
+	font: var(--font-small);
+	grid-auto-columns: max-content;
+	grid-auto-flow: column;
+	text-transform: uppercase;
+	transition: color 0.2s;
+
+	&.dangerous {
+		color: var(--color-red-s2);
+	}
+
+	@media screen and (hover: hover) {
+		&:hover {
+			color: var(--color-accent);
+		}
+	}
+
+	&:focus-visible {
+		border-radius: 2px;
+		outline-offset: 2px;
+		outline: 2px solid color-mix(in oklch, var(--color-accent), transparent 40%);
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		color: light-dark(var(--color-gray-t2), var(--color-gray-s2));
+	}
+}

@@ -1,0 +1,31 @@
+.container {
+	background: light-dark(var(--color-gray-t6), var(--color-gray-s7));
+	border-radius: 0.5rlh;
+	position: relative;
+
+	.copyButton {
+		color: light-dark(var(--color-gray-s2), var(--color-gray-t1));
+		position: absolute;
+		right: 0.5rlh;
+		top: 0.5rlh;
+	}
+
+	.code {
+		font: var(--font-small-monospace);
+		padding: 1rlh;
+		tab-size: 2;
+		white-space: pre-wrap;
+	}
+}
+
+@media screen and (hover: hover) {
+	.container {
+		.copyButton {
+			opacity: 0;
+			transition: opacity 0.2s;
+		}
+		&:hover .copyButton {
+			opacity: 1;
+		}
+	}
+}

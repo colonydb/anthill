@@ -1,7 +1,7 @@
 declare module "react" {
-  interface CSSProperties {
-    [varName: `--${string}`]: string | number | undefined;
-  }
+	interface CSSProperties {
+		[varName: `--${string}`]: string | number | undefined;
+	}
 }
 
 export {};

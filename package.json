@@ -1,16 +1,18 @@
 {
-  "name": "anthill",
-  "version": "0.0.0",
-  "license": "MIT",
-  "private": true,
-  "packageManager": "pnpm@8.14.3",
-  "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "fix": "turbo fix",
-    "test": "turbo test"
-  },
-  "devDependencies": {
-    "turbo": "^2.4.4"
-  }
+	"devDependencies": {
+		"turbo": "^2.4.4"
+	},
+	"license": "MIT",
+	"name": "anthill",
+	"packageManager": "pnpm@8.14.3",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"fix": "turbo fix",
+		"lint": "pnpm dlx sherif && pnpm dlx knip --workspace apps/docs && turbo lint",
+		"release": "git push --tags && pnpm dlx open-cli \"https://github.com/colonydb/anthill/releases/new?tag=v$(jq '.version' ./packages/anthill/package.json --raw-output)&title=v$(jq '.version' ./packages/anthill/package.json --raw-output)\"",
+		"test": "turbo test"
+	},
+	"version": "0.0.0"
 }

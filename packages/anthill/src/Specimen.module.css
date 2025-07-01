@@ -1,0 +1,13 @@
+.container {
+	background: light-dark(var(--color-gray-t6), var(--color-gray-s7));
+	border-radius: 0.5rlh;
+	display: grid;
+	grid-template-columns: minmax(0, auto);
+	grid-template-rows: minmax(0, auto);
+	padding: 1rlh;
+	place-content: center;
+
+	&.transparent {
+		background: transparent;
+	}
+}

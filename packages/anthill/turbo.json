@@ -1,20 +1,18 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "extends": ["//"],
-  "tasks": {
-    "build": {
-      "dependsOn": ["test"]
-    },
-    "dev": {
-      "persistent": true
-    },
-    "fix": {
-      "dependsOn": ["fix:prettier"]
-    },
-    "fix:prettier": {},
-    "test": {
-      "dependsOn": ["test:prettier"]
-    },
-    "test:prettier": {}
-  }
+	"$schema": "https://turbo.build/schema.json",
+	"extends": ["//"],
+	"tasks": {
+		"build": {
+			"dependsOn": ["lint", "test"],
+			"outputs": ["./dist/**"]
+		},
+		"dev": {
+			"persistent": true
+		},
+		"fix": {
+			"cache": false
+		},
+		"lint": {},
+		"test": {}
+	}
 }

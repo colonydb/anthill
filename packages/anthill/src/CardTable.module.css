@@ -1,0 +1,41 @@
+.table {
+	--columns: 2;
+	display: grid;
+	grid-template-columns: repeat(var(--columns), minmax(0, auto));
+	padding-bottom: 0.5rlh;
+
+	tbody,
+	thead,
+	tr {
+		display: grid;
+		grid-column: 1 / -1;
+		grid-template-columns: subgrid;
+	}
+
+	tr {
+		column-gap: 1rlh;
+
+		td,
+		th {
+			padding: 0.5rlh 0;
+			display: grid;
+			place-content: center stretch;
+
+			&:first-child {
+				padding-left: 1rlh;
+			}
+
+			&:last-child {
+				padding-right: 1rlh;
+			}
+		}
+	}
+
+	thead th {
+		font: var(--font-small-bold);
+	}
+
+	tbody tr {
+		border-top: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
+	}
+}
