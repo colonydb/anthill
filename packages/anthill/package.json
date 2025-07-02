@@ -46,7 +46,7 @@
     "react-dom": "^19.0.0"
   },
   "private": false,
-  "repository": "git@github.com:colonydb/anthill.git",
+  "repository": "https://github.com/colonydb/anthill",
   "scripts": {
     "build": "rslib build",
     "dev": "rslib build --watch",
