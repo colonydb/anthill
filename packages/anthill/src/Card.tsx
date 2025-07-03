@@ -22,7 +22,11 @@ export const Card = ({ children, footer, header, icon, id, tagName: Tag = "secti
       <Section spacing="p1" tagName="div">
         {children}
       </Section>
-      {footer ? <div className={styles.footer}>{footer}</div> : null}
+      {footer ? (
+        <Section spacing="p1" tagName="div">
+          <div className={styles.footer}>{footer}</div>
+        </Section>
+      ) : null}
     </div>
   </Tag>
 );
