@@ -349,7 +349,8 @@
 
   /* width */
 
-  --width-narrow: 40rlh;
+  --width-narrow: 30rlh;
+  --width-medium: 45rlh;
   --width-wide: 60rlh;
 }
 
