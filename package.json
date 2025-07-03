@@ -11,7 +11,7 @@
     "dev": "turbo dev",
     "fix": "turbo fix",
     "lint": "pnpm dlx sherif && pnpm dlx knip --workspace apps/docs && turbo lint",
-    "release": "git push --tags && pnpm dlx open-cli \"https://github.com/colonydb/anthill/releases/new?tag=v$(jq '.version' ./packages/anthill/package.json --raw-output)&title=v$(jq '.version' ./packages/anthill/package.json --raw-output)\"",
+    "release": "git push && pnpm dlx open-cli \"https://github.com/colonydb/anthill/releases/new?tag=v$(jq '.version' ./packages/anthill/package.json --raw-output)&title=v$(jq '.version' ./packages/anthill/package.json --raw-output)\"",
     "test": "turbo test"
   },
   "version": "0.0.0"
