@@ -68,7 +68,7 @@
   --tints-l-coefficient: 0.73;
   --tints-c-coefficient: 0.66;
 
-  --gray-c: 0.005;
+  --gray-c: 0.002;
 
   --color-white: #fff;
   --color-black: #000;
@@ -355,7 +355,7 @@
 
 :root {
   accent-color: var(--color-accent);
-  background: light-dark(var(--color-gray-t9), var(--color-gray-s9));
+  background: light-dark(var(--color-gray-t7), var(--color-gray-s7));
   color-scheme: light dark;
   color: light-dark(var(--color-black), var(--color-white));
   font: var(--font-regular);

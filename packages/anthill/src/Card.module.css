@@ -21,7 +21,7 @@
   }
 
   .content {
-    background: light-dark(var(--color-gray-t8), var(--color-gray-s8));
+    background: light-dark(var(--color-gray-t9), var(--color-gray-s9));
     border: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
     border-radius: 1rlh;
     display: grid;
