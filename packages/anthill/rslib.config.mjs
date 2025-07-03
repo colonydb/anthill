@@ -19,4 +19,9 @@ export default defineConfig({
     },
   },
   plugins: [pluginReact()],
+  tools: {
+    lightningcssLoader: {
+      targets: ["last 2 Chrome versions"],
+    },
+  },
 });

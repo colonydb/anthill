@@ -9,8 +9,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.6",
-    "@rsbuild/plugin-react": "^1.1.1",
-    "@rslib/core": "^0.5.4",
+    "@rsbuild/plugin-react": "^1.3.2",
+    "@rslib/core": "^0.10.4",
     "@total-typescript/tsconfig": "^1.0.4",
     "@types/css-modules": "^1.0.5",
     "@types/react": "^19.1.1",
