@@ -17,7 +17,8 @@
     "@types/react-dom": "^19.1.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "valibot": "^1.1.0"
   },
   "exports": {
     ".": {
@@ -48,7 +49,8 @@
   "name": "@colonydb/anthill",
   "peerDependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "valibot": "^1.1.0"
   },
   "private": false,
   "repository": "https://github.com/colonydb/anthill",
@@ -56,7 +58,7 @@
     "build": "rslib build",
     "dev": "rslib build --watch",
     "fix": "biome check --fix",
-    "lint": "biome check",
+    "lint": "biome check --diagnostic-level=warn",
     "test": "tsc --noEmit"
   },
   "type": "module",

@@ -1,7 +1,9 @@
 "use client";
 
 import clsx from "clsx";
+import { useContext } from "react";
 import styles from "./Button.module.css";
+import { FormContext } from "./FormContext.js";
 
 type Props = {
   children: React.ReactNode;
@@ -23,8 +25,9 @@ type Props = {
     ))
 );
 
-export const Button = ({ children, disabled = false, ...props }: Props) =>
-  "href" in props ? (
+export const Button = ({ children, disabled = false, ...props }: Props) => {
+  const form = useContext(FormContext);
+  return "href" in props ? (
     <a className={styles.button} href={disabled ? undefined : props.href}>
       {children}
     </a>
@@ -35,10 +38,11 @@ export const Button = ({ children, disabled = false, ...props }: Props) =>
         props.submit ? styles.submit : null,
         props.submit && props.dangerous ? styles.dangerous : null,
       )}
-      disabled={disabled}
+      disabled={disabled || form?.disabled}
       onClick={props.onClick}
       type={props.submit === true ? "submit" : "button"}
     >
       {children}
     </button>
   );
+};

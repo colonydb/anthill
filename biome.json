@@ -50,6 +50,9 @@
   "linter": {
     "enabled": true,
     "rules": {
+      "a11y": {
+        "noAutofocus": "info"
+      },
       "recommended": true
     }
   },

@@ -1,0 +1,47 @@
+.container {
+  align-items: center;
+  display: grid;
+  gap: 0.5rlh;
+  grid-template-columns: auto 1fr;
+
+  .controls {
+    align-items: center;
+    display: grid;
+    gap: 0.5rlh;
+    grid-auto-flow: column;
+
+    .button {
+      display: grid;
+      justify-content: stretch;
+    }
+  }
+
+  .content {
+    justify-self: end;
+  }
+}
+
+@media (max-width: 30rlh) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+
+    .controls {
+      grid-auto-flow: row;
+
+      .button {
+        justify-self: stretch;
+        order: 2;
+      }
+
+      .status {
+        justify-self: center;
+        order: 1;
+      }
+    }
+
+    .content {
+      justify-self: center;
+    }
+  }
+}

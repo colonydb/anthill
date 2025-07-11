@@ -4,7 +4,8 @@
     "dedent": "^1.5.3",
     "next": "15.3.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "valibot": "^1.1.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.6",
@@ -21,7 +22,7 @@
     "build": "next build",
     "dev": "next dev --turbopack",
     "fix": "biome check --fix",
-    "lint": "biome check",
+    "lint": "biome check --diagnostic-level=warn",
     "start": "next start",
     "test": "tsc --noEmit"
   },

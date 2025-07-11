@@ -1,3 +1,4 @@
+import type { InferOutput, ObjectEntries, ObjectSchema } from "valibot";
 import type * as icons from "./icons/index.js";
 
 export type BaseFont = "hero" | "title" | "heading" | "subheading" | BodyFont;
@@ -10,6 +11,36 @@ export type Font = BaseFont | `${BodyFont}-${FontVariant}`;
 
 export type FontVariant = "bold" | "italic" | "bold-italic" | "monospace";
 
+export type FormAction<Schema extends FormSchema = FormSchema> = (
+  state: FormResult<Schema>,
+  payload: FormData,
+) => Promise<FormResult<Schema>>;
+
+export type FormErrors<Schema extends FormSchema = FormSchema> = {
+  count: number;
+  nested: Record<keyof InferOutput<Schema>, Array<{ key: string; message: string }>>;
+  root: Array<{ key: string; message: string }>;
+};
+
+export type FormResult<Schema extends FormSchema = FormSchema> =
+  | {
+      ok: true;
+      data: InferOutput<Schema>;
+    }
+  | {
+      ok: false;
+      errors: FormErrors<Schema>;
+    };
+
+export type FormState<Schema extends FormSchema = FormSchema> = {
+  disabled: boolean;
+  errors: FormErrors<Schema> | null;
+  id: string;
+  initialData: InferOutput<Schema>;
+  status: "idle" | "pending" | "error" | "success";
+};
+
+export type FormSchema = ObjectSchema<ObjectEntries, undefined>;
 
 export type Hue =
   | "red"
