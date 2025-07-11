@@ -8,13 +8,13 @@
   /* size */
 
   --size-hero-font: 36px;
-  --size-hero-line: 54px;
+  --size-hero-line: 45px;
 
-  --size-title-font: 36px;
-  --size-title-line: 54px;
+  --size-title-font: 48px;
+  --size-title-line: 60px;
 
-  --size-heading-font: 24px;
-  --size-heading-line: 36px;
+  --size-heading-font: 28px;
+  --size-heading-line: 35px;
 
   --size-subheading-font: 20px;
   --size-subheading-line: 30px;
@@ -30,7 +30,7 @@
 
   /* font */
 
-  --font-hero: normal 400 var(--size-hero-font) / var(--size-hero-line) var(--typeface-brand);
+  --font-hero: normal 400 var(--size-hero-font) / var(--size-hero-line) var(--typeface-system);
 
   --font-title: normal 700 var(--size-title-font) / var(--size-title-line) var(--typeface-brand);
 
