@@ -30,12 +30,11 @@ const RootLayout = ({ children }: Props) => (
       <FrameworkContextProvider>
         <Base brandTypeface={brandFont.style.fontFamily}>
           <nav className={styles.nav}>
-            <Section headingLevel={4} tagName="ul" spacing="00">
+            <Section headingLevel={2} tagName="ul" spacing="00">
               <li>
                 <Link href="/">Home</Link>
               </li>
-              <Stack tagName="li">
-                <Heading>Tokens</Heading>
+              <Section tagName="li" title={<Heading>Tokens</Heading>}>
                 <Stack tagName="ul">
                   <li>
                     <Link href="/typography">Typography</Link>
@@ -44,9 +43,8 @@ const RootLayout = ({ children }: Props) => (
                     <Link href="/color">Colour</Link>
                   </li>
                 </Stack>
-              </Stack>
-              <Stack tagName="li">
-                <Heading>Components</Heading>
+              </Section>
+              <Section tagName="li" title={<Heading>Components</Heading>}>
                 <Stack tagName="ul">
                   <li>
                     <Link href="/Action">Action</Link>
@@ -106,7 +104,7 @@ const RootLayout = ({ children }: Props) => (
                     <Link href="/TabSet">TabSet</Link>
                   </li>
                 </Stack>
-              </Stack>
+              </Section>
             </Section>
           </nav>
           <div className={styles.content}>{children}</div>
