@@ -1,0 +1,5 @@
+.head {
+  display: grid;
+  column-gap: 1ch;
+  grid-template-columns: 1fr auto;
+}
