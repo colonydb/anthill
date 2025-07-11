@@ -5,7 +5,11 @@
   grid-template-columns: minmax(0, auto);
   grid-template-rows: minmax(0, auto);
   padding: 1rlh;
-  place-content: center;
+  place-content: stretch;
+
+  &.center {
+    place-content: center;
+  }
 
   &.transparent {
     background: transparent;

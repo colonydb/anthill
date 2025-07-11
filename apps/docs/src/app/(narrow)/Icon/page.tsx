@@ -144,37 +144,37 @@ const IconPage = () => (
           values: {
             symbol: <PlainText font="tiny-monospace">{name}</PlainText>,
             tiny: (
-              <Specimen>
+              <Specimen center>
                 <Icon symbol={name} fontSize="tiny" />
               </Specimen>
             ),
             small: (
-              <Specimen>
+              <Specimen center>
                 <Icon symbol={name} fontSize="small" />
               </Specimen>
             ),
             regular: (
-              <Specimen>
+              <Specimen center>
                 <Icon symbol={name} fontSize="regular" />
               </Specimen>
             ),
             subheading: (
-              <Specimen>
+              <Specimen center>
                 <Icon symbol={name} fontSize="subheading" />
               </Specimen>
             ),
             heading: (
-              <Specimen>
+              <Specimen center>
                 <Icon symbol={name} fontSize="heading" />
               </Specimen>
             ),
             title: (
-              <Specimen>
+              <Specimen center>
                 <Icon symbol={name} fontSize="title" />
               </Specimen>
             ),
             hero: (
-              <Specimen>
+              <Specimen center>
                 <Icon symbol={name} fontSize="hero" />
               </Specimen>
             ),
