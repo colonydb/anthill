@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import { type JSX, type ReactNode, useContext } from "react";
+import type { Color, Width } from "./index.js";
 import { SpacingLevelContext } from "./SpacingLevelContext.js";
 import styles from "./Stack.module.css";
 
@@ -18,14 +19,24 @@ const CLASS_NAMES = {
 } as const;
 
 type Props = {
+  center?: boolean;
   children: ReactNode;
   id?: string;
   indent?: boolean;
   spacing?: (typeof SPACING_LEVELS)[number];
   tagName?: keyof JSX.IntrinsicElements;
+  width?: "auto" | Width;
 };
 
-export const Stack = ({ children, id, indent = false, spacing, tagName: Tag = "div" }: Props) => {
+export const Stack = ({
+  center,
+  children,
+  id,
+  indent = false,
+  spacing,
+  tagName: Tag = "div",
+  width = "auto",
+}: Props) => {
   const contextLevel = useContext(SpacingLevelContext);
   const indexOfSpacing = spacing ? SPACING_LEVELS.indexOf(spacing) : undefined;
   const resolvedLevel =
@@ -33,7 +44,18 @@ export const Stack = ({ children, id, indent = false, spacing, tagName: Tag = "d
     contextLevel;
   const resolvedSpacing = spacing ?? SPACING_LEVELS[resolvedLevel];
   return (
-    <Tag className={clsx(styles.container, CLASS_NAMES[resolvedSpacing], indent ? styles.indent : undefined)} id={id}>
+    <Tag
+      className={clsx(
+        styles.container,
+        CLASS_NAMES[resolvedSpacing],
+        indent ? styles.indent : undefined,
+        center ? styles.center : undefined,
+        width === "narrow" ? styles.narrow : undefined,
+        width === "medium" ? styles.medium : undefined,
+        width === "wide" ? styles.wide : undefined,
+      )}
+      id={id}
+    >
       <SpacingLevelContext.Provider value={clampSpacingLevel(resolvedLevel + 1)}>
         {children}
       </SpacingLevelContext.Provider>

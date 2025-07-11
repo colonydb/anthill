@@ -4,6 +4,23 @@
   grid-auto-rows: minmax(0, auto);
   row-gap: 1rlh;
 
+  &.center {
+    justify-content: stretch;
+    justify-items: center;
+  }
+
+  &.narrow {
+    grid-template-columns: minmax(0, var(--width-narrow));
+  }
+
+  &.medium {
+    grid-template-columns: minmax(0, var(--width-medium));
+  }
+
+  &.wide {
+    grid-template-columns: minmax(0, var(--width-wide));
+  }
+
   &.indent {
     padding-left: 1rlh;
   }
