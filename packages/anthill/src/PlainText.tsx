@@ -1,10 +1,10 @@
 import clsx from "clsx";
-import type { JSX } from "react";
+import type { JSX, ReactNode } from "react";
 import type { Color, Font } from "./index.js";
 import styles from "./PlainText.module.css";
 
 type Props = {
-  children: string;
+  children: ReactNode;
   color?: Color | [Color, Color];
   font?: Font;
   tagName?: keyof JSX.IntrinsicElements;
