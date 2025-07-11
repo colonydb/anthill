@@ -1,5 +1,5 @@
 .container {
-  --icon-size: calc(var(--size-hero-line) * 1.5);
+  --icon-size: calc(var(--size-title-line) * 1.5);
   display: grid;
   grid-auto-columns: minmax(0, auto);
   grid-auto-rows: minmax(0, auto);
@@ -10,10 +10,10 @@
     border-radius: 50%;
     color: var(--color-black);
     display: grid;
-    font: var(--font-hero);
+    font: var(--font-title);
     height: var(--icon-size);
     left: calc(50% - var(--icon-size) / 2);
-    outline: 3px solid light-dark(var(--color-gray-t4), var(--color-gray-s5));
+    outline: 3px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
     place-content: center;
     position: absolute;
     top: calc(0% - var(--icon-size) / 2);
