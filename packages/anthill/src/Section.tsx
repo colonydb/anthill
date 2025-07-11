@@ -4,6 +4,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { useContext } from "react";
 import { HeadingLevelContext } from "./HeadingLevelContext.js";
 import { Stack } from "./Stack.js";
+import { clampHeadingLevel } from "./utils/clampHeadingLevel.js";
 
 type Props = {
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -13,11 +14,12 @@ type Props = {
 
 export const Section = ({ children, headingLevel, id, tagName = "section", title, ...stackProps }: Props) => {
   const contextHeadingLevel = useContext(HeadingLevelContext);
+  const resolvedHeadingLevel = headingLevel ?? contextHeadingLevel;
   return (
     <HeadingLevelContext.Provider value={headingLevel ?? contextHeadingLevel}>
       <Stack id={id} tagName={tagName} {...stackProps}>
         {title}
-        <HeadingLevelContext.Provider value={(headingLevel ?? contextHeadingLevel) + 1}>
+        <HeadingLevelContext.Provider value={clampHeadingLevel(resolvedHeadingLevel + 1)}>
           {children}
         </HeadingLevelContext.Provider>
       </Stack>

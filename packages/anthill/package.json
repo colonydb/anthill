@@ -30,6 +30,11 @@
       "import": "./dist/icons/index.js",
       "require": "./dist/icons/index.cjs"
     },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.cjs"
+    },
     "./*.css": "./dist/*.css",
     "./*": {
       "types": "./dist/*.d.ts",

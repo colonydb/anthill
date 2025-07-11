@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import { CodeBlock } from "./CodeBlock.js";
 import { HeadingLevelContext } from "./HeadingLevelContext.js";
 import { RichText } from "./RichText.js";
+import { clampHeadingLevel } from "./utils/clampHeadingLevel.js";
 
 type Props = {
   children: string;
@@ -39,5 +40,3 @@ export const Markdown = ({ children, headingLevel, ...richTextProps }: Props) =>
     </RichText>
   );
 };
-
-const clampHeadingLevel = (level: number) => Math.min(Math.max(level, 1), 6) as 1 | 2 | 3 | 4 | 5 | 6;

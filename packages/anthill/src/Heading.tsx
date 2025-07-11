@@ -25,10 +25,10 @@ type Props = {
 
 export const Heading = ({ children, id, level, tagName }: Props) => {
   const contextLevel = useContext(HeadingLevelContext);
-  const resolvedLevel = (level ?? contextLevel) - 1;
-  const Tag = tagName ?? TAG_NAMES.at(resolvedLevel) ?? TAG_NAMES[5];
+  const resolvedLevel = level ?? contextLevel;
+  const Tag = tagName ?? TAG_NAMES.at(resolvedLevel - 1) ?? TAG_NAMES[5];
   return (
-    <Tag className={clsx(styles.heading, CLASS_NAMES.at(resolvedLevel) ?? CLASS_NAMES[5])} id={id}>
+    <Tag className={clsx(styles.heading, CLASS_NAMES.at(resolvedLevel - 1) ?? CLASS_NAMES[5])} id={id}>
       {children}
     </Tag>
   );
