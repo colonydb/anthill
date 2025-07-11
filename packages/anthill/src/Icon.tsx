@@ -1,3 +1,4 @@
+import styles from "./Icon.module.css";
 import type { BaseFont, Color, IconSymbol } from "./index.js";
 
 type Props = {
@@ -11,6 +12,7 @@ type Props = {
 export const Icon = ({ color, fontSize, id, symbol, title }: Props) => (
   <svg
     aria-hidden={title ? "false" : "true"}
+    className={styles.icon}
     fill="transparent"
     id={id}
     role="img"
@@ -21,8 +23,6 @@ export const Icon = ({ color, fontSize, id, symbol, title }: Props) => (
           : `var(--color-${color})`
         : undefined,
       font: fontSize ? `var(--font-${fontSize})` : undefined,
-      height: "1lh",
-      width: "1lh",
     }}
   >
     <title>{title}</title>
