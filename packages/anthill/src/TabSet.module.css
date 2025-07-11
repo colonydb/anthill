@@ -10,10 +10,15 @@
       border-bottom-color 0.2s,
       color 0.2s;
 
+    & > span {
+      outline-color: transparent;
+      transition: outline-color 0.2s;
+    }
+
     &:focus-visible > span {
       border-radius: 2px;
       outline-offset: 2px;
-      outline: 2px solid color-mix(in oklch, var(--color-accent), transparent 40%);
+      outline: 2px solid var(--color-accent);
     }
 
     @media screen and (hover: hover) {

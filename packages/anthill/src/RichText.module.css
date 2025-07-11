@@ -40,11 +40,13 @@
 
   a {
     cursor: pointer;
+    outline-color: transparent;
     text-decoration-line: underline;
     text-decoration-color: color-mix(in oklch, var(--color-accent), transparent 40%);
     text-decoration-thickness: 2px;
     transition:
       color 0.2s,
+      outline-color 0.2s,
       text-decoration-color 0.2s;
 
     @media screen and (hover: hover) {
@@ -57,7 +59,7 @@
     &:focus-visible {
       border-radius: 2px;
       outline-offset: 2px;
-      outline: 2px solid color-mix(in oklch, var(--color-accent), transparent 40%);
+      outline: 2px solid var(--color-accent);
       text-decoration: unset;
     }
   }

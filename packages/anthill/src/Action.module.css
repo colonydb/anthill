@@ -6,8 +6,11 @@
   font: var(--font-small);
   grid-auto-columns: max-content;
   grid-auto-flow: column;
+  outline-color: transparent;
   text-transform: uppercase;
-  transition: color 0.2s;
+  transition:
+    color 0.2s,
+    outline-color 0.2s;
 
   &.dangerous {
     color: var(--color-red-s2);
@@ -22,7 +25,7 @@
   &:focus-visible {
     border-radius: 2px;
     outline-offset: 2px;
-    outline: 2px solid color-mix(in oklch, var(--color-accent), transparent 40%);
+    outline: 2px solid var(--color-accent);
   }
 
   &:disabled {

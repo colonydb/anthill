@@ -9,15 +9,16 @@
   color: light-dark(var(--color-black), var(--color-white));
   font: var(--font-regular-bold);
   padding: 0.25rlh 0.5rlh;
+  outline-color: transparent;
   text-align: center;
   transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+    box-shadow 0.2s,
+    outline-color 0.2s,
+    transform 0.2s;
 
   &:focus-visible {
-    border-radius: 2px;
     outline-offset: 2px;
-    outline: 2px solid color-mix(in oklch, var(--color-accent), transparent 40%);
+    outline: 2px solid var(--color-accent);
     text-decoration: unset;
   }
 
