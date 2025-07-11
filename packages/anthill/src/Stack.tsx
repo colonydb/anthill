@@ -21,6 +21,7 @@ const CLASS_NAMES = {
 type Props = {
   center?: boolean;
   children: ReactNode;
+  color?: Color | [Color, Color];
   id?: string;
   indent?: boolean;
   spacing?: (typeof SPACING_LEVELS)[number];
@@ -31,6 +32,7 @@ type Props = {
 export const Stack = ({
   center,
   children,
+  color,
   id,
   indent = false,
   spacing,
@@ -55,6 +57,13 @@ export const Stack = ({
         width === "wide" ? styles.wide : undefined,
       )}
       id={id}
+      style={{
+        color: color
+          ? Array.isArray(color)
+            ? `light-dark(var(--color-${color[0]}), var(--color-${color[1]}))`
+            : `var(--color-${color})`
+          : undefined,
+      }}
     >
       <SpacingLevelContext.Provider value={clampSpacingLevel(resolvedLevel + 1)}>
         {children}
