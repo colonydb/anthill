@@ -16,13 +16,24 @@ export const Section = ({ children, headingLevel, id, tagName = "section", title
   const contextHeadingLevel = useContext(HeadingLevelContext);
   const resolvedHeadingLevel = headingLevel ?? contextHeadingLevel;
   return (
-    <HeadingLevelContext.Provider value={headingLevel ?? contextHeadingLevel}>
-      <Stack id={id} tagName={tagName} {...stackProps}>
-        {title}
-        <HeadingLevelContext.Provider value={clampHeadingLevel(resolvedHeadingLevel + 1)}>
-          {children}
-        </HeadingLevelContext.Provider>
-      </Stack>
-    </HeadingLevelContext.Provider>
+    <div
+      style={{
+        font:
+          resolvedHeadingLevel === 5
+            ? "var(--font-small)"
+            : resolvedHeadingLevel === 6
+              ? "var(--font-tiny)"
+              : undefined,
+      }}
+    >
+      <HeadingLevelContext.Provider value={resolvedHeadingLevel}>
+        <Stack id={id} tagName={tagName} {...stackProps}>
+          {title}
+          <HeadingLevelContext.Provider value={clampHeadingLevel(resolvedHeadingLevel + 1)}>
+            {children}
+          </HeadingLevelContext.Provider>
+        </Stack>
+      </HeadingLevelContext.Provider>
+    </div>
   );
 };
