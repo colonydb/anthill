@@ -1,0 +1,37 @@
+.input {
+  background: light-dark(var(--color-gray-t7), var(--color-gray-s7));
+  border-radius: 0.25rlh;
+  box-shadow: inset 1px 1px 3px var(--color-gray-00);
+  display: block;
+  outline-color: transparent;
+  padding: 0.5rlh;
+  transition: outline-color 0.2s;
+  width: 100%;
+
+  &:disabled {
+    color: light-dark(var(--color-gray-s2), var(--color-gray-s2));
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: light-dark(var(--color-gray-t3), var(--color-gray-s3));
+  }
+
+  &:focus-visible {
+    outline-offset: 2px;
+    outline: 2px solid var(--color-accent);
+    text-decoration: unset;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .input {
+    box-shadow: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .input {
+    outline: 1px solid currentColor;
+  }
+}

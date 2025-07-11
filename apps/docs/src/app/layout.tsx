@@ -105,6 +105,13 @@ const RootLayout = ({ children }: Props) => (
                   </li>
                 </Stack>
               </Section>
+              <Section tagName="li" title={<Heading>Inputs</Heading>}>
+                <Stack tagName="ul">
+                  <li>
+                    <Link href="/EmailInput">EmailInput</Link>
+                  </li>
+                </Stack>
+              </Section>
             </Section>
           </nav>
           <div className={styles.content}>{children}</div>
