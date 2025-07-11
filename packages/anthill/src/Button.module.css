@@ -8,8 +8,8 @@
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
   color: light-dark(var(--color-black), var(--color-white));
   font: var(--font-regular-bold);
-  padding: 0.25rlh 0.5rlh;
   outline-color: transparent;
+  padding: 0.5rlh 1rlh;
   text-align: center;
   transition:
     box-shadow 0.2s,
