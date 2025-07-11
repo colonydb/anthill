@@ -98,7 +98,7 @@ const CardPage = () => (
               content: (
                 <Specimen>
                   <Section headingLevel={2}>
-                    <Card header={<Heading>Header</Heading>} icon={<Icon symbol="Mail" />}>
+                    <Card header={<Heading>Header</Heading>} icon={<Icon symbol="Mail" />} headingLevel={1}>
                       <CardContent>
                         <p>The quick brown fox jumps over the lazy dog.</p>
                       </CardContent>

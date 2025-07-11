@@ -4,15 +4,15 @@ import { Link } from "@colonydb/anthill/Link";
 import { Section } from "@colonydb/anthill/Section";
 import { Stack } from "@colonydb/anthill/Stack";
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Outfit as BrandFont } from "next/font/google";
 import type { ReactNode } from "react";
 import FrameworkContextProvider from "./FrameworkContextProvider";
 import styles from "./layout.module.css";
 
-const brandFont = Roboto({
+const brandFont = BrandFont({
   style: ["normal"],
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["700"],
 });
 
 type Props = {

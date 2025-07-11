@@ -1,5 +1,6 @@
 .content {
   display: grid;
-  grid-template-columns: minmax(auto, var(--width-narrow));
+  grid-template-columns: minmax(auto, var(--width-medium));
   justify-content: center;
+  padding-bottom: 4rlh;
 }

@@ -331,6 +331,38 @@ const StackPage = () => (
           ]}
         />
       </Section>
+      <Section title={<Heading>Colour</Heading>}>
+        <TabBlock
+          items={[
+            {
+              key: "specimen",
+              label: "Specimen",
+              content: (
+                <Specimen>
+                  <Stack color={["blue-s3", "blue-t3"]}>
+                    Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque consequatur
+                    deleniti pariatur et sed voluptas iure.
+                  </Stack>
+                </Specimen>
+              ),
+            },
+            {
+              key: "code",
+              label: "Code",
+              content: (
+                <CodeBlock language="tsx">
+                  {js`
+                    <Stack color={["blue-s3", "blue-t3"]}>
+                      Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque consequatur
+                      deleniti pariatur et sed voluptas iure.
+                    </Stack>
+                  `}
+                </CodeBlock>
+              ),
+            },
+          ]}
+        />
+      </Section>
     </CardContent>
   </Card>
 );

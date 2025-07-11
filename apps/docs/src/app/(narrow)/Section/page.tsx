@@ -181,6 +181,18 @@ const SectionPage = () => (
                         Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
                         consequatur deleniti pariatur et sed voluptas iure.
                       </p>
+                      <Section title={<Heading>Heading</Heading>}>
+                        <p>
+                          Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
+                          consequatur deleniti pariatur et sed voluptas iure.
+                        </p>
+                        <Section title={<Heading>Heading</Heading>}>
+                          <p>
+                            Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
+                            consequatur deleniti pariatur et sed voluptas iure.
+                          </p>
+                        </Section>
+                      </Section>
                     </Section>
                   </Section>
                 </Specimen>
@@ -194,16 +206,26 @@ const SectionPage = () => (
                   {js`
                     <Section headingLevel={3} title={<Heading>Heading</Heading>}>
                       <p>
-                        Labore et nostrum necessitatibus est sequi aut. Eligendi
-                        autem deleniti ut nemo. Neque consequatur deleniti
-                        pariatur et sed voluptas iure.
+                        Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque consequatur
+                        deleniti pariatur et sed voluptas iure.
                       </p>
                       <Section title={<Heading>Heading</Heading>}>
                         <p>
-                          Labore et nostrum necessitatibus est sequi aut. Eligendi
-                          autem deleniti ut nemo. Neque consequatur deleniti
-                          pariatur et sed voluptas iure.
+                          Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
+                          consequatur deleniti pariatur et sed voluptas iure.
                         </p>
+                        <Section title={<Heading>Heading</Heading>}>
+                          <p>
+                            Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
+                            consequatur deleniti pariatur et sed voluptas iure.
+                          </p>
+                          <Section title={<Heading>Heading</Heading>}>
+                            <p>
+                              Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
+                              consequatur deleniti pariatur et sed voluptas iure.
+                            </p>
+                          </Section>
+                        </Section>
                       </Section>
                     </Section>
                   `}
@@ -359,6 +381,38 @@ const SectionPage = () => (
                       Labore et nostrum necessitatibus est sequi aut. Eligendi
                       autem deleniti ut nemo. Neque consequatur deleniti pariatur
                       et sed voluptas iure.
+                    </Section>
+                  `}
+                </CodeBlock>
+              ),
+            },
+          ]}
+        />
+      </Section>
+      <Section title={<Heading>Colour</Heading>}>
+        <TabBlock
+          items={[
+            {
+              key: "specimen",
+              label: "Specimen",
+              content: (
+                <Specimen>
+                  <Section color={["blue-s3", "blue-t3"]}>
+                    Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque consequatur
+                    deleniti pariatur et sed voluptas iure.
+                  </Section>
+                </Specimen>
+              ),
+            },
+            {
+              key: "code",
+              label: "Code",
+              content: (
+                <CodeBlock language="tsx">
+                  {js`
+                    <Section color={["blue-s3", "blue-t3"]}>
+                      Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque consequatur
+                      deleniti pariatur et sed voluptas iure.
                     </Section>
                   `}
                 </CodeBlock>

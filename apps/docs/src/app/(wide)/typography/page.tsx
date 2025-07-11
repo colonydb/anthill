@@ -10,7 +10,7 @@ const TypographyPage = () => (
     <Card header={<Heading>Typefaces</Heading>}>
       <CardTable
         cols={{ token: "Token", specimen: "Specimen" }}
-        rows={["typeface-system", "typeface-brand", "typeface-monospace"].map((typeface) => ({
+        rows={["typeface-brand", "typeface-system", "typeface-monospace"].map((typeface) => ({
           key: typeface,
           values: {
             token: <div style={{ font: "var(--font-tiny-monospace)" }}>{typeface}</div>,

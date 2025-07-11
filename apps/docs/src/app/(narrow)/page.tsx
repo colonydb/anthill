@@ -6,22 +6,20 @@ import { Header } from "@colonydb/anthill/Header";
 import { Heading } from "@colonydb/anthill/Heading";
 import { Markdown } from "@colonydb/anthill/Markdown";
 import { PlainText } from "@colonydb/anthill/PlainText";
-import { Stack } from "@colonydb/anthill/Stack";
+import { Section } from "@colonydb/anthill/Section";
 import md from "dedent";
 
 const HomePage = () => (
-  <Stack>
-    <Card
-      header={
-        <Header description={<PlainText font="small">ColonyDB&apos;s design system.</PlainText>}>
-          <Heading>Anthill</Heading>
-        </Header>
-      }
-    >
+  <Section
+    title={
+      <Header description={<PlainText font="small">ColonyDB&apos;s design system.</PlainText>}>
+        <Heading>Anthill</Heading>
+      </Header>
+    }
+  >
+    <Card header={<Heading>Installation</Heading>}>
       <CardContent>
         <Markdown>{md`
-          # Installation
-
           PNPM:
 
           \`\`\`bash
@@ -39,9 +37,12 @@ const HomePage = () => (
           \`\`\`bash
           npm install @colonydb/anthill
           \`\`\`
-
-          # Usage
-
+        `}</Markdown>
+      </CardContent>
+    </Card>
+    <Card header={<Heading>Usage</Heading>}>
+      <CardContent>
+        <Markdown>{md`
           \`\`\`tsx
           import { Base } from '@colonydb/anthill/Base';
           import { Button } from '@colonydb/anthill/Button';
@@ -58,17 +59,10 @@ const HomePage = () => (
             </Base>
           );
           \`\`\`
-
-          # Notes
-
-          A few things to be aware of:
-
-          - Requires React 19 or higher
-          - Only supports evergreen browsers
         `}</Markdown>
       </CardContent>
     </Card>
-  </Stack>
+  </Section>
 );
 
 export default HomePage;

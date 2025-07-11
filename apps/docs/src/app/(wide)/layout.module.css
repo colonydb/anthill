@@ -2,4 +2,5 @@
   display: grid;
   grid-template-columns: minmax(auto, var(--width-wide));
   justify-content: center;
+  padding-bottom: 4rlh;
 }
