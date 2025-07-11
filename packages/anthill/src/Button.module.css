@@ -1,5 +1,5 @@
 .button {
-  --dangerous-color: var(--color-red-s2);
+  --dangerous-color: light-dark(var(--color-red-s2), var(--color-red-s3));
 
   cursor: pointer;
   display: inline-block;

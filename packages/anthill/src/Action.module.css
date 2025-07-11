@@ -13,7 +13,7 @@
     outline-color 0.2s;
 
   &.dangerous {
-    color: var(--color-red-s2);
+    color: light-dark(var(--color-red-s1), var(--color-red-t1));
   }
 
   @media screen and (hover: hover) {
