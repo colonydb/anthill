@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { type ReactNode, useContext } from "react";
+import { type JSX, type ReactNode, useContext } from "react";
 import styles from "./Heading.module.css";
 import { HeadingLevelContext } from "./HeadingLevelContext.js";
 
@@ -20,7 +20,7 @@ type Props = {
   children: ReactNode;
   id?: string;
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  tagName?: (typeof TAG_NAMES)[number];
+  tagName?: keyof JSX.IntrinsicElements;
 };
 
 export const Heading = ({ children, id, level, tagName }: Props) => {
