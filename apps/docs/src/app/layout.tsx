@@ -37,7 +37,10 @@ const RootLayout = ({ children }: Props) => (
               <Section tagName="li" title={<Heading>Tokens</Heading>}>
                 <Stack tagName="ul">
                   <li>
-                    <Link href="/typography">Typography</Link>
+                    <Link href="/typefaces">Typefaces</Link>
+                  </li>
+                  <li>
+                    <Link href="/fonts">Fonts</Link>
                   </li>
                   <li>
                     <Link href="/color">Colour</Link>
