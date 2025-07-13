@@ -24,32 +24,4 @@
   &.indent {
     padding-left: 1rlh;
   }
-
-  &.l0 {
-    row-gap: 4rlh;
-  }
-
-  &.l1 {
-    row-gap: 3rlh;
-  }
-
-  &.l2 {
-    row-gap: 2rlh;
-  }
-
-  &.l3 {
-    row-gap: 1rlh;
-  }
-
-  &.l4 {
-    row-gap: 0.5rlh;
-  }
-
-  &.l5 {
-    row-gap: 0.25rlh;
-  }
-
-  &.l6 {
-    row-gap: 0.125rlh;
-  }
 }

@@ -345,6 +345,16 @@
   --color-magenta-t8: oklch(var(--color-t8-l) var(--color-t8-c) var(--color-magenta-h));
   --color-magenta-t9: oklch(var(--color-t9-l) var(--color-t9-c) var(--color-magenta-h));
 
+  /* spaces */
+
+  --space-p3: calc(1rlh * pow(1 + 1 / 3, 3));
+  --space-p2: calc(1rlh * pow(1 + 1 / 3, 2));
+  --space-p1: calc(1rlh * pow(1 + 1 / 3, 1));
+  --space-00: 1rlh;
+  --space-n1: calc(1rlh * pow(1 - 1 / 3, 1));
+  --space-n2: calc(1rlh * pow(1 - 1 / 3, 2));
+  --space-n3: calc(1rlh * pow(1 - 1 / 3, 3));
+
   /* widths */
 
   --width-narrow: 20rlh;

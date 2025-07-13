@@ -8,16 +8,6 @@ import styles from "./Stack.module.css";
 
 const SPACING_LEVELS = ["p3", "p2", "p1", "00", "n1", "n2", "n3"] as const;
 
-const CLASS_NAMES = {
-  p3: styles.l0,
-  p2: styles.l1,
-  p1: styles.l2,
-  "00": styles.l3,
-  n1: styles.l4,
-  n2: styles.l5,
-  n3: styles.l6,
-} as const;
-
 type Props = {
   center?: boolean;
   children: ReactNode;
@@ -49,7 +39,6 @@ export const Stack = ({
     <Tag
       className={clsx(
         styles.container,
-        CLASS_NAMES[resolvedSpacing],
         indent ? styles.indent : undefined,
         center ? styles.center : undefined,
         width === "narrow" ? styles.narrow : undefined,
@@ -63,6 +52,7 @@ export const Stack = ({
             ? `light-dark(var(--color-${color[0]}), var(--color-${color[1]}))`
             : `var(--color-${color})`
           : undefined,
+        rowGap: `var(--space-${resolvedSpacing})`,
       }}
     >
       <SpacingLevelContext.Provider value={clampSpacingLevel(resolvedLevel + 1)}>
