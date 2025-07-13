@@ -8,7 +8,7 @@ export const createFormErrors = <Schema extends FormSchema>(
     Object.keys(schema.entries).map((field) => [field, []]),
   ) as unknown as FormErrors<Schema>["nested"];
   return {
-    count: 0,
+    count: errors?.length ?? 0,
     nested,
     root: errors
       ? errors.map((error, index) => ({
