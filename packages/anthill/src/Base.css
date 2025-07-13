@@ -345,10 +345,10 @@
   --color-magenta-t8: oklch(var(--color-t8-l) var(--color-t8-c) var(--color-magenta-h));
   --color-magenta-t9: oklch(var(--color-t9-l) var(--color-t9-c) var(--color-magenta-h));
 
-  /* width */
+  /* widths */
 
-  --width-narrow: 30rlh;
-  --width-medium: 45rlh;
+  --width-narrow: 20rlh;
+  --width-medium: 40rlh;
   --width-wide: 60rlh;
 }
 
