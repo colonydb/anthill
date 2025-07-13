@@ -1,0 +1,26 @@
+.container {
+  border-radius: 1rlh;
+  display: grid;
+  grid-template-columns: var(--width-medium) var(--width-narrow);
+  overflow: hidden;
+  width: var(--width-wide);
+
+  > div {
+    display: grid;
+    padding: 5rlh 1rlh;
+    place-content: center;
+
+    &:nth-child(1) {
+      background: light-dark(var(--color-red-t5), var(--color-teal-s5));
+      grid-column: 1 / -1;
+    }
+
+    &:nth-child(2) {
+      background: light-dark(var(--color-green-t5), var(--color-blue-s5));
+    }
+
+    &:nth-child(3) {
+      background: light-dark(var(--color-blue-t5), var(--color-magenta-s5));
+    }
+  }
+}

@@ -45,6 +45,9 @@ const RootLayout = ({ children }: Props) => (
                   <li>
                     <Link href="/color">Colour</Link>
                   </li>
+                  <li>
+                    <Link href="/widths">Widths</Link>
+                  </li>
                 </Stack>
               </Section>
               <Section tagName="li" title={<Heading>Components</Heading>}>
