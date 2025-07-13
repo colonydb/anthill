@@ -2,7 +2,6 @@
   border-radius: 0.5rlh;
   border: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
   display: grid;
-  font: var(--font-tiny-monospace);
   grid-template-columns: repeat(22, 1fr);
   overflow: hidden;
 }

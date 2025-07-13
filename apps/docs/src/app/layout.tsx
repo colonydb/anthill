@@ -43,7 +43,7 @@ const RootLayout = ({ children }: Props) => (
                     <Link href="/fonts">Fonts</Link>
                   </li>
                   <li>
-                    <Link href="/color">Colour</Link>
+                    <Link href="/colors">Colours</Link>
                   </li>
                   <li>
                     <Link href="/widths">Widths</Link>
