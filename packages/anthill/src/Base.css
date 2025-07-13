@@ -1,23 +1,17 @@
 :root {
-  /* typeface */
-
-  --typeface-system: system-ui, sans-serif;
-  --typeface-brand: system-ui, sans-serif;
-  --typeface-monospace: monospace;
-
-  /* size */
+  /* sizes */
 
   --size-hero-font: 36px;
   --size-hero-line: 45px;
 
-  --size-title-font: 48px;
-  --size-title-line: 60px;
+  --size-title-font: 44px;
+  --size-title-line: 55px;
 
   --size-heading-font: 28px;
   --size-heading-line: 35px;
 
   --size-subheading-font: 20px;
-  --size-subheading-line: 30px;
+  --size-subheading-line: 25px;
 
   --size-regular-font: 16px;
   --size-regular-line: 24px;
@@ -28,14 +22,18 @@
   --size-tiny-font: 12px;
   --size-tiny-line: 18px;
 
-  /* font */
+  /* typefaces */
+
+  --typeface-brand: system-ui, sans-serif;
+  --typeface-system: system-ui, sans-serif;
+  --typeface-monospace: monospace;
+
+  /* fonts */
 
   --font-hero: normal 400 var(--size-hero-font) / var(--size-hero-line) var(--typeface-system);
 
   --font-title: normal 700 var(--size-title-font) / var(--size-title-line) var(--typeface-brand);
-
   --font-heading: normal 700 var(--size-heading-font) / var(--size-heading-line) var(--typeface-brand);
-
   --font-subheading: normal 700 var(--size-subheading-font) / var(--size-subheading-line) var(--typeface-brand);
 
   --font-regular: normal 400 var(--size-regular-font) / var(--size-regular-line) var(--typeface-system);
