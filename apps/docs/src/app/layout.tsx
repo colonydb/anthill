@@ -34,7 +34,7 @@ const RootLayout = ({ children }: Props) => (
               <li>
                 <Link href="/">Home</Link>
               </li>
-              <Section tagName="li" title={<Heading>Tokens</Heading>}>
+              <Section tagName="li" title={<Heading>Variables</Heading>}>
                 <Stack tagName="ul">
                   <li>
                     <Link href="/typefaces">Typefaces</Link>
