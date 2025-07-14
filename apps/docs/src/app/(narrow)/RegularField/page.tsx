@@ -140,12 +140,16 @@ const RegularFieldPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <RegularField label="Label" errors={[{ key: "1", message: "Error message" }]}>
-                      <RegularField label="Label" errors={[{ key: "1", message: "Error message" }]}>
-                        <RegularField label="Label" errors={[{ key: "1", message: "Error message" }]}>
-                          Content
+                    <RegularField label="Label">
+                      <p>Before</p>
+                      <RegularField label="Label">
+                        <p>Before</p>
+                        <RegularField label="Label">
+                          <p>Content</p>
                         </RegularField>
+                        <p>After</p>
                       </RegularField>
+                      <p>After</p>
                     </RegularField>
                   `}
                 </CodeBlock>
