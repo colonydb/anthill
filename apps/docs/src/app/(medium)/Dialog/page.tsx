@@ -6,6 +6,7 @@ import { CardContent } from "@colonydb/anthill/CardContent";
 import { CodeBlock } from "@colonydb/anthill/CodeBlock";
 import { Dialog } from "@colonydb/anthill/Dialog";
 import { Heading } from "@colonydb/anthill/Heading";
+import { Icon } from "@colonydb/anthill/Icon";
 import { Section } from "@colonydb/anthill/Section";
 import { Specimen } from "@colonydb/anthill/Specimen";
 import { TabBlock } from "@colonydb/anthill/TabBlock";
@@ -27,7 +28,7 @@ const DialogPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <Dialog dismissible render={() => "hello"}>
+                  <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"}>
                     Open
                   </Dialog>
                 </Specimen>
@@ -39,7 +40,7 @@ const DialogPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <Dialog dismissible render={() => "hello"}>Open</Dialog>
+                    <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"}>Open</Dialog>
                   `}
                 </CodeBlock>
               ),
@@ -55,7 +56,7 @@ const DialogPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <Dialog dismissible render={() => "hello"} width="narrow">
+                  <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"} width="narrow">
                     Open
                   </Dialog>
                 </Specimen>
@@ -67,7 +68,7 @@ const DialogPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <Dialog dismissible render={() => "hello"} width="narrow">
+                    <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"} width="narrow">
                       Open
                     </Dialog>
                   `}
@@ -85,7 +86,7 @@ const DialogPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <Dialog dismissible render={() => "hello"} width="wide">
+                  <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"} width="wide">
                     Open
                   </Dialog>
                 </Specimen>
@@ -97,7 +98,7 @@ const DialogPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <Dialog dismissible render={() => "hello"} width="wide">
+                    <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"} width="wide">
                       Open
                     </Dialog>
                   `}
@@ -115,7 +116,14 @@ const DialogPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <Dialog dismissible footer="Footer" render={() => "hello"} title="Title" width="narrow">
+                  <Dialog
+                    dismissible
+                    icon={<Icon symbol="External" />}
+                    footer="Footer"
+                    render={() => "hello"}
+                    title="Title"
+                    width="narrow"
+                  >
                     Open
                   </Dialog>
                 </Specimen>
@@ -130,6 +138,7 @@ const DialogPage = () => (
                     <Dialog
                       dismissible
                       footer="Footer"
+                      icon={<Icon symbol="External" />}
                       render={() => "hello"}
                       title="Title"
                       width="narrow"
@@ -151,7 +160,12 @@ const DialogPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <Dialog render={(closeDialog) => <Button onClick={closeDialog}>Close</Button>}>Open</Dialog>
+                  <Dialog
+                    icon={<Icon symbol="External" />}
+                    render={(closeDialog) => <Button onClick={closeDialog}>Close</Button>}
+                  >
+                    Open
+                  </Dialog>
                 </Specimen>
               ),
             },
@@ -161,7 +175,7 @@ const DialogPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <Dialog render={(closeDialog) => <Button onClick={closeDialog}>Close</Button>}>
+                    <Dialog icon={<Icon symbol="External" />} render={(closeDialog) => <Button onClick={closeDialog}>Close</Button>}>
                       Open
                     </Dialog>
                   `}

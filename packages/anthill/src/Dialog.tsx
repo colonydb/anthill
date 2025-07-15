@@ -14,6 +14,7 @@ type Props = {
   dismissible?: boolean;
   font?: "title" | "heading" | "subheading" | "regular" | "small" | "tiny" | "hero";
   footer?: ReactNode;
+  icon: ReactNode;
   render: (closeDialog: () => void) => ReactNode;
   stable?: boolean;
   title?: ReactNode;
@@ -25,6 +26,7 @@ export const Dialog = ({
   dismissible = false,
   font,
   footer,
+  icon,
   render,
   stable = false,
   title,
@@ -36,7 +38,7 @@ export const Dialog = ({
   return (
     <>
       <Action
-        icon={<Icon symbol="External" />}
+        icon={icon}
         fontSize={font}
         onClick={() => {
           if (dialogRef.current) {

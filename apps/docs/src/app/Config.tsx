@@ -2,6 +2,7 @@
 
 import { Dialog } from "@colonydb/anthill/Dialog";
 import { Heading } from "@colonydb/anthill/Heading";
+import { Icon } from "@colonydb/anthill/Icon";
 import { useState } from "react";
 
 const Config = () => {
@@ -17,6 +18,7 @@ const Config = () => {
   return (
     <Dialog
       dismissible
+      icon={<Icon symbol="External" />}
       render={() => (
         <>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(22, 1fr)" }}>
