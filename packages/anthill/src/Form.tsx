@@ -1,9 +1,10 @@
 "use client";
 
-import { type ReactNode, useActionState, useEffect, useState } from "react";
+import { type ContextType, type ReactNode, useActionState, useEffect, useMemo, useState } from "react";
 import type { InferOutput } from "valibot";
 import { FormContext } from "./FormContext.js";
 import type { FormAction, FormResult, FormSchema } from "./index.js";
+import { createFormErrors } from "./utils/createFormErrors.js";
 import { parseFormData } from "./utils/parseFormData.js";
 
 type Props<Schema extends FormSchema> = {
@@ -11,9 +12,10 @@ type Props<Schema extends FormSchema> = {
   children: ReactNode;
   disabled?: boolean;
   id: string;
-  initialData: InferOutput<Schema>;
+  initialData?: Partial<InferOutput<Schema>>;
+  onSuccess?: (result: FormResult<Schema> & { ok: true }) => void;
+  renderSuccess?: (result: FormResult<Schema> & { ok: true }) => ReactNode;
   schema: Schema;
-  success?: ReactNode;
 };
 
 export const Form = <Schema extends FormSchema>({
@@ -21,24 +23,56 @@ export const Form = <Schema extends FormSchema>({
   children,
   disabled,
   id,
-  initialData,
+  initialData = {},
+  onSuccess,
+  renderSuccess,
   schema,
-  success,
 }: Props<Schema>) => {
-  const [clientIsPending, setClientIsPending] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [onSuccessCalled, setOnSuccessCalled] = useState(false);
 
   const [clientResult, setClientResult] = useState<FormResult<Schema> | null>(null);
+  const [clientIsPending, setClientIsPending] = useState(false);
 
   const [serverResult, formAction, serverIsPending] = useActionState(action, {
-    ok: true,
-    data: initialData,
+    ok: false,
+    errors: createFormErrors(schema),
   });
 
-  const result = serverResult.ok === false ? serverResult : clientResult;
-  const isPending = clientIsPending || serverIsPending;
+  const { content, ...context } = useMemo<
+    { content: ReactNode } & Pick<NonNullable<ContextType<typeof FormContext>>, "disabled" | "errors" | "status">
+  >(() => {
+    const result = clientResult?.ok ? serverResult : clientResult;
 
-  const status = isPending ? "pending" : result === null ? "idle" : result.ok === false ? "error" : "success";
+    if (clientIsPending || serverIsPending) {
+      return {
+        content: children,
+        disabled: true,
+        errors: null,
+        status: "pending",
+      };
+    } else if (result === null) {
+      return {
+        content: children,
+        disabled: disabled ?? false,
+        errors: null,
+        status: "idle",
+      };
+    } else if (result.ok === false) {
+      return {
+        content: children,
+        disabled: disabled ?? false,
+        errors: result.errors,
+        status: "error",
+      };
+    } else {
+      return {
+        content: renderSuccess ? renderSuccess(result) : children,
+        disabled: true,
+        errors: null,
+        status: "success",
+      };
+    }
+  }, [children, clientIsPending, clientResult, disabled, renderSuccess, serverIsPending, serverResult]);
 
   useEffect(() => {
     let timeout: number | undefined;
@@ -55,18 +89,11 @@ export const Form = <Schema extends FormSchema>({
   }, [clientIsPending]);
 
   useEffect(() => {
-    let timeout: number | undefined;
-
-    if (showSuccess === false && status === "success" && success) {
-      timeout = setTimeout(() => {
-        setShowSuccess(true);
-      }, 400);
+    if (onSuccess && onSuccessCalled === false && serverResult.ok) {
+      setOnSuccessCalled(true);
+      onSuccess(serverResult);
     }
-
-    return () => {
-      if (timeout !== undefined) clearTimeout(timeout);
-    };
-  }, [showSuccess, status, success]);
+  }, [onSuccess, onSuccessCalled, serverResult]);
 
   return (
     <form
@@ -87,14 +114,12 @@ export const Form = <Schema extends FormSchema>({
     >
       <FormContext.Provider
         value={{
-          disabled: disabled || status === "pending" || status === "success",
-          errors: isPending === false && result?.ok === false ? result.errors : null,
+          ...context,
           id,
           initialData,
-          status,
         }}
       >
-        {showSuccess ? success : children}
+        {content}
       </FormContext.Provider>
     </form>
   );

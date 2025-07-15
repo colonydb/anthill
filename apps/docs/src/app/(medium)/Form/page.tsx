@@ -78,8 +78,8 @@ const FormPage = () => (
                     action={async () => ({ ok: true, data: {} })}
                     id="example"
                     initialData={{}}
+                    renderSuccess={() => <PlainText font="hero">Success!</PlainText>}
                     schema={v.object({})}
-                    success={<PlainText font="hero">Success!</PlainText>}
                   >
                     <FormFooter actionLabel="Submit" />
                   </Form>
@@ -96,8 +96,8 @@ const FormPage = () => (
                       action={async () => ({ ok: true, data: {} })}
                       id="example"
                       initialData={{}}
+                      renderSuccess={() => <PlainText font="hero">Success!</PlainText>}
                       schema={v.object({})}
-                      success={"Success!"}
                     >
                       <FormFooter actionLabel="Submit" />
                     </Form>

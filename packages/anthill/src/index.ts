@@ -1,4 +1,4 @@
-import type { InferOutput, ObjectEntries, ObjectSchema } from "valibot";
+import type { ErrorMessage, InferOutput, ObjectEntries, ObjectIssue, ObjectSchema } from "valibot";
 import type * as icons from "./icons/index.js";
 
 export type BaseFont = "hero" | "title" | "heading" | "subheading" | BodyFont;
@@ -40,7 +40,7 @@ export type FormState<Schema extends FormSchema = FormSchema> = {
   status: "idle" | "pending" | "error" | "success";
 };
 
-export type FormSchema = ObjectSchema<ObjectEntries, undefined>;
+export type FormSchema = ObjectSchema<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>;
 
 export type Hue =
   | "red"
