@@ -1,4 +1,6 @@
 .dialog {
+  --dialog-width: auto;
+
   .container {
     display: grid;
     grid-template-columns: minmax(0, auto);
@@ -11,7 +13,7 @@
 
     .content {
       display: inherit;
-      grid-template-columns: inherit;
+      grid-template-columns: minmax(0, var(--dialog-width));
       grid-template-rows: inherit;
       pointer-events: all;
     }
@@ -23,18 +25,6 @@
     position: fixed;
     inset: 0;
     transition: all 0.25s allow-discrete;
-  }
-
-  &.narrow {
-    .content {
-      grid-template-columns: minmax(0, var(--width-narrow));
-    }
-  }
-
-  &.wide {
-    .content {
-      grid-template-columns: minmax(0, var(--width-wide));
-    }
   }
 }
 

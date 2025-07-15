@@ -1,6 +1,5 @@
 "use client";
 
-import clsx from "clsx";
 import { type ReactNode, useRef, useState } from "react";
 import { Action } from "./Action.js";
 import { Card } from "./Card.js";
@@ -8,6 +7,7 @@ import { CardContent } from "./CardContent.js";
 import styles from "./Dialog.module.css";
 import { Header } from "./Header.js";
 import { Icon } from "./Icon.js";
+import type { Width } from "./index.js";
 
 type Props = {
   children: ReactNode;
@@ -18,7 +18,7 @@ type Props = {
   render: (closeDialog: () => void) => ReactNode;
   stable?: boolean;
   title?: ReactNode;
-  width?: "auto" | "narrow" | "wide";
+  width?: "auto" | Width;
 };
 
 export const Dialog = ({
@@ -52,10 +52,13 @@ export const Dialog = ({
       <dialog
         // @ts-ignore: closeBy not yet supported in React
         closedby={dismissible === true ? "any" : "none"}
-        className={clsx(styles.dialog, width === "narrow" ? styles.narrow : width === "wide" ? styles.wide : undefined)}
-        ref={dialogRef}
+        className={styles.dialog}
         onClose={(event) => {
           event.preventDefault();
+        }}
+        ref={dialogRef}
+        style={{
+          "--dialog-width": width === "auto" ? "auto" : `var(--width-${width})`,
         }}
       >
         <div className={styles.container}>
