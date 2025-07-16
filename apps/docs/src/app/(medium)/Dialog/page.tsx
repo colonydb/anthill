@@ -5,6 +5,7 @@ import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
 import { CodeBlock } from "@colonydb/anthill/CodeBlock";
 import { Dialog } from "@colonydb/anthill/Dialog";
+import { DialogHeader } from "@colonydb/anthill/DialogHeader";
 import { Heading } from "@colonydb/anthill/Heading";
 import { Icon } from "@colonydb/anthill/Icon";
 import { Section } from "@colonydb/anthill/Section";
@@ -18,6 +19,7 @@ const DialogPage = () => (
       <CodeBlock language="tsx">
         {js`
           import { Dialog } from "@colonydb/anthill/Dialog";
+          import { DialogHeader } from "@colonydb/anthill/DialogHeader";
         `}
       </CodeBlock>
       <Section title={<Heading>Minimal</Heading>}>
@@ -28,7 +30,15 @@ const DialogPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"}>
+                  <Dialog
+                    dismissible
+                    icon={<Icon symbol="External" />}
+                    render={() => (
+                      <Card>
+                        <CardContent>content</CardContent>
+                      </Card>
+                    )}
+                  >
                     Open
                   </Dialog>
                 </Specimen>
@@ -40,35 +50,15 @@ const DialogPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"}>Open</Dialog>
-                  `}
-                </CodeBlock>
-              ),
-            },
-          ]}
-        />
-      </Section>
-      <Section title={<Heading>Narrow</Heading>}>
-        <TabBlock
-          items={[
-            {
-              key: "specimen",
-              label: "Specimen",
-              content: (
-                <Specimen>
-                  <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"} width="narrow">
-                    Open
-                  </Dialog>
-                </Specimen>
-              ),
-            },
-            {
-              key: "code",
-              label: "Code",
-              content: (
-                <CodeBlock language="tsx">
-                  {js`
-                    <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"} width="narrow">
+                    <Dialog
+                      dismissible
+                      icon={<Icon symbol="External" />}
+                      render={() => (
+                        <Card>
+                          <CardContent>content</CardContent>
+                        </Card>
+                      )}
+                    >
                       Open
                     </Dialog>
                   `}
@@ -78,37 +68,7 @@ const DialogPage = () => (
           ]}
         />
       </Section>
-      <Section title={<Heading>Wide</Heading>}>
-        <TabBlock
-          items={[
-            {
-              key: "specimen",
-              label: "Specimen",
-              content: (
-                <Specimen>
-                  <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"} width="wide">
-                    Open
-                  </Dialog>
-                </Specimen>
-              ),
-            },
-            {
-              key: "code",
-              label: "Code",
-              content: (
-                <CodeBlock language="tsx">
-                  {js`
-                    <Dialog dismissible icon={<Icon symbol="External" />} render={() => "hello"} width="wide">
-                      Open
-                    </Dialog>
-                  `}
-                </CodeBlock>
-              ),
-            },
-          ]}
-        />
-      </Section>
-      <Section title={<Heading>Title &amp; Footer</Heading>}>
+      <Section title={<Heading>Header</Heading>}>
         <TabBlock
           items={[
             {
@@ -119,9 +79,11 @@ const DialogPage = () => (
                   <Dialog
                     dismissible
                     icon={<Icon symbol="External" />}
-                    footer="Footer"
-                    render={() => "hello"}
-                    title="Title"
+                    render={(close) => (
+                      <Card header={<DialogHeader close={close}>header</DialogHeader>}>
+                        <CardContent>content</CardContent>
+                      </Card>
+                    )}
                     width="narrow"
                   >
                     Open
@@ -137,10 +99,60 @@ const DialogPage = () => (
                   {js`
                     <Dialog
                       dismissible
-                      footer="Footer"
                       icon={<Icon symbol="External" />}
-                      render={() => "hello"}
-                      title="Title"
+                      render={(close) => (
+                        <Card header={<DialogHeader close={close}>header</DialogHeader>}>
+                          <CardContent>content</CardContent>
+                        </Card>
+                      )}
+                      width="narrow"
+                    >
+                      Open
+                    </Dialog>
+                  `}
+                </CodeBlock>
+              ),
+            },
+          ]}
+        />
+      </Section>
+      <Section title={<Heading>Fixed Width</Heading>}>
+        <TabBlock
+          items={[
+            {
+              key: "specimen",
+              label: "Specimen",
+              content: (
+                <Specimen>
+                  <Dialog
+                    dismissible
+                    icon={<Icon symbol="External" />}
+                    render={() => (
+                      <Card>
+                        <CardContent>content</CardContent>
+                      </Card>
+                    )}
+                    width="medium"
+                  >
+                    Open
+                  </Dialog>
+                </Specimen>
+              ),
+            },
+            {
+              key: "code",
+              label: "Code",
+              content: (
+                <CodeBlock language="tsx">
+                  {js`
+                    <Dialog
+                      dismissible
+                      icon={<Icon symbol="External" />}
+                      render={() => (
+                        <Card>
+                          <CardContent>content</CardContent>
+                        </Card>
+                      )}
                       width="narrow"
                     >
                       Open

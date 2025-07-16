@@ -24,7 +24,7 @@ type Props = {
         href: string;
       }
     | {
-        onClick: () => void;
+        onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
       }
   );
 
