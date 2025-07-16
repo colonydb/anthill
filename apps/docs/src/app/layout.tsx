@@ -122,6 +122,9 @@ const RootLayout = ({ children }: Props) => (
                   <li>
                     <Link href="/StringInput">StringInput</Link>
                   </li>
+                  <li>
+                    <Link href="/TileSelect">TileSelect</Link>
+                  </li>
                 </Stack>
               </Section>
             </Section>
