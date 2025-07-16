@@ -12,10 +12,17 @@ export const parseFormData = <Schema extends FormSchema>(payload: FormData, sche
   if (result.success === false) {
     const errors = createFormErrors(schema);
     gatherErrors(result.issues, errors);
-    return { ok: false, errors };
+    return {
+      data,
+      errors,
+      ok: false,
+    };
   }
 
-  return { ok: true, data: result.output };
+  return {
+    data: result.output,
+    ok: true,
+  };
 };
 
 const gatherErrors = <Schema extends FormSchema>(issues: Array<BaseIssue<unknown>>, errors: FormErrors<Schema>) => {

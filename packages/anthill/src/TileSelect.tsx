@@ -33,7 +33,9 @@ export const TileSelect = ({ autoFocus, disabled, id, initialValue, name, option
           </div>
           <input
             autoFocus={autoFocus ?? false}
-            defaultChecked={option.value === initialValue}
+            defaultChecked={
+              option.value === (initialValue ?? (typeof form?.data[name] === "string" ? form?.data[name] : undefined))
+            }
             className={styles.input}
             disabled={disabled || form?.disabled}
             id={`${id ?? (form?.id ? `${form.id}:${name}` : name)}:${option.value}`}

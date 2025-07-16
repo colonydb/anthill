@@ -118,12 +118,13 @@ const FormPage = () => (
                 <Specimen>
                   <Form
                     action={async () => ({
-                      ok: false,
+                      data: {},
                       errors: {
                         count: 2,
                         nested: { name: [{ key: "1", message: "Nested error" }] },
                         root: [{ key: "1", message: "Root error" }],
                       },
+                      ok: false,
                     })}
                     id="example"
                     initialData={{}}
@@ -146,12 +147,13 @@ const FormPage = () => (
                   {js`
                     <Form
                       action={async () => ({
-                        ok: false,
+                        data: {},
                         errors: {
                           count: 2,
                           nested: { name: [{ key: "1", message: "Nested error" }] },
                           root: [{ key: "1", message: "Root error" }],
                         },
+                        ok: false,
                       })}
                       id="example"
                       initialData={{}}

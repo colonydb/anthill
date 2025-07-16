@@ -24,19 +24,24 @@ export type FormErrors<Schema extends FormSchema = FormSchema> = {
 
 export type FormResult<Schema extends FormSchema = FormSchema> =
   | {
-      ok: true;
       data: InferOutput<Schema>;
+      ok?: null;
     }
   | {
-      ok: false;
+      data: InferOutput<Schema>;
+      ok: true;
+    }
+  | {
+      data: InferOutput<Schema>;
       errors: FormErrors<Schema>;
+      ok: false;
     };
 
 export type FormState<Schema extends FormSchema = FormSchema> = {
+  data: InferOutput<Schema>;
   disabled: boolean;
   errors: FormErrors<Schema> | null;
   id: string;
-  initialData: InferOutput<Schema>;
   status: "idle" | "pending" | "error" | "success";
 };
 

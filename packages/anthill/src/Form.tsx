@@ -4,7 +4,6 @@ import { type ContextType, type ReactNode, useActionState, useEffect, useMemo, u
 import type { InferOutput } from "valibot";
 import { FormContext } from "./FormContext.js";
 import type { FormAction, FormResult, FormSchema } from "./index.js";
-import { createFormErrors } from "./utils/createFormErrors.js";
 import { parseFormData } from "./utils/parseFormData.js";
 
 type Props<Schema extends FormSchema> = {
@@ -13,7 +12,6 @@ type Props<Schema extends FormSchema> = {
   disabled?: boolean;
   id: string;
   initialData?: Partial<InferOutput<Schema>>;
-  onSuccess?: (result: FormResult<Schema> & { ok: true }) => void;
   renderSuccess?: (result: FormResult<Schema> & { ok: true }) => ReactNode;
   schema: Schema;
 };
@@ -24,55 +22,68 @@ export const Form = <Schema extends FormSchema>({
   disabled,
   id,
   initialData = {},
-  onSuccess,
   renderSuccess,
   schema,
 }: Props<Schema>) => {
-  const [onSuccessCalled, setOnSuccessCalled] = useState(false);
-
-  const [clientResult, setClientResult] = useState<FormResult<Schema> | null>(null);
+  const [clientResult, setClientResult] = useState<(FormResult<Schema> & { ok: false }) | null>(null);
   const [clientIsPending, setClientIsPending] = useState(false);
 
   const [serverResult, formAction, serverIsPending] = useActionState(action, {
-    ok: false,
-    errors: createFormErrors(schema),
+    data: initialData,
   });
 
-  const { content, ...context } = useMemo<
-    { content: ReactNode } & Pick<NonNullable<ContextType<typeof FormContext>>, "disabled" | "errors" | "status">
-  >(() => {
-    const result = clientResult?.ok ? serverResult : clientResult;
+  const { content, context } = useMemo<{
+    content: ReactNode;
+    context: NonNullable<ContextType<typeof FormContext>>;
+  }>(() => {
+    const result = clientResult ?? serverResult;
 
     if (clientIsPending || serverIsPending) {
       return {
         content: children,
-        disabled: true,
-        errors: null,
-        status: "pending",
-      };
-    } else if (result === null) {
-      return {
-        content: children,
-        disabled: disabled ?? false,
-        errors: null,
-        status: "idle",
+        context: {
+          data: result.data,
+          disabled: true,
+          errors: null,
+          id,
+          status: "pending",
+        },
       };
     } else if (result.ok === false) {
       return {
         content: children,
-        disabled: disabled ?? false,
-        errors: result.errors,
-        status: "error",
+        context: {
+          data: result.data,
+          disabled: disabled ?? false,
+          errors: result.errors,
+          id,
+          status: "error",
+        },
+      };
+    } else if (result.ok === true) {
+      return {
+        content: renderSuccess ? renderSuccess(result) : children,
+        context: {
+          data: result.data,
+          disabled: true,
+          errors: null,
+          id,
+          status: "success",
+        },
       };
     } else {
       return {
-        content: renderSuccess ? renderSuccess(result) : children,
-        disabled: true,
-        errors: null,
-        status: "success",
+        content: children,
+        context: {
+          data: result.data,
+          disabled: disabled ?? false,
+          errors: null,
+          id,
+          status: "idle",
+        },
       };
     }
-  }, [children, clientIsPending, clientResult, disabled, renderSuccess, serverIsPending, serverResult]);
+  }, [children, clientIsPending, clientResult, disabled, id, renderSuccess, serverIsPending, serverResult]);
 
   useEffect(() => {
     let timeout: number | undefined;
@@ -88,39 +99,26 @@ export const Form = <Schema extends FormSchema>({
     };
   }, [clientIsPending]);
 
-  useEffect(() => {
-    if (onSuccess && onSuccessCalled === false && serverResult.ok) {
-      setOnSuccessCalled(true);
-      onSuccess(serverResult);
-    }
-  }, [onSuccess, onSuccessCalled, serverResult]);
-
   return (
     <form
       action={formAction}
       onSubmit={async (event) => {
+        setClientResult(null);
         setClientIsPending(true);
 
         const formData: FormData = new FormData(event.currentTarget);
 
         const result = parseFormData(formData, schema);
 
-        if (result.ok === false) event.preventDefault();
-
-        setClientResult(result);
+        if (result.ok === false) {
+          event.preventDefault();
+          setClientResult(result);
+        }
       }}
       id={id}
       noValidate
     >
-      <FormContext.Provider
-        value={{
-          ...context,
-          id,
-          initialData,
-        }}
-      >
-        {content}
-      </FormContext.Provider>
+      <FormContext.Provider value={context}>{content}</FormContext.Provider>
     </form>
   );
 };

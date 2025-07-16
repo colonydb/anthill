@@ -5,4 +5,6 @@ import { StringInput } from "./StringInput.js";
 
 type Props = Omit<ComponentProps<typeof StringInput>, "type">;
 
-export const EmailInput = (props: Props) => <StringInput {...props} type="email" />;
+export const EmailInput = ({ placeholder = "jane.doe@example.com", ...props }: Props) => (
+  <StringInput {...props} placeholder={placeholder} type="email" />
+);
