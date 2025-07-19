@@ -10,11 +10,12 @@ import { PlainText } from "./PlainText.js";
 type Props = {
   actionLabel: string;
   children?: ReactNode;
+  dangerous?: boolean;
   secondaryAction?: ReactNode;
   tagName?: keyof JSX.IntrinsicElements;
 };
 
-export const FormFooter = ({ actionLabel, children, secondaryAction, tagName: Tag = "footer" }: Props) => {
+export const FormFooter = ({ actionLabel, children, dangerous, secondaryAction, tagName: Tag = "footer" }: Props) => {
   const formContext = useContext(FormContext);
 
   const issueCount = formContext?.errors?.count ?? 0;
@@ -23,7 +24,9 @@ export const FormFooter = ({ actionLabel, children, secondaryAction, tagName: Ta
     <Tag className={styles.container}>
       <div className={styles.controls}>
         <div className={styles.button}>
-          <Button submit>{actionLabel}</Button>
+          <Button dangerous={dangerous} submit>
+            {actionLabel}
+          </Button>
         </div>
         {secondaryAction ? <div className={styles.button}>{secondaryAction}</div> : null}
         {formContext?.status === "pending" ? (
