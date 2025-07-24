@@ -108,7 +108,7 @@ export const Form = <Schema extends FormSchema>({
 
         const formData: FormData = new FormData(event.currentTarget);
 
-        const result = parseFormData(formData, schema);
+        const result = await parseFormData(formData, schema);
 
         if (result.ok === false) {
           event.preventDefault();
