@@ -9,7 +9,7 @@ type Props = {
   disabled?: boolean;
   id?: string;
   initialValue?: string;
-  name: string;
+  name?: string;
   placeholder?: string;
   setValue?: Dispatch<SetStateAction<string>>;
   type?: "email" | "text";
@@ -21,7 +21,10 @@ export const StringInput = ({ autoFocus, disabled, id, initialValue, name, place
     <input
       autoFocus={autoFocus ?? false}
       className={styles.input}
-      defaultValue={initialValue ?? (typeof form?.data[name] === "string" ? form?.data[name] : undefined)}
+      defaultValue={
+        initialValue ??
+        (typeof name === "string" && typeof form?.data[name] === "string" ? form?.data[name] : undefined)
+      }
       disabled={disabled || form?.disabled}
       id={id ?? (form?.id ? `${form.id}:${name}` : name)}
       name={name}
