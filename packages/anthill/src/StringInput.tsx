@@ -26,7 +26,7 @@ export const StringInput = ({ autoFocus, disabled, id, initialValue, name, place
         (typeof name === "string" && typeof form?.data[name] === "string" ? form?.data[name] : undefined)
       }
       disabled={disabled || form?.disabled}
-      id={id ?? (form?.id ? `${form.id}:${name}` : name)}
+      id={id ?? (name ? (form?.id ? `${form.id}:${name}` : name) : undefined)}
       name={name}
       onChange={
         setValue
