@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { useContext } from "react";
+import { type MouseEventHandler, useContext } from "react";
 import styles from "./Button.module.css";
 import { FormContext } from "./FormContext.js";
 
@@ -13,7 +13,7 @@ type Props = {
       href: string;
     }
   | ({
-      onClick?: () => void;
+      onClick?: MouseEventHandler<HTMLButtonElement>;
     } & (
       | {
           submit?: false;
