@@ -13,6 +13,7 @@ type Props<Schema extends FormSchema> = {
   id: string;
   initialData?: Partial<InferOutput<Schema>>;
   renderSuccess?: (result: FormResult<Schema> & { ok: true }) => ReactNode;
+  repeatable?: boolean;
   schema: Schema;
 };
 
@@ -23,22 +24,25 @@ export const Form = <Schema extends FormSchema>({
   id,
   initialData = {},
   renderSuccess,
+  repeatable = false,
   schema,
 }: Props<Schema>) => {
   const [clientResult, setClientResult] = useState<(FormResult<Schema> & { ok: false }) | null>(null);
   const [clientIsPending, setClientIsPending] = useState(false);
+  const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
   const [serverResult, formAction, serverIsPending] = useActionState(action, {
     data: initialData,
   });
 
+  const result = clientResult ?? serverResult;
+  const isPending = clientIsPending || serverIsPending;
+
   const { content, context } = useMemo<{
     content: ReactNode;
     context: NonNullable<ContextType<typeof FormContext>>;
   }>(() => {
-    const result = clientResult ?? serverResult;
-
-    if (clientIsPending || serverIsPending) {
+    if (isPending) {
       return {
         content: children,
         context: {
@@ -60,7 +64,7 @@ export const Form = <Schema extends FormSchema>({
           status: "error",
         },
       };
-    } else if (result.ok === true) {
+    } else if (result.ok === true && showSuccess) {
       return {
         content: renderSuccess ? renderSuccess(result) : children,
         context: {
@@ -83,7 +87,7 @@ export const Form = <Schema extends FormSchema>({
         },
       };
     }
-  }, [children, clientIsPending, clientResult, disabled, id, renderSuccess, serverIsPending, serverResult]);
+  }, [children, disabled, id, isPending, renderSuccess, result, showSuccess]);
 
   useEffect(() => {
     let timeout: number | undefined;
@@ -98,6 +102,21 @@ export const Form = <Schema extends FormSchema>({
       if (timeout !== undefined) clearTimeout(timeout);
     };
   }, [clientIsPending]);
+
+  useEffect(() => {
+    let timeout: number;
+    if (isPending === false && result.ok === true) {
+      setShowSuccess(true);
+      if (repeatable) {
+        timeout = setTimeout(() => {
+          setShowSuccess(false);
+        }, 400);
+      }
+    }
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [isPending, repeatable, result.ok]);
 
   return (
     <form

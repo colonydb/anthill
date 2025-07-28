@@ -36,7 +36,7 @@ const FormPage = () => (
                 <Specimen>
                   <Form
                     action={async () => ({ ok: true, data: {} })}
-                    id="example"
+                    id="basicExample"
                     initialData={{}}
                     schema={v.object({})}
                   >
@@ -53,7 +53,7 @@ const FormPage = () => (
                   {js`
                     <Form
                       action={async () => ({ ok: true, data: {} })}
-                      id="example"
+                      id="basicExample"
                       initialData={{}}
                       schema={v.object({})}
                     >
@@ -76,7 +76,7 @@ const FormPage = () => (
                 <Specimen>
                   <Form
                     action={async () => ({ ok: true, data: {} })}
-                    id="example"
+                    id="customSuccessExample"
                     initialData={{}}
                     renderSuccess={() => <PlainText font="hero">Success!</PlainText>}
                     schema={v.object({})}
@@ -94,7 +94,7 @@ const FormPage = () => (
                   {js`
                     <Form
                       action={async () => ({ ok: true, data: {} })}
-                      id="example"
+                      id="customSuccessExample"
                       initialData={{}}
                       renderSuccess={() => <PlainText font="hero">Success!</PlainText>}
                       schema={v.object({})}
@@ -126,7 +126,7 @@ const FormPage = () => (
                       },
                       ok: false,
                     })}
-                    id="example"
+                    id="errorHandlingExample"
                     initialData={{}}
                     schema={v.object({ name: v.optional(v.any()) })}
                   >
@@ -155,7 +155,7 @@ const FormPage = () => (
                         },
                         ok: false,
                       })}
-                      id="example"
+                      id="errorHandlingExample"
                       initialData={{}}
                       schema={v.object({ name: v.optional(v.any()) })}
                     >
@@ -164,6 +164,48 @@ const FormPage = () => (
                         <FormErrorBanner field="name" />
                         <FormFooter actionLabel="Submit" />
                       </Stack>
+                    </Form>
+                  `}
+                </CodeBlock>
+              ),
+            },
+          ]}
+        />
+      </Section>
+      <Section title={<Heading>Repeatable</Heading>}>
+        <TabBlock
+          items={[
+            {
+              key: "specimen",
+              label: "Specimen",
+              content: (
+                <Specimen>
+                  <Form
+                    action={async () => ({ ok: true, data: {} })}
+                    id="repeatableExample"
+                    initialData={{}}
+                    repeatable
+                    schema={v.object({})}
+                  >
+                    <FormFooter actionLabel="Submit" />
+                  </Form>
+                </Specimen>
+              ),
+            },
+            {
+              key: "code",
+              label: "Code",
+              content: (
+                <CodeBlock language="tsx">
+                  {js`
+                    <Form
+                      action={async () => ({ ok: true, data: {} })}
+                      id="repeatableExample"
+                      initialData={{}}
+                      repeatable
+                      schema={v.object({})}
+                    >
+                      <FormFooter actionLabel="Submit" />
                     </Form>
                   `}
                 </CodeBlock>
