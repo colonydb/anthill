@@ -1,6 +1,7 @@
-import { type BaseIssue, getDotPath, safeParseAsync } from "valibot";
-import type { FormErrors, FormResult, FormSchema } from "../index.js";
+import { safeParseAsync } from "valibot";
+import type { FormResult, FormSchema } from "../index.js";
 import { createFormErrors } from "./createFormErrors.js";
+import { gatherFormErrors } from "./gatherFormErrors.js";
 
 export const parseFormData = async <Schema extends FormSchema>(
   payload: FormData,
@@ -14,7 +15,7 @@ export const parseFormData = async <Schema extends FormSchema>(
 
   if (result.success === false) {
     const errors = createFormErrors(schema);
-    gatherErrors(result.issues, errors);
+    gatherFormErrors(result.issues, errors);
     return {
       data,
       errors,
@@ -26,28 +27,4 @@ export const parseFormData = async <Schema extends FormSchema>(
     data: result.output,
     ok: true,
   };
-};
-
-const gatherErrors = <Schema extends FormSchema>(issues: Array<BaseIssue<unknown>>, errors: FormErrors<Schema>) => {
-  const { nested, root } = errors;
-
-  for (const issue of issues) {
-    const name = getDotPath(issue);
-
-    errors.count += 1;
-
-    if (name && name in nested && nested[name]) {
-      nested[name].push({
-        key: errors.count.toString(10),
-        message: issue.message,
-      });
-    } else {
-      root.push({
-        key: errors.count.toString(10),
-        message: issue.message,
-      });
-    }
-
-    if (issue.issues) gatherErrors<Schema>(issue.issues, errors);
-  }
 };
