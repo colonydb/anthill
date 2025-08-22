@@ -1,15 +1,16 @@
-import { safeParseAsync } from "valibot";
+import { safeParse } from "valibot";
 import type { FormResult, FormSchema } from "../index.js";
 import { createFormErrors } from "./createFormErrors.js";
 import { gatherFormErrors } from "./gatherFormErrors.js";
 
-export const parseFormData = async <Schema extends FormSchema>(
-  payload: FormData,
+export const parseData = <Schema extends FormSchema>(
+  data: {
+    [key: string]: unknown;
+    [key: number]: unknown;
+  },
   schema: Schema,
-): Promise<FormResult<Schema>> => {
-  const data = Object.fromEntries(payload.entries());
-
-  const result = await safeParseAsync(schema, data, {
+): FormResult<Schema> => {
+  const result = safeParse(schema, data, {
     abortPipeEarly: true,
   });
 
@@ -24,7 +25,7 @@ export const parseFormData = async <Schema extends FormSchema>(
   }
 
   return {
-    data: result.output,
+    data,
     ok: true,
   };
 };

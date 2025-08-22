@@ -1,4 +1,5 @@
-import type { ErrorMessage, InferOutput, ObjectEntries, ObjectIssue, ObjectSchema, ObjectSchemaAsync } from "valibot";
+import type { Dispatch, SetStateAction } from "react";
+import type { ErrorMessage, InferInput, InferOutput, ObjectEntries, ObjectIssue, ObjectSchema } from "valibot";
 import type * as icons from "./icons/index.js";
 
 export type BaseFont = "hero" | "title" | "heading" | "subheading" | BodyFont;
@@ -12,8 +13,7 @@ export type Font = BaseFont | `${BodyFont}-${FontVariant}`;
 export type FontVariant = "bold" | "italic" | "bold-italic" | "monospace";
 
 export type FormAction<Schema extends FormSchema = FormSchema> = (
-  state: FormResult<Schema>,
-  payload: FormData,
+  data: InferInput<Schema>,
 ) => Promise<FormResult<Schema>>;
 
 export type FormErrors<Schema extends FormSchema = FormSchema> = {
@@ -42,12 +42,11 @@ export type FormState<Schema extends FormSchema = FormSchema> = {
   disabled: boolean;
   errors: FormErrors<Schema> | null;
   id: string;
+  setData: Dispatch<SetStateAction<InferOutput<Schema>>>;
   status: "idle" | "pending" | "error" | "success";
 };
 
-export type FormSchema =
-  | ObjectSchema<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>
-  | ObjectSchemaAsync<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>;
+export type FormSchema = ObjectSchema<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>;
 
 export type Hue =
   | "red"
