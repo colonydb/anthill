@@ -1,5 +1,6 @@
 import styles from "./Icon.module.css";
 import type { BaseFont, Color, IconSymbol } from "./index.js";
+import { formatColor } from "./utils/formatColor.js";
 
 type Props = {
   color?: Color | [Color, Color];
@@ -17,11 +18,7 @@ export const Icon = ({ color, fontSize, id, symbol, title }: Props) => (
     id={id}
     role="img"
     style={{
-      color: color
-        ? Array.isArray(color)
-          ? `light-dark(var(--color-${color[0]}), var(--color-${color[1]}))`
-          : `var(--color-${color})`
-        : undefined,
+      color: formatColor(color),
       font: fontSize ? `var(--font-${fontSize})` : undefined,
     }}
   >

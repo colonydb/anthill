@@ -5,6 +5,7 @@ import { type JSX, type ReactNode, useContext } from "react";
 import type { Color, Width } from "./index.js";
 import { SpacingLevelContext } from "./SpacingLevelContext.js";
 import styles from "./Stack.module.css";
+import { formatColor } from "./utils/formatColor.js";
 
 const SPACING_LEVELS = ["p3", "p2", "p1", "00", "n1", "n2", "n3"] as const;
 
@@ -47,11 +48,7 @@ export const Stack = ({
       )}
       id={id}
       style={{
-        color: color
-          ? Array.isArray(color)
-            ? `light-dark(var(--color-${color[0]}), var(--color-${color[1]}))`
-            : `var(--color-${color})`
-          : undefined,
+        color: formatColor(color),
         rowGap: `var(--space-${resolvedSpacing})`,
       }}
     >

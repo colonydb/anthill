@@ -2,6 +2,7 @@ import clsx from "clsx";
 import type { JSX, ReactNode } from "react";
 import type { Color, Font } from "./index.js";
 import styles from "./PlainText.module.css";
+import { formatColor } from "./utils/formatColor.js";
 
 type Props = {
   children: ReactNode;
@@ -15,11 +16,7 @@ export const PlainText = ({ children, color, font, tagName: Tag = "span", trunca
   <Tag
     className={clsx(truncated ? styles.truncated : undefined)}
     style={{
-      color: color
-        ? Array.isArray(color)
-          ? `light-dark(var(--color-${color[0]}), var(--color-${color[1]}))`
-          : `var(--color-${color})`
-        : undefined,
+      color: formatColor(color),
       font: font ? `var(--font-${font})` : undefined,
     }}
   >
