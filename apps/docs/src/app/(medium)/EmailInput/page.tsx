@@ -1,3 +1,5 @@
+"use client";
+
 import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
 import { CodeBlock } from "@colonydb/anthill/CodeBlock";
@@ -24,7 +26,7 @@ const EmailInputPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <EmailInput name="email" />
+                  <EmailInput name="example1" />
                 </Specimen>
               ),
             },
@@ -34,7 +36,7 @@ const EmailInputPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <EmailInput name="email" />
+                    <EmailInput />
                   `}
                 </CodeBlock>
               ),

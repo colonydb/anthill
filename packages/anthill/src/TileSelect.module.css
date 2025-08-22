@@ -15,9 +15,12 @@
   place-content: center;
   position: relative;
   transition:
+    background 0.2s,
     box-shadow 0.2s,
+    color 0.2s,
     outline-color 0.2s,
     transform 0.2s;
+  user-select: none;
   width: 5rlh;
 
   .tick {
