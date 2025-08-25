@@ -39,11 +39,12 @@ export type FormResult<Schema extends FormSchema = FormSchema> =
     };
 
 export type FormState<Schema extends FormSchema = FormSchema> = {
-  data: InferOutput<Schema>;
+  data: Partial<InferInput<Schema>>;
   disabled: boolean;
   errors: FormErrors<Schema> | null;
   id: string;
-  setData: Dispatch<SetStateAction<InferOutput<Schema>>>;
+  schema: Schema;
+  setData: Dispatch<SetStateAction<Partial<InferInput<Schema>>>>;
   status: "idle" | "pending" | "error" | "success";
 };
 

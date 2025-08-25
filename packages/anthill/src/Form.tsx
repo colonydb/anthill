@@ -1,9 +1,9 @@
 "use client";
 
-import { type ContextType, type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
+import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import type { InferInput } from "valibot";
 import { FormContext } from "./FormContext.js";
-import type { FormAction, FormResult, FormSchema } from "./index.js";
+import type { FormAction, FormResult, FormSchema, FormState } from "./index.js";
 import { parseData } from "./utils/parseData.js";
 
 type Props<Schema extends FormSchema> = {
@@ -70,7 +70,7 @@ export const Form = <Schema extends FormSchema>({
 
   const { content, context } = useMemo<{
     content: ReactNode;
-    context: NonNullable<ContextType<typeof FormContext>>;
+    context: FormState<Schema>;
   }>(() => {
     if (isPending) {
       return {
@@ -80,6 +80,7 @@ export const Form = <Schema extends FormSchema>({
           disabled: true,
           errors: null,
           id,
+          schema,
           setData,
           status: "pending",
         },
@@ -92,6 +93,7 @@ export const Form = <Schema extends FormSchema>({
           disabled: disabled ?? false,
           errors: result.errors,
           id,
+          schema,
           setData,
           status: "error",
         },
@@ -104,6 +106,7 @@ export const Form = <Schema extends FormSchema>({
           disabled: true,
           errors: null,
           id,
+          schema,
           setData,
           status: "success",
         },
@@ -116,12 +119,13 @@ export const Form = <Schema extends FormSchema>({
           disabled: disabled ?? false,
           errors: null,
           id,
+          schema,
           setData,
           status: "idle",
         },
       };
     }
-  }, [children, data, disabled, id, isPending, renderSuccess, result, showSuccess]);
+  }, [children, data, disabled, id, isPending, renderSuccess, result, schema, showSuccess]);
 
   useEffect(() => {
     let timeout: number | undefined;
