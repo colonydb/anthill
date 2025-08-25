@@ -56,11 +56,14 @@ export const Form = <Schema extends FormSchema>({
 
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
-  const formAction = useCallback(async () => {
-    setServerIsPending(true);
-    setServerResult(await action(data));
-    setServerIsPending(false);
-  }, [action, data]);
+  const formAction = useCallback(
+    async (formData: FormData) => {
+      setServerIsPending(true);
+      setServerResult(await action({ data, formData }));
+      setServerIsPending(false);
+    },
+    [action, data],
+  );
 
   const result = clientResult ?? serverResult;
   const isPending = clientIsPending || serverIsPending;
