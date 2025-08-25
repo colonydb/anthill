@@ -44,12 +44,24 @@ export const TileSelect = <T extends string>({ autoFocus, disabled, id, name, op
               onChange={() => {
                 setState(option.value);
                 if (setValue) setValue(option.value);
+                if (form) {
+                  form.setData((current) => ({
+                    ...current,
+                    [name]: option.value,
+                  }));
+                }
               }}
               onClick={
                 checked
                   ? () => {
                       setState(null);
                       if (setValue) setValue(null);
+                      if (form) {
+                        form.setData((current) => ({
+                          ...current,
+                          [name]: null,
+                        }));
+                      }
                     }
                   : undefined
               }

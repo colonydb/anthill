@@ -30,13 +30,15 @@ export const StringInput = ({ autoFocus, disabled, id, name, placeholder, setVal
       disabled={disabled || form?.disabled}
       id={id ?? (form?.id ? `${form.id}:${name}` : name)}
       name={name}
-      onChange={
-        setValue
-          ? (event) => {
-              setValue(event.target.value);
-            }
-          : undefined
-      }
+      onChange={(event) => {
+        if (setValue) setValue(event.target.value);
+        if (form) {
+          form.setData((current) => ({
+            ...current,
+            [name]: event.target.value,
+          }));
+        }
+      }}
       placeholder={placeholder}
       type="text"
       value={"value" in props ? props.value : undefined}
