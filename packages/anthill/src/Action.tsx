@@ -11,6 +11,7 @@ type Props = {
   fontSize?: BaseFont;
   icon: ReactNode;
   id?: string;
+  padded?: boolean;
 } & (
   | {
       children: ReactNode;
@@ -22,22 +23,25 @@ type Props = {
     | {
         external?: boolean;
         href: string;
+        ref?: React.Ref<HTMLAnchorElement>;
       }
     | {
         onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+        ref?: React.Ref<HTMLButtonElement>;
       }
   );
 
-export const Action = ({ dangerous = false, disabled, fontSize, icon, id, title, ...props }: Props) =>
+export const Action = ({ dangerous = false, disabled, fontSize, icon, id, padded, title, ...props }: Props) =>
   "href" in props ? (
     <a
-      className={clsx(styles.action, dangerous ? styles.dangerous : undefined)}
+      className={clsx(styles.action, dangerous ? styles.dangerous : undefined, padded ? styles.padded : undefined)}
       href={disabled ? undefined : props.href}
       id={id}
-      target={props.external ? "_blank" : undefined}
+      ref={props.ref}
       style={{
         font: fontSize ? `var(--font-${fontSize})` : undefined,
       }}
+      target={props.external ? "_blank" : undefined}
       title={title}
     >
       {icon}
@@ -45,10 +49,11 @@ export const Action = ({ dangerous = false, disabled, fontSize, icon, id, title,
     </a>
   ) : (
     <button
-      className={clsx(styles.action, dangerous ? styles.dangerous : undefined)}
+      className={clsx(styles.action, dangerous ? styles.dangerous : undefined, padded ? styles.padded : undefined)}
       disabled={disabled ?? false}
       id={id}
       onClick={props.onClick}
+      ref={props.ref}
       style={{
         font: fontSize ? `var(--font-${fontSize})` : undefined,
       }}

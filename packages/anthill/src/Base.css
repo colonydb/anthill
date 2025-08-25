@@ -373,3 +373,10 @@
 body:has(dialog[open]) {
   overflow: hidden;
 }
+
+[popover] {
+  position: fixed;
+  &:not(:popover-open) {
+    display: none;
+  }
+}

@@ -253,6 +253,48 @@ const ActionPage = () => (
           ]}
         />
       </Section>
+      <Section title={<Heading>Padded</Heading>}>
+        <TabBlock
+          items={[
+            {
+              key: "specimen",
+              label: "Specimen",
+              content: (
+                <Specimen>
+                  <Action
+                    icon={<Icon symbol="External" />}
+                    onClick={() => {
+                      window.alert("Hello!");
+                    }}
+                    padded
+                  >
+                    Action
+                  </Action>
+                </Specimen>
+              ),
+            },
+            {
+              key: "code",
+              label: "Code",
+              content: (
+                <CodeBlock language="tsx">
+                  {js`
+                    <Action
+                      icon={<Icon symbol="External" />}
+                      onClick={() => {
+                        window.alert("Hello!");
+                      }}
+                      padded
+                    >
+                      Action
+                    </Action>
+                  `}
+                </CodeBlock>
+              ),
+            },
+          ]}
+        />
+      </Section>
     </CardContent>
   </Card>
 );

@@ -16,6 +16,10 @@
     color: light-dark(var(--color-red-s1), var(--color-red-t1));
   }
 
+  &.padded {
+    padding: 0.5rlh 2ch;
+  }
+
   @media screen and (hover: hover) {
     &:hover {
       color: var(--color-accent);

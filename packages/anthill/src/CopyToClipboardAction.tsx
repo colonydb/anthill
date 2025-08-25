@@ -1,11 +1,19 @@
 "use client";
 
-import { type ComponentProps, useState } from "react";
+import { useState } from "react";
 import { Action } from "./Action.js";
 import { Icon } from "./Icon.js";
+import type { BaseFont } from "./index.js";
 
-type Props = Omit<ComponentProps<typeof Action>, "icon" | "onClick"> & {
+type Props = {
+  dangerous?: boolean;
+  disabled?: boolean;
+  fontSize?: BaseFont;
+  id?: string;
+  padded?: boolean;
+  ref?: React.Ref<HTMLButtonElement>;
   text: string;
+  title?: string;
 };
 
 export const CopyToClipboardAction = ({ text, ...props }: Props) => {

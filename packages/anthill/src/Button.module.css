@@ -9,7 +9,7 @@
   color: light-dark(var(--color-black), var(--color-white));
   font: var(--font-regular-bold);
   outline-color: transparent;
-  padding: 0.5rlh 1rlh;
+  padding: 0.5rlh 2ch;
   text-align: center;
   transition:
     box-shadow 0.2s,

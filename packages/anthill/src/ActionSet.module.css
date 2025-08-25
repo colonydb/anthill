@@ -1,0 +1,14 @@
+.actionList {
+  background: white;
+  border-radius: 0.25rlh;
+  border: 1px solid #eee;
+  display: grid;
+  left: anchor(left);
+  position-try-fallbacks: flip-block, flip-inline;
+  top: anchor(bottom);
+  user-select: none;
+
+  & > * + * {
+    border-top: 1px solid #eee;
+  }
+}
