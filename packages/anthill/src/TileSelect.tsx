@@ -38,6 +38,7 @@ export const TileSelect = <T extends string>({ autoFocus, disabled, id, name, op
               autoFocus={autoFocus ?? false}
               className={styles.input}
               checked={checked}
+              defaultChecked={form && name in form.data ? typeof form.data[name] === option.value : undefined}
               disabled={disabled || form?.disabled}
               id={`${id ?? (form?.id ? `${form.id}:${name}` : name)}:${option.value}`}
               name={name}
