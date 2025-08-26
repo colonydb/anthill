@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { type JSX, type ReactNode, useContext } from "react";
 import type { Color } from "./index.js";
 import styles from "./MultiColumnStack.module.css";
@@ -9,6 +10,7 @@ import { formatColor } from "./utils/formatColor.js";
 const SPACING_LEVELS = ["p3", "p2", "p1", "00", "n1", "n2", "n3"] as const;
 
 type Props = {
+  allowBreaks?: boolean;
   children: ReactNode;
   color?: Color | [Color, Color];
   columns: number | string;
@@ -17,7 +19,15 @@ type Props = {
   tagName?: keyof JSX.IntrinsicElements;
 };
 
-export const MultiColumnStack = ({ children, color, columns, id, spacing, tagName: Tag = "div" }: Props) => {
+export const MultiColumnStack = ({
+  allowBreaks = false,
+  children,
+  color,
+  columns,
+  id,
+  spacing,
+  tagName: Tag = "div",
+}: Props) => {
   const contextLevel = useContext(SpacingLevelContext);
   const indexOfSpacing = spacing ? SPACING_LEVELS.indexOf(spacing) : undefined;
   const resolvedLevel =
@@ -26,7 +36,7 @@ export const MultiColumnStack = ({ children, color, columns, id, spacing, tagNam
   const resolvedSpacing = spacing ?? SPACING_LEVELS[resolvedLevel];
   return (
     <Tag
-      className={styles.container}
+      className={clsx(styles.container, allowBreaks ? styles.allowBreaks : undefined)}
       id={id}
       style={{
         "--gap": `var(--space-${resolvedSpacing})`,

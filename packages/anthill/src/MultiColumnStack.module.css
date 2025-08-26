@@ -1,13 +1,14 @@
 .container {
   column-rule: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
   display: block;
-  gap: 2rlh;
-
-  & > * {
-    break-inside: avoid;
-  }
+  gap: calc(var(--gap) * 2);
+  widows: 3;
 
   & > * + * {
     margin-top: var(--gap);
+  }
+
+  &:not(.allowBreaks) > * {
+    break-inside: avoid;
   }
 }

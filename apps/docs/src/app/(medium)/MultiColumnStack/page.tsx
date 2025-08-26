@@ -141,6 +141,74 @@ const MultiColumnStackPage = () => (
           ]}
         />
       </Section>
+      <Section title={<Heading>Allow Breaks</Heading>}>
+        <TabBlock
+          items={[
+            {
+              key: "specimen",
+              label: "Specimen",
+              content: (
+                <Specimen>
+                  <SpacingLevelContext.Provider value={4}>
+                    <MultiColumnStack allowBreaks columns={2}>
+                      <p>
+                        Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
+                        consequatur deleniti pariatur et sed voluptas iure. Labore et nostrum necessitatibus est sequi
+                        aut. Eligendi autem deleniti ut nemo. Neque consequatur deleniti pariatur et sed voluptas iure.
+                        Labore et nostrum necessitatibus est sequi aut.
+                      </p>
+                      <p>
+                        Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
+                        consequatur deleniti pariatur et sed voluptas iure. Labore et nostrum necessitatibus est sequi
+                        aut. Eligendi autem deleniti ut nemo. Neque consequatur deleniti pariatur et sed voluptas iure.
+                        Labore et nostrum necessitatibus est sequi aut.
+                      </p>
+                      <p>
+                        Quia non quis est repellat distinctio quibusdam quia in iure. Commodi iure dolorem est
+                        laboriosam voluptate incidunt ab totam harum laudantium harum quia dolor. Commodi iure dolorem
+                        est laboriosam voluptate incidunt ab totam harum laudantium harum quia dolor. Commodi iure
+                        dolorem est laboriosam voluptate incidunt ab totam harum laudantium harum quia dolor. Commodi
+                        iure dolorem est laboriosam voluptate incidunt ab totam harum laudantium harum quia dolor.
+                      </p>
+                    </MultiColumnStack>
+                  </SpacingLevelContext.Provider>
+                </Specimen>
+              ),
+            },
+            {
+              key: "code",
+              label: "Code",
+              content: (
+                <CodeBlock language="tsx">
+                  {js`
+                    <MultiColumnStack allowBreaks columns={2}>
+                      <p>
+                        Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
+                        consequatur deleniti pariatur et sed voluptas iure. Labore et nostrum necessitatibus est sequi
+                        aut. Eligendi autem deleniti ut nemo. Neque consequatur deleniti pariatur et sed voluptas iure.
+                        Labore et nostrum necessitatibus est sequi aut.
+                      </p>
+                      <p>
+                        Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
+                        consequatur deleniti pariatur et sed voluptas iure. Labore et nostrum necessitatibus est sequi
+                        aut. Eligendi autem deleniti ut nemo. Neque consequatur deleniti pariatur et sed voluptas iure.
+                        Labore et nostrum necessitatibus est sequi aut.
+                      </p>
+                      <p>
+                        Quia non quis est repellat distinctio quibusdam quia in iure. Commodi iure dolorem est
+                        laboriosam voluptate incidunt ab totam harum laudantium harum quia dolor. Commodi iure dolorem
+                        est laboriosam voluptate incidunt ab totam harum laudantium harum quia dolor. Commodi iure
+                        dolorem est laboriosam voluptate incidunt ab totam harum laudantium harum quia dolor. Commodi
+                        iure dolorem est laboriosam voluptate incidunt ab totam harum laudantium harum quia dolor.
+                      </p>
+                    </MultiColumnStack>
+                  `}
+                </CodeBlock>
+              ),
+            },
+          ]}
+        />
+      </Section>
     </CardContent>
   </Card>
 );
