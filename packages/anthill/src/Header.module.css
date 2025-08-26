@@ -1,6 +1,5 @@
 .container {
   &.withActions {
-    align-items: start;
     column-gap: 0.5rlh;
     display: grid;
     grid-template-columns: auto max-content;
