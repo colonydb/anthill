@@ -21,6 +21,8 @@ type Props<Schema extends FormSchema> = {
 
   initialData?: Partial<InferInput<Schema>>;
 
+  onSuccess?: (result: FormResult<Schema> & { ok: true }) => void;
+
   /**
    * If present, render a success state after a successful submission.
    */
@@ -43,6 +45,7 @@ export const Form = <Schema extends FormSchema>({
   disabled,
   id,
   initialData = {},
+  onSuccess,
   renderSuccess,
   repeatable = false,
   schema,
@@ -60,10 +63,12 @@ export const Form = <Schema extends FormSchema>({
   const formAction = useCallback(
     async (formData: FormData) => {
       setServerIsPending(true);
-      setServerResult(await action({ data, formData }));
+      const result = await action({ data, formData });
+      if (result.ok && onSuccess) onSuccess(result);
+      setServerResult(result);
       setServerIsPending(false);
     },
-    [action, data],
+    [action, data, onSuccess],
   );
 
   const result = clientResult ?? serverResult;
