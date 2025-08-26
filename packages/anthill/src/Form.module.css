@@ -1,0 +1,5 @@
+.container {
+  display: grid;
+  grid-auto-rows: minmax(0, auto);
+  grid-auto-columns: minmax(0, auto);
+}

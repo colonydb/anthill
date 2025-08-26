@@ -2,6 +2,7 @@
 
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import type { InferInput } from "valibot";
+import styles from "./Form.module.css";
 import { FormContext } from "./FormContext.js";
 import type { FormAction, FormResult, FormSchema, FormState } from "./index.js";
 import { parseData } from "./utils/parseData.js";
@@ -161,6 +162,7 @@ export const Form = <Schema extends FormSchema>({
   return (
     <form
       action={isPending ? undefined : formAction}
+      className={styles.container}
       onSubmit={(event) => {
         setClientResult(null);
         setClientIsPending(true);
