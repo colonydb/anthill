@@ -92,7 +92,7 @@ const RootLayout = ({ children }: Props) => (
                     <Link href="/Markdown">Markdown</Link>
                   </li>
                   <li>
-                    <Link href="/MutliColumnStack">MutliColumnStack</Link>
+                    <Link href="/MultiColumnStack">MultiColumnStack</Link>
                   </li>
                   <li>
                     <Link href="/PlainText">PlainText</Link>

@@ -2,7 +2,7 @@
 
 import { type JSX, type ReactNode, useContext } from "react";
 import type { Color } from "./index.js";
-import styles from "./MutliColumnStack.module.css";
+import styles from "./MultiColumnStack.module.css";
 import { SpacingLevelContext } from "./SpacingLevelContext.js";
 import { formatColor } from "./utils/formatColor.js";
 
@@ -17,7 +17,7 @@ type Props = {
   tagName?: keyof JSX.IntrinsicElements;
 };
 
-export const MutliColumnStack = ({ children, color, columns, id, spacing, tagName: Tag = "div" }: Props) => {
+export const MultiColumnStack = ({ children, color, columns, id, spacing, tagName: Tag = "div" }: Props) => {
   const contextLevel = useContext(SpacingLevelContext);
   const indexOfSpacing = spacing ? SPACING_LEVELS.indexOf(spacing) : undefined;
   const resolvedLevel =

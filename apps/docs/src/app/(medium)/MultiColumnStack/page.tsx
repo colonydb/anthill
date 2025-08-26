@@ -4,19 +4,19 @@ import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
 import { CodeBlock } from "@colonydb/anthill/CodeBlock";
 import { Heading } from "@colonydb/anthill/Heading";
-import { MutliColumnStack } from "@colonydb/anthill/MutliColumnStack";
+import { MultiColumnStack } from "@colonydb/anthill/MultiColumnStack";
 import { Section } from "@colonydb/anthill/Section";
 import { SpacingLevelContext } from "@colonydb/anthill/SpacingLevelContext";
 import { Specimen } from "@colonydb/anthill/Specimen";
 import { TabBlock } from "@colonydb/anthill/TabBlock";
 import js from "dedent";
 
-const MutliColumnStackPage = () => (
+const MultiColumnStackPage = () => (
   <Card header={<Heading>Stack</Heading>}>
     <CardContent>
       <CodeBlock language="tsx">
         {js`
-          import { MutliColumnStack } from "@colonydb/anthill/MutliColumnStack";
+          import { MultiColumnStack } from "@colonydb/anthill/MultiColumnStack";
         `}
       </CodeBlock>
       <Section title={<Heading>Basic</Heading>}>
@@ -28,7 +28,7 @@ const MutliColumnStackPage = () => (
               content: (
                 <Specimen>
                   <SpacingLevelContext.Provider value={4}>
-                    <MutliColumnStack columns={2}>
+                    <MultiColumnStack columns={2}>
                       <p>
                         Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
                         consequatur deleniti pariatur et sed voluptas iure. Labore et nostrum necessitatibus est sequi
@@ -47,7 +47,7 @@ const MutliColumnStackPage = () => (
                         Quia non quis est repellat distinctio quibusdam quia in iure. Commodi iure dolorem est
                         laboriosam voluptate incidunt ab totam harum laudantium harum quia dolor.
                       </p>
-                    </MutliColumnStack>
+                    </MultiColumnStack>
                   </SpacingLevelContext.Provider>
                 </Specimen>
               ),
@@ -58,7 +58,7 @@ const MutliColumnStackPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <MutliColumnStack columns={2}>
+                    <MultiColumnStack columns={2}>
                       <p>
                         Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
                         consequatur deleniti pariatur et sed voluptas iure. Labore et nostrum necessitatibus est sequi
@@ -77,7 +77,7 @@ const MutliColumnStackPage = () => (
                         Quia non quis est repellat distinctio quibusdam quia in iure. Commodi iure dolorem est
                         laboriosam voluptate incidunt ab totam harum laudantium harum quia dolor.
                       </p>
-                    </MutliColumnStack>
+                    </MultiColumnStack>
                   `}
                 </CodeBlock>
               ),
@@ -94,7 +94,7 @@ const MutliColumnStackPage = () => (
               content: (
                 <Specimen>
                   <SpacingLevelContext.Provider value={4}>
-                    <MutliColumnStack columns="50px">
+                    <MultiColumnStack columns="50px">
                       <p>One</p>
                       <p>Two</p>
                       <p>Three</p>
@@ -108,7 +108,7 @@ const MutliColumnStackPage = () => (
                       <p>Eleven</p>
                       <p>Twelve</p>
                       <p>Thirteen</p>
-                    </MutliColumnStack>
+                    </MultiColumnStack>
                   </SpacingLevelContext.Provider>
                 </Specimen>
               ),
@@ -119,7 +119,7 @@ const MutliColumnStackPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <MutliColumnStack columns="50px">
+                    <MultiColumnStack columns="50px">
                       <p>One</p>
                       <p>Two</p>
                       <p>Three</p>
@@ -133,7 +133,7 @@ const MutliColumnStackPage = () => (
                       <p>Eleven</p>
                       <p>Twelve</p>
                       <p>Thirteen</p>
-                    </MutliColumnStack>
+                    </MultiColumnStack>
                   `}
                 </CodeBlock>
               ),
@@ -145,4 +145,4 @@ const MutliColumnStackPage = () => (
   </Card>
 );
 
-export default MutliColumnStackPage;
+export default MultiColumnStackPage;
