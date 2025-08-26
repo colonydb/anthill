@@ -6,6 +6,7 @@ import { CardTable } from "@colonydb/anthill/CardTable";
 import { CodeBlock } from "@colonydb/anthill/CodeBlock";
 import { Heading } from "@colonydb/anthill/Heading";
 import { HeadingLevelContext } from "@colonydb/anthill/HeadingLevelContext";
+import { Icon } from "@colonydb/anthill/Icon";
 import { PlainText } from "@colonydb/anthill/PlainText";
 import { Section } from "@colonydb/anthill/Section";
 import { Specimen } from "@colonydb/anthill/Specimen";
@@ -78,7 +79,7 @@ const HeadingPage = () => (
             ]}
           />
         </Section>
-        <Section title={<Heading>Specifc Tag</Heading>}>
+        <Section title={<Heading>Specific Tag</Heading>}>
           <TabBlock
             items={[
               {
@@ -99,6 +100,40 @@ const HeadingPage = () => (
                   <CodeBlock language="tsx">
                     {js`
                       <Heading tagName="h5">Example</Heading>
+                    `}
+                  </CodeBlock>
+                ),
+              },
+            ]}
+          />
+        </Section>
+        <Section title={<Heading>With Icon</Heading>}>
+          <TabBlock
+            items={[
+              {
+                key: "specimen",
+                label: "Specimen",
+                content: (
+                  <HeadingLevelContext.Provider value={1}>
+                    <Specimen>
+                      <Heading tagName="h5">
+                        <Icon symbol="Pin" color="blue-00" />
+                        Example
+                      </Heading>
+                    </Specimen>
+                  </HeadingLevelContext.Provider>
+                ),
+              },
+              {
+                key: "code",
+                label: "Code",
+                content: (
+                  <CodeBlock language="tsx">
+                    {js`
+                      <Heading tagName="h5">
+                        <Icon symbol="Pin" color="blue-00" />
+                        Example
+                      </Heading>
                     `}
                   </CodeBlock>
                 ),

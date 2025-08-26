@@ -1,4 +1,7 @@
 .heading {
+  display: flex;
+  gap: 0.5ch;
+
   &.heading1 {
     font: var(--font-title);
   }
