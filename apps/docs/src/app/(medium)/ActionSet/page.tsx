@@ -86,7 +86,55 @@ const ActionSetPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <ActionSet actions={[{ content: "AAA", key: "a" }]} title="actions" />
+                    <ActionSet
+                      actions={[
+                        {
+                          content: (
+                            <Action
+                              icon={<Icon symbol="Copy" />}
+                              onClick={() => {
+                                window.alert("example a");
+                              }}
+                              padded
+                            >
+                              Example A
+                            </Action>
+                          ),
+                          key: "a",
+                        },
+                        {
+                          content: (
+                            <Action
+                              icon={<Icon symbol="Copy" />}
+                              onClick={() => {
+                                window.alert("example b");
+                              }}
+                              padded
+                            >
+                              Example B
+                            </Action>
+                          ),
+                          key: "b",
+                        },
+                        {
+                          content: (
+                            <Action
+                              icon={<Icon symbol="Copy" />}
+                              onClick={() => {
+                                window.alert("example c");
+                              }}
+                              padded
+                            >
+                              Example C
+                            </Action>
+                          ),
+                          key: "c",
+                        },
+                      ]}
+                      title="actions"
+                    >
+                      Menu
+                    </ActionSet>
                   `}
                 </CodeBlock>
               ),

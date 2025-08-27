@@ -4,12 +4,14 @@ import { type ReactNode, useRef } from "react";
 import { Action } from "./Action.js";
 import styles from "./ActionSet.module.css";
 import { Icon } from "./Icon.js";
-import type { BaseFont } from "./index.js";
+import type { BaseFont, Color } from "./index.js";
 
 type Props = {
   actions: Array<{ content: ReactNode; key: string }>;
+  color?: Color | [Color, Color];
   disabled?: boolean;
   fontSize?: BaseFont;
+  icon?: ReactNode;
   id?: string;
 } & (
   | {
@@ -19,13 +21,14 @@ type Props = {
   | { title: string }
 );
 
-export const ActionSet = ({ actions, ...actionProps }: Props) => {
+export const ActionSet = ({ actions, color, icon, ...actionProps }: Props) => {
   const actionRef = useRef<HTMLButtonElement>(null);
   const actionListRef = useRef<HTMLDivElement>(null);
   return (
     <>
       <Action
-        icon={<Icon symbol="External" />}
+        color={color}
+        icon={icon ?? <Icon symbol="Kebab" />}
         onClick={() => {
           if (actionRef.current && actionListRef.current) {
             console.log("toggle");

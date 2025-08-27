@@ -11,7 +11,7 @@ type Props = {
   render: (closeDialog: () => void) => ReactNode;
   stable?: boolean;
   width?: "auto" | Width;
-} & Pick<ComponentProps<typeof Action>, "disabled" | "fontSize" | "icon" | "id" | "padded">;
+} & Pick<ComponentProps<typeof Action>, "color" | "disabled" | "fontSize" | "icon" | "id" | "padded">;
 
 export const Dialog = ({ dismissible = false, render, stable = false, width = "auto", ...actionProps }: Props) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
