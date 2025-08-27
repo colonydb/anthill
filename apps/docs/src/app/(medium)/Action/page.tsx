@@ -295,6 +295,48 @@ const ActionPage = () => (
           ]}
         />
       </Section>
+      <Section title={<Heading>Custom Color</Heading>}>
+        <TabBlock
+          items={[
+            {
+              key: "specimen",
+              label: "Specimen",
+              content: (
+                <Specimen>
+                  <Action
+                    color="blue-00"
+                    icon={<Icon symbol="External" />}
+                    onClick={() => {
+                      window.alert("Hello!");
+                    }}
+                  >
+                    Action
+                  </Action>
+                </Specimen>
+              ),
+            },
+            {
+              key: "code",
+              label: "Code",
+              content: (
+                <CodeBlock language="tsx">
+                  {js`
+                    <Action
+                      color="blue-00"
+                      icon={<Icon symbol="External" />}
+                      onClick={() => {
+                        window.alert("Hello!");
+                      }}
+                    >
+                      Action
+                    </Action>
+                  `}
+                </CodeBlock>
+              ),
+            },
+          ]}
+        />
+      </Section>
     </CardContent>
   </Card>
 );

@@ -1,5 +1,7 @@
 .action {
+  --color: currentColor;
   align-items: center;
+  color: var(--color);
   column-gap: 0.5ch;
   cursor: pointer;
   display: grid;

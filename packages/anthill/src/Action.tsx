@@ -41,7 +41,7 @@ export const Action = ({ color, dangerous = false, disabled, fontSize, icon, id,
       id={id}
       ref={props.ref}
       style={{
-        color: formatColor(color),
+        "--color": formatColor(color),
         font: fontSize ? `var(--font-${fontSize})` : undefined,
       }}
       target={props.external ? "_blank" : undefined}
@@ -58,7 +58,7 @@ export const Action = ({ color, dangerous = false, disabled, fontSize, icon, id,
       onClick={props.onClick}
       ref={props.ref}
       style={{
-        color: formatColor(color),
+        "--color": formatColor(color),
         font: fontSize ? `var(--font-${fontSize})` : undefined,
       }}
       title={title}
