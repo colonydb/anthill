@@ -2,55 +2,25 @@ import clsx from "clsx";
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { refractor } from "refractor";
+import css from "refractor/css";
+import javascript from "refractor/javascript";
+import json from "refractor/json";
+import markdown from "refractor/markdown";
+import markup from "refractor/markup";
 import tsx from "refractor/tsx";
+import typescript from "refractor/typescript";
 import "./CodeBlock.css";
 import { useMemo } from "react";
 import styles from "./CodeBlock.module.css";
 import { CopyToClipboardAction } from "./CopyToClipboardAction.js";
 
+refractor.register(css);
+refractor.register(javascript);
+refractor.register(json);
+refractor.register(markdown);
+refractor.register(markup);
 refractor.register(tsx);
-
-const LANGUAGES = new Set([
-  // built-in
-  "clike",
-  "c",
-  "cpp",
-  "arduino",
-  "bash",
-  "csharp",
-  "markup",
-  "css",
-  "diff",
-  "go",
-  "ini",
-  "java",
-  "regex",
-  "javascript",
-  "json",
-  "kotlin",
-  "less",
-  "lua",
-  "makefile",
-  "yaml",
-  "markdown",
-  "objectivec",
-  "perl",
-  "markupTemplating",
-  "php",
-  "python",
-  "r",
-  "ruby",
-  "rust",
-  "sass",
-  "scss",
-  "sql",
-  "swift",
-  "typescript",
-  "basic",
-  "vbnet",
-  // registered
-  "tsx",
-]);
+refractor.register(typescript);
 
 type Props = {
   children: string;
@@ -62,7 +32,7 @@ type Props = {
 export const CodeBlock = ({ children, id, language, transparent }: Props) => {
   const reactNode = useMemo(
     () =>
-      toJsxRuntime(refractor.highlight(children, LANGUAGES.has(language) ? language : "plaintext"), {
+      toJsxRuntime(refractor.highlight(children, refractor.registered(language) ? language : "plaintext"), {
         Fragment,
         jsx,
         jsxs,
