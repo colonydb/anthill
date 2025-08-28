@@ -15,6 +15,7 @@
     box-shadow 0.2s,
     outline-color 0.2s,
     transform 0.2s;
+  user-select: none;
 
   &:focus-visible {
     outline-offset: 2px;
