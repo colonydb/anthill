@@ -1,28 +1,20 @@
 import clsx from "clsx";
 import type { HTMLAttributes, JSX, ReactNode } from "react";
-import styles from "./Inline.module.css";
+import styles from "./Block.module.css";
 import type { Font, Hue } from "./index.js";
 
 type Props = {
   children: ReactNode;
   font?: Font;
   hue?: Hue;
+  indent?: boolean;
   tagName?: keyof JSX.IntrinsicElements;
-  truncated?: boolean;
 } & Pick<HTMLAttributes<Element>, "className" | "id" | "lang" | "style" | "tabIndex">;
 
-export const Inline = ({
-  className,
-  children,
-  font,
-  hue,
-  tagName: Tag = "span",
-  truncated = false,
-  ...props
-}: Props) => (
+export const Block = ({ className, children, font, hue, indent = false, tagName: Tag = "div", ...props }: Props) => (
   <Tag
     {...props}
-    className={clsx(className, styles.container, truncated ? styles.truncated : undefined)}
+    className={clsx(className, styles.container, indent ? styles.indent : undefined)}
     style={{
       ...props.style,
       color: hue ? `light-dark(var(--color-${hue}-s1), var(--color-${hue}-t1))` : undefined,
