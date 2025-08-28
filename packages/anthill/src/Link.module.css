@@ -1,6 +1,5 @@
 .link {
   cursor: pointer;
-  display: inline-flex;
   outline-color: transparent;
   text-decoration-line: underline;
   text-decoration-color: var(--color-accent);
