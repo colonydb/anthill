@@ -1,0 +1,9 @@
+.container {
+  background: var(--color-accent);
+  border-radius: 0.25rlh;
+  color: var(--color-contrast);
+  display: inline-block;
+  font: var(--font-tiny);
+  padding: 0.125rlh 1ch;
+  text-transform: uppercase;
+}
