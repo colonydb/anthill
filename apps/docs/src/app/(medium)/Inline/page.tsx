@@ -2,18 +2,18 @@ import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
 import { CodeBlock } from "@colonydb/anthill/CodeBlock";
 import { Heading } from "@colonydb/anthill/Heading";
-import { PlainText } from "@colonydb/anthill/PlainText";
+import { Inline } from "@colonydb/anthill/Inline";
 import { Section } from "@colonydb/anthill/Section";
 import { Specimen } from "@colonydb/anthill/Specimen";
 import { TabBlock } from "@colonydb/anthill/TabBlock";
 import js from "dedent";
 
-const PlainTextPage = () => (
-  <Card header={<Heading>PlainText</Heading>}>
+const InlinePage = () => (
+  <Card header={<Heading>Inline</Heading>}>
     <CardContent>
       <CodeBlock language="tsx">
         {js`
-          import { PlainText } from "@colonydb/anthill/PlainText";
+          import { Inline } from "@colonydb/anthill/Inline";
         `}
       </CodeBlock>
       <Section title={<Heading>Basic</Heading>}>
@@ -24,7 +24,7 @@ const PlainTextPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <PlainText>Example</PlainText>
+                  <Inline>Example</Inline>
                 </Specimen>
               ),
             },
@@ -34,7 +34,7 @@ const PlainTextPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <PlainText>Example</PlainText>
+                    <Inline>Example</Inline>
                   `}
                 </CodeBlock>
               ),
@@ -50,7 +50,7 @@ const PlainTextPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <PlainText font="regular-monospace">Example</PlainText>
+                  <Inline font="regular-monospace">Example</Inline>
                 </Specimen>
               ),
             },
@@ -60,7 +60,7 @@ const PlainTextPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <PlainText font="regular-monospace">Example</PlainText>
+                    <Inline font="regular-monospace">Example</Inline>
                   `}
                 </CodeBlock>
               ),
@@ -76,7 +76,7 @@ const PlainTextPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <PlainText hue="green">Example</PlainText>
+                  <Inline hue="green">Example</Inline>
                 </Specimen>
               ),
             },
@@ -86,7 +86,7 @@ const PlainTextPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <PlainText hue="green">Example</PlainText>
+                    <Inline hue="green">Example</Inline>
                   `}
                 </CodeBlock>
               ),
@@ -102,14 +102,14 @@ const PlainTextPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <PlainText truncated>
+                  <Inline truncated>
                     Voluptates et facere repudiandae corrupti qui debitis beatae rem sed non accusantium. Rerum
                     repudiandae expedita voluptatibus fugiat consequatur non quia iure omnis est nihil eligendi.
                     Sapiente alias consequatur iusto occaecati veniam delectus laudantium commodi qui laborum error.
                     Debitis consequuntur minima ipsum aperiam omnis nesciunt quia minima corporis laudantium voluptas
                     assumenda ut eos. Et tempore ad distinctio exercitationem fugiat repellat. Beatae repudiandae
                     voluptatem sint aut eos quibusdam qui omnis consequatur aliquid et sed facere quia.
-                  </PlainText>
+                  </Inline>
                 </Specimen>
               ),
             },
@@ -119,7 +119,7 @@ const PlainTextPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <PlainText truncated>
+                    <Inline truncated>
                       Voluptates et facere repudiandae corrupti qui debitis beatae
                       rem sed non accusantium. Rerum repudiandae expedita
                       voluptatibus fugiat consequatur non quia iure omnis est
@@ -130,7 +130,7 @@ const PlainTextPage = () => (
                       Et tempore ad distinctio exercitationem fugiat repellat.
                       Beatae repudiandae voluptatem sint aut eos quibusdam qui
                       omnis consequatur aliquid et sed facere quia.
-                    </PlainText>
+                    </Inline>
                   `}
                 </CodeBlock>
               ),
@@ -146,7 +146,7 @@ const PlainTextPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <PlainText tagName="strong">Example</PlainText>
+                  <Inline tagName="strong">Example</Inline>
                 </Specimen>
               ),
             },
@@ -156,7 +156,7 @@ const PlainTextPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <PlainText tagName="strong">Example</PlainText>
+                    <Inline tagName="strong">Example</Inline>
                   `}
                 </CodeBlock>
               ),
@@ -168,4 +168,4 @@ const PlainTextPage = () => (
   </Card>
 );
 
-export default PlainTextPage;
+export default InlinePage;

@@ -7,7 +7,7 @@ import { CodeBlock } from "@colonydb/anthill/CodeBlock";
 import { Heading } from "@colonydb/anthill/Heading";
 import { HeadingLevelContext } from "@colonydb/anthill/HeadingLevelContext";
 import { Icon } from "@colonydb/anthill/Icon";
-import { PlainText } from "@colonydb/anthill/PlainText";
+import { Inline } from "@colonydb/anthill/Inline";
 import { Section } from "@colonydb/anthill/Section";
 import { Specimen } from "@colonydb/anthill/Specimen";
 import { Stack } from "@colonydb/anthill/Stack";
@@ -152,7 +152,7 @@ const HeadingPage = () => (
         rows={([1, 2, 3, 4, 5, 6] as const).map((level) => ({
           key: level,
           values: {
-            level: <PlainText font="tiny-monospace">{level.toString()}</PlainText>,
+            level: <Inline font="tiny-monospace">{level.toString()}</Inline>,
             specimen: (
               <Specimen>
                 <Section headingLevel={level} title={<Heading>Example</Heading>}>

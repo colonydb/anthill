@@ -7,7 +7,7 @@ import { Form } from "@colonydb/anthill/Form";
 import { FormErrorBanner } from "@colonydb/anthill/FormErrorBanner";
 import { FormFooter } from "@colonydb/anthill/FormFooter";
 import { Heading } from "@colonydb/anthill/Heading";
-import { PlainText } from "@colonydb/anthill/PlainText";
+import { Inline } from "@colonydb/anthill/Inline";
 import { Section } from "@colonydb/anthill/Section";
 import { Specimen } from "@colonydb/anthill/Specimen";
 import { Stack } from "@colonydb/anthill/Stack";
@@ -78,7 +78,7 @@ const FormPage = () => (
                     action={async () => ({ ok: true, data: {} })}
                     id="customSuccessExample"
                     initialData={{}}
-                    renderSuccess={() => <PlainText font="hero">Success!</PlainText>}
+                    renderSuccess={() => <Inline font="hero">Success!</Inline>}
                     schema={v.object({})}
                   >
                     <FormFooter actionLabel="Submit" />
@@ -96,7 +96,7 @@ const FormPage = () => (
                       action={async () => ({ ok: true, data: {} })}
                       id="customSuccessExample"
                       initialData={{}}
-                      renderSuccess={() => <PlainText font="hero">Success!</PlainText>}
+                      renderSuccess={() => <Inline font="hero">Success!</Inline>}
                       schema={v.object({})}
                     >
                       <FormFooter actionLabel="Submit" />

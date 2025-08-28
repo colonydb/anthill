@@ -5,7 +5,7 @@ import { Button } from "./Button.js";
 import { FormContext } from "./FormContext.js";
 import styles from "./FormFooter.module.css";
 import { Icon } from "./Icon.js";
-import { PlainText } from "./PlainText.js";
+import { Inline } from "./Inline.js";
 
 type Props = {
   actionLabel: string;
@@ -31,23 +31,23 @@ export const FormFooter = ({ actionLabel, children, dangerous, secondaryAction, 
         {secondaryAction ? <div className={styles.button}>{secondaryAction}</div> : null}
         {formContext?.status === "pending" ? (
           <div className={styles.status}>
-            <PlainText hue="gray">
+            <Inline hue="gray">
               <Icon symbol="Processing" /> Processing…
-            </PlainText>
+            </Inline>
           </div>
         ) : null}
         {formContext?.status === "error" ? (
           <div className={styles.status}>
-            <PlainText hue="red">
+            <Inline hue="red">
               <Icon symbol="Warning" /> {issueCount === 1 ? "1 issue" : `${issueCount} issues`}
-            </PlainText>
+            </Inline>
           </div>
         ) : null}
         {formContext?.status === "success" ? (
           <div className={styles.status}>
-            <PlainText hue="green">
+            <Inline hue="green">
               <Icon symbol="Tick" /> Success!
-            </PlainText>
+            </Inline>
           </div>
         ) : null}
       </div>

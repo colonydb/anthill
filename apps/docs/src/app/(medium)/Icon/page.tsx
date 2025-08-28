@@ -4,8 +4,8 @@ import { CardTable } from "@colonydb/anthill/CardTable";
 import { CodeBlock } from "@colonydb/anthill/CodeBlock";
 import { Heading } from "@colonydb/anthill/Heading";
 import { Icon } from "@colonydb/anthill/Icon";
+import { Inline } from "@colonydb/anthill/Inline";
 import * as icons from "@colonydb/anthill/icons";
-import { PlainText } from "@colonydb/anthill/PlainText";
 import { Section } from "@colonydb/anthill/Section";
 import { Specimen } from "@colonydb/anthill/Specimen";
 import { Stack } from "@colonydb/anthill/Stack";
@@ -142,7 +142,7 @@ const IconPage = () => (
         rows={(Object.keys(icons) as Array<keyof typeof icons>).map((name) => ({
           key: name,
           values: {
-            symbol: <PlainText font="tiny-monospace">{name}</PlainText>,
+            symbol: <Inline font="tiny-monospace">{name}</Inline>,
             tiny: (
               <Specimen center>
                 <Icon symbol={name} fontSize="tiny" />

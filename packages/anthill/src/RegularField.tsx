@@ -5,7 +5,7 @@ import { FormContext } from "./FormContext.js";
 import { FormErrorBanner } from "./FormErrorBanner.js";
 import { Heading } from "./Heading.js";
 import { HeadingLevelContext } from "./HeadingLevelContext.js";
-import { PlainText } from "./PlainText.js";
+import { Inline } from "./Inline.js";
 import styles from "./RegularField.module.css";
 import { Section } from "./Section.js";
 import { clampHeadingLevel } from "./utils/clampHeadingLevel.js";
@@ -39,9 +39,9 @@ export const RegularField = ({ children, errors, inputId, label, name, required 
           )}
           {required ? (
             <div>
-              <PlainText font="small-italic" hue="gray">
+              <Inline font="small-italic" hue="gray">
                 Required
-              </PlainText>
+              </Inline>
             </div>
           ) : null}
         </div>

@@ -1,5 +1,5 @@
 import { Heading } from "@colonydb/anthill/Heading";
-import { PlainText } from "@colonydb/anthill/PlainText";
+import { Inline } from "@colonydb/anthill/Inline";
 import { Section } from "@colonydb/anthill/Section";
 import styles from "./page.module.css";
 
@@ -7,13 +7,13 @@ const WidthsPage = () => (
   <Section title={<Heading>Widths</Heading>}>
     <div className={styles.container}>
       <div>
-        <PlainText font="tiny-monospace">wide</PlainText>
+        <Inline font="tiny-monospace">wide</Inline>
       </div>
       <div>
-        <PlainText font="tiny-monospace">medium</PlainText>
+        <Inline font="tiny-monospace">medium</Inline>
       </div>
       <div>
-        <PlainText font="tiny-monospace">narrow</PlainText>
+        <Inline font="tiny-monospace">narrow</Inline>
       </div>
     </div>
   </Section>

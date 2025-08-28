@@ -4,15 +4,15 @@ import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
 import { Header } from "@colonydb/anthill/Header";
 import { Heading } from "@colonydb/anthill/Heading";
+import { Inline } from "@colonydb/anthill/Inline";
 import { Markdown } from "@colonydb/anthill/Markdown";
-import { PlainText } from "@colonydb/anthill/PlainText";
 import { Section } from "@colonydb/anthill/Section";
 import md from "dedent";
 
 const HomePage = () => (
   <Section
     title={
-      <Header description={<PlainText font="small">ColonyDB&apos;s design system.</PlainText>}>
+      <Header description={<Inline font="small">ColonyDB&apos;s design system.</Inline>}>
         <Heading>Anthill</Heading>
       </Header>
     }

@@ -1,7 +1,7 @@
 import { Card } from "@colonydb/anthill/Card";
 import { CardTable } from "@colonydb/anthill/CardTable";
 import { Heading } from "@colonydb/anthill/Heading";
-import { PlainText } from "@colonydb/anthill/PlainText";
+import { Inline } from "@colonydb/anthill/Inline";
 import { Section } from "@colonydb/anthill/Section";
 import { Specimen } from "@colonydb/anthill/Specimen";
 
@@ -33,7 +33,7 @@ const TypographyPage = () => (
         ].map((font) => ({
           key: font,
           values: {
-            name: <PlainText font="tiny-monospace">{font}</PlainText>,
+            name: <Inline font="tiny-monospace">{font}</Inline>,
             specimen: (
               <Specimen>
                 <p style={{ font: `var(--font-${font})` }}>
