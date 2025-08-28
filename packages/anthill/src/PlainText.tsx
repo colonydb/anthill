@@ -1,22 +1,21 @@
 import clsx from "clsx";
 import type { JSX, ReactNode } from "react";
-import type { Color, Font } from "./index.js";
+import type { Font, Hue } from "./index.js";
 import styles from "./PlainText.module.css";
-import { formatColor } from "./utils/formatColor.js";
 
 type Props = {
   children: ReactNode;
-  color?: Color | [Color, Color];
+  hue?: Hue;
   font?: Font;
   tagName?: keyof JSX.IntrinsicElements;
   truncated?: boolean;
 };
 
-export const PlainText = ({ children, color, font, tagName: Tag = "span", truncated = false }: Props) => (
+export const PlainText = ({ children, hue, font, tagName: Tag = "span", truncated = false }: Props) => (
   <Tag
-    className={clsx(truncated ? styles.truncated : undefined)}
+    className={clsx(styles.container, truncated ? styles.truncated : undefined)}
     style={{
-      color: formatColor(color),
+      color: hue ? `light-dark(var(--color-${hue}-s1), var(--color-${hue}-t1))` : undefined,
       font: font ? `var(--font-${font})` : undefined,
     }}
   >

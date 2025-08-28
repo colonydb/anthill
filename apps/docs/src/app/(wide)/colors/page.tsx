@@ -4,7 +4,6 @@ import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
 import { Header } from "@colonydb/anthill/Header";
 import { Heading } from "@colonydb/anthill/Heading";
-import { PlainText } from "@colonydb/anthill/PlainText";
 import { Section } from "@colonydb/anthill/Section";
 import Config from "../../Config";
 import styles from "./page.module.css";
@@ -33,9 +32,7 @@ const ColorPage = () => (
               gridColumnEnd: "span 11",
             }}
           >
-            <PlainText color="contrast" font="tiny-monospace">
-              accent
-            </PlainText>
+            <span style={{ color: "var(--color-contrast)", font: "var(--font-tiny-monospace)" }}>accent</span>
           </div>
           <div
             className={styles.swatch}
@@ -45,7 +42,7 @@ const ColorPage = () => (
               gridColumnEnd: "span 11",
             }}
           >
-            <PlainText font="tiny-monospace">contrast</PlainText>
+            <span style={{ font: "var(--font-tiny-monospace)" }}>contrast</span>
           </div>
         </div>
         <div className={styles.swatchContainer}>
@@ -56,9 +53,7 @@ const ColorPage = () => (
               gridColumn: "1 / -1",
             }}
           >
-            <PlainText color="white" font="tiny-monospace">
-              black
-            </PlainText>
+            <span style={{ color: "var(--color-white)", font: "var(--font-tiny-monospace)" }}>black</span>
           </div>
           {SHADES.flatMap((tone) =>
             HUES.flatMap((hue) => (
@@ -69,7 +64,9 @@ const ColorPage = () => (
                   background: `var(--color-${hue}-${tone})`,
                 }}
               >
-                <PlainText color="white" font="tiny-monospace">{`${hue}-${tone}`}</PlainText>
+                <span
+                  style={{ color: "var(--color-white)", font: "var(--font-tiny-monospace)" }}
+                >{`${hue}-${tone}`}</span>
               </div>
             )),
           )}
@@ -81,7 +78,7 @@ const ColorPage = () => (
                 background: `var(--color-${hue}-00)`,
               }}
             >
-              <PlainText color="contrast" font="tiny-monospace">{`${hue}-00`}</PlainText>
+              <span style={{ color: "var(--color-contrast)", font: "var(--font-tiny-monospace)" }}>{`${hue}-00`}</span>
             </div>
           ))}
           {TINTS.flatMap((tone) =>
@@ -93,7 +90,9 @@ const ColorPage = () => (
                   background: `var(--color-${hue}-${tone})`,
                 }}
               >
-                <PlainText color="black" font="tiny-monospace">{`${hue}-${tone}`}</PlainText>
+                <span
+                  style={{ color: "var(--color-black)", font: "var(--font-tiny-monospace)" }}
+                >{`${hue}-${tone}`}</span>
               </div>
             )),
           )}
@@ -104,9 +103,7 @@ const ColorPage = () => (
               gridColumn: "1 / -1",
             }}
           >
-            <PlainText color="black" font="tiny-monospace">
-              white
-            </PlainText>
+            <span style={{ color: "var(--color-black)", font: "var(--font-tiny-monospace)" }}>white</span>
           </div>
         </div>
       </CardContent>

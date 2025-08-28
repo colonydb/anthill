@@ -39,7 +39,7 @@ export const RegularField = ({ children, errors, inputId, label, name, required 
           )}
           {required ? (
             <div>
-              <PlainText font="small-italic" color={["gray-s1", "gray-t1"]}>
+              <PlainText font="small-italic" hue="gray">
                 Required
               </PlainText>
             </div>

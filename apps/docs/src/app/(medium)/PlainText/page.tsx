@@ -68,7 +68,7 @@ const PlainTextPage = () => (
           ]}
         />
       </Section>
-      <Section title={<Heading>Coloured</Heading>}>
+      <Section title={<Heading>Custom Colour</Heading>}>
         <TabBlock
           items={[
             {
@@ -76,7 +76,7 @@ const PlainTextPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <PlainText color={["green-s3", "green-t3"]}>Example</PlainText>
+                  <PlainText hue="green">Example</PlainText>
                 </Specimen>
               ),
             },
@@ -86,7 +86,7 @@ const PlainTextPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <PlainText color={["green-s3", "green-t3"]}>Example</PlainText>
+                    <PlainText hue="green">Example</PlainText>
                   `}
                 </CodeBlock>
               ),

@@ -31,21 +31,21 @@ export const FormFooter = ({ actionLabel, children, dangerous, secondaryAction, 
         {secondaryAction ? <div className={styles.button}>{secondaryAction}</div> : null}
         {formContext?.status === "pending" ? (
           <div className={styles.status}>
-            <PlainText color={["gray-s1", "gray-t1"]}>
+            <PlainText hue="gray">
               <Icon symbol="Processing" /> Processing…
             </PlainText>
           </div>
         ) : null}
         {formContext?.status === "error" ? (
           <div className={styles.status}>
-            <PlainText color={["red-s1", "red-t1"]}>
+            <PlainText hue="red">
               <Icon symbol="Warning" /> {issueCount === 1 ? "1 issue" : `${issueCount} issues`}
             </PlainText>
           </div>
         ) : null}
         {formContext?.status === "success" ? (
           <div className={styles.status}>
-            <PlainText color={["green-s1", "green-t1"]}>
+            <PlainText hue="green">
               <Icon symbol="Tick" /> Success!
             </PlainText>
           </div>
