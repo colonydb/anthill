@@ -304,7 +304,7 @@ const ActionPage = () => (
               content: (
                 <Specimen>
                   <Action
-                    color="blue-00"
+                    hue="blue"
                     icon={<Icon symbol="External" />}
                     onClick={() => {
                       window.alert("Hello!");
@@ -322,7 +322,7 @@ const ActionPage = () => (
                 <CodeBlock language="tsx">
                   {js`
                     <Action
-                      color="blue-00"
+                      hue="blue"
                       icon={<Icon symbol="External" />}
                       onClick={() => {
                         window.alert("Hello!");

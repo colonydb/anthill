@@ -1,23 +1,16 @@
 import type { ComponentProps } from "react";
 import styles from "./Banner.module.css";
-import type { Hue } from "./index.js";
 import { Section } from "./Section.js";
 
-type Props = {
-  color?: Hue;
-} & Omit<ComponentProps<typeof Section>, "color">;
+type Props = Omit<ComponentProps<typeof Section>, "muted">;
 
-export const Banner = ({ color, ...props }: Props) => (
+export const Banner = ({ hue = "gray", ...props }: Props) => (
   <div
     className={styles.container}
-    style={
-      color
-        ? {
-            background: `light-dark(var(--color-${color}-t5), var(--color-${color}-s7))`,
-          }
-        : undefined
-    }
+    style={{
+      background: `light-dark(var(--color-${hue}-t7), var(--color-${hue}-s7))`,
+    }}
   >
-    <Section color={color ? [`${color}-s5`, `${color}-t5`] : undefined} {...props} />
+    <Section hue={hue} {...props} />
   </div>
 );

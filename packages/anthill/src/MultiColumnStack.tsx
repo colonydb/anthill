@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { type JSX, type ReactNode, useContext } from "react";
-import type { Color } from "./index.js";
+import type { Hue } from "./index.js";
 import styles from "./MultiColumnStack.module.css";
 import { SpacingLevelContext } from "./SpacingLevelContext.js";
 import { formatColor } from "./utils/formatColor.js";
@@ -12,9 +12,10 @@ const SPACING_LEVELS = ["p3", "p2", "p1", "00", "n1", "n2", "n3"] as const;
 type Props = {
   allowBreaks?: boolean;
   children: ReactNode;
-  color?: Color | [Color, Color];
   columns: number | string;
+  hue?: Hue;
   id?: string;
+  muted?: boolean;
   spacing?: (typeof SPACING_LEVELS)[number];
   tagName?: keyof JSX.IntrinsicElements;
 };
@@ -22,9 +23,10 @@ type Props = {
 export const MultiColumnStack = ({
   allowBreaks = false,
   children,
-  color,
   columns,
+  hue,
   id,
+  muted,
   spacing,
   tagName: Tag = "div",
 }: Props) => {
@@ -40,7 +42,7 @@ export const MultiColumnStack = ({
       id={id}
       style={{
         "--gap": `var(--space-${resolvedSpacing})`,
-        color: formatColor(color),
+        color: formatColor(hue, muted),
         columns: columns,
       }}
     >

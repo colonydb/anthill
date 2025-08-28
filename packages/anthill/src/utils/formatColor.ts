@@ -1,8 +1,8 @@
-import type { Color } from "../index.js";
+import type { Hue } from "../index.js";
 
-export const formatColor = (color?: Color | [Color, Color]) =>
-  color
-    ? Array.isArray(color)
-      ? `light-dark(var(--color-${color[0]}), var(--color-${color[1]}))`
-      : `var(--color-${color})`
+export const formatColor = (hue?: Hue, muted: boolean = false) =>
+  hue
+    ? muted
+      ? `light-dark(var(--color-${hue}-s1), var(--color-${hue}-t1))`
+      : `light-dark(var(--color-${hue}-s2), var(--color-${hue}-t2))`
     : undefined;

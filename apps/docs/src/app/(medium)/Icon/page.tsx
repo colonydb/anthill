@@ -81,7 +81,7 @@ const IconPage = () => (
                 label: "Specimen",
                 content: (
                   <Specimen>
-                    <Icon color="green-00" symbol="Mail" />
+                    <Icon hue="green" symbol="Mail" />
                   </Specimen>
                 ),
               },
@@ -91,7 +91,7 @@ const IconPage = () => (
                 content: (
                   <CodeBlock language="tsx">
                     {js`
-                      <Icon color="green-00" symbol="Mail" />
+                      <Icon hue="green" symbol="Mail" />
                     `}
                   </CodeBlock>
                 ),

@@ -52,8 +52,8 @@ const BannerPage = () => (
               content: (
                 <Specimen>
                   <Banner
-                    color="red"
                     headingLevel={5}
+                    hue="red"
                     title={
                       <Heading>
                         <Icon symbol="Mail" /> Warning

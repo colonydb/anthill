@@ -3,16 +3,17 @@
 import clsx from "clsx";
 import type { ReactNode } from "react";
 import styles from "./Action.module.css";
-import type { BaseFont, Color } from "./index.js";
+import type { BaseFont, Hue } from "./index.js";
 import { formatColor } from "./utils/formatColor.js";
 
 type Props = {
-  color?: Color | [Color, Color];
   dangerous?: boolean;
   disabled?: boolean;
   fontSize?: BaseFont;
+  hue?: Hue;
   icon: ReactNode;
   id?: string;
+  muted?: boolean;
   padded?: boolean;
 } & (
   | {
@@ -33,7 +34,18 @@ type Props = {
       }
   );
 
-export const Action = ({ color, dangerous = false, disabled, fontSize, icon, id, padded, title, ...props }: Props) =>
+export const Action = ({
+  dangerous = false,
+  disabled,
+  fontSize,
+  hue,
+  icon,
+  id,
+  muted,
+  padded,
+  title,
+  ...props
+}: Props) =>
   "href" in props ? (
     <a
       className={clsx(styles.action, dangerous ? styles.dangerous : undefined, padded ? styles.padded : undefined)}
@@ -41,7 +53,7 @@ export const Action = ({ color, dangerous = false, disabled, fontSize, icon, id,
       id={id}
       ref={props.ref}
       style={{
-        "--color": formatColor(color),
+        "--color": formatColor(hue, muted),
         font: fontSize ? `var(--font-${fontSize})` : undefined,
       }}
       target={props.external ? "_blank" : undefined}
@@ -58,7 +70,7 @@ export const Action = ({ color, dangerous = false, disabled, fontSize, icon, id,
       onClick={props.onClick}
       ref={props.ref}
       style={{
-        "--color": formatColor(color),
+        "--color": formatColor(hue, muted),
         font: fontSize ? `var(--font-${fontSize})` : undefined,
       }}
       title={title}

@@ -16,7 +16,7 @@ export const FormErrorBanner = ({ errors, field, ...props }: Props) => {
   const resolvedErrors = errors ?? (field ? formState?.errors?.nested?.[field] : formState?.errors?.root) ?? [];
 
   return resolvedErrors.length > 0 ? (
-    <Banner color="red" {...props}>
+    <Banner hue="red" {...props}>
       <Stack>
         {resolvedErrors.map(({ key, message }) => (
           <p key={key}>{message}</p>

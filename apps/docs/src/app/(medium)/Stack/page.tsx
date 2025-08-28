@@ -339,7 +339,7 @@ const StackPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <Stack color={["blue-s3", "blue-t3"]}>
+                  <Stack hue="blue">
                     Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque consequatur
                     deleniti pariatur et sed voluptas iure.
                   </Stack>
@@ -352,7 +352,7 @@ const StackPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <Stack color={["blue-s3", "blue-t3"]}>
+                    <Stack hue="blue">
                       Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque consequatur
                       deleniti pariatur et sed voluptas iure.
                     </Stack>

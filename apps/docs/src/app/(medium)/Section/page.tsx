@@ -397,7 +397,7 @@ const SectionPage = () => (
               label: "Specimen",
               content: (
                 <Specimen>
-                  <Section color={["blue-s3", "blue-t3"]}>
+                  <Section hue="blue">
                     Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque consequatur
                     deleniti pariatur et sed voluptas iure.
                   </Section>
@@ -410,7 +410,7 @@ const SectionPage = () => (
               content: (
                 <CodeBlock language="tsx">
                   {js`
-                    <Section color={["blue-s3", "blue-t3"]}>
+                    <Section hue="blue">
                       Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque consequatur
                       deleniti pariatur et sed voluptas iure.
                     </Section>

@@ -117,7 +117,7 @@ const HeadingPage = () => (
                   <HeadingLevelContext.Provider value={1}>
                     <Specimen>
                       <Heading tagName="h5">
-                        <Icon symbol="Pin" color="blue-00" />
+                        <Icon symbol="Pin" hue="blue" />
                         Example
                       </Heading>
                     </Specimen>
@@ -131,7 +131,7 @@ const HeadingPage = () => (
                   <CodeBlock language="tsx">
                     {js`
                       <Heading tagName="h5">
-                        <Icon symbol="Pin" color="blue-00" />
+                        <Icon symbol="Pin" hue="blue" />
                         Example
                       </Heading>
                     `}
