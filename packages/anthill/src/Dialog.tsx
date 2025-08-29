@@ -3,7 +3,9 @@
 import { type ComponentProps, type ReactNode, useRef, useState } from "react";
 import { Action } from "./Action.js";
 import styles from "./Dialog.module.css";
+import { HeadingLevelContext } from "./HeadingLevelContext.js";
 import type { Width } from "./index.js";
+import { SpacingLevelContext } from "./SpacingLevelContext.js";
 
 type Props = {
   children: ReactNode;
@@ -42,9 +44,13 @@ export const Dialog = ({ dismissible = false, render, stable = false, width = "a
       >
         <div className={styles.container} key={key}>
           <div className={styles.content}>
-            {render(() => {
-              if (dialogRef.current) dialogRef.current.close();
-            })}
+            <SpacingLevelContext.Provider value={0}>
+              <HeadingLevelContext.Provider value={1}>
+                {render(() => {
+                  if (dialogRef.current) dialogRef.current.close();
+                })}
+              </HeadingLevelContext.Provider>
+            </SpacingLevelContext.Provider>
           </div>
         </div>
       </dialog>
