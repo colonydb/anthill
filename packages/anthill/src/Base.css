@@ -54,15 +54,13 @@
   --font-tiny-bold-italic: italic 700 var(--size-tiny-font) / var(--size-tiny-line) var(--typeface-system);
   --font-tiny-monospace: normal 400 var(--size-tiny-font) / var(--size-tiny-line) var(--typeface-monospace);
 
-  /* color */
+  /* colors */
 
   --key-color-l: 0.83;
   --key-color-c: 0.1969;
   --key-color-h: 78.21;
 
-  --shades-l-coefficient: 0.83;
   --shades-c-coefficient: 0.84;
-
   --tints-l-coefficient: 0.73;
   --tints-c-coefficient: 0.66;
 
@@ -74,25 +72,25 @@
   --color-accent: oklch(var(--key-color-l) var(--key-color-c) var(--key-color-h));
   --color-contrast: oklch(from var(--color-accent) clamp(0, (l / 0.623 - 1) * -infinity, 1) 0 h);
 
-  --color-s9-l: calc(0 - (0 - var(--key-color-l)) * pow(var(--shades-l-coefficient), 9));
-  --color-s8-l: calc(0 - (0 - var(--key-color-l)) * pow(var(--shades-l-coefficient), 8));
-  --color-s7-l: calc(0 - (0 - var(--key-color-l)) * pow(var(--shades-l-coefficient), 7));
-  --color-s6-l: calc(0 - (0 - var(--key-color-l)) * pow(var(--shades-l-coefficient), 6));
-  --color-s5-l: calc(0 - (0 - var(--key-color-l)) * pow(var(--shades-l-coefficient), 5));
-  --color-s4-l: calc(0 - (0 - var(--key-color-l)) * pow(var(--shades-l-coefficient), 4));
-  --color-s3-l: calc(0 - (0 - var(--key-color-l)) * pow(var(--shades-l-coefficient), 3));
-  --color-s2-l: calc(0 - (0 - var(--key-color-l)) * pow(var(--shades-l-coefficient), 2));
-  --color-s1-l: calc(0 - (0 - var(--key-color-l)) * pow(var(--shades-l-coefficient), 1));
+  --color-s9-l: calc(0 - (0 - var(--key-color-l)) * 0.1 * 0.75);
+  --color-s8-l: calc(0 - (0 - var(--key-color-l)) * 0.2 * 0.75);
+  --color-s7-l: calc(0 - (0 - var(--key-color-l)) * 0.3 * 0.75);
+  --color-s6-l: calc(0 - (0 - var(--key-color-l)) * 0.4 * 0.75);
+  --color-s5-l: calc(0 - (0 - var(--key-color-l)) * 0.5 * 0.75);
+  --color-s4-l: calc(0 - (0 - var(--key-color-l)) * 0.6 * 0.75);
+  --color-s3-l: calc(0 - (0 - var(--key-color-l)) * 0.7 * 0.75);
+  --color-s2-l: calc(0 - (0 - var(--key-color-l)) * 0.8 * 0.75);
+  --color-s1-l: calc(0 - (0 - var(--key-color-l)) * 0.9 * 0.75);
   --color-00-l: var(--key-color-l);
-  --color-t1-l: calc(1 - (1 - var(--key-color-l)) * pow(var(--tints-l-coefficient), 1));
-  --color-t2-l: calc(1 - (1 - var(--key-color-l)) * pow(var(--tints-l-coefficient), 2));
-  --color-t3-l: calc(1 - (1 - var(--key-color-l)) * pow(var(--tints-l-coefficient), 3));
-  --color-t4-l: calc(1 - (1 - var(--key-color-l)) * pow(var(--tints-l-coefficient), 4));
-  --color-t5-l: calc(1 - (1 - var(--key-color-l)) * pow(var(--tints-l-coefficient), 5));
-  --color-t6-l: calc(1 - (1 - var(--key-color-l)) * pow(var(--tints-l-coefficient), 6));
-  --color-t7-l: calc(1 - (1 - var(--key-color-l)) * pow(var(--tints-l-coefficient), 7));
-  --color-t8-l: calc(1 - (1 - var(--key-color-l)) * pow(var(--tints-l-coefficient), 8));
-  --color-t9-l: calc(1 - (1 - var(--key-color-l)) * pow(var(--tints-l-coefficient), 9));
+  --color-t1-l: calc(1 - (1 - var(--key-color-l)) * 0.9 * 0.75);
+  --color-t2-l: calc(1 - (1 - var(--key-color-l)) * 0.8 * 0.75);
+  --color-t3-l: calc(1 - (1 - var(--key-color-l)) * 0.7 * 0.75);
+  --color-t4-l: calc(1 - (1 - var(--key-color-l)) * 0.6 * 0.75);
+  --color-t5-l: calc(1 - (1 - var(--key-color-l)) * 0.5 * 0.75);
+  --color-t6-l: calc(1 - (1 - var(--key-color-l)) * 0.4 * 0.75);
+  --color-t7-l: calc(1 - (1 - var(--key-color-l)) * 0.3 * 0.75);
+  --color-t8-l: calc(1 - (1 - var(--key-color-l)) * 0.2 * 0.75);
+  --color-t9-l: calc(1 - (1 - var(--key-color-l)) * 0.1 * 0.75);
 
   --color-s9-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 9));
   --color-s8-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 8));

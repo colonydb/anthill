@@ -13,9 +13,7 @@ const Config = () => {
   const [lightness, setLightness] = useState(0.6);
   const [chroma, setChroma] = useState(0.25);
   const [hue, setHue] = useState(154);
-  const [shadesLightnessCoefficient, setShadesLightnessCoefficient] = useState(0.85);
   const [shadesChromaCoefficient, setShadesChromaCoefficient] = useState(0.85);
-  const [tintsLightnessCoefficient, setTintsLightnessCoefficient] = useState(0.7);
   const [tintsChromaCoefficient, setTintsChromaCoefficient] = useState(0.7);
   const [grayChroma, setGrayChroma] = useState(0);
   return (
@@ -185,33 +183,11 @@ const Config = () => {
               min={0.5}
               max={1}
               step={0.001}
-              value={shadesLightnessCoefficient}
-              onChange={(e) => setShadesLightnessCoefficient(parseFloat(e.target.value))}
-              disabled={!custom}
-            />
-            <output>{shadesLightnessCoefficient}</output>
-            <input
-              style={{ all: "revert" }}
-              type="range"
-              min={0.5}
-              max={1}
-              step={0.001}
               value={shadesChromaCoefficient}
               onChange={(e) => setShadesChromaCoefficient(parseFloat(e.target.value))}
               disabled={!custom}
             />
             <output>{shadesChromaCoefficient}</output>
-            <input
-              style={{ all: "revert" }}
-              type="range"
-              min={0.5}
-              max={1}
-              step={0.001}
-              value={tintsLightnessCoefficient}
-              onChange={(e) => setTintsLightnessCoefficient(parseFloat(e.target.value))}
-              disabled={!custom}
-            />
-            <output>{tintsLightnessCoefficient}</output>
             <input
               style={{ all: "revert" }}
               type="range"
@@ -243,9 +219,7 @@ const Config = () => {
                     --key-color-l: ${lightness};
                     --key-color-c: ${chroma};
                     --key-color-h: ${hue};
-                    --shades-l-coefficient: ${shadesLightnessCoefficient};
                     --shades-c-coefficient: ${shadesChromaCoefficient};
-                    --tints-l-coefficient: ${tintsLightnessCoefficient};
                     --tints-c-coefficient: ${tintsChromaCoefficient};
                     --gray-c: ${grayChroma};
                   }

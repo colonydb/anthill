@@ -13,9 +13,7 @@ type Props = {
     hue: number;
     lightness: number;
     shadesChromaCoefficient?: number;
-    shadesLightnessCoefficient?: number;
     tintsChromaCoefficient?: number;
-    tintsLightnessCoefficient?: number;
   };
   children: ReactNode;
 };
@@ -31,9 +29,7 @@ export const Base = ({ color, brandTypeface, children }: Props) => (
               --key-color-l: ${color.lightness};
               --key-color-c: ${color.chroma};
               --key-color-h: ${color.hue};
-              --shades-l-coefficient: ${color.shadesLightnessCoefficient ?? 0.85};
               --shades-c-coefficient: ${color.shadesChromaCoefficient ?? 0.85};
-              --tints-l-coefficient: ${color.tintsLightnessCoefficient ?? 0.7};
               --tints-c-coefficient: ${color.tintsChromaCoefficient ?? 0.7};
               --gray-c: ${color.grayChroma ?? 0.0};
             }
