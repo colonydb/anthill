@@ -1,4 +1,7 @@
 .container {
+  .actions {
+    align-self: center;
+  }
   &.withActions {
     column-gap: 0.5rlh;
     display: grid;

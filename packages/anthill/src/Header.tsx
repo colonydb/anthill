@@ -21,7 +21,7 @@ export const Header = ({ actions, children, description, headingLevel, id }: Pro
       <Stack id={id} tagName="header" spacing="n3">
         <div className={clsx(styles.container, actions ? styles.withActions : undefined)}>
           <div>{children}</div>
-          {actions ? <div>{actions}</div> : null}
+          {actions ? <div className={styles.actions}>{actions}</div> : null}
         </div>
         {description}
       </Stack>
