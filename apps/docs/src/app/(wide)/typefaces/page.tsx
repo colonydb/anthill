@@ -10,7 +10,7 @@ const TypefacesPage = () => (
   <Section title={<Heading>Typefaces</Heading>}>
     <Card>
       <CardTable
-        cols={{ name: "Name", specimen: "Specimen" }}
+        cols={{ name: "Name", specimen: "Specimens" }}
         rows={["brand", "system", "monospace"].map((typeface) => ({
           key: typeface,
           values: {
@@ -29,7 +29,9 @@ const TypefacesPage = () => (
                   </p>
                 </Specimen>
                 <Specimen>
-                  <p style={{ fontFamily: `var(--${typeface})` }}>The quick brown fox jumps over the lazy dog.</p>
+                  <p style={{ fontFamily: `var(--typeface-${typeface})` }}>
+                    The quick brown fox jumps over the lazy dog.
+                  </p>
                 </Specimen>
               </Stack>
             ),
