@@ -60,8 +60,9 @@
   --key-color-c: 0.1969;
   --key-color-h: 78.21;
 
+  --shades-l-coefficient: 0.75;
   --shades-c-coefficient: 0.84;
-  --tints-l-coefficient: 0.73;
+  --tints-l-coefficient: 0.75;
   --tints-c-coefficient: 0.66;
 
   --gray-c: 0.002;
@@ -72,25 +73,25 @@
   --color-accent: oklch(var(--key-color-l) var(--key-color-c) var(--key-color-h));
   --color-contrast: oklch(from var(--color-accent) clamp(0, (l / 0.623 - 1) * -infinity, 1) 0 h);
 
-  --color-s9-l: calc(0 - (0 - var(--key-color-l)) * 0.1 * 0.75);
-  --color-s8-l: calc(0 - (0 - var(--key-color-l)) * 0.2 * 0.75);
-  --color-s7-l: calc(0 - (0 - var(--key-color-l)) * 0.3 * 0.75);
-  --color-s6-l: calc(0 - (0 - var(--key-color-l)) * 0.4 * 0.75);
-  --color-s5-l: calc(0 - (0 - var(--key-color-l)) * 0.5 * 0.75);
-  --color-s4-l: calc(0 - (0 - var(--key-color-l)) * 0.6 * 0.75);
-  --color-s3-l: calc(0 - (0 - var(--key-color-l)) * 0.7 * 0.75);
-  --color-s2-l: calc(0 - (0 - var(--key-color-l)) * 0.8 * 0.75);
-  --color-s1-l: calc(0 - (0 - var(--key-color-l)) * 0.9 * 0.75);
+  --color-s9-l: calc(0 - (0 - var(--key-color-l)) * 0.1 * var(--shades-l-coefficient));
+  --color-s8-l: calc(0 - (0 - var(--key-color-l)) * 0.2 * var(--shades-l-coefficient));
+  --color-s7-l: calc(0 - (0 - var(--key-color-l)) * 0.3 * var(--shades-l-coefficient));
+  --color-s6-l: calc(0 - (0 - var(--key-color-l)) * 0.4 * var(--shades-l-coefficient));
+  --color-s5-l: calc(0 - (0 - var(--key-color-l)) * 0.5 * var(--shades-l-coefficient));
+  --color-s4-l: calc(0 - (0 - var(--key-color-l)) * 0.6 * var(--shades-l-coefficient));
+  --color-s3-l: calc(0 - (0 - var(--key-color-l)) * 0.7 * var(--shades-l-coefficient));
+  --color-s2-l: calc(0 - (0 - var(--key-color-l)) * 0.8 * var(--shades-l-coefficient));
+  --color-s1-l: calc(0 - (0 - var(--key-color-l)) * 0.9 * var(--shades-l-coefficient));
   --color-00-l: var(--key-color-l);
-  --color-t1-l: calc(1 - (1 - var(--key-color-l)) * 0.9 * 0.75);
-  --color-t2-l: calc(1 - (1 - var(--key-color-l)) * 0.8 * 0.75);
-  --color-t3-l: calc(1 - (1 - var(--key-color-l)) * 0.7 * 0.75);
-  --color-t4-l: calc(1 - (1 - var(--key-color-l)) * 0.6 * 0.75);
-  --color-t5-l: calc(1 - (1 - var(--key-color-l)) * 0.5 * 0.75);
-  --color-t6-l: calc(1 - (1 - var(--key-color-l)) * 0.4 * 0.75);
-  --color-t7-l: calc(1 - (1 - var(--key-color-l)) * 0.3 * 0.75);
-  --color-t8-l: calc(1 - (1 - var(--key-color-l)) * 0.2 * 0.75);
-  --color-t9-l: calc(1 - (1 - var(--key-color-l)) * 0.1 * 0.75);
+  --color-t1-l: calc(1 - (1 - var(--key-color-l)) * 0.9 * var(--tints-l-coefficient));
+  --color-t2-l: calc(1 - (1 - var(--key-color-l)) * 0.8 * var(--tints-l-coefficient));
+  --color-t3-l: calc(1 - (1 - var(--key-color-l)) * 0.7 * var(--tints-l-coefficient));
+  --color-t4-l: calc(1 - (1 - var(--key-color-l)) * 0.6 * var(--tints-l-coefficient));
+  --color-t5-l: calc(1 - (1 - var(--key-color-l)) * 0.5 * var(--tints-l-coefficient));
+  --color-t6-l: calc(1 - (1 - var(--key-color-l)) * 0.4 * var(--tints-l-coefficient));
+  --color-t7-l: calc(1 - (1 - var(--key-color-l)) * 0.3 * var(--tints-l-coefficient));
+  --color-t8-l: calc(1 - (1 - var(--key-color-l)) * 0.2 * var(--tints-l-coefficient));
+  --color-t9-l: calc(1 - (1 - var(--key-color-l)) * 0.1 * var(--tints-l-coefficient));
 
   --color-s9-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 9));
   --color-s8-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 8));

@@ -6,6 +6,7 @@ import { Dialog } from "@colonydb/anthill/Dialog";
 import { DialogHeader } from "@colonydb/anthill/DialogHeader";
 import { Heading } from "@colonydb/anthill/Heading";
 import { Icon } from "@colonydb/anthill/Icon";
+import { RegularField } from "@colonydb/anthill/RegularField";
 import { useState } from "react";
 
 const Config = () => {
@@ -13,7 +14,9 @@ const Config = () => {
   const [lightness, setLightness] = useState(0.6);
   const [chroma, setChroma] = useState(0.25);
   const [hue, setHue] = useState(154);
+  const [shadesLightnessCoefficient, setShadesLightnessCoefficient] = useState(0.75);
   const [shadesChromaCoefficient, setShadesChromaCoefficient] = useState(0.85);
+  const [tintsLightnessCoefficient, setTintsLightnessCoefficient] = useState(0.75);
   const [tintsChromaCoefficient, setTintsChromaCoefficient] = useState(0.7);
   const [grayChroma, setGrayChroma] = useState(0);
   return (
@@ -177,39 +180,71 @@ const Config = () => {
                 <output>{hue}</output>
               </div>
             </div>
-            <input
-              style={{ all: "revert" }}
-              type="range"
-              min={0.5}
-              max={1}
-              step={0.001}
-              value={shadesChromaCoefficient}
-              onChange={(e) => setShadesChromaCoefficient(parseFloat(e.target.value))}
-              disabled={!custom}
-            />
-            <output>{shadesChromaCoefficient}</output>
-            <input
-              style={{ all: "revert" }}
-              type="range"
-              min={0.5}
-              max={1}
-              step={0.001}
-              value={tintsChromaCoefficient}
-              onChange={(e) => setTintsChromaCoefficient(parseFloat(e.target.value))}
-              disabled={!custom}
-            />
-            <output>{tintsChromaCoefficient}</output>
-            <input
-              style={{ all: "revert" }}
-              type="range"
-              min={0}
-              max={0.025}
-              step={0.0001}
-              value={grayChroma}
-              onChange={(e) => setGrayChroma(parseFloat(e.target.value))}
-              disabled={!custom}
-            />
-            <output>{grayChroma}</output>
+            <RegularField label="shadesLightnessCoefficient">
+              <input
+                style={{ all: "revert" }}
+                type="range"
+                min={0}
+                max={1}
+                step={0.001}
+                value={shadesLightnessCoefficient}
+                onChange={(e) => setShadesLightnessCoefficient(parseFloat(e.target.value))}
+                disabled={!custom}
+              />
+              <output>{shadesLightnessCoefficient}</output>
+            </RegularField>
+            <RegularField label="shadesChromaCoefficient">
+              <input
+                style={{ all: "revert" }}
+                type="range"
+                min={0.5}
+                max={1}
+                step={0.001}
+                value={shadesChromaCoefficient}
+                onChange={(e) => setShadesChromaCoefficient(parseFloat(e.target.value))}
+                disabled={!custom}
+              />
+              <output>{shadesChromaCoefficient}</output>
+            </RegularField>
+            <RegularField label="tintsLightnessCoefficient">
+              <input
+                style={{ all: "revert" }}
+                type="range"
+                min={0}
+                max={1}
+                step={0.001}
+                value={tintsLightnessCoefficient}
+                onChange={(e) => setTintsLightnessCoefficient(parseFloat(e.target.value))}
+                disabled={!custom}
+              />
+              <output>{tintsLightnessCoefficient}</output>
+            </RegularField>
+            <RegularField label="tintsChromaCoefficient">
+              <input
+                style={{ all: "revert" }}
+                type="range"
+                min={0.5}
+                max={1}
+                step={0.001}
+                value={tintsChromaCoefficient}
+                onChange={(e) => setTintsChromaCoefficient(parseFloat(e.target.value))}
+                disabled={!custom}
+              />
+              <output>{tintsChromaCoefficient}</output>
+            </RegularField>
+            <RegularField label="grayChroma">
+              <input
+                style={{ all: "revert" }}
+                type="range"
+                min={0}
+                max={0.025}
+                step={0.0001}
+                value={grayChroma}
+                onChange={(e) => setGrayChroma(parseFloat(e.target.value))}
+                disabled={!custom}
+              />
+              <output>{grayChroma}</output>
+            </RegularField>
             {custom ? (
               <style
                 // biome-ignore lint: we're using this to set CSS variables dynamically
@@ -219,7 +254,9 @@ const Config = () => {
                     --key-color-l: ${lightness};
                     --key-color-c: ${chroma};
                     --key-color-h: ${hue};
+                    --shades-l-coefficient: ${shadesLightnessCoefficient};
                     --shades-c-coefficient: ${shadesChromaCoefficient};
+                    --tints-l-coefficient: ${tintsLightnessCoefficient};
                     --tints-c-coefficient: ${tintsChromaCoefficient};
                     --gray-c: ${grayChroma};
                   }
