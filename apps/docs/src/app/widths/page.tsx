@@ -5,16 +5,20 @@ import styles from "./page.module.css";
 
 const WidthsPage = () => (
   <Section title={<Heading>Widths</Heading>}>
-    <div className={styles.container}>
-      <div>
-        <Inline font="tiny-monospace">wide</Inline>
-      </div>
-      <div>
-        <Inline font="tiny-monospace">medium</Inline>
-      </div>
-      <div>
-        <Inline font="tiny-monospace">narrow</Inline>
-      </div>
+    <div className={styles.item} style={{ width: "var(--width-tiny)" }}>
+      <Inline font="tiny-monospace">tiny</Inline>
+    </div>
+    <div className={styles.item} style={{ width: "var(--width-small)" }}>
+      <Inline font="tiny-monospace">small</Inline>
+    </div>
+    <div className={styles.item} style={{ width: "var(--width-medium)" }}>
+      <Inline font="tiny-monospace">medium</Inline>
+    </div>
+    <div className={styles.item} style={{ width: "var(--width-large)" }}>
+      <Inline font="tiny-monospace">large</Inline>
+    </div>
+    <div className={styles.item} style={{ width: "var(--width-huge)" }}>
+      <Inline font="tiny-monospace">huge</Inline>
     </div>
   </Section>
 );

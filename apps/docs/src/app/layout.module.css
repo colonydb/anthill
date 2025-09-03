@@ -4,10 +4,10 @@
   overflow-y: auto;
   padding: 1rlh;
   position: fixed;
-  width: 10rlh;
+  width: var(--width-tiny);
 }
 
 .content {
-  margin-left: 10rlh;
+  margin-left: var(--width-tiny);
   padding: 1rlh;
 }

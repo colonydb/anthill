@@ -1,42 +1,52 @@
-.container {
+.item {
+  border-radius: 0.5rlh;
+  border: 2px solid currentColor;
   display: grid;
-  grid-template-columns: var(--width-medium) var(--width-narrow);
-  overflow: hidden;
-  width: var(--width-wide);
+  padding: 1rlh;
+  place-content: center;
 
-  > div {
-    border-radius: 1rlh;
-    border: 2px solid currentColor;
-    display: grid;
-    padding: 5rlh 1rlh;
-    place-content: center;
+  &:nth-of-type(1) {
+    background: linear-gradient(
+      -45deg,
+      light-dark(var(--color-teal-t2), var(--color-teal-s2)),
+      light-dark(var(--color-teal-t5), var(--color-teal-s5))
+    );
+    border-color: light-dark(var(--color-teal-00), var(--color-teal-00));
+  }
 
-    &:nth-child(1) {
-      background: linear-gradient(
-        -45deg,
-        light-dark(var(--color-teal-t2), var(--color-teal-s2)),
-        light-dark(var(--color-teal-t5), var(--color-teal-s5))
-      );
-      border-color: light-dark(var(--color-teal-00), var(--color-teal-00));
-      grid-column: 1 / -1;
-    }
+  &:nth-of-type(2) {
+    background: linear-gradient(
+      -45deg,
+      light-dark(var(--color-green-t2), var(--color-green-s2)),
+      light-dark(var(--color-green-t5), var(--color-green-s5))
+    );
+    border-color: light-dark(var(--color-green-00), var(--color-green-00));
+  }
 
-    &:nth-child(2) {
-      background: linear-gradient(
-        -45deg,
-        light-dark(var(--color-green-t2), var(--color-green-s2)),
-        light-dark(var(--color-green-t5), var(--color-green-s5))
-      );
-      border-color: light-dark(var(--color-green-00), var(--color-green-00));
-    }
+  &:nth-of-type(3) {
+    background: linear-gradient(
+      -45deg,
+      light-dark(var(--color-blue-t2), var(--color-blue-s2)),
+      light-dark(var(--color-blue-t5), var(--color-blue-s5))
+    );
+    border-color: light-dark(var(--color-blue-00), var(--color-blue-00));
+  }
 
-    &:nth-child(3) {
-      background: linear-gradient(
-        -45deg,
-        light-dark(var(--color-blue-t2), var(--color-blue-s2)),
-        light-dark(var(--color-blue-t5), var(--color-blue-s5))
-      );
-      border-color: light-dark(var(--color-blue-00), var(--color-blue-00));
-    }
+  &:nth-of-type(4) {
+    background: linear-gradient(
+      -45deg,
+      light-dark(var(--color-violet-t2), var(--color-violet-s2)),
+      light-dark(var(--color-violet-t5), var(--color-violet-s5))
+    );
+    border-color: light-dark(var(--color-violet-00), var(--color-violet-00));
+  }
+
+  &:nth-of-type(5) {
+    background: linear-gradient(
+      -45deg,
+      light-dark(var(--color-magenta-t2), var(--color-magenta-s2)),
+      light-dark(var(--color-magenta-t5), var(--color-magenta-s5))
+    );
+    border-color: light-dark(var(--color-magenta-00), var(--color-magenta-00));
   }
 }

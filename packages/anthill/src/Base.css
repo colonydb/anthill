@@ -357,9 +357,16 @@
 
   /* widths */
 
-  --width-narrow: 20rlh;
-  --width-medium: 40rlh;
-  --width-wide: 60rlh;
+  --width-tiny: 10rlh;
+  --width-small: 20rlh;
+  --width-medium: 30rlh;
+  --width-large: 50rlh;
+  --width-huge: 80rlh;
+
+  /* backwards compatibility */
+
+  --width-narrow: var(--width-small);
+  --width-wide: var(--width-large);
 }
 
 :root {
