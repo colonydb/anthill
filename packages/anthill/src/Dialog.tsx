@@ -8,12 +8,18 @@ import type { Width } from "./index.js";
 import { SpacingLevelContext } from "./SpacingLevelContext.js";
 
 type Props = {
-  children: ReactNode;
   dismissible?: boolean;
   render: (closeDialog: () => void) => ReactNode;
   stable?: boolean;
   width?: "auto" | Width;
-} & Pick<ComponentProps<typeof Action>, "disabled" | "fontSize" | "hue" | "icon" | "id" | "muted" | "padded">;
+} & (
+  | {
+      children: ReactNode;
+      title?: string;
+    }
+  | { title: string }
+) &
+  Pick<ComponentProps<typeof Action>, "disabled" | "fontSize" | "hue" | "icon" | "id" | "muted" | "padded">;
 
 export const Dialog = ({ dismissible = false, render, stable = false, width = "auto", ...actionProps }: Props) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
