@@ -1,43 +1,50 @@
 "use client";
 
+import { Block } from "@colonydb/anthill/Block";
 import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
+import { CodeBlock } from "@colonydb/anthill/CodeBlock";
 import { Header } from "@colonydb/anthill/Header";
 import { Heading } from "@colonydb/anthill/Heading";
-import { Inline } from "@colonydb/anthill/Inline";
 import { Markdown } from "@colonydb/anthill/Markdown";
 import { Section } from "@colonydb/anthill/Section";
+import { TabBlock } from "@colonydb/anthill/TabBlock";
 import md from "dedent";
 
 const HomePage = () => (
   <Section
     title={
-      <Header description={<Inline font="small">ColonyDB&apos;s design system.</Inline>}>
+      <Header description={<Block>A UI toolkit for React apps.</Block>}>
         <Heading>Anthill</Heading>
       </Header>
     }
   >
     <Card header={<Heading>Installation</Heading>}>
       <CardContent>
-        <Markdown>{md`
-          PNPM:
-
-          \`\`\`bash
-          pnpm add @colonydb/anthill
-          \`\`\`
-
-          Yarn:
-
-          \`\`\`bash
-          yarn add @colonydb/anthill
-          \`\`\`
-
-          npm:
-
-          \`\`\`bash
-          npm install @colonydb/anthill
-          \`\`\`
-        `}</Markdown>
+        <TabBlock
+          items={[
+            {
+              content: <CodeBlock language="bash">npm install @colonydb/anthill</CodeBlock>,
+              key: "npm",
+              label: "npm",
+            },
+            {
+              content: <CodeBlock language="bash">yarn add @colonydb/anthill</CodeBlock>,
+              key: "yarn",
+              label: "Yarn",
+            },
+            {
+              content: <CodeBlock language="bash">pnpm add @colonydb/anthill</CodeBlock>,
+              key: "pnpm",
+              label: "PNPM",
+            },
+            {
+              content: <CodeBlock language="bash">bun add @colonydb/anthill</CodeBlock>,
+              key: "bun",
+              label: "Bun",
+            },
+          ]}
+        />
       </CardContent>
     </Card>
     <Card header={<Heading>Usage</Heading>}>
