@@ -11,7 +11,6 @@ import { Specimen } from "@colonydb/anthill/Specimen";
 import { Stack } from "@colonydb/anthill/Stack";
 import { TabBlock } from "@colonydb/anthill/TabBlock";
 import js from "dedent";
-import html from "dedent";
 
 const BlockPage = () => (
   <Main header={<Heading>Block</Heading>}>

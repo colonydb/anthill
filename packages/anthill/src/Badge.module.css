@@ -2,6 +2,7 @@
   background: var(--color-accent);
   border-radius: 0.25rlh;
   color: var(--color-contrast);
+  /* biome-ignore lint/correctness/noUnknownProperty: progressive enhancement */
   corner-shape: squircle;
   display: inline-block;
   font: var(--font-tiny);

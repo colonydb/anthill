@@ -1,4 +1,3 @@
-import { Block } from "@colonydb/anthill/Block";
 import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
 import { CodeBlock } from "@colonydb/anthill/CodeBlock";
