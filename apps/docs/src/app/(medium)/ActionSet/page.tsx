@@ -35,7 +35,7 @@ const ActionSetPage = () => (
                   key: "specimen",
                   label: "Specimen",
                   content: (
-                    <Specimen seamless>
+                    <Specimen resetStyleContext seamless>
                       <ActionSet
                         actions={[
                           {

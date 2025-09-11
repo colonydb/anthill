@@ -1,11 +1,13 @@
 "use client";
 
+import clsx from "clsx";
 import { type ReactNode, useMemo, useRef } from "react";
 import { Action } from "./Action.js";
 import styles from "./ActionSet.module.css";
 import { Icon } from "./Icon.js";
 import type { BaseFont, Hue, StyleContextConfig } from "./index.js";
 import { useStyleContext } from "./useStyleContext.js";
+import { clampRange } from "./utils/clampRange.js";
 
 type Props = {
   actions: Array<{ content: ReactNode; key: string }>;
@@ -26,7 +28,7 @@ type Props = {
 export const ActionSet = ({ actions, icon, ...actionProps }: Props) => {
   const styleContextConfig = useMemo<StyleContextConfig>(
     () => ({
-      container: (value) => value + 1,
+      container: (value) => clampRange(value + 1, 2, 4),
     }),
     [],
   );
@@ -50,12 +52,12 @@ export const ActionSet = ({ actions, icon, ...actionProps }: Props) => {
         ref={actionRef}
         {...actionProps}
       />
-      <div popover="auto" ref={actionListRef} className={styles.actionList}>
-        {actions.map(({ key, content }) => (
-          <div key={key} className={styleContextClassName}>
-            <StyleContextProvider>{content}</StyleContextProvider>
-          </div>
-        ))}
+      <div popover="auto" ref={actionListRef} className={clsx(styleContextClassName, styles.actionList)}>
+        <StyleContextProvider>
+          {actions.map(({ key, content }) => (
+            <div key={key}>{content}</div>
+          ))}
+        </StyleContextProvider>
       </div>
     </>
   );
