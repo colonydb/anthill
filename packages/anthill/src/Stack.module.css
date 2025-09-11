@@ -2,7 +2,7 @@
   display: grid;
   grid-auto-columns: minmax(0, auto);
   grid-auto-rows: minmax(0, auto);
-  row-gap: 1rlh;
+  row-gap: var(--context-spacing);
 
   &.center {
     justify-content: stretch;
@@ -10,7 +10,7 @@
   }
 
   &.narrow {
-    grid-template-columns: minmax(0, var(--width-narrow));
+    grid-template-columns: minmax(0, var(--width-small));
   }
 
   &.medium {
@@ -18,7 +18,7 @@
   }
 
   &.wide {
-    grid-template-columns: minmax(0, var(--width-wide));
+    grid-template-columns: minmax(0, var(--width-large));
   }
 
   &.indent {

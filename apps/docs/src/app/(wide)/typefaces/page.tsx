@@ -2,12 +2,12 @@ import { Card } from "@colonydb/anthill/Card";
 import { CardTable } from "@colonydb/anthill/CardTable";
 import { Heading } from "@colonydb/anthill/Heading";
 import { Inline } from "@colonydb/anthill/Inline";
-import { Section } from "@colonydb/anthill/Section";
+import { Main } from "@colonydb/anthill/Main";
 import { Specimen } from "@colonydb/anthill/Specimen";
 import { Stack } from "@colonydb/anthill/Stack";
 
 const TypefacesPage = () => (
-  <Section title={<Heading>Typefaces</Heading>}>
+  <Main header={<Heading>Typefaces</Heading>}>
     <Card>
       <CardTable
         cols={{ name: "Name", specimen: "Specimens" }}
@@ -16,20 +16,20 @@ const TypefacesPage = () => (
           values: {
             name: <Inline font="tiny-monospace">{typeface}</Inline>,
             specimen: (
-              <Stack spacing="00">
+              <Stack spacingLevel={3}>
                 <Specimen>
                   <p
                     style={{
-                      fontFamily: `var(--typeface-${typeface})`,
-                      fontSize: "var(--size-title-font)",
-                      lineHeight: "var(--size-title-line)",
+                      fontFamily: `var(--config-${typeface}-typeface)`,
+                      fontSize: "var(--config-title-font-size)",
+                      lineHeight: "var(--config-title-line-height)",
                     }}
                   >
                     The quick brown fox jumps over the lazy dog.
                   </p>
                 </Specimen>
                 <Specimen>
-                  <p style={{ fontFamily: `var(--typeface-${typeface})` }}>
+                  <p style={{ fontFamily: `var(--config-${typeface}-typeface)` }}>
                     The quick brown fox jumps over the lazy dog.
                   </p>
                 </Specimen>
@@ -39,7 +39,7 @@ const TypefacesPage = () => (
         }))}
       />
     </Card>
-  </Section>
+  </Main>
 );
 
 export default TypefacesPage;

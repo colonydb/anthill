@@ -21,6 +21,7 @@ export const CopyToClipboardAction = ({ text, ...props }: Props) => {
   const state = currentTimeout ? "copied" : "default";
   return (
     <Action
+      hue={state === "copied" ? "green" : undefined}
       icon={state === "default" ? <Icon symbol="Copy" /> : <Icon hue="green" symbol="Tick" />}
       onClick={async () => {
         await navigator.clipboard.writeText(text);

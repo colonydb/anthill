@@ -7,6 +7,7 @@ type Props<T extends object | string | number | null> = {
   transparent?: boolean;
   children: (state: T, setState: Dispatch<SetStateAction<T>>) => ReactNode;
   initialState: T;
+  seamless?: boolean;
 };
 
 export const StatefulSpecimen = <T extends object | string | number | null>({

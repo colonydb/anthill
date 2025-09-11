@@ -9,4 +9,10 @@ export const FrameworkContext = createContext<{
     style?: CSSProperties;
     target?: string;
   }>;
-} | null>(null);
+}>({
+  Link: ({ children, className, href, style, target }) => (
+    <a className={className} href={href} style={style} target={target}>
+      {children}
+    </a>
+  ),
+});

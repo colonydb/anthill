@@ -1,17 +1,21 @@
 .container {
-  background: light-dark(var(--color-gray-t6), var(--color-gray-s7));
-  border-radius: 0.5rlh;
+  background: var(--context-background);
+  border: var(--context-border);
+  border-radius: var(--context-border-radius);
   display: grid;
-  grid-template-columns: minmax(0, auto);
-  grid-template-rows: minmax(0, auto);
-  padding: 1rlh;
+  grid-template-columns: minmax(min-content, auto);
+  grid-template-rows: minmax(min-content, auto);
+  padding: var(--context-spacing);
   place-content: stretch;
 
   &.center {
     place-content: center;
   }
 
-  &.transparent {
+  &.seamless {
     background: transparent;
+    border-radius: 0;
+    border: none;
+    padding: 0;
   }
 }

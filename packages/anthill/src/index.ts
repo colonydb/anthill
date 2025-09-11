@@ -8,6 +8,8 @@ export type BodyFont = "regular" | "small" | "tiny";
 
 export type Color = `${Hue}-${Tone}` | "black" | "white" | "accent" | "contrast";
 
+export type ContainerLevel = 0 | 1 | 2 | 3 | 4;
+
 export type Font = BaseFont | `${BodyFont}-${FontVariant}`;
 
 export type FontVariant = "bold" | "italic" | "bold-italic" | "monospace";
@@ -67,8 +69,18 @@ export type IconSymbol = keyof typeof icons;
 
 export type Shade = "s1" | "s2" | "s3" | "s4" | "s5" | "s6" | "s7" | "s8" | "s9";
 
+export type SpacingLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
+export type StyleContextConfig = {
+  container?: number | ((value: ContainerLevel) => number);
+  spacing?: number | ((value: SpacingLevel) => number);
+  typography?: number | ((value: TypographyLevel) => number);
+};
+
 export type Tint = "t1" | "t2" | "t3" | "t4" | "t5" | "t6" | "t7" | "t8" | "t9";
 
 export type Tone = Shade | "00" | Tint;
+
+export type TypographyLevel = 0 | 1 | 2 | 3 | 4 | 5;
 
 export type Width = "narrow" | "medium" | "wide";

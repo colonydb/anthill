@@ -11,6 +11,6 @@ export const Banner = ({ hue = "gray", ...props }: Props) => (
       background: `light-dark(var(--color-${hue}-t7), var(--color-${hue}-s7))`,
     }}
   >
-    <Section hue={hue} {...props} />
+    <Section hue={hue} tagName="aside" {...props} />
   </div>
 );

@@ -1,12 +1,12 @@
 .button {
   --dangerous-color: light-dark(var(--color-red-s2), var(--color-red-s3));
 
-  cursor: pointer;
-  display: inline-block;
   background: light-dark(var(--color-gray-t2), var(--color-gray-s2));
   border-radius: 0.25rlh;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
   color: light-dark(var(--color-black), var(--color-white));
+  cursor: pointer;
+  display: inline-block;
   font: var(--font-regular-bold);
   outline-color: transparent;
   padding: 0.5rlh 2ch;
@@ -34,9 +34,9 @@
   }
 
   &:disabled {
-    color: light-dark(var(--color-gray-t2), var(--color-gray-s2));
+    color: light-dark(var(--color-gray-t1), var(--color-gray-s1));
     cursor: not-allowed;
-    background: light-dark(var(--color-gray-t3), var(--color-gray-s3));
+    background: light-dark(var(--color-gray-t4), var(--color-gray-s4));
     box-shadow: none;
   }
 }

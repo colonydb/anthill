@@ -2,8 +2,9 @@
   background: var(--color-accent);
   border-radius: 0.25rlh;
   color: var(--color-contrast);
+  corner-shape: squircle;
   display: inline-block;
   font: var(--font-tiny);
-  padding: 0.125rlh 1ch;
+  padding-inline: 0.5ch;
   text-transform: uppercase;
 }

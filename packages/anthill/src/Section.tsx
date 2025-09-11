@@ -1,39 +1,42 @@
 "use client";
 
-import type { ComponentProps, ReactNode } from "react";
-import { useContext } from "react";
-import { HeadingLevelContext } from "./HeadingLevelContext.js";
-import { Stack } from "./Stack.js";
-import { clampHeadingLevel } from "./utils/clampHeadingLevel.js";
+import clsx from "clsx";
+import { type ComponentProps, type ReactNode, useMemo } from "react";
+import { Block } from "./Block.js";
+import type { StyleContextConfig } from "./index.js";
+import styles from "./Section.module.css";
+import { useStyleContext } from "./useStyleContext.js";
 
 type Props = {
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-  id?: string;
+  spacingLevel?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   title?: ReactNode;
-} & ComponentProps<typeof Stack>;
+} & Omit<ComponentProps<typeof Block>, "className" | "style" | "styleContextConfig">;
 
-export const Section = ({ children, headingLevel, id, tagName = "section", title, ...stackProps }: Props) => {
-  const contextHeadingLevel = useContext(HeadingLevelContext);
-  const resolvedHeadingLevel = headingLevel ?? contextHeadingLevel;
+export const Section = ({ children, headingLevel, tagName = "section", spacingLevel, title, ...blockProps }: Props) => {
+  const containerStyleContextConfig = useMemo<StyleContextConfig>(
+    () => ({
+      spacing: (value) => (spacingLevel !== undefined ? spacingLevel : title ? value + 1 : value),
+      typography: (value) => (headingLevel !== undefined ? headingLevel - 1 : value),
+    }),
+    [headingLevel, spacingLevel, title],
+  );
+
+  const contentStyleContextConfig = useMemo<StyleContextConfig>(
+    () => ({
+      typography: (value) => value + 1,
+    }),
+    [],
+  );
+
+  const { styleContextClassName, StyleContextProvider } = useStyleContext(containerStyleContextConfig);
+
   return (
-    <div
-      style={{
-        font:
-          resolvedHeadingLevel === 5
-            ? "var(--font-small)"
-            : resolvedHeadingLevel === 6
-              ? "var(--font-tiny)"
-              : undefined,
-      }}
-    >
-      <HeadingLevelContext.Provider value={resolvedHeadingLevel}>
-        <Stack id={id} tagName={tagName} {...stackProps}>
-          {title}
-          <HeadingLevelContext.Provider value={clampHeadingLevel(resolvedHeadingLevel + 1)}>
-            {children}
-          </HeadingLevelContext.Provider>
-        </Stack>
-      </HeadingLevelContext.Provider>
-    </div>
+    <Block className={clsx(styleContextClassName, styles.container)} tagName={tagName} {...blockProps}>
+      <StyleContextProvider>
+        {title ? <div>{title}</div> : null}
+        <Block styleContextConfig={contentStyleContextConfig}>{children}</Block>
+      </StyleContextProvider>
+    </Block>
   );
 };

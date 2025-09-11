@@ -1,0 +1,4 @@
+.container {
+  color: light-dark(var(--color-teal-s1), var(--color-teal-t1));
+  opacity: 0.25;
+}

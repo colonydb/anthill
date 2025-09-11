@@ -1,0 +1,6 @@
+.container {
+  display: grid;
+  font: var(--context-body-font);
+  gap: var(--context-spacing);
+  grid-template-rows: minmax(0, auto);
+}

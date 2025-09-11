@@ -1,20 +1,12 @@
 "use client";
 
 import clsx from "clsx";
-import { type JSX, type ReactNode, useContext } from "react";
+import { type JSX, type ReactNode, useMemo } from "react";
 import styles from "./Heading.module.css";
-import { HeadingLevelContext } from "./HeadingLevelContext.js";
+import type { StyleContextConfig } from "./index.js";
+import { useStyleContext } from "./useStyleContext.js";
 
 const TAG_NAMES = ["h1", "h2", "h3", "h4", "h5", "h6"] as const;
-
-const CLASS_NAMES = [
-  styles.heading1,
-  styles.heading2,
-  styles.heading3,
-  styles.heading4,
-  styles.heading5,
-  styles.heading6,
-] as const;
 
 type Props = {
   children: ReactNode;
@@ -24,12 +16,20 @@ type Props = {
 };
 
 export const Heading = ({ children, id, level, tagName }: Props) => {
-  const contextLevel = useContext(HeadingLevelContext);
-  const resolvedLevel = level ?? contextLevel;
-  const Tag = tagName ?? TAG_NAMES.at(resolvedLevel - 1) ?? TAG_NAMES[5];
+  const styleContextConfig = useMemo<StyleContextConfig>(
+    () => ({
+      typography: (value) => (level ? level - 1 : value),
+    }),
+    [level],
+  );
+
+  const { styleContext, styleContextClassName, StyleContextProvider } = useStyleContext(styleContextConfig);
+
+  const Tag = tagName ?? TAG_NAMES.at(styleContext.typography) ?? TAG_NAMES[5];
+
   return (
-    <Tag className={clsx(styles.heading, CLASS_NAMES.at(resolvedLevel - 1) ?? CLASS_NAMES[5])} id={id}>
-      {children}
+    <Tag className={clsx(styles.heading, styleContextClassName)} id={id}>
+      <StyleContextProvider>{children}</StyleContextProvider>
     </Tag>
   );
 };

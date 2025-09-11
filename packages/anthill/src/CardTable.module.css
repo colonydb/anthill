@@ -2,7 +2,6 @@
   --columns: 2;
   display: grid;
   grid-template-columns: repeat(var(--columns), minmax(0, auto));
-  padding-bottom: 0.5rlh;
 
   tbody,
   thead,
@@ -17,25 +16,25 @@
 
     td,
     th {
-      padding: 0.5rlh 0;
+      padding-block: calc(var(--context-spacing) / 2);
       display: grid;
       place-content: center stretch;
 
       &:first-child {
-        padding-left: 1rlh;
+        padding-inline-start: var(--context-spacing);
       }
 
       &:last-child {
-        padding-right: 1rlh;
+        padding-inline-end: var(--context-spacing);
       }
     }
   }
 
   thead th {
-    font: var(--font-small-bold);
+    font: var(--context-bold-font);
   }
 
   tbody tr {
-    border-top: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
+    border-top: var(--context-border);
   }
 }

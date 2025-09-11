@@ -251,14 +251,14 @@ const Config = () => {
                 dangerouslySetInnerHTML={{
                   __html: `
                   :root {
-                    --key-color-l: ${lightness};
-                    --key-color-c: ${chroma};
-                    --key-color-h: ${hue};
-                    --shades-l-coefficient: ${shadesLightnessCoefficient};
-                    --shades-c-coefficient: ${shadesChromaCoefficient};
-                    --tints-l-coefficient: ${tintsLightnessCoefficient};
-                    --tints-c-coefficient: ${tintsChromaCoefficient};
-                    --gray-c: ${grayChroma};
+                    --config-brand-color-l: ${lightness};
+                    --config-brand-color-c: ${chroma};
+                    --config-brand-color-h: ${hue};
+                    --config-shades-l: ${shadesLightnessCoefficient};
+                    --config-shades-c: ${shadesChromaCoefficient};
+                    --config-tints-l: ${tintsLightnessCoefficient};
+                    --config-tints-c: ${tintsChromaCoefficient};
+                    --config-gray-c: ${grayChroma};
                   }
                 `,
                 }}

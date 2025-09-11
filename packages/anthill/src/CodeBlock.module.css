@@ -1,31 +1,35 @@
 .container {
-  background: light-dark(var(--color-gray-t6), var(--color-gray-s7));
-  border-radius: 0.5rlh;
+  background: var(--context-background);
+  border: var(--context-border);
+  border-radius: var(--context-border-radius);
   position: relative;
 
   .copyButton {
     color: light-dark(var(--color-gray-s2), var(--color-gray-t1));
     position: absolute;
-    right: 0.5rlh;
-    top: 0.5rlh;
+    right: var(--context-spacing);
+    top: var(--context-spacing);
   }
 
   .code {
     font: var(--font-small-monospace);
-    padding: 1rlh;
+    padding: var(--context-spacing);
     tab-size: 2;
     white-space: pre-wrap;
   }
-}
 
-@media screen and (hover: hover) {
-  .container {
+  &.seamless {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+
     .copyButton {
-      opacity: 0;
-      transition: opacity 0.2s;
+      right: 0;
+      top: 0;
     }
-    &:hover .copyButton {
-      opacity: 1;
+
+    .code {
+      padding: 0;
     }
   }
 }

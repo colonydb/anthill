@@ -1,5 +1,6 @@
 .container {
   display: inline;
+  font: var(--context-body-font);
 
   &.truncated {
     display: inline-block;

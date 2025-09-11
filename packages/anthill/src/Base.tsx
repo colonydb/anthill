@@ -3,6 +3,7 @@ import "@haydn/universal/universal.css";
 import css from "dedent";
 import type { ReactNode } from "react";
 import "./Base.css";
+import { Block } from "./Block.js";
 import * as icons from "./icons/index.js";
 
 type Props = {
@@ -28,14 +29,14 @@ export const Base = ({ color, brandTypeface, children }: Props) => (
         dangerouslySetInnerHTML={{
           __html: css`
             :root {
-              --key-color-l: ${color.lightness};
-              --key-color-c: ${color.chroma};
-              --key-color-h: ${color.hue};
-              --shades-l-coefficient: ${color.shadesLightnessCoefficient ?? 0.75};
-              --shades-c-coefficient: ${color.shadesChromaCoefficient ?? 0.85};
-              --tints-l-coefficient: ${color.tintsLightnessCoefficient ?? 0.75};
-              --tints-c-coefficient: ${color.tintsChromaCoefficient ?? 0.7};
-              --gray-c: ${color.grayChroma ?? 0.0};
+              --config-brand-color-l: ${color.lightness};
+              --config-brand-color-c: ${color.chroma};
+              --config-brand-color-h: ${color.hue};
+              --config-shades-l: ${color.shadesLightnessCoefficient ?? 0.75};
+              --config-shades-c: ${color.shadesChromaCoefficient ?? 0.85};
+              --config-tints-l: ${color.tintsLightnessCoefficient ?? 0.75};
+              --config-tints-c: ${color.tintsChromaCoefficient ?? 0.7};
+              --config-gray-c: ${color.grayChroma ?? 0.0};
             }
           `,
         }}
@@ -47,7 +48,7 @@ export const Base = ({ color, brandTypeface, children }: Props) => (
         dangerouslySetInnerHTML={{
           __html: css`
             :root {
-              --typeface-brand: ${brandTypeface};
+              --config-brand-typeface: ${brandTypeface};
             }
           `,
         }}
@@ -60,6 +61,6 @@ export const Base = ({ color, brandTypeface, children }: Props) => (
         return <Component key={name} id={`icon-${name}`} />;
       })}
     </svg>
-    {children}
+    <Block>{children}</Block>
   </>
 );

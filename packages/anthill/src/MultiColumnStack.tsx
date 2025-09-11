@@ -1,13 +1,11 @@
 "use client";
 
 import clsx from "clsx";
-import { type JSX, type ReactNode, useContext } from "react";
-import type { Hue } from "./index.js";
+import { type JSX, type ReactNode, useMemo } from "react";
+import type { Hue, StyleContextConfig } from "./index.js";
 import styles from "./MultiColumnStack.module.css";
-import { SpacingLevelContext } from "./SpacingLevelContext.js";
+import { useStyleContext } from "./useStyleContext.js";
 import { formatColor } from "./utils/formatColor.js";
-
-const SPACING_LEVELS = ["p3", "p2", "p1", "00", "n1", "n2", "n3"] as const;
 
 type Props = {
   allowBreaks?: boolean;
@@ -16,7 +14,7 @@ type Props = {
   hue?: Hue;
   id?: string;
   muted?: boolean;
-  spacing?: (typeof SPACING_LEVELS)[number];
+  spacingLevel?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   tagName?: keyof JSX.IntrinsicElements;
 };
 
@@ -27,30 +25,28 @@ export const MultiColumnStack = ({
   hue,
   id,
   muted,
-  spacing,
+  spacingLevel,
   tagName: Tag = "div",
 }: Props) => {
-  const contextLevel = useContext(SpacingLevelContext);
-  const indexOfSpacing = spacing ? SPACING_LEVELS.indexOf(spacing) : undefined;
-  const resolvedLevel =
-    (indexOfSpacing === undefined || indexOfSpacing === -1 ? undefined : clampSpacingLevel(indexOfSpacing)) ??
-    contextLevel;
-  const resolvedSpacing = spacing ?? SPACING_LEVELS[resolvedLevel];
+  const styleContextConfig = useMemo<StyleContextConfig>(
+    () => ({
+      spacing: (value) => spacingLevel ?? value + 1,
+    }),
+    [spacingLevel],
+  );
+
+  const { styleContextClassName, StyleContextProvider } = useStyleContext(styleContextConfig);
+
   return (
     <Tag
-      className={clsx(styles.container, allowBreaks ? styles.allowBreaks : undefined)}
+      className={clsx(styles.container, styleContextClassName, allowBreaks ? styles.allowBreaks : undefined)}
       id={id}
       style={{
-        "--gap": `var(--space-${resolvedSpacing})`,
         color: formatColor(hue, muted),
         columns: columns,
       }}
     >
-      <SpacingLevelContext.Provider value={clampSpacingLevel(resolvedLevel + 1)}>
-        {children}
-      </SpacingLevelContext.Provider>
+      <StyleContextProvider>{children}</StyleContextProvider>
     </Tag>
   );
 };
-
-const clampSpacingLevel = (level: number) => Math.min(Math.max(level, 0), 6) as 1 | 2 | 3 | 4 | 5 | 6;

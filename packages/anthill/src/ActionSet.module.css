@@ -1,7 +1,7 @@
 .actionList {
-  background: light-dark(var(--color-gray-t9), var(--color-gray-s9));
-  border-radius: 0.25rlh;
-  border: 1px solid #eee;
+  background: var(--context-background);
+  border-radius: var(--context-border-radius);
+  border: var(--context-border);
   display: grid;
   left: anchor(left);
   position-try-fallbacks: flip-block, flip-inline;
@@ -9,6 +9,6 @@
   user-select: none;
 
   & > * + * {
-    border-top: 1px solid #eee;
+    border-top: var(--context-border);
   }
 }

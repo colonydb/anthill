@@ -1,6 +1,6 @@
 .swatchContainer {
-  border-radius: 0.5rlh;
-  border: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
+  border-radius: var(--context-border-radius);
+  border: var(--context-border);
   display: grid;
   grid-template-columns: repeat(22, 1fr);
   overflow: hidden;

@@ -1,11 +1,11 @@
 "use client";
 
-import { type ComponentProps, type ReactNode, useRef, useState } from "react";
+import clsx from "clsx";
+import { type ComponentProps, type ReactNode, useMemo, useRef, useState } from "react";
 import { Action } from "./Action.js";
 import styles from "./Dialog.module.css";
-import { HeadingLevelContext } from "./HeadingLevelContext.js";
-import type { Width } from "./index.js";
-import { SpacingLevelContext } from "./SpacingLevelContext.js";
+import type { StyleContextConfig, Width } from "./index.js";
+import { useStyleContext } from "./useStyleContext.js";
 
 type Props = {
   dismissible?: boolean;
@@ -25,6 +25,17 @@ export const Dialog = ({ dismissible = false, render, stable = false, width = "a
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [key, setKey] = useState("");
 
+  const styleContextConfig = useMemo<StyleContextConfig>(
+    () => ({
+      container: () => 0,
+      spacing: () => 0,
+      typography: () => 1,
+    }),
+    [],
+  );
+
+  const { styleContextClassName, StyleContextProvider } = useStyleContext(styleContextConfig);
+
   return (
     <>
       <Action
@@ -39,7 +50,7 @@ export const Dialog = ({ dismissible = false, render, stable = false, width = "a
       <dialog
         // @ts-ignore: closeBy not yet supported in React
         closedby={dismissible === true ? "any" : "none"}
-        className={styles.dialog}
+        className={clsx(styleContextClassName, styles.dialog)}
         onClose={(event) => {
           event.preventDefault();
         }}
@@ -48,17 +59,15 @@ export const Dialog = ({ dismissible = false, render, stable = false, width = "a
           "--dialog-width": width === "auto" ? "auto" : `var(--width-${width})`,
         }}
       >
-        <div className={styles.container} key={key}>
-          <div className={styles.content}>
-            <SpacingLevelContext.Provider value={0}>
-              <HeadingLevelContext.Provider value={1}>
-                {render(() => {
-                  if (dialogRef.current) dialogRef.current.close();
-                })}
-              </HeadingLevelContext.Provider>
-            </SpacingLevelContext.Provider>
+        <StyleContextProvider>
+          <div className={styles.container} key={key}>
+            <div className={styles.content}>
+              {render(() => {
+                if (dialogRef.current) dialogRef.current.close();
+              })}
+            </div>
           </div>
-        </div>
+        </StyleContextProvider>
       </dialog>
     </>
   );

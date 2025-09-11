@@ -1,5 +1,8 @@
+"use client";
+
 import clsx from "clsx";
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
+import { useMemo } from "react";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { refractor } from "refractor";
 import css from "refractor/css";
@@ -10,9 +13,10 @@ import markup from "refractor/markup";
 import tsx from "refractor/tsx";
 import typescript from "refractor/typescript";
 import "./CodeBlock.css";
-import { useMemo } from "react";
 import styles from "./CodeBlock.module.css";
 import { CopyToClipboardAction } from "./CopyToClipboardAction.js";
+import type { StyleContextConfig } from "./index.js";
+import { useStyleContext } from "./useStyleContext.js";
 
 refractor.register(css);
 refractor.register(javascript);
@@ -26,10 +30,19 @@ type Props = {
   children: string;
   id?: string;
   language: string;
-  transparent?: boolean;
+  seamless?: boolean;
 };
 
-export const CodeBlock = ({ children, id, language, transparent }: Props) => {
+export const CodeBlock = ({ children, id, language, seamless }: Props) => {
+  const styleContextConfig = useMemo<StyleContextConfig>(
+    () => ({
+      spacing: (value) => (seamless ? value : value + 1),
+    }),
+    [seamless],
+  );
+
+  const { StyleContextProvider, styleContextClassName } = useStyleContext(styleContextConfig);
+
   const reactNode = useMemo(
     () =>
       toJsxRuntime(refractor.highlight(children, refractor.registered(language) ? language : "plaintext"), {
@@ -41,11 +54,13 @@ export const CodeBlock = ({ children, id, language, transparent }: Props) => {
   );
 
   return (
-    <div className={clsx(styles.container, transparent ? styles.transparent : null)} id={id}>
-      <div className={styles.copyButton}>
-        <CopyToClipboardAction fontSize="tiny" text={children} />
-      </div>
-      <pre className={styles.code}>{reactNode}</pre>
+    <div className={clsx(styleContextClassName, styles.container, seamless ? styles.seamless : null)} id={id}>
+      <StyleContextProvider>
+        <div className={styles.copyButton}>
+          <CopyToClipboardAction text={children} />
+        </div>
+        <pre className={styles.code}>{reactNode}</pre>
+      </StyleContextProvider>
     </div>
   );
 };

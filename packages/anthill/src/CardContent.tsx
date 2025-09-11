@@ -1,20 +1,17 @@
 "use client";
 
 import clsx from "clsx";
-import type { ComponentProps } from "react";
+import type { ReactNode } from "react";
 import styles from "./CardContent.module.css";
-import { Section } from "./Section.js";
+import { Stack } from "./Stack.js";
 
 type Props = {
+  children?: ReactNode;
   flush?: boolean;
-} & ComponentProps<typeof Section>;
+};
 
-export const CardContent = ({ flush, tagName = "div", title, headingLevel = 2, ...sectionProps }: Props) => (
+export const CardContent = ({ children, flush }: Props) => (
   <div className={clsx(styles.container, flush ? styles.flush : undefined)}>
-    <Section
-      tagName={tagName}
-      title={title && flush ? <div className={styles.paddedTitle}>{title}</div> : title}
-      {...sectionProps}
-    />
+    <Stack>{children}</Stack>
   </div>
 );

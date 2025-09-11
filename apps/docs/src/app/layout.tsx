@@ -20,8 +20,8 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: "Anthill | Documentation",
-  description: "Reference documentation for Anthill, ColonyDB's design system.",
+  title: "Anthill",
+  description: "UI toolkit for React apps.",
 };
 
 const RootLayout = ({ children }: Props) => (
@@ -30,7 +30,7 @@ const RootLayout = ({ children }: Props) => (
       <FrameworkContextProvider>
         <Base brandTypeface={brandFont.style.fontFamily}>
           <nav className={styles.nav}>
-            <Section headingLevel={2} tagName="ul" spacing="00">
+            <Stack headingLevel={3} spacingLevel={4} tagName="ul">
               <li>
                 <Link href="/">Home</Link>
               </li>
@@ -50,6 +50,25 @@ const RootLayout = ({ children }: Props) => (
                   </li>
                 </Stack>
               </Section>
+              <Section tagName="li" title={<Heading>Foundation</Heading>}>
+                <Stack tagName="ul">
+                  <li>
+                    <Link href="/Base">Base</Link>
+                  </li>
+                  <li>
+                    <Link href="/FrameworkContext">FrameworkContext</Link>
+                  </li>
+                  <li>
+                    <Link href="/StyleContext">StyleContext</Link>
+                  </li>
+                  <li>
+                    <Link href="/Block">Block</Link>
+                  </li>
+                  <li>
+                    <Link href="/Inline">Inline</Link>
+                  </li>
+                </Stack>
+              </Section>
               <Section tagName="li" title={<Heading>Components</Heading>}>
                 <Stack tagName="ul">
                   <li>
@@ -66,9 +85,6 @@ const RootLayout = ({ children }: Props) => (
                   </li>
                   <li>
                     <Link href="/Button">Button</Link>
-                  </li>
-                  <li>
-                    <Link href="/Block">Block</Link>
                   </li>
                   <li>
                     <Link href="/Card">Card</Link>
@@ -92,10 +108,10 @@ const RootLayout = ({ children }: Props) => (
                     <Link href="/Icon">Icon</Link>
                   </li>
                   <li>
-                    <Link href="/Inline">Inline</Link>
+                    <Link href="/Link">Link</Link>
                   </li>
                   <li>
-                    <Link href="/Link">Link</Link>
+                    <Link href="/Main">Main</Link>
                   </li>
                   <li>
                     <Link href="/Markdown">Markdown</Link>
@@ -105,9 +121,6 @@ const RootLayout = ({ children }: Props) => (
                   </li>
                   <li>
                     <Link href="/RegularField">RegularField</Link>
-                  </li>
-                  <li>
-                    <Link href="/RichText">RichText</Link>
                   </li>
                   <li>
                     <Link href="/Specimen">Specimen</Link>
@@ -120,9 +133,6 @@ const RootLayout = ({ children }: Props) => (
                   </li>
                   <li>
                     <Link href="/TabBlock">TabBlock</Link>
-                  </li>
-                  <li>
-                    <Link href="/TabSet">TabSet</Link>
                   </li>
                 </Stack>
               </Section>
@@ -139,7 +149,7 @@ const RootLayout = ({ children }: Props) => (
                   </li>
                 </Stack>
               </Section>
-            </Section>
+            </Stack>
           </nav>
           <div className={styles.content}>{children}</div>
         </Base>

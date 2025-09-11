@@ -1,8 +1,12 @@
 "use client";
 
-import { type Dispatch, useContext } from "react";
+import clsx from "clsx";
+import { type Dispatch, useContext, useMemo } from "react";
 import { FormContext } from "./FormContext.js";
+import type { StyleContextConfig } from "./index.js";
 import styles from "./StringInput.module.css";
+import { useStyleContext } from "./useStyleContext.js";
+import { clampRange } from "./utils/clampRange.js";
 
 type Props = {
   autoFocus?: boolean;
@@ -23,10 +27,21 @@ type Props = {
 
 export const StringInput = ({ autoFocus, disabled, id, name, placeholder, setValue, ...props }: Props) => {
   const form = useContext(FormContext);
+
+  const styleContextConfig = useMemo<StyleContextConfig>(
+    () => ({
+      container: (value) => clampRange(value + 1, 3, 4),
+      spacing: (value) => clampRange(value, 4, 6),
+    }),
+    [],
+  );
+
+  const { styleContextClassName } = useStyleContext(styleContextConfig);
+
   return (
     <input
       autoFocus={autoFocus ?? false}
-      className={styles.input}
+      className={clsx(styleContextClassName, styles.input)}
       defaultValue={form && name in form.data && typeof form.data[name] === "string" ? form.data[name] : undefined}
       disabled={disabled || form?.disabled}
       id={id ?? (form?.id ? `${form.id}:${name}` : name)}

@@ -1,148 +1,178 @@
 :root {
-  /* sizes */
-
-  --size-hero-font: 36px;
-  --size-hero-line: 45px;
-
-  --size-title-font: 44px;
-  --size-title-line: 55px;
-
-  --size-heading-font: 28px;
-  --size-heading-line: 35px;
-
-  --size-subheading-font: 20px;
-  --size-subheading-line: 25px;
-
-  --size-regular-font: 16px;
-  --size-regular-line: 24px;
-
-  --size-small-font: 14px;
-  --size-small-line: 21px;
-
-  --size-tiny-font: 12px;
-  --size-tiny-line: 18px;
+  /**********/
+  /* config */
+  /**********/
 
   /* typefaces */
 
-  --typeface-brand: system-ui, sans-serif;
-  --typeface-system: system-ui, sans-serif;
-  --typeface-monospace: monospace;
+  --config-brand-typeface: system-ui, sans-serif;
+  --config-system-typeface: system-ui, sans-serif;
+  --config-monospace-typeface: monospace;
 
-  /* fonts */
+  /* sizes */
 
-  --font-hero: normal 400 var(--size-hero-font) / var(--size-hero-line) var(--typeface-system);
+  --config-hero-font-size: 36px;
+  --config-hero-line-height: 45px;
 
-  --font-title: normal 700 var(--size-title-font) / var(--size-title-line) var(--typeface-brand);
-  --font-heading: normal 700 var(--size-heading-font) / var(--size-heading-line) var(--typeface-brand);
-  --font-subheading: normal 700 var(--size-subheading-font) / var(--size-subheading-line) var(--typeface-brand);
+  --config-title-font-size: 44px;
+  --config-title-line-height: 55px;
 
-  --font-regular: normal 400 var(--size-regular-font) / var(--size-regular-line) var(--typeface-system);
-  --font-regular-bold: normal 700 var(--size-regular-font) / var(--size-regular-line) var(--typeface-system);
-  --font-regular-italic: italic 400 var(--size-regular-font) / var(--size-regular-line) var(--typeface-system);
-  --font-regular-bold-italic: italic 700 var(--size-regular-font) / var(--size-regular-line) var(--typeface-system);
-  --font-regular-monospace: normal 400 var(--size-regular-font) / var(--size-regular-line) var(--typeface-monospace);
+  --config-heading-font-size: 28px;
+  --config-heading-line-height: 35px;
 
-  --font-small: normal 400 var(--size-small-font) / var(--size-small-line) var(--typeface-system);
-  --font-small-bold: normal 700 var(--size-small-font) / var(--size-small-line) var(--typeface-system);
-  --font-small-italic: italic 400 var(--size-small-font) / var(--size-small-line) var(--typeface-system);
-  --font-small-bold-italic: italic 700 var(--size-small-font) / var(--size-small-line) var(--typeface-system);
-  --font-small-monospace: normal 400 var(--size-small-font) / var(--size-small-line) var(--typeface-monospace);
+  --config-subheading-font-size: 20px;
+  --config-subheading-line-height: 25px;
 
-  --font-tiny: normal 400 var(--size-tiny-font) / var(--size-tiny-line) var(--typeface-system);
-  --font-tiny-bold: normal 700 var(--size-tiny-font) / var(--size-tiny-line) var(--typeface-system);
-  --font-tiny-italic: italic 400 var(--size-tiny-font) / var(--size-tiny-line) var(--typeface-system);
-  --font-tiny-bold-italic: italic 700 var(--size-tiny-font) / var(--size-tiny-line) var(--typeface-system);
-  --font-tiny-monospace: normal 400 var(--size-tiny-font) / var(--size-tiny-line) var(--typeface-monospace);
+  --config-regular-font-size: 16px;
+  --config-regular-line-height: 24px;
+
+  --config-small-font-size: 14px;
+  --config-small-line-height: 21px;
+
+  --config-tiny-font-size: 12px;
+  --config-tiny-line-height: 18px;
 
   /* colors */
 
-  --key-color-l: 0.83;
-  --key-color-c: 0.1969;
-  --key-color-h: 78.21;
+  --config-brand-color-l: 0.83;
+  --config-brand-color-c: 0.1969;
+  --config-brand-color-h: 78.21;
 
-  --shades-l-coefficient: 0.75;
-  --shades-c-coefficient: 0.84;
-  --tints-l-coefficient: 0.75;
-  --tints-c-coefficient: 0.66;
+  --config-shades-l: 0.8;
+  --config-shades-c: 0.84;
+  --config-tints-l: 0.75;
+  --config-tints-c: 0.66;
 
-  --gray-c: 0.002;
+  --config-gray-c: 0.002;
+
+  /* width */
+
+  --config-page-width: 80rch;
+
+  /*************/
+  /* variables */
+  /*************/
+
+  /* fonts */
+
+  --font-hero: normal 400 var(--config-hero-font-size) / var(--config-hero-line-height) var(--config-system-typeface);
+
+  --font-title: normal 700 var(--config-title-font-size) / var(--config-title-line-height) var(--config-brand-typeface);
+  --font-heading:
+    normal 700 var(--config-heading-font-size) / var(--config-heading-line-height) var(--config-brand-typeface);
+  --font-subheading:
+    normal 700 var(--config-subheading-font-size) / var(--config-subheading-line-height) var(--config-brand-typeface);
+
+  --font-regular:
+    normal 400 var(--config-regular-font-size) / var(--config-regular-line-height) var(--config-system-typeface);
+  --font-regular-bold:
+    normal 700 var(--config-regular-font-size) / var(--config-regular-line-height) var(--config-system-typeface);
+  --font-regular-italic:
+    italic 400 var(--config-regular-font-size) / var(--config-regular-line-height) var(--config-system-typeface);
+  --font-regular-bold-italic:
+    italic 700 var(--config-regular-font-size) / var(--config-regular-line-height) var(--config-system-typeface);
+  --font-regular-monospace:
+    normal 400 var(--config-regular-font-size) / var(--config-regular-line-height) var(--config-monospace-typeface);
+
+  --font-small:
+    normal 400 var(--config-small-font-size) / var(--config-small-line-height) var(--config-system-typeface);
+  --font-small-bold:
+    normal 700 var(--config-small-font-size) / var(--config-small-line-height) var(--config-system-typeface);
+  --font-small-italic:
+    italic 400 var(--config-small-font-size) / var(--config-small-line-height) var(--config-system-typeface);
+  --font-small-bold-italic:
+    italic 700 var(--config-small-font-size) / var(--config-small-line-height) var(--config-system-typeface);
+  --font-small-monospace:
+    normal 400 var(--config-small-font-size) / var(--config-small-line-height) var(--config-monospace-typeface);
+
+  --font-tiny: normal 400 var(--config-tiny-font-size) / var(--config-tiny-line-height) var(--config-system-typeface);
+  --font-tiny-bold:
+    normal 700 var(--config-tiny-font-size) / var(--config-tiny-line-height) var(--config-system-typeface);
+  --font-tiny-italic:
+    italic 400 var(--config-tiny-font-size) / var(--config-tiny-line-height) var(--config-system-typeface);
+  --font-tiny-bold-italic:
+    italic 700 var(--config-tiny-font-size) / var(--config-tiny-line-height) var(--config-system-typeface);
+  --font-tiny-monospace:
+    normal 400 var(--config-tiny-font-size) / var(--config-tiny-line-height) var(--config-monospace-typeface);
+
+  /* colors */
 
   --color-white: #fff;
   --color-black: #000;
 
-  --color-accent: oklch(var(--key-color-l) var(--key-color-c) var(--key-color-h));
+  --color-accent: oklch(var(--config-brand-color-l) var(--config-brand-color-c) var(--config-brand-color-h));
   --color-contrast: oklch(from var(--color-accent) clamp(0, (l / 0.623 - 1) * -infinity, 1) 0 h);
 
-  --color-s9-l: calc(0 - (0 - var(--key-color-l)) * 0.1 * var(--shades-l-coefficient));
-  --color-s8-l: calc(0 - (0 - var(--key-color-l)) * 0.2 * var(--shades-l-coefficient));
-  --color-s7-l: calc(0 - (0 - var(--key-color-l)) * 0.3 * var(--shades-l-coefficient));
-  --color-s6-l: calc(0 - (0 - var(--key-color-l)) * 0.4 * var(--shades-l-coefficient));
-  --color-s5-l: calc(0 - (0 - var(--key-color-l)) * 0.5 * var(--shades-l-coefficient));
-  --color-s4-l: calc(0 - (0 - var(--key-color-l)) * 0.6 * var(--shades-l-coefficient));
-  --color-s3-l: calc(0 - (0 - var(--key-color-l)) * 0.7 * var(--shades-l-coefficient));
-  --color-s2-l: calc(0 - (0 - var(--key-color-l)) * 0.8 * var(--shades-l-coefficient));
-  --color-s1-l: calc(0 - (0 - var(--key-color-l)) * 0.9 * var(--shades-l-coefficient));
-  --color-00-l: var(--key-color-l);
-  --color-t1-l: calc(1 - (1 - var(--key-color-l)) * 0.9 * var(--tints-l-coefficient));
-  --color-t2-l: calc(1 - (1 - var(--key-color-l)) * 0.8 * var(--tints-l-coefficient));
-  --color-t3-l: calc(1 - (1 - var(--key-color-l)) * 0.7 * var(--tints-l-coefficient));
-  --color-t4-l: calc(1 - (1 - var(--key-color-l)) * 0.6 * var(--tints-l-coefficient));
-  --color-t5-l: calc(1 - (1 - var(--key-color-l)) * 0.5 * var(--tints-l-coefficient));
-  --color-t6-l: calc(1 - (1 - var(--key-color-l)) * 0.4 * var(--tints-l-coefficient));
-  --color-t7-l: calc(1 - (1 - var(--key-color-l)) * 0.3 * var(--tints-l-coefficient));
-  --color-t8-l: calc(1 - (1 - var(--key-color-l)) * 0.2 * var(--tints-l-coefficient));
-  --color-t9-l: calc(1 - (1 - var(--key-color-l)) * 0.1 * var(--tints-l-coefficient));
+  --color-s9-l: calc(0 - (0 - var(--config-brand-color-l)) * 0.1 * var(--config-shades-l));
+  --color-s8-l: calc(0 - (0 - var(--config-brand-color-l)) * 0.2 * var(--config-shades-l));
+  --color-s7-l: calc(0 - (0 - var(--config-brand-color-l)) * 0.3 * var(--config-shades-l));
+  --color-s6-l: calc(0 - (0 - var(--config-brand-color-l)) * 0.4 * var(--config-shades-l));
+  --color-s5-l: calc(0 - (0 - var(--config-brand-color-l)) * 0.5 * var(--config-shades-l));
+  --color-s4-l: calc(0 - (0 - var(--config-brand-color-l)) * 0.6 * var(--config-shades-l));
+  --color-s3-l: calc(0 - (0 - var(--config-brand-color-l)) * 0.7 * var(--config-shades-l));
+  --color-s2-l: calc(0 - (0 - var(--config-brand-color-l)) * 0.8 * var(--config-shades-l));
+  --color-s1-l: calc(0 - (0 - var(--config-brand-color-l)) * 0.9 * var(--config-shades-l));
+  --color-00-l: var(--config-brand-color-l);
+  --color-t1-l: calc(1 - (1 - var(--config-brand-color-l)) * 0.9 * var(--config-tints-l));
+  --color-t2-l: calc(1 - (1 - var(--config-brand-color-l)) * 0.8 * var(--config-tints-l));
+  --color-t3-l: calc(1 - (1 - var(--config-brand-color-l)) * 0.7 * var(--config-tints-l));
+  --color-t4-l: calc(1 - (1 - var(--config-brand-color-l)) * 0.6 * var(--config-tints-l));
+  --color-t5-l: calc(1 - (1 - var(--config-brand-color-l)) * 0.5 * var(--config-tints-l));
+  --color-t6-l: calc(1 - (1 - var(--config-brand-color-l)) * 0.4 * var(--config-tints-l));
+  --color-t7-l: calc(1 - (1 - var(--config-brand-color-l)) * 0.3 * var(--config-tints-l));
+  --color-t8-l: calc(1 - (1 - var(--config-brand-color-l)) * 0.2 * var(--config-tints-l));
+  --color-t9-l: calc(1 - (1 - var(--config-brand-color-l)) * 0.1 * var(--config-tints-l));
 
-  --color-s9-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 9));
-  --color-s8-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 8));
-  --color-s7-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 7));
-  --color-s6-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 6));
-  --color-s5-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 5));
-  --color-s4-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 4));
-  --color-s3-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 3));
-  --color-s2-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 2));
-  --color-s1-c: calc(var(--key-color-c) * pow(var(--shades-c-coefficient), 1));
-  --color-00-c: var(--key-color-c);
-  --color-t1-c: calc(var(--key-color-c) * pow(var(--tints-c-coefficient), 1));
-  --color-t2-c: calc(var(--key-color-c) * pow(var(--tints-c-coefficient), 2));
-  --color-t3-c: calc(var(--key-color-c) * pow(var(--tints-c-coefficient), 3));
-  --color-t4-c: calc(var(--key-color-c) * pow(var(--tints-c-coefficient), 4));
-  --color-t5-c: calc(var(--key-color-c) * pow(var(--tints-c-coefficient), 5));
-  --color-t6-c: calc(var(--key-color-c) * pow(var(--tints-c-coefficient), 6));
-  --color-t7-c: calc(var(--key-color-c) * pow(var(--tints-c-coefficient), 7));
-  --color-t8-c: calc(var(--key-color-c) * pow(var(--tints-c-coefficient), 8));
-  --color-t9-c: calc(var(--key-color-c) * pow(var(--tints-c-coefficient), 9));
+  --color-s9-c: calc(var(--config-brand-color-c) * pow(var(--config-shades-c), 9));
+  --color-s8-c: calc(var(--config-brand-color-c) * pow(var(--config-shades-c), 8));
+  --color-s7-c: calc(var(--config-brand-color-c) * pow(var(--config-shades-c), 7));
+  --color-s6-c: calc(var(--config-brand-color-c) * pow(var(--config-shades-c), 6));
+  --color-s5-c: calc(var(--config-brand-color-c) * pow(var(--config-shades-c), 5));
+  --color-s4-c: calc(var(--config-brand-color-c) * pow(var(--config-shades-c), 4));
+  --color-s3-c: calc(var(--config-brand-color-c) * pow(var(--config-shades-c), 3));
+  --color-s2-c: calc(var(--config-brand-color-c) * pow(var(--config-shades-c), 2));
+  --color-s1-c: calc(var(--config-brand-color-c) * pow(var(--config-shades-c), 1));
+  --color-00-c: var(--config-brand-color-c);
+  --color-t1-c: calc(var(--config-brand-color-c) * pow(var(--config-tints-c), 1));
+  --color-t2-c: calc(var(--config-brand-color-c) * pow(var(--config-tints-c), 2));
+  --color-t3-c: calc(var(--config-brand-color-c) * pow(var(--config-tints-c), 3));
+  --color-t4-c: calc(var(--config-brand-color-c) * pow(var(--config-tints-c), 4));
+  --color-t5-c: calc(var(--config-brand-color-c) * pow(var(--config-tints-c), 5));
+  --color-t6-c: calc(var(--config-brand-color-c) * pow(var(--config-tints-c), 6));
+  --color-t7-c: calc(var(--config-brand-color-c) * pow(var(--config-tints-c), 7));
+  --color-t8-c: calc(var(--config-brand-color-c) * pow(var(--config-tints-c), 8));
+  --color-t9-c: calc(var(--config-brand-color-c) * pow(var(--config-tints-c), 9));
 
-  --color-gray-s9: oklch(var(--color-s9-l) var(--gray-c) var(--key-color-h));
-  --color-gray-s8: oklch(var(--color-s8-l) var(--gray-c) var(--key-color-h));
-  --color-gray-s7: oklch(var(--color-s7-l) var(--gray-c) var(--key-color-h));
-  --color-gray-s6: oklch(var(--color-s6-l) var(--gray-c) var(--key-color-h));
-  --color-gray-s5: oklch(var(--color-s5-l) var(--gray-c) var(--key-color-h));
-  --color-gray-s4: oklch(var(--color-s4-l) var(--gray-c) var(--key-color-h));
-  --color-gray-s3: oklch(var(--color-s3-l) var(--gray-c) var(--key-color-h));
-  --color-gray-s2: oklch(var(--color-s2-l) var(--gray-c) var(--key-color-h));
-  --color-gray-s1: oklch(var(--color-s1-l) var(--gray-c) var(--key-color-h));
-  --color-gray-00: oklch(var(--color-00-l) var(--gray-c) var(--key-color-h));
-  --color-gray-t1: oklch(var(--color-t1-l) var(--gray-c) var(--key-color-h));
-  --color-gray-t2: oklch(var(--color-t2-l) var(--gray-c) var(--key-color-h));
-  --color-gray-t3: oklch(var(--color-t3-l) var(--gray-c) var(--key-color-h));
-  --color-gray-t4: oklch(var(--color-t4-l) var(--gray-c) var(--key-color-h));
-  --color-gray-t5: oklch(var(--color-t5-l) var(--gray-c) var(--key-color-h));
-  --color-gray-t6: oklch(var(--color-t6-l) var(--gray-c) var(--key-color-h));
-  --color-gray-t7: oklch(var(--color-t7-l) var(--gray-c) var(--key-color-h));
-  --color-gray-t8: oklch(var(--color-t8-l) var(--gray-c) var(--key-color-h));
-  --color-gray-t9: oklch(var(--color-t9-l) var(--gray-c) var(--key-color-h));
+  --color-gray-s9: oklch(var(--color-s9-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-s8: oklch(var(--color-s8-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-s7: oklch(var(--color-s7-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-s6: oklch(var(--color-s6-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-s5: oklch(var(--color-s5-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-s4: oklch(var(--color-s4-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-s3: oklch(var(--color-s3-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-s2: oklch(var(--color-s2-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-s1: oklch(var(--color-s1-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-00: oklch(var(--color-00-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-t1: oklch(var(--color-t1-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-t2: oklch(var(--color-t2-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-t3: oklch(var(--color-t3-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-t4: oklch(var(--color-t4-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-t5: oklch(var(--color-t5-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-t6: oklch(var(--color-t6-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-t7: oklch(var(--color-t7-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-t8: oklch(var(--color-t8-l) var(--config-gray-c) var(--config-brand-color-h));
+  --color-gray-t9: oklch(var(--color-t9-l) var(--config-gray-c) var(--config-brand-color-h));
 
-  --color-red-h: calc(mod(var(--key-color-h), 36) + (0 * 36));
-  --color-orange-h: calc(mod(var(--key-color-h), 36) + (1 * 36));
-  --color-yellow-h: calc(mod(var(--key-color-h), 36) + (2 * 36));
-  --color-lime-h: calc(mod(var(--key-color-h), 36) + (3 * 36));
-  --color-green-h: calc(mod(var(--key-color-h), 36) + (4 * 36));
-  --color-teal-h: calc(mod(var(--key-color-h), 36) + (5 * 36));
-  --color-cyan-h: calc(mod(var(--key-color-h), 36) + (6 * 36));
-  --color-blue-h: calc(mod(var(--key-color-h), 36) + (7 * 36));
-  --color-violet-h: calc(mod(var(--key-color-h), 36) + (8 * 36));
-  --color-magenta-h: calc(mod(var(--key-color-h), 36) + (9 * 36));
+  --color-red-h: calc(mod(var(--config-brand-color-h), 36) + (0 * 36));
+  --color-orange-h: calc(mod(var(--config-brand-color-h), 36) + (1 * 36));
+  --color-yellow-h: calc(mod(var(--config-brand-color-h), 36) + (2 * 36));
+  --color-lime-h: calc(mod(var(--config-brand-color-h), 36) + (3 * 36));
+  --color-green-h: calc(mod(var(--config-brand-color-h), 36) + (4 * 36));
+  --color-teal-h: calc(mod(var(--config-brand-color-h), 36) + (5 * 36));
+  --color-cyan-h: calc(mod(var(--config-brand-color-h), 36) + (6 * 36));
+  --color-blue-h: calc(mod(var(--config-brand-color-h), 36) + (7 * 36));
+  --color-violet-h: calc(mod(var(--config-brand-color-h), 36) + (8 * 36));
+  --color-magenta-h: calc(mod(var(--config-brand-color-h), 36) + (9 * 36));
 
   --color-red-s9: oklch(var(--color-s9-l) var(--color-s9-c) var(--color-red-h));
   --color-red-s8: oklch(var(--color-s8-l) var(--color-s8-c) var(--color-red-h));
@@ -346,6 +376,7 @@
 
   /* spaces */
 
+  --space-p4: calc(1rlh * pow(1 + 1 / 3, 4));
   --space-p3: calc(1rlh * pow(1 + 1 / 3, 3));
   --space-p2: calc(1rlh * pow(1 + 1 / 3, 2));
   --space-p1: calc(1rlh * pow(1 + 1 / 3, 1));
@@ -353,24 +384,29 @@
   --space-n1: calc(1rlh * pow(1 - 1 / 3, 1));
   --space-n2: calc(1rlh * pow(1 - 1 / 3, 2));
   --space-n3: calc(1rlh * pow(1 - 1 / 3, 3));
+  --space-n4: calc(1rlh * pow(1 - 1 / 3, 4));
 
   /* widths */
 
-  --width-tiny: 10rlh;
-  --width-small: 20rlh;
-  --width-medium: 30rlh;
-  --width-large: 50rlh;
-  --width-huge: 80rlh;
+  --width-tiny: calc(var(--config-page-width) * 1 / 3);
+  --width-small: calc(var(--config-page-width) * 2 / 3);
+  --width-medium: var(--config-page-width);
+  --width-large: calc(var(--config-page-width) * 5 / 3);
+  --width-huge: calc(var(--config-page-width) * 8 / 3);
 
-  /* backwards compatibility */
+  /* context */
 
-  --width-narrow: var(--width-small);
-  --width-wide: var(--width-large);
+  --context-background: light-dark(var(--color-gray-t9), var(--color-gray-s9));
+  --context-body-font: var(--font-regular);
+  --context-border-radius: var(--space-00);
+  --context-border: 1px solid light-dark(var(--color-gray-t5), var(--color-gray-s5));
+  --context-heading-font: var(--font-heading);
+  --context-spacing: var(--space-p3);
 }
 
 :root {
   accent-color: var(--color-accent);
-  background: light-dark(var(--color-gray-t7), var(--color-gray-s7));
+  background: light-dark(var(--color-gray-t8), var(--color-gray-s8));
   color-scheme: light dark;
   color: light-dark(var(--color-black), var(--color-white));
   font: var(--font-regular);

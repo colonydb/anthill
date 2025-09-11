@@ -1,12 +1,20 @@
 .container {
+  display: grid;
+  gap: var(--context-spacing);
+  grid-auto-rows: minmax(0, auto);
+  grid-template-columns: auto max-content;
+  justify-content: space-between;
+
+  .title {
+    grid-column: 1 / auto;
+  }
+
   .actions {
     align-self: center;
+    grid-column: 2 / -1;
   }
-  &.withActions {
-    column-gap: 0.5rlh;
-    display: grid;
-    grid-auto-rows: minmax(0, auto);
-    grid-template-columns: auto max-content;
-    justify-content: space-between;
+
+  .description {
+    grid-column: 1 / -1;
   }
 }

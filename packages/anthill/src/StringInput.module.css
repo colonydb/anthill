@@ -1,10 +1,11 @@
 .input {
-  background: light-dark(var(--color-gray-t7), var(--color-gray-s7));
-  border-radius: 0.25rlh;
-  box-shadow: inset 1px 1px 3px var(--color-gray-00);
+  --shadow-color: color-mix(in oklch, var(--color-black) 20%, transparent);
+  background: var(--context-background);
+  border-radius: var(--context-border-radius);
+  box-shadow: inset 1px 1px 3px var(--shadow-color);
   display: block;
   outline-color: transparent;
-  padding: 0.5rlh;
+  padding: var(--context-spacing);
   transition: outline-color 0.2s;
   width: 100%;
 
@@ -26,7 +27,7 @@
 
 @media (prefers-color-scheme: dark) {
   .input {
-    box-shadow: none;
+    --shadow-color: color-mix(in oklch, var(--color-black) 80%, transparent);
   }
 }
 

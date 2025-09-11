@@ -1,42 +1,56 @@
 "use client";
 
-import { type ComponentProps, useContext } from "react";
-import ReactMarkdown from "react-markdown";
+import clsx from "clsx";
+import { useMemo } from "react";
+import ReactMarkdown, { type ExtraProps } from "react-markdown";
 import { CodeBlock } from "./CodeBlock.js";
-import { HeadingLevelContext } from "./HeadingLevelContext.js";
-import { RichText } from "./RichText.js";
-import { clampHeadingLevel } from "./utils/clampHeadingLevel.js";
+import { Heading } from "./Heading.js";
+import type { StyleContextConfig } from "./index.js";
+import styles from "./Markdown.module.css";
+import { useStyleContext } from "./useStyleContext.js";
+import { clampRange } from "./utils/clampRange.js";
 
 type Props = {
   children: string;
-  headingLevel?: number;
-} & Omit<ComponentProps<typeof RichText>, "children">;
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+};
 
-export const Markdown = ({ children, headingLevel, ...richTextProps }: Props) => {
-  const contextHeadingLevel = useContext(HeadingLevelContext);
-  const resolvedHeadingLevel = headingLevel ?? contextHeadingLevel;
+export const Markdown = ({ children, headingLevel }: Props) => {
+  const styleContextConfig = useMemo<StyleContextConfig>(
+    () => ({
+      typography: (value) => (headingLevel ? headingLevel - 1 : value + 1),
+    }),
+    [headingLevel],
+  );
+
+  const { styleContext, styleContextClassName, StyleContextProvider } = useStyleContext(styleContextConfig);
+
   return (
-    <RichText {...richTextProps}>
-      <ReactMarkdown
-        components={{
-          h1: `h${clampHeadingLevel(resolvedHeadingLevel + 0)}`,
-          h2: `h${clampHeadingLevel(resolvedHeadingLevel + 1)}`,
-          h3: `h${clampHeadingLevel(resolvedHeadingLevel + 2)}`,
-          h4: `h${clampHeadingLevel(resolvedHeadingLevel + 3)}`,
-          h5: `h${clampHeadingLevel(resolvedHeadingLevel + 4)}`,
-          h6: `h${clampHeadingLevel(resolvedHeadingLevel + 5)}`,
-          code: ({ children, className }) => {
-            const match = /language-(\w+)/.exec(className || "");
-            return match ? (
-              <CodeBlock language={match[1] ?? "plaintext"}>{String(children)}</CodeBlock>
-            ) : (
-              <code>{children}</code>
-            );
-          },
-        }}
-      >
-        {children}
-      </ReactMarkdown>
-    </RichText>
+    <div className={clsx(styleContextClassName, styles.container)}>
+      <StyleContextProvider>
+        <ReactMarkdown
+          components={{
+            h1: ({ children }) => <Heading level={clampRange(styleContext.typography + 0, 1, 6)}>{children}</Heading>,
+            h2: ({ children }) => <Heading level={clampRange(styleContext.typography + 1, 1, 6)}>{children}</Heading>,
+            h3: ({ children }) => <Heading level={clampRange(styleContext.typography + 2, 1, 6)}>{children}</Heading>,
+            h4: ({ children }) => <Heading level={clampRange(styleContext.typography + 3, 1, 6)}>{children}</Heading>,
+            h5: ({ children }) => <Heading level={clampRange(styleContext.typography + 4, 1, 6)}>{children}</Heading>,
+            h6: ({ children }) => <Heading level={clampRange(styleContext.typography + 5, 1, 6)}>{children}</Heading>,
+            pre: ({ node }) => {
+              const match = /language-(\w+)/.exec(getCodeElement(node)?.properties?.className?.toString() ?? "");
+              return <CodeBlock language={match?.at(1) ?? "plaintext"}>{getElementText(node)}</CodeBlock>;
+            },
+          }}
+        >
+          {children}
+        </ReactMarkdown>
+      </StyleContextProvider>
+    </div>
   );
 };
+
+const getCodeElement = (node: NonNullable<ExtraProps["node"]>["children"][number] | undefined): ExtraProps["node"] =>
+  node?.type === "element" ? (node.tagName === "code" ? node : getCodeElement(node.children.at(0))) : undefined;
+
+const getElementText = (node: NonNullable<ExtraProps["node"]>["children"][number] | undefined): string =>
+  node ? (node.type === "text" ? node.value : node.type === "element" ? getElementText(node.children.at(0)) : "") : "";

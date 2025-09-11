@@ -1,5 +1,5 @@
 .content {
   display: grid;
-  grid-template-columns: minmax(auto, var(--width-medium));
+  grid-template-columns: minmax(auto, var(--width-large));
   padding-bottom: 4rlh;
 }

@@ -1,46 +1,43 @@
 "use client";
 
 import clsx from "clsx";
-import { type JSX, type ReactNode, useContext } from "react";
-import type { Hue, Width } from "./index.js";
-import { SpacingLevelContext } from "./SpacingLevelContext.js";
+import { type ComponentProps, useMemo } from "react";
+import { Block } from "./Block.js";
+import type { StyleContextConfig, Width } from "./index.js";
 import styles from "./Stack.module.css";
-import { formatColor } from "./utils/formatColor.js";
-
-const SPACING_LEVELS = ["p3", "p2", "p1", "00", "n1", "n2", "n3"] as const;
+import { useStyleContext } from "./useStyleContext.js";
 
 type Props = {
   center?: boolean;
-  children: ReactNode;
-  hue?: Hue;
-  id?: string;
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   indent?: boolean;
-  muted?: boolean;
-  spacing?: (typeof SPACING_LEVELS)[number];
-  tagName?: keyof JSX.IntrinsicElements;
+  spacingLevel?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   width?: "auto" | Width;
-};
+} & Omit<ComponentProps<typeof Block>, "className" | "style">;
 
 export const Stack = ({
   center,
   children,
-  hue,
-  id,
+  headingLevel,
   indent = false,
-  muted = false,
-  spacing,
-  tagName: Tag = "div",
+  spacingLevel,
   width = "auto",
+  ...blockProps
 }: Props) => {
-  const contextLevel = useContext(SpacingLevelContext);
-  const indexOfSpacing = spacing ? SPACING_LEVELS.indexOf(spacing) : undefined;
-  const resolvedLevel =
-    (indexOfSpacing === undefined || indexOfSpacing === -1 ? undefined : clampSpacingLevel(indexOfSpacing)) ??
-    contextLevel;
-  const resolvedSpacing = spacing ?? SPACING_LEVELS[resolvedLevel];
+  const styleContextConfig = useMemo<StyleContextConfig>(
+    () => ({
+      typography: (value) => (headingLevel !== undefined ? headingLevel - 1 : value),
+      spacing: (value) => (spacingLevel !== undefined ? spacingLevel : value),
+    }),
+    [headingLevel, spacingLevel],
+  );
+
+  const { styleContextClassName, StyleContextProvider } = useStyleContext(styleContextConfig);
+
   return (
-    <Tag
+    <Block
       className={clsx(
+        styleContextClassName,
         styles.container,
         indent ? styles.indent : undefined,
         center ? styles.center : undefined,
@@ -48,17 +45,9 @@ export const Stack = ({
         width === "medium" ? styles.medium : undefined,
         width === "wide" ? styles.wide : undefined,
       )}
-      id={id}
-      style={{
-        color: formatColor(hue, muted),
-        rowGap: `var(--space-${resolvedSpacing})`,
-      }}
+      {...blockProps}
     >
-      <SpacingLevelContext.Provider value={clampSpacingLevel(resolvedLevel + 1)}>
-        {children}
-      </SpacingLevelContext.Provider>
-    </Tag>
+      <StyleContextProvider>{children}</StyleContextProvider>
+    </Block>
   );
 };
-
-const clampSpacingLevel = (level: number) => Math.min(Math.max(level, 0), 6) as 1 | 2 | 3 | 4 | 5 | 6;

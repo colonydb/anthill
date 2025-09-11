@@ -4,7 +4,7 @@ import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
 import { Header } from "@colonydb/anthill/Header";
 import { Heading } from "@colonydb/anthill/Heading";
-import { Section } from "@colonydb/anthill/Section";
+import { Main } from "@colonydb/anthill/Main";
 import Config from "../../Config";
 import styles from "./page.module.css";
 
@@ -14,9 +14,9 @@ const SHADES = ["s9", "s8", "s7", "s6", "s5", "s4", "s3", "s2", "s1"];
 
 const TINTS = ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"];
 
-const ColorPage = () => (
-  <Section
-    title={
+const ColorsPage = () => (
+  <Main
+    header={
       <Header actions={<Config />}>
         <Heading>Colours</Heading>
       </Header>
@@ -108,7 +108,7 @@ const ColorPage = () => (
         </div>
       </CardContent>
     </Card>
-  </Section>
+  </Main>
 );
 
-export default ColorPage;
+export default ColorsPage;

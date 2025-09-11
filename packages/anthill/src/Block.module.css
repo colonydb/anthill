@@ -1,7 +1,10 @@
 .container {
-  display: block;
+  display: grid;
+  font: var(--context-body-font);
+  grid-auto-columns: minmax(min-content, auto);
+  grid-auto-rows: minmax(min-content, auto);
 
   &.indent {
-    padding-left: 1rlh;
+    padding-left: var(--context-spacing);
   }
 }

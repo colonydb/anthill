@@ -1,10 +1,11 @@
 "use client";
 
-import { type ReactNode, useRef } from "react";
+import { type ReactNode, useMemo, useRef } from "react";
 import { Action } from "./Action.js";
 import styles from "./ActionSet.module.css";
 import { Icon } from "./Icon.js";
-import type { BaseFont, Hue } from "./index.js";
+import type { BaseFont, Hue, StyleContextConfig } from "./index.js";
+import { useStyleContext } from "./useStyleContext.js";
 
 type Props = {
   actions: Array<{ content: ReactNode; key: string }>;
@@ -23,15 +24,24 @@ type Props = {
 );
 
 export const ActionSet = ({ actions, icon, ...actionProps }: Props) => {
+  const styleContextConfig = useMemo<StyleContextConfig>(
+    () => ({
+      container: (value) => value + 1,
+    }),
+    [],
+  );
+
+  const { styleContextClassName, StyleContextProvider } = useStyleContext(styleContextConfig);
+
   const actionRef = useRef<HTMLButtonElement>(null);
   const actionListRef = useRef<HTMLDivElement>(null);
+
   return (
     <>
       <Action
         icon={icon ?? <Icon symbol="Kebab" />}
         onClick={() => {
           if (actionRef.current && actionListRef.current) {
-            console.log("toggle");
             actionListRef.current.togglePopover({
               source: actionRef.current,
             } as unknown as Parameters<typeof actionListRef.current.togglePopover>[0]);
@@ -42,7 +52,9 @@ export const ActionSet = ({ actions, icon, ...actionProps }: Props) => {
       />
       <div popover="auto" ref={actionListRef} className={styles.actionList}>
         {actions.map(({ key, content }) => (
-          <div key={key}>{content}</div>
+          <div key={key} className={styleContextClassName}>
+            <StyleContextProvider>{content}</StyleContextProvider>
+          </div>
         ))}
       </div>
     </>

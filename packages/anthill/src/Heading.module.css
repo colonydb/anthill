@@ -1,28 +1,5 @@
 .heading {
   display: flex;
+  font: var(--context-heading-font);
   gap: 0.5ch;
-
-  &.heading1 {
-    font: var(--font-title);
-  }
-
-  &.heading2 {
-    font: var(--font-heading);
-  }
-
-  &.heading3 {
-    font: var(--font-subheading);
-  }
-
-  &.heading4 {
-    font: var(--font-regular-bold);
-  }
-
-  &.heading5 {
-    font: var(--font-small-bold);
-  }
-
-  &.heading6 {
-    font: var(--font-tiny-bold);
-  }
 }

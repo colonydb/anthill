@@ -1,0 +1,111 @@
+.container0 {
+  --context-background: light-dark(var(--color-gray-t9), var(--color-gray-s9));
+  --context-border: 1px solid light-dark(var(--color-gray-t5), var(--color-gray-s7));
+  --context-border-radius: var(--space-00);
+}
+
+.container1 {
+  --context-background: light-dark(var(--color-gray-t8), var(--color-gray-s8));
+  --context-border: 1px solid light-dark(var(--color-gray-t4), var(--color-gray-s6));
+  --context-border-radius: var(--space-n1);
+}
+
+.container2 {
+  --context-background: light-dark(var(--color-gray-t7), var(--color-gray-s7));
+  --context-border: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
+  --context-border-radius: var(--space-n2);
+}
+
+.container3 {
+  --context-background: light-dark(var(--color-gray-t6), var(--color-gray-s6));
+  --context-border: 1px solid light-dark(var(--color-gray-t2), var(--color-gray-s4));
+  --context-border-radius: var(--space-n3);
+}
+
+.container4 {
+  --context-background: light-dark(var(--color-gray-t5), var(--color-gray-s5));
+  --context-border: 1px solid light-dark(var(--color-gray-t1), var(--color-gray-s3));
+  --context-border-radius: var(--space-n4);
+}
+
+.spacing0 {
+  --context-spacing: var(--space-p3);
+}
+
+.spacing1 {
+  --context-spacing: var(--space-p2);
+}
+
+.spacing2 {
+  --context-spacing: var(--space-p1);
+}
+
+.spacing3 {
+  --context-spacing: var(--space-00);
+}
+
+.spacing4 {
+  --context-spacing: var(--space-n1);
+}
+
+.spacing5 {
+  --context-spacing: var(--space-n2);
+}
+
+.spacing6 {
+  --context-spacing: var(--space-n3);
+}
+
+.typography0 {
+  --context-body-font: var(--font-regular);
+  --context-bold-font: var(--font-regular-bold);
+  --context-bold-italic-font: var(--font-regular-bold-italic);
+  --context-heading-font: var(--font-title);
+  --context-italic-font: var(--font-regular-italic);
+  --context-monospace-font: var(--font-regular-monospace);
+}
+
+.typography1 {
+  --context-body-font: var(--font-regular);
+  --context-bold-font: var(--font-regular-bold);
+  --context-bold-italic-font: var(--font-regular-bold-italic);
+  --context-heading-font: var(--font-heading);
+  --context-italic-font: var(--font-regular-italic);
+  --context-monospace-font: var(--font-regular-monospace);
+}
+
+.typography2 {
+  --context-body-font: var(--font-regular);
+  --context-bold-font: var(--font-regular-bold);
+  --context-bold-italic-font: var(--font-regular-bold-italic);
+  --context-heading-font: var(--font-subheading);
+  --context-italic-font: var(--font-regular-italic);
+  --context-monospace-font: var(--font-regular-monospace);
+}
+
+.typography3 {
+  --context-body-font: var(--font-regular);
+  --context-bold-font: var(--font-regular-bold);
+  --context-bold-italic-font: var(--font-regular-bold-italic);
+  --context-heading-font: var(--font-regular-bold);
+  --context-italic-font: var(--font-regular-italic);
+  --context-monospace-font: var(--font-regular-monospace);
+}
+
+.typography4 {
+  --context-body-font: var(--font-small);
+  --context-bold-font: var(--font-small-bold);
+  --context-bold-italic-font: var(--font-small-bold-italic);
+  --context-heading-font: var(--font-small-bold);
+  --context-italic-font: var(--font-small-italic);
+  --context-monospace-font: var(--font-small-monospace);
+}
+
+.typography5 {
+  --context-body-font: var(--font-tiny);
+  --context-bold-font: var(--font-tiny-bold);
+  --context-bold-italic-font: var(--font-tiny-bold-italic);
+  --context-heading-font: var(--font-tiny-bold);
+  --context-italic-font: var(--font-tiny-italic);
+  --context-monospace-font: var(--font-tiny-monospace);
+}

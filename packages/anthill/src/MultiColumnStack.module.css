@@ -1,11 +1,11 @@
 .container {
+  column-gap: calc(var(--context-spacing) * 2);
   column-rule: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
   display: block;
-  gap: calc(var(--gap) * 2);
   widows: 3;
 
   & > * + * {
-    margin-top: var(--gap);
+    margin-top: var(--context-spacing);
   }
 
   &:not(.allowBreaks) > * {

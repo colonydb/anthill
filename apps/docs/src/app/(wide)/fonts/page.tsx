@@ -2,11 +2,11 @@ import { Card } from "@colonydb/anthill/Card";
 import { CardTable } from "@colonydb/anthill/CardTable";
 import { Heading } from "@colonydb/anthill/Heading";
 import { Inline } from "@colonydb/anthill/Inline";
-import { Section } from "@colonydb/anthill/Section";
+import { Main } from "@colonydb/anthill/Main";
 import { Specimen } from "@colonydb/anthill/Specimen";
 
-const TypographyPage = () => (
-  <Section title={<Heading>Fonts</Heading>}>
+const FontsPage = () => (
+  <Main header={<Heading>Fonts</Heading>}>
     <Card>
       <CardTable
         cols={{ name: "Name", specimen: "Specimen" }}
@@ -51,7 +51,7 @@ const TypographyPage = () => (
         }))}
       />
     </Card>
-  </Section>
+  </Main>
 );
 
-export default TypographyPage;
+export default FontsPage;
