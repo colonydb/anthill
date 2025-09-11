@@ -2,7 +2,7 @@
   align-items: center;
   display: grid;
   gap: 0.5rlh;
-  grid-auto-rows: minmax(0, auto);
+  grid-auto-rows: minmax(0, max-content);
   grid-template-columns: auto 1fr;
 
   .controls {

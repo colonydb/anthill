@@ -1,7 +1,7 @@
 .container {
   display: grid;
   gap: var(--context-spacing);
-  grid-auto-rows: minmax(0, auto);
+  grid-auto-rows: minmax(0, max-content);
   grid-template-columns: 1fr auto;
   justify-content: space-between;
 

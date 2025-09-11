@@ -1,7 +1,7 @@
 .container {
   display: grid;
   grid-auto-columns: minmax(0, auto);
-  grid-auto-rows: minmax(0, auto);
+  grid-auto-rows: minmax(0, max-content);
   max-height: 100%;
   overflow-y: auto;
   padding: var(--context-spacing);
