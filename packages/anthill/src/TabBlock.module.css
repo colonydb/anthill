@@ -47,6 +47,7 @@
   &.seamless {
     background: transparent;
     border: none;
+    overflow: visible;
 
     .content {
       padding: var(--context-spacing) 0;
