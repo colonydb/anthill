@@ -3,8 +3,8 @@
 
   .container {
     display: grid;
+    grid-auto-rows: minmax(0, max-content);
     grid-template-columns: minmax(0, auto);
-    grid-template-rows: minmax(0, auto);
     inset: 0;
     padding: 3rlh 1rlh;
     place-content: center;
@@ -13,8 +13,8 @@
 
     .content {
       display: inherit;
+      grid-auto-rows: minmax(0, max-content);
       grid-template-columns: minmax(0, var(--dialog-width));
-      grid-template-rows: inherit;
       pointer-events: all;
     }
   }
