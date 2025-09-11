@@ -2,7 +2,7 @@
   display: grid;
   gap: var(--context-spacing);
   grid-auto-rows: minmax(0, auto);
-  grid-template-columns: auto max-content;
+  grid-template-columns: 1fr auto;
   justify-content: space-between;
 
   .title {
