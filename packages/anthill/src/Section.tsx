@@ -14,12 +14,14 @@ type Props = {
 } & Omit<ComponentProps<typeof Block>, "className" | "style" | "styleContextConfig">;
 
 export const Section = ({ children, headingLevel, tagName = "section", spacingLevel, title, ...blockProps }: Props) => {
+  const hasTitle = title !== null && title !== undefined;
+
   const containerStyleContextConfig = useMemo<StyleContextConfig>(
     () => ({
-      spacing: (value) => (spacingLevel !== undefined ? spacingLevel : title ? value + 1 : value),
+      spacing: (value) => (spacingLevel !== undefined ? spacingLevel : hasTitle ? value + 1 : value),
       typography: (value) => (headingLevel !== undefined ? headingLevel - 1 : value),
     }),
-    [headingLevel, spacingLevel, title],
+    [headingLevel, spacingLevel, hasTitle],
   );
 
   const contentStyleContextConfig = useMemo<StyleContextConfig>(
@@ -34,7 +36,7 @@ export const Section = ({ children, headingLevel, tagName = "section", spacingLe
   return (
     <Block className={clsx(styleContextClassName, styles.container)} tagName={tagName} {...blockProps}>
       <StyleContextProvider>
-        {title ? <div>{title}</div> : null}
+        {hasTitle ? <div>{title}</div> : null}
         <Block styleContextConfig={contentStyleContextConfig}>{children}</Block>
       </StyleContextProvider>
     </Block>
