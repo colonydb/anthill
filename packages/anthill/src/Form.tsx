@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
+import { type FormEvent, type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import type { InferInput } from "valibot";
 import styles from "./Form.module.css";
 import { FormContext } from "./FormContext.js";
@@ -71,67 +71,73 @@ export const Form = <Schema extends FormSchema>({
     [action, data, onSuccess],
   );
 
+  const onSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      setClientResult(null);
+      setClientIsPending(true);
+
+      const result = parseData(data, schema);
+
+      if (result.ok === false) {
+        event.preventDefault();
+        setClientResult(result);
+      }
+    },
+    [data, schema],
+  );
+
   const result = clientResult ?? serverResult;
   const isPending = clientIsPending || serverIsPending;
 
-  const { content, context } = useMemo<{
-    content: ReactNode;
-    context: FormState<Schema>;
-  }>(() => {
+  const content = useMemo<ReactNode>(
+    () =>
+      isPending === false && result?.ok === true && showSuccess && renderSuccess ? renderSuccess(result) : children,
+    [children, isPending, renderSuccess, result, showSuccess],
+  );
+
+  const context = useMemo<FormState<Schema>>(() => {
     if (isPending) {
       return {
-        content: children,
-        context: {
-          data,
-          disabled: true,
-          errors: null,
-          id,
-          schema,
-          setData,
-          status: "pending",
-        },
+        data,
+        disabled: true,
+        errors: null,
+        id,
+        schema,
+        setData,
+        status: "pending",
       };
     } else if (result?.ok === false) {
       return {
-        content: children,
-        context: {
-          data,
-          disabled: disabled ?? false,
-          errors: result.errors,
-          id,
-          schema,
-          setData,
-          status: "error",
-        },
+        data,
+        disabled: disabled ?? false,
+        errors: result.errors,
+        id,
+        schema,
+        setData,
+        status: "error",
       };
     } else if (result?.ok === true && showSuccess) {
       return {
-        content: renderSuccess ? renderSuccess(result) : children,
-        context: {
-          data,
-          disabled: true,
-          errors: null,
-          id,
-          schema,
-          setData,
-          status: "success",
-        },
+        data,
+        disabled: true,
+        errors: null,
+        id,
+        schema,
+        setData,
+        status: "success",
       };
     } else {
       return {
-        content: children,
-        context: {
-          data,
-          disabled: disabled ?? false,
-          errors: null,
-          id,
-          schema,
-          setData,
-          status: "idle",
-        },
+        data,
+        disabled: disabled ?? false,
+        errors: null,
+        id,
+        schema,
+        setData,
+        status: "idle",
       };
     }
-  }, [children, data, disabled, id, isPending, renderSuccess, result, schema, showSuccess]);
+  }, [data, disabled, id, isPending, result, schema, showSuccess]);
 
   useEffect(() => {
     let timeout: number | undefined;
@@ -168,17 +174,7 @@ export const Form = <Schema extends FormSchema>({
     <form
       action={isPending ? undefined : formAction}
       className={styles.container}
-      onSubmit={(event) => {
-        setClientResult(null);
-        setClientIsPending(true);
-
-        const result = parseData(data, schema);
-
-        if (result.ok === false) {
-          event.preventDefault();
-          setClientResult(result);
-        }
-      }}
+      onSubmit={onSubmit}
       id={id}
       noValidate
     >
