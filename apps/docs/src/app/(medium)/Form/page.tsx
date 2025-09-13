@@ -9,9 +9,11 @@ import { FormFooter } from "@colonydb/anthill/FormFooter";
 import { Heading } from "@colonydb/anthill/Heading";
 import { Inline } from "@colonydb/anthill/Inline";
 import { Main } from "@colonydb/anthill/Main";
+import { RegularField } from "@colonydb/anthill/RegularField";
 import { Section } from "@colonydb/anthill/Section";
 import { Specimen } from "@colonydb/anthill/Specimen";
 import { Stack } from "@colonydb/anthill/Stack";
+import { StringInput } from "@colonydb/anthill/StringInput";
 import { TabBlock } from "@colonydb/anthill/TabBlock";
 import js from "dedent";
 import * as v from "valibot";
@@ -42,12 +44,20 @@ const FormPage = () => (
                   content: (
                     <Specimen seamless>
                       <Form
-                        action={async () => ({ ok: true, data: {} })}
+                        action={async ({ data }) => ({ ok: true, data })}
                         id="basicExample"
-                        initialData={{}}
-                        schema={v.object({})}
+                        initialData={{ foo: "" }}
+                        schema={v.object({
+                          foo: v.pipe(v.string(), v.nonEmpty()),
+                        })}
                       >
-                        <FormFooter actionLabel="Submit" />
+                        <Stack>
+                          <FormErrorBanner />
+                          <RegularField label="Foo" name="foo">
+                            <StringInput name="foo" />
+                          </RegularField>
+                          <FormFooter actionLabel="Submit" />
+                        </Stack>
                       </Form>
                     </Specimen>
                   ),
@@ -59,12 +69,20 @@ const FormPage = () => (
                     <CodeBlock language="tsx" seamless>
                       {js`
                         <Form
-                          action={async () => ({ ok: true, data: {} })}
+                          action={async ({ data }) => ({ ok: true, data })}
                           id="basicExample"
-                          initialData={{}}
-                          schema={v.object({})}
+                          initialData={{ foo: "" }}
+                          schema={v.object({
+                            foo: v.pipe(v.string(), v.nonEmpty()),
+                          })}
                         >
-                          <FormFooter actionLabel="Submit" />
+                          <Stack>
+                            <FormErrorBanner />
+                            <RegularField label="Foo" name="foo">
+                              <StringInput name="foo" />
+                            </RegularField>
+                            <FormFooter actionLabel="Submit" />
+                          </Stack>
                         </Form>
                       `}
                     </CodeBlock>
