@@ -13,6 +13,8 @@
 
   .code {
     font: var(--font-small-monospace);
+    max-height: calc(20lh + var(--context-spacing) * 2);
+    overflow: auto;
     padding: var(--context-spacing);
     tab-size: 2;
     white-space: pre-wrap;

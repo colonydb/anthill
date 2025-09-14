@@ -3,8 +3,8 @@
   border: var(--context-border);
   border-radius: var(--context-border-radius);
   display: grid;
-  grid-template-columns: minmax(min-content, auto);
-  grid-template-rows: minmax(min-content, auto);
+  grid-template-columns: minmax(0, auto);
+  grid-template-rows: minmax(0, max-content);
   padding: var(--context-spacing);
   place-content: stretch;
 

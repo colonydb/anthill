@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
-import { useMemo } from "react";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { refractor } from "refractor";
 import css from "refractor/css";
@@ -43,13 +43,17 @@ export const CodeBlock = ({ children, id, language, seamless }: Props) => {
 
   const { StyleContextProvider, styleContextClassName } = useStyleContext(styleContextConfig);
 
-  const reactNode = useMemo(
+  const [code, setCode] = useState<ReactNode>(children);
+
+  useEffect(
     () =>
-      toJsxRuntime(refractor.highlight(children, refractor.registered(language) ? language : "plaintext"), {
-        Fragment,
-        jsx,
-        jsxs,
-      }),
+      setCode(
+        toJsxRuntime(refractor.highlight(children, refractor.registered(language) ? language : "plaintext"), {
+          Fragment,
+          jsx,
+          jsxs,
+        }),
+      ),
     [children, language],
   );
 
@@ -59,7 +63,7 @@ export const CodeBlock = ({ children, id, language, seamless }: Props) => {
         <div className={styles.copyButton}>
           <CopyToClipboardAction text={children} />
         </div>
-        <pre className={styles.code}>{reactNode}</pre>
+        <pre className={styles.code}>{code}</pre>
       </StyleContextProvider>
     </div>
   );
