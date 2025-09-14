@@ -9,7 +9,11 @@
     justify-items: center;
   }
 
-  &.narrow {
+  &.tiny {
+    grid-template-columns: minmax(0, var(--width-tiny));
+  }
+
+  &.small {
     grid-template-columns: minmax(0, var(--width-small));
   }
 
@@ -17,8 +21,12 @@
     grid-template-columns: minmax(0, var(--width-medium));
   }
 
-  &.wide {
+  &.large {
     grid-template-columns: minmax(0, var(--width-large));
+  }
+
+  &.huge {
+    grid-template-columns: minmax(0, var(--width-huge));
   }
 
   &.indent {

@@ -83,4 +83,4 @@ export type Tone = Shade | "00" | Tint;
 
 export type TypographyLevel = 0 | 1 | 2 | 3 | 4 | 5;
 
-export type Width = "narrow" | "medium" | "wide";
+export type Width = "tiny" | "small" | "medium" | "large" | "huge";

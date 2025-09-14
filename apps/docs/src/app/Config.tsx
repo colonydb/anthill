@@ -267,7 +267,7 @@ const Config = () => {
           </CardContent>
         </Card>
       )}
-      width="narrow"
+      width="small"
     >
       Config
     </Dialog>

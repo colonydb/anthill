@@ -92,7 +92,7 @@ const DialogPage = () => (
                             <CardContent>content</CardContent>
                           </Card>
                         )}
-                        width="narrow"
+                        width="small"
                       >
                         Open
                       </Dialog>

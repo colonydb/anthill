@@ -41,9 +41,7 @@ export const Stack = ({
         styles.container,
         indent ? styles.indent : undefined,
         center ? styles.center : undefined,
-        width === "narrow" ? styles.narrow : undefined,
-        width === "medium" ? styles.medium : undefined,
-        width === "wide" ? styles.wide : undefined,
+        width !== "auto" ? styles[width] : undefined,
       )}
       {...blockProps}
     >
