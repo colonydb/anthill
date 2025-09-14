@@ -30,7 +30,6 @@ export const StringInput = ({ autoFocus, disabled, id, name, placeholder, setVal
 
   const styleContextConfig = useMemo<StyleContextConfig>(
     () => ({
-      container: (value) => clampRange(value + 1, 3, 4),
       spacing: (value) => clampRange(value, 4, 6),
     }),
     [],

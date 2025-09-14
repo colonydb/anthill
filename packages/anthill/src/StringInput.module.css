@@ -1,7 +1,7 @@
 .input {
   --shadow-color: color-mix(in oklch, var(--color-black) 20%, transparent);
   background: var(--context-background);
-  border-radius: var(--context-border-radius);
+  border-radius: var(--space-n4);
   box-shadow: inset 1px 1px 3px var(--shadow-color);
   display: block;
   outline-color: transparent;
