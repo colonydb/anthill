@@ -37,13 +37,16 @@ export const StringInput = ({ autoFocus, disabled, id, name, placeholder, setVal
 
   const { styleContextClassName } = useStyleContext(styleContextConfig);
 
+  const resolvedId = id ?? (form?.id ? `${form.id}:${name}` : name);
+
   return (
     <input
       autoFocus={autoFocus ?? false}
       className={clsx(styleContextClassName, styles.input)}
       defaultValue={form && name in form.data && typeof form.data[name] === "string" ? form.data[name] : undefined}
       disabled={disabled || form?.disabled}
-      id={id ?? (form?.id ? `${form.id}:${name}` : name)}
+      id={resolvedId}
+      key={resolvedId}
       name={name}
       onChange={(event) => {
         if (setValue) setValue(event.target.value);
