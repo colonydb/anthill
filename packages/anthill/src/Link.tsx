@@ -15,8 +15,8 @@ export const Link = ({ children, external = false, href, icon }: Props) => {
   const { Link: FrameworkLink } = useContext(FrameworkContext);
   return (
     <FrameworkLink className={styles.link} href={href} target={external ? "_blank" : undefined}>
-      <span>{children}</span>
       {icon ? <span>{icon}</span> : null}
+      <span>{children}</span>
     </FrameworkLink>
   );
 };
