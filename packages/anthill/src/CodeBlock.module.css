@@ -2,6 +2,7 @@
   background: var(--context-background);
   border: var(--context-border);
   border-radius: var(--context-border-radius);
+  overflow: hidden;
   position: relative;
 
   .copyButton {
