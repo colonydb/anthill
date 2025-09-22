@@ -1,6 +1,6 @@
 "use client";
 
-import { type Dispatch, useContext, useState } from "react";
+import { type Dispatch, useContext, useId, useState } from "react";
 import { FormContext } from "./FormContext.js";
 import { Icon } from "./Icon.js";
 import styles from "./TileSelect.module.css";
@@ -14,26 +14,38 @@ type Props<T extends string> = {
     label: string;
     value: T;
   }>;
-  onChange?: Dispatch<T | null>;
-  value?: T | null;
-};
+} & (
+  | {
+      value: T | null;
+      onChange: Dispatch<T | null>;
+    }
+  | {
+      onChange?: Dispatch<T | null>;
+    }
+);
 
-export const TileSelect = <T extends string>({ autoFocus, disabled, id, name, options, onChange, value }: Props<T>) => {
+export const TileSelect = <T extends string>({
+  autoFocus,
+  disabled,
+  id,
+  name,
+  options,
+  onChange,
+  ...props
+}: Props<T>) => {
   const form = useContext(FormContext);
-  const [state, setState] = useState(value ?? null);
+  const [state, setState] = useState("value" in props ? props.value : null);
+  const fallbackName = useId();
 
-  const resolvedId = id ?? (form?.id && name ? `${form.id}:${name}` : name);
+  const resolvedName = name ?? fallbackName;
+  const resolvedId = id ?? (form?.id && resolvedName ? `${form.id}:${resolvedName}` : resolvedName);
 
   return (
     <div className={styles.container}>
       {options.map((option) => {
-        const checked = option.value === (value !== undefined ? value : state);
+        const checked = option.value === ("value" in props ? props.value : state);
         return (
-          <label
-            className={styles.option}
-            htmlFor={`${id ?? (form?.id ? `${form.id}:${name}` : name)}:${option.value}`}
-            key={option.value}
-          >
+          <label className={styles.option} htmlFor={`${resolvedId}:${option.value}`} key={option.value}>
             <div className={styles.tick}>
               <Icon symbol="Tick" />
             </div>
@@ -41,18 +53,20 @@ export const TileSelect = <T extends string>({ autoFocus, disabled, id, name, op
               autoFocus={autoFocus ?? false}
               className={styles.input}
               checked={checked}
-              defaultChecked={form && name && name in form.data ? typeof form.data[name] === option.value : undefined}
+              defaultChecked={
+                form && resolvedName in form.data ? typeof form.data[resolvedName] === option.value : undefined
+              }
               disabled={disabled || form?.disabled}
-              id={resolvedId}
-              key={resolvedId}
-              name={name}
+              id={`${resolvedId}:${option.value}`}
+              key={`${resolvedId}:${option.value}`}
+              name={resolvedName}
               onChange={() => {
                 setState(option.value);
                 if (onChange) onChange(option.value);
-                if (form && name) {
+                if (form && resolvedName in form.data) {
                   form.setData((current) => ({
                     ...current,
-                    [name]: option.value,
+                    [resolvedName]: option.value,
                   }));
                 }
               }}
@@ -61,10 +75,10 @@ export const TileSelect = <T extends string>({ autoFocus, disabled, id, name, op
                   ? () => {
                       setState(null);
                       if (onChange) onChange(null);
-                      if (form && name) {
+                      if (form && resolvedName in form.data) {
                         form.setData((current) => ({
                           ...current,
-                          [name]: null,
+                          [resolvedName]: null,
                         }));
                       }
                     }

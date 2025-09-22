@@ -36,7 +36,6 @@ const TileSelectPage = () => (
                   content: (
                     <Specimen seamless>
                       <TileSelect
-                        name="example1"
                         options={[
                           { label: "One", value: "1" },
                           { label: "Two", value: "2" },
@@ -53,7 +52,6 @@ const TileSelectPage = () => (
                     <CodeBlock language="tsx" seamless>
                       {js`
                         <TileSelect
-                          name="example1"
                           options={[
                             { label: "One", value: "1" },
                             { label: "Two", value: "2" },
