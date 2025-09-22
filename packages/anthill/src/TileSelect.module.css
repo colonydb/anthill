@@ -1,48 +1,50 @@
 .container {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rlh;
-}
 
-.option {
-  aspect-ratio: 1;
-  background: light-dark(var(--color-gray-t2), var(--color-gray-s2));
-  border-radius: 0.25rlh;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  display: grid;
-  outline-color: transparent;
-  padding: 0.25rlh;
-  place-content: center;
-  position: relative;
-  transition:
-    background 0.2s,
-    box-shadow 0.2s,
-    color 0.2s,
-    outline-color 0.2s,
-    transform 0.2s;
-  user-select: none;
-  width: 5rlh;
-
-  .tick {
-    display: none;
-    left: 0.25rlh;
-    position: absolute;
-    top: 0.25rlh;
-  }
-
-  &:has(:checked) {
-    background: var(--color-accent);
-    color: var(--color-contrast);
+  .option {
+    aspect-ratio: 1;
+    background: light-dark(var(--color-gray-t2), var(--color-gray-s2));
+    border-radius: 0.25rlh;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    display: grid;
+    outline-color: transparent;
+    padding: 0.25rlh;
+    place-content: center;
+    position: relative;
+    text-align: center;
+    transition:
+      background 0.2s,
+      box-shadow 0.2s,
+      color 0.2s,
+      outline-color 0.2s,
+      transform 0.2s;
+    user-select: none;
+    width: 5rlh;
 
     .tick {
-      display: block;
+      display: none;
+      left: 0.25rlh;
+      position: absolute;
+      top: 0.25rlh;
     }
-  }
 
-  &:has(:focus-visible) {
-    outline-offset: 2px;
-    outline: 2px solid var(--color-accent);
-    text-decoration: unset;
+    &:has(:checked) {
+      background: var(--color-accent);
+      color: var(--color-contrast);
+
+      .tick {
+        display: block;
+      }
+    }
+
+    &:has(:focus-visible) {
+      outline-offset: 2px;
+      outline: 2px solid var(--color-accent);
+      text-decoration: unset;
+    }
   }
 }
 
@@ -60,23 +62,25 @@
 }
 
 @media screen and (hover: hover) and (prefers-color-scheme: dark) {
-  .option {
-    box-shadow: none;
-  }
+  .container {
+    .option {
+      box-shadow: none;
+    }
 
-  .option:not(:disabled, :has(:checked)):hover {
-    transform: none;
-    box-shadow: 0px 0px 12px var(--color-gray-s1);
-    &.submit {
-      box-shadow: 0px 0px 12px var(--color-accent);
-      &.dangerous {
-        box-shadow: 0px 0px 12px var(--dangerous-color);
+    .option:not(:disabled, :has(:checked)):hover {
+      transform: none;
+      box-shadow: 0px 0px 12px var(--color-gray-s1);
+      &.submit {
+        box-shadow: 0px 0px 12px var(--color-accent);
+        &.dangerous {
+          box-shadow: 0px 0px 12px var(--dangerous-color);
+        }
       }
     }
-  }
 
-  .option:active {
-    transition: none;
-    box-shadow: none;
+    .option:active {
+      transition: none;
+      box-shadow: none;
+    }
   }
 }
