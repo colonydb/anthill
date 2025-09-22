@@ -91,7 +91,7 @@ const StyleContextPage = () => {
                   <TileSelect
                     name="container"
                     options={[0, 1, 2, 3, 4].map((value) => value.toString()).map((value) => ({ label: value, value }))}
-                    setValue={(value) => {
+                    onChange={(value) => {
                       setContainer(value === null ? 0 : parseInt(value));
                     }}
                     value={container.toString()}
@@ -103,7 +103,7 @@ const StyleContextPage = () => {
                     options={[0, 1, 2, 3, 4, 5, 6]
                       .map((value) => value.toString())
                       .map((value) => ({ label: value, value }))}
-                    setValue={(value) => {
+                    onChange={(value) => {
                       setSpacing(value === null ? 0 : parseInt(value));
                     }}
                     value={spacing.toString()}
@@ -115,7 +115,7 @@ const StyleContextPage = () => {
                     options={[0, 1, 2, 3, 4, 5]
                       .map((value) => value.toString())
                       .map((value) => ({ label: value, value }))}
-                    setValue={(value) => {
+                    onChange={(value) => {
                       setTypography(value === null ? 0 : parseInt(value));
                     }}
                     value={typography.toString()}

@@ -89,7 +89,7 @@ const StringInputPage = () => (
                     <Specimen seamless>
                       <StringInput
                         name="example3"
-                        setValue={(value) => {
+                        onChange={(value) => {
                           console.log(value);
                         }}
                       />
@@ -104,7 +104,7 @@ const StringInputPage = () => (
                       {js`
                         <StringInput
                           name="example3"
-                          setValue={(value) => {
+                          onChange={(value) => {
                             console.log(value);
                           }}
                         />
@@ -126,7 +126,7 @@ const StringInputPage = () => (
                       {(state, setState) => (
                         <StringInput
                           name="example4"
-                          setValue={(value) => {
+                          onChange={(value) => {
                             setState(value);
                           }}
                           value={state}
@@ -143,7 +143,7 @@ const StringInputPage = () => (
                       {js`
                         <StringInput
                           name="example4"
-                          setValue={(value) => {
+                          onChange={(value) => {
                             setState(value);
                           }}
                           value={state}

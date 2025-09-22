@@ -18,14 +18,14 @@ type Props = {
 } & (
   | {
       value: string;
-      setValue: Dispatch<string>;
+      onChange: Dispatch<string>;
     }
   | {
-      setValue?: Dispatch<string>;
+      onChange?: Dispatch<string>;
     }
 );
 
-export const StringInput = ({ autoFocus, disabled, id, name, placeholder, setValue, ...props }: Props) => {
+export const StringInput = ({ autoFocus, disabled, id, name, placeholder, onChange, ...props }: Props) => {
   const form = useContext(FormContext);
 
   const styleContextConfig = useMemo<StyleContextConfig>(
@@ -51,7 +51,7 @@ export const StringInput = ({ autoFocus, disabled, id, name, placeholder, setVal
       key={resolvedId}
       name={name}
       onChange={(event) => {
-        if (setValue) setValue(event.target.value);
+        if (onChange) onChange(event.target.value);
         if (form && name) {
           form.setData((current) => ({
             ...current,

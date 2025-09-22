@@ -82,7 +82,7 @@ const TileSelectPage = () => (
                           { label: "Two", value: "2" },
                           { label: "Three", value: "3" },
                         ]}
-                        setValue={(value) => {
+                        onChange={(value) => {
                           console.log(value);
                         }}
                       />
@@ -102,7 +102,7 @@ const TileSelectPage = () => (
                             { label: "Two", value: "2" },
                             { label: "Three", value: "3" },
                           ]}
-                          setValue={(value) => {
+                          onChange={(value) => {
                             console.log(value);
                           }}
                         />
@@ -129,7 +129,7 @@ const TileSelectPage = () => (
                             { label: "Two", value: "2" },
                             { label: "Three", value: "3" },
                           ]}
-                          setValue={(value) => {
+                          onChange={(value) => {
                             setState(value);
                           }}
                           value={state}
@@ -151,7 +151,7 @@ const TileSelectPage = () => (
                             { label: "Two", value: "2" },
                             { label: "Three", value: "3" },
                           ]}
-                          setValue={(value) => {
+                          onChange={(value) => {
                             setState(value);
                           }}
                           value={state}

@@ -14,11 +14,11 @@ type Props<T extends string> = {
     label: string;
     value: T;
   }>;
-  setValue?: Dispatch<T | null>;
+  onChange?: Dispatch<T | null>;
   value?: T | null;
 };
 
-export const TileSelect = <T extends string>({ autoFocus, disabled, id, name, options, setValue, value }: Props<T>) => {
+export const TileSelect = <T extends string>({ autoFocus, disabled, id, name, options, onChange, value }: Props<T>) => {
   const form = useContext(FormContext);
   const [state, setState] = useState(value ?? null);
 
@@ -48,7 +48,7 @@ export const TileSelect = <T extends string>({ autoFocus, disabled, id, name, op
               name={name}
               onChange={() => {
                 setState(option.value);
-                if (setValue) setValue(option.value);
+                if (onChange) onChange(option.value);
                 if (form && name) {
                   form.setData((current) => ({
                     ...current,
@@ -60,7 +60,7 @@ export const TileSelect = <T extends string>({ autoFocus, disabled, id, name, op
                 checked
                   ? () => {
                       setState(null);
-                      if (setValue) setValue(null);
+                      if (onChange) onChange(null);
                       if (form && name) {
                         form.setData((current) => ({
                           ...current,

@@ -12,10 +12,10 @@ type Props = {
 } & (
   | {
       value: string;
-      setValue: Dispatch<string>;
+      onChange: Dispatch<string>;
     }
   | {
-      setValue?: Dispatch<string>;
+      onChange?: Dispatch<string>;
     }
 );
 
