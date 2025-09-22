@@ -7,7 +7,7 @@ type Props = {
   autoFocus?: boolean;
   disabled?: boolean;
   id?: string;
-  name: string;
+  name?: string;
   placeholder?: string;
 } & (
   | {
