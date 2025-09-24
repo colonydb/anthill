@@ -4,7 +4,7 @@
   color: var(--color);
   column-gap: 0.5ch;
   cursor: pointer;
-  display: grid;
+  display: inline-grid;
   font: var(--font-small);
   grid-auto-columns: max-content;
   grid-auto-flow: column;
@@ -13,6 +13,7 @@
   transition:
     color 0.2s,
     outline-color 0.2s;
+  vertical-align: bottom;
 
   &.dangerous {
     color: light-dark(var(--color-red-s1), var(--color-red-t1));
