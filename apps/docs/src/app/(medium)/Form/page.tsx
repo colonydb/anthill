@@ -240,6 +240,60 @@ const FormPage = () => (
               ]}
             />
           </Section>
+          <Section title={<Heading>Complex Footer</Heading>}>
+            <TabBlock
+              items={[
+                {
+                  key: "specimen",
+                  label: "Specimen",
+                  content: (
+                    <Specimen seamless>
+                      <Form
+                        action={async () => ({ ok: true, data: {} })}
+                        id="footerExample"
+                        initialData={{}}
+                        schema={v.object({})}
+                      >
+                        <FormFooter
+                          buttons={[
+                            { content: <Button submit>Submit</Button>, key: "submit" },
+                            { content: <Button disabled>Cancel</Button>, key: "cancel" },
+                          ]}
+                        >
+                          Extra info
+                        </FormFooter>
+                      </Form>
+                    </Specimen>
+                  ),
+                },
+                {
+                  key: "code",
+                  label: "Code",
+                  content: (
+                    <CodeBlock language="tsx" seamless>
+                      {js`
+                        <Form
+                          action={async () => ({ ok: true, data: {} })}
+                          id="footerExample"
+                          initialData={{}}
+                          schema={v.object({})}
+                        >
+                          <FormFooter
+                            buttons={[
+                              { content: <Button submit>Submit</Button>, key: "submit" },
+                              { content: <Button disabled>Cancel</Button>, key: "cancel" },
+                            ]}
+                          >
+                            Extra info
+                          </FormFooter>
+                        </Form>
+                      `}
+                    </CodeBlock>
+                  ),
+                },
+              ]}
+            />
+          </Section>
         </CardContent>
       </Card>
     </Stack>

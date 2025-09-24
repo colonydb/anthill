@@ -20,15 +20,13 @@ export const FormFooter = ({ buttons, children, tagName: Tag = "footer" }: Props
   return (
     <Tag className={styles.container}>
       <div className={styles.controls}>
-        {buttons ? (
-          <div className={styles.buttons}>
-            {buttons.map(({ content, key }) => (
+        {buttons
+          ? buttons.map(({ content, key }) => (
               <div key={key} className={styles.button}>
                 {content}
               </div>
-            ))}
-          </div>
-        ) : null}
+            ))
+          : null}
         {formContext?.status === "pending" ? (
           <div className={styles.status}>
             <Inline hue="gray">
