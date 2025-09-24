@@ -1,21 +1,18 @@
 "use client";
 
-import { type JSX, type ReactNode, useContext } from "react";
-import { Button } from "./Button.js";
+import { type JSX, type Key, type ReactNode, useContext } from "react";
 import { FormContext } from "./FormContext.js";
 import styles from "./FormFooter.module.css";
 import { Icon } from "./Icon.js";
 import { Inline } from "./Inline.js";
 
 type Props = {
-  actionLabel: string;
+  buttons?: Array<{ content: ReactNode; key: Key }>;
   children?: ReactNode;
-  dangerous?: boolean;
-  secondaryAction?: ReactNode;
   tagName?: keyof JSX.IntrinsicElements;
 };
 
-export const FormFooter = ({ actionLabel, children, dangerous, secondaryAction, tagName: Tag = "footer" }: Props) => {
+export const FormFooter = ({ buttons, children, tagName: Tag = "footer" }: Props) => {
   const formContext = useContext(FormContext);
 
   const issueCount = formContext?.errors?.count ?? 0;
@@ -23,12 +20,15 @@ export const FormFooter = ({ actionLabel, children, dangerous, secondaryAction, 
   return (
     <Tag className={styles.container}>
       <div className={styles.controls}>
-        <div className={styles.button}>
-          <Button dangerous={dangerous} submit>
-            {actionLabel}
-          </Button>
-        </div>
-        {secondaryAction ? <div className={styles.button}>{secondaryAction}</div> : null}
+        {buttons ? (
+          <div className={styles.buttons}>
+            {buttons.map(({ content, key }) => (
+              <div key={key} className={styles.button}>
+                {content}
+              </div>
+            ))}
+          </div>
+        ) : null}
         {formContext?.status === "pending" ? (
           <div className={styles.status}>
             <Inline hue="gray">

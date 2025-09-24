@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@colonydb/anthill/Button";
 import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
 import { CodeBlock } from "@colonydb/anthill/CodeBlock";
@@ -56,7 +57,7 @@ const FormPage = () => (
                           <RegularField label="Foo" name="foo">
                             <StringInput name="foo" />
                           </RegularField>
-                          <FormFooter actionLabel="Submit" />
+                          <FormFooter buttons={[{ content: <Button submit>Submit</Button>, key: "submit" }]} />
                         </Stack>
                       </Form>
                     </Specimen>
@@ -81,7 +82,7 @@ const FormPage = () => (
                             <RegularField label="Foo" name="foo">
                               <StringInput name="foo" />
                             </RegularField>
-                            <FormFooter actionLabel="Submit" />
+                            <FormFooter buttons={[{ content: <Button submit>Submit</Button>, key: "submit" }]} />
                           </Stack>
                         </Form>
                       `}
@@ -106,7 +107,7 @@ const FormPage = () => (
                         renderSuccess={() => <Inline font="hero">Success!</Inline>}
                         schema={v.object({})}
                       >
-                        <FormFooter actionLabel="Submit" />
+                        <FormFooter buttons={[{ content: <Button submit>Submit</Button>, key: "submit" }]} />
                       </Form>
                     </Specimen>
                   ),
@@ -124,7 +125,7 @@ const FormPage = () => (
                           renderSuccess={() => <Inline font="hero">Success!</Inline>}
                           schema={v.object({})}
                         >
-                          <FormFooter actionLabel="Submit" />
+                          <FormFooter buttons={[{ content: <Button submit>Submit</Button>, key: "submit" }]} />
                         </Form>
                       `}
                     </CodeBlock>
@@ -158,7 +159,7 @@ const FormPage = () => (
                         <Stack>
                           <FormErrorBanner />
                           <FormErrorBanner field="name" />
-                          <FormFooter actionLabel="Submit" />
+                          <FormFooter buttons={[{ content: <Button submit>Submit</Button>, key: "submit" }]} />
                         </Stack>
                       </Form>
                     </Specimen>
@@ -187,7 +188,7 @@ const FormPage = () => (
                           <Stack>
                             <FormErrorBanner />
                             <FormErrorBanner field="name" />
-                            <FormFooter actionLabel="Submit" />
+                            <FormFooter buttons={[{ content: <Button submit>Submit</Button>, key: "submit" }]} />
                           </Stack>
                         </Form>
                       `}
@@ -212,7 +213,7 @@ const FormPage = () => (
                         repeatable
                         schema={v.object({})}
                       >
-                        <FormFooter actionLabel="Submit" />
+                        <FormFooter buttons={[{ content: <Button submit>Submit</Button>, key: "submit" }]} />
                       </Form>
                     </Specimen>
                   ),
@@ -230,7 +231,7 @@ const FormPage = () => (
                           repeatable
                           schema={v.object({})}
                         >
-                          <FormFooter actionLabel="Submit" />
+                          <FormFooter buttons={[{ content: <Button submit>Submit</Button>, key: "submit" }]} />
                         </Form>
                       `}
                     </CodeBlock>
