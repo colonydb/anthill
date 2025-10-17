@@ -7,6 +7,7 @@ import { CodeBlock } from "@colonydb/anthill/CodeBlock";
 import { Form } from "@colonydb/anthill/Form";
 import { FormErrorBanner } from "@colonydb/anthill/FormErrorBanner";
 import { FormFooter } from "@colonydb/anthill/FormFooter";
+import { FormStatus } from "@colonydb/anthill/FormStatus";
 import { Heading } from "@colonydb/anthill/Heading";
 import { Inline } from "@colonydb/anthill/Inline";
 import { Main } from "@colonydb/anthill/Main";
@@ -30,6 +31,7 @@ const FormPage = () => (
               import { Form } from "@colonydb/anthill/Form";
               import { FormErrorBanner } from "@colonydb/anthill/FormErrorBanner";
               import { FormFooter } from "@colonydb/anthill/FormFooter";
+              import { FormStatus } from "@colonydb/anthill/FormStatus";
             `}
           </CodeBlock>
         </CardContent>
@@ -72,6 +74,59 @@ const FormPage = () => (
                         <Form
                           action={async ({ data }) => ({ ok: true, data })}
                           id="basicExample"
+                          initialData={{ foo: "" }}
+                          schema={v.object({
+                            foo: v.pipe(v.string(), v.nonEmpty()),
+                          })}
+                        >
+                          <Stack>
+                            <FormErrorBanner />
+                            <RegularField label="Foo" name="foo">
+                              <StringInput name="foo" />
+                            </RegularField>
+                            <FormFooter buttons={[{ content: <Button submit>Submit</Button>, key: "submit" }]} />
+                          </Stack>
+                        </Form>
+                      `}
+                    </CodeBlock>
+                  ),
+                },
+              ]}
+            />
+          </Section>
+          <Section title={<Heading>Seamless</Heading>}>
+            <TabBlock
+              items={[
+                {
+                  key: "specimen",
+                  label: "Specimen",
+                  content: (
+                    <Specimen seamless>
+                      <Form
+                        action={async ({ data }) => ({ ok: true, data })}
+                        id="seamlessExample"
+                        initialData={{ foo: "" }}
+                        repeatable
+                        schema={v.object({
+                          foo: v.pipe(v.string(), v.nonEmpty()),
+                        })}
+                        seamless
+                      >
+                        <StringInput name="foo" />
+                        <FormStatus iconOnly />
+                      </Form>
+                    </Specimen>
+                  ),
+                },
+                {
+                  key: "code",
+                  label: "Code",
+                  content: (
+                    <CodeBlock language="tsx" seamless>
+                      {js`
+                        <Form
+                          action={async ({ data }) => ({ ok: true, data })}
+                          id="seamlessExample"
                           initialData={{ foo: "" }}
                           schema={v.object({
                             foo: v.pipe(v.string(), v.nonEmpty()),

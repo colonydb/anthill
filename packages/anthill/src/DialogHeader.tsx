@@ -8,5 +8,8 @@ type Props = {
 } & Omit<ComponentProps<typeof Header>, "actions">;
 
 export const DialogHeader = ({ close, ...headerProps }: Props) => (
-  <Header actions={<Action icon={<Icon symbol="Remove" />} onClick={close} title="Close" />} {...headerProps} />
+  <Header
+    actions={<Action icon={<Icon symbol="Remove" fontSize="subheading" />} onClick={close} title="Close" />}
+    {...headerProps}
+  />
 );

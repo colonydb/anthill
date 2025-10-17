@@ -37,6 +37,8 @@ type Props<Schema extends FormSchema> = {
    * Valibot schema used to validate the form data.
    */
   schema: Schema;
+
+  seamless?: boolean;
 };
 
 export const Form = <Schema extends FormSchema>({
@@ -49,6 +51,7 @@ export const Form = <Schema extends FormSchema>({
   renderSuccess,
   repeatable = false,
   schema,
+  seamless = false,
 }: Props<Schema>) => {
   const [data, setData] = useState(initialData);
 
@@ -173,7 +176,7 @@ export const Form = <Schema extends FormSchema>({
   return (
     <form
       action={isPending ? undefined : formAction}
-      className={styles.container}
+      className={seamless ? styles.seamless : styles.container}
       onSubmit={onSubmit}
       id={id}
       noValidate

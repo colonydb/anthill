@@ -1,10 +1,6 @@
-"use client";
-
-import { type JSX, type Key, type ReactNode, useContext } from "react";
-import { FormContext } from "./FormContext.js";
+import type { JSX, Key, ReactNode } from "react";
 import styles from "./FormFooter.module.css";
-import { Icon } from "./Icon.js";
-import { Inline } from "./Inline.js";
+import { FormStatus } from "./FormStatus.js";
 
 type Props = {
   buttons?: Array<{ content: ReactNode; key: Key }>;
@@ -13,10 +9,7 @@ type Props = {
 };
 
 export const FormFooter = ({ buttons, children, tagName: Tag = "footer" }: Props) => {
-  const formContext = useContext(FormContext);
-
-  const issueCount = formContext?.errors?.count ?? 0;
-
+  const status = <FormStatus />;
   return (
     <Tag className={styles.container}>
       <div className={styles.controls}>
@@ -27,27 +20,7 @@ export const FormFooter = ({ buttons, children, tagName: Tag = "footer" }: Props
               </div>
             ))
           : null}
-        {formContext?.status === "pending" ? (
-          <div className={styles.status}>
-            <Inline color="gray">
-              <Icon symbol="Processing" /> Processing…
-            </Inline>
-          </div>
-        ) : null}
-        {formContext?.status === "error" ? (
-          <div className={styles.status}>
-            <Inline color="red">
-              <Icon symbol="Warning" /> {issueCount === 1 ? "1 issue" : `${issueCount} issues`}
-            </Inline>
-          </div>
-        ) : null}
-        {formContext?.status === "success" ? (
-          <div className={styles.status}>
-            <Inline color="green">
-              <Icon symbol="Tick" /> Success!
-            </Inline>
-          </div>
-        ) : null}
+        {status ? <div className={styles.status}>{status}</div> : null}
       </div>
       {children ? <div className={styles.content}>{children}</div> : null}
     </Tag>
