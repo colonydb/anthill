@@ -5,11 +5,20 @@ import { StyleContext } from "./StyleContext.js";
 import styles from "./useStyleContext.module.css";
 import { clampRange } from "./utils/clampRange.js";
 
-export const useStyleContext = ({ container, spacing, typography }: StyleContextConfig = {}) => {
+export const useStyleContext = ({
+  background,
+  color,
+  container,
+  headingLevel,
+  muted,
+  spacing,
+}: StyleContextConfig = {}) => {
   const inheritedStyleContext = useContext(StyleContext);
 
   const styleContext = useMemo(
     () => ({
+      background: background ?? inheritedStyleContext.background,
+      color: color ?? inheritedStyleContext.color,
       container: clampRange(
         typeof container === "function"
           ? container(inheritedStyleContext.container)
@@ -17,6 +26,14 @@ export const useStyleContext = ({ container, spacing, typography }: StyleContext
         0,
         4,
       ),
+      headingLevel: clampRange(
+        typeof headingLevel === "function"
+          ? headingLevel(inheritedStyleContext.headingLevel)
+          : (headingLevel ?? inheritedStyleContext.headingLevel),
+        1,
+        6,
+      ),
+      muted: muted ?? inheritedStyleContext.muted,
       spacing: clampRange(
         typeof spacing === "function"
           ? spacing(inheritedStyleContext.spacing)
@@ -24,23 +41,20 @@ export const useStyleContext = ({ container, spacing, typography }: StyleContext
         0,
         6,
       ),
-      typography: clampRange(
-        typeof typography === "function"
-          ? typography(inheritedStyleContext.typography)
-          : (typography ?? inheritedStyleContext.typography),
-        0,
-        5,
-      ),
     }),
-    [container, inheritedStyleContext, spacing, typography],
+    [background, color, container, headingLevel, inheritedStyleContext, muted, spacing],
   );
 
   const styleContextClassName = useMemo(
     () =>
       clsx(
+        styles.base,
+        styles[`background-${styleContext.background}`],
+        styles[`color-${styleContext.color}`],
+        styleContext.muted ? styles.muted : null,
         CLASS_NAMES.container.at(styleContext.container) ?? CLASS_NAMES.container.at(-1),
         CLASS_NAMES.spacing.at(styleContext.spacing) ?? CLASS_NAMES.spacing.at(-1),
-        CLASS_NAMES.typography.at(styleContext.typography) ?? CLASS_NAMES.typography.at(-1),
+        CLASS_NAMES.headingLevel.at(styleContext.headingLevel - 1) ?? CLASS_NAMES.headingLevel.at(-1),
       ),
     [styleContext],
   );
@@ -76,12 +90,12 @@ const CLASS_NAMES = {
     styles.spacing5,
     styles.spacing6,
   ],
-  typography: [
-    styles.typography0,
-    styles.typography1,
-    styles.typography2,
-    styles.typography3,
-    styles.typography4,
-    styles.typography5,
+  headingLevel: [
+    styles.headingLevel1,
+    styles.headingLevel2,
+    styles.headingLevel3,
+    styles.headingLevel4,
+    styles.headingLevel5,
+    styles.headingLevel6,
   ],
 } as const;

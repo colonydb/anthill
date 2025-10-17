@@ -3,39 +3,45 @@
 import clsx from "clsx";
 import type { HTMLAttributes, JSX, ReactNode } from "react";
 import styles from "./Block.module.css";
-import type { Font, Hue, StyleContextConfig } from "./index.js";
+import type { Font, StyleContextConfig } from "./index.js";
 import { useStyleContext } from "./useStyleContext.js";
-import { formatColor } from "./utils/formatColor.js";
 
 type Props = {
   children: ReactNode;
   font?: Font;
-  hue?: Hue;
   indent?: boolean;
-  muted?: boolean;
-  styleContextConfig?: StyleContextConfig;
   tagName?: keyof JSX.IntrinsicElements;
-} & Pick<HTMLAttributes<Element>, "className" | "id" | "lang" | "style" | "tabIndex">;
+} & StyleContextConfig &
+  Pick<HTMLAttributes<Element>, "className" | "id" | "lang" | "style" | "tabIndex">;
 
 export const Block = ({
-  className,
+  background,
   children,
+  className,
+  color,
+  container,
   font,
-  hue,
+  headingLevel,
   indent = false,
   muted,
-  styleContextConfig,
+  spacing,
   tagName: Tag = "div",
   ...props
 }: Props) => {
-  const { styleContextClassName, StyleContextProvider } = useStyleContext(styleContextConfig);
+  const { styleContextClassName, StyleContextProvider } = useStyleContext({
+    background,
+    color,
+    container,
+    headingLevel,
+    muted,
+    spacing,
+  });
   return (
     <Tag
       {...props}
       className={clsx(className, styleContextClassName, styles.container, indent ? styles.indent : undefined)}
       style={{
         ...props.style,
-        color: formatColor(hue, muted),
         font: font ? `var(--font-${font})` : undefined,
       }}
     >

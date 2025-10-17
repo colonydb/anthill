@@ -52,6 +52,8 @@ export type FormState<Schema extends FormSchema = FormSchema> = {
 
 export type FormSchema = ObjectSchema<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>;
 
+export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
+
 export type Hue =
   | "red"
   | "orange"
@@ -72,15 +74,16 @@ export type Shade = "s1" | "s2" | "s3" | "s4" | "s5" | "s6" | "s7" | "s8" | "s9"
 export type SpacingLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 export type StyleContextConfig = {
+  background?: Hue;
+  color?: Hue | "default";
   container?: number | ((value: ContainerLevel) => number);
+  headingLevel?: number | ((value: HeadingLevel) => number);
+  muted?: boolean;
   spacing?: number | ((value: SpacingLevel) => number);
-  typography?: number | ((value: TypographyLevel) => number);
 };
 
 export type Tint = "t1" | "t2" | "t3" | "t4" | "t5" | "t6" | "t7" | "t8" | "t9";
 
 export type Tone = Shade | "00" | Tint;
-
-export type TypographyLevel = 0 | 1 | 2 | 3 | 4 | 5;
 
 export type Width = "tiny" | "small" | "medium" | "large" | "huge";

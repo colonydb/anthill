@@ -19,7 +19,7 @@ type Props = {
     }
   | { title: string }
 ) &
-  Pick<ComponentProps<typeof Action>, "disabled" | "fontSize" | "hue" | "icon" | "id" | "muted" | "padded">;
+  Pick<ComponentProps<typeof Action>, "color" | "disabled" | "fontSize" | "icon" | "id" | "muted" | "padded">;
 
 export const Dialog = ({ dismissible = false, render, stable = false, width = "auto", ...actionProps }: Props) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -27,9 +27,11 @@ export const Dialog = ({ dismissible = false, render, stable = false, width = "a
 
   const styleContextConfig = useMemo<StyleContextConfig>(
     () => ({
+      background: "gray",
+      color: "default",
       container: () => 0,
+      headingLevel: () => 1,
       spacing: () => 0,
-      typography: () => 1,
     }),
     [],
   );
@@ -48,7 +50,7 @@ export const Dialog = ({ dismissible = false, render, stable = false, width = "a
         }}
       />
       <dialog
-        // @ts-ignore: closeBy not yet supported in React
+        // @ts-expect-error: closeBy not yet supported in React
         closedby={dismissible === true ? "any" : "none"}
         className={clsx(styleContextClassName, styles.dialog)}
         onClose={(event) => {

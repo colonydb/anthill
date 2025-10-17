@@ -1,7 +1,5 @@
 .action {
-  --color: currentColor;
   align-items: center;
-  color: var(--color);
   column-gap: 0.5ch;
   cursor: pointer;
   display: inline-grid;
@@ -14,10 +12,6 @@
     color 0.2s,
     outline-color 0.2s;
   vertical-align: bottom;
-
-  &.dangerous {
-    color: light-dark(var(--color-red-s1), var(--color-red-t1));
-  }
 
   &.padded {
     padding: 0.5rlh 2ch;

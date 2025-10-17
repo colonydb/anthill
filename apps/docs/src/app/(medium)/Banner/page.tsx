@@ -51,6 +51,36 @@ const BannerPage = () => (
               ]}
             />
           </Section>
+          <Section title={<Heading>Nested</Heading>}>
+            <TabBlock
+              items={[
+                {
+                  key: "specimen",
+                  label: "Specimen",
+                  content: (
+                    <Specimen seamless>
+                      <Banner hue="green" title="Banner A">
+                        <Banner title="Banner B">Content.</Banner>
+                      </Banner>
+                    </Specimen>
+                  ),
+                },
+                {
+                  key: "code",
+                  label: "Code",
+                  content: (
+                    <CodeBlock language="tsx" seamless>
+                      {js`
+                        <Banner hue="green" title="Banner A">
+                          <Banner title="Banner B">Content.</Banner>
+                        </Banner>
+                      `}
+                    </CodeBlock>
+                  ),
+                },
+              ]}
+            />
+          </Section>
           <Section title={<Heading>Icon</Heading>}>
             <TabBlock
               items={[
@@ -86,8 +116,8 @@ const BannerPage = () => (
                     <CodeBlock language="tsx" seamless>
                       {js`
                         <Banner
-                          color="red"
                           headingLevel={1}
+                          hue="red"
                           title={
                             <Heading>
                               <Icon symbol="Warning" /> Warning
@@ -96,10 +126,11 @@ const BannerPage = () => (
                         >
                           Sit accusamus similique sed expedita recusandae in iure dignissimos eveniet. Et velit omnis sit
                           inventore assumenda. Et aut fugiat reprehenderit autem consequuntur dolore ducimus ut accusamus
-                          iusto veritatis fugiat occaecati ut non. Quos at non provident ipsam. Non omnis nihil saepe soluta
-                          suscipit eum exercitationem molestias. Velit ipsam quasi illum suscipit incidunt in. Eveniet facilis
-                          voluptas nulla consequatur nostrum aliquid exercitationem nulla explicabo rerum ex officiis eos
-                          tenetur. Dolor occaecati laboriosam aut tempora autem sit quo autem aut omnis aut.
+                          iusto veritatis fugiat occaecati ut non. Quos at non provident ipsam. Non omnis nihil saepe
+                          soluta suscipit eum exercitationem molestias. Velit ipsam quasi illum suscipit incidunt in.
+                          Eveniet facilis voluptas nulla consequatur nostrum aliquid exercitationem nulla explicabo rerum
+                          ex officiis eos tenetur. Dolor occaecati laboriosam aut tempora autem sit quo autem aut omnis
+                          aut.
                         </Banner>
                       `}
                     </CodeBlock>

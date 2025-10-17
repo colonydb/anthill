@@ -1,5 +1,6 @@
 "use client";
 
+import { Banner } from "@colonydb/anthill/Banner";
 import { Button } from "@colonydb/anthill/Button";
 import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
@@ -196,6 +197,57 @@ const DialogPage = () => (
                     <CodeBlock language="tsx" seamless>
                       {js`
                         <Dialog icon={<Icon symbol="External" />} render={(closeDialog) => <Button onClick={closeDialog}>Close</Button>}>
+                          Open
+                        </Dialog>
+                      `}
+                    </CodeBlock>
+                  ),
+                },
+              ]}
+            />
+          </Section>
+          <Section title={<Heading>Style Context</Heading>}>
+            <TabBlock
+              items={[
+                {
+                  key: "specimen",
+                  label: "Specimen",
+                  content: (
+                    <Specimen seamless>
+                      <Banner hue="green" headingLevel={6}>
+                        <Dialog
+                          dismissible
+                          icon={<Icon symbol="External" />}
+                          render={() => (
+                            <Card>
+                              <CardContent>
+                                <Heading>content</Heading>
+                                <Banner title={<Heading>Banner</Heading>}>Example</Banner>
+                              </CardContent>
+                            </Card>
+                          )}
+                        >
+                          Open
+                        </Dialog>
+                      </Banner>
+                    </Specimen>
+                  ),
+                },
+                {
+                  key: "code",
+                  label: "Code",
+                  content: (
+                    <CodeBlock language="tsx" seamless>
+                      {js`
+                        <Dialog
+                          dismissible
+                          icon={<Icon symbol="External" />}
+                          render={() => (
+                            <Card>
+                              <CardContent>content</CardContent>
+                            </Card>
+                          )}
+                        >
                           Open
                         </Dialog>
                       `}

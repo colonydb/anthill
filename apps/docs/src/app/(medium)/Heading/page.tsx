@@ -115,7 +115,7 @@ const HeadingPage = () => (
                   content: (
                     <Specimen resetStyleContext seamless>
                       <Heading tagName="h5">
-                        <Icon symbol="Pin" hue="blue" />
+                        <Icon symbol="Pin" />
                         Example
                       </Heading>
                     </Specimen>
@@ -128,7 +128,7 @@ const HeadingPage = () => (
                     <CodeBlock language="tsx">
                       {js`
                         <Heading tagName="h5">
-                          <Icon symbol="Pin" hue="blue" />
+                          <Icon symbol="Pin" />
                           Example
                         </Heading>
                       `}

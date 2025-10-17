@@ -88,8 +88,16 @@ const BlockPage = () => (
                     <Specimen seamless>
                       <Block>Example</Block>
                       <Block muted>Example</Block>
-                      <Block hue="teal">Example</Block>
-                      <Block hue="teal" muted>
+                      <Block color="gray">Example</Block>
+                      <Block color="gray" muted>
+                        Example
+                      </Block>
+                      <Block color="teal">Example</Block>
+                      <Block color="teal" muted>
+                        Example
+                      </Block>
+                      <Block color="red">Example</Block>
+                      <Block color="red" muted>
                         Example
                       </Block>
                     </Specimen>
@@ -104,8 +112,16 @@ const BlockPage = () => (
                         <>
                           <Block>Example</Block>
                           <Block muted>Example</Block>
-                          <Block hue="teal">Example</Block>
-                          <Block hue="teal" muted>
+                          <Block color="gray">Example</Block>
+                          <Block color="gray" muted>
+                            Example
+                          </Block>
+                          <Block color="teal">Example</Block>
+                          <Block color="teal" muted>
+                            Example
+                          </Block>
+                          <Block color="red">Example</Block>
+                          <Block color="red" muted>
                             Example
                           </Block>
                         </>
@@ -180,13 +196,7 @@ const BlockPage = () => (
                   label: "Specimen",
                   content: (
                     <Specimen seamless>
-                      <Block
-                        styleContextConfig={{
-                          typography: 6,
-                        }}
-                      >
-                        Example
-                      </Block>
+                      <Block headingLevel={6}>Example</Block>
                     </Specimen>
                   ),
                 },
@@ -196,13 +206,7 @@ const BlockPage = () => (
                   content: (
                     <CodeBlock language="tsx" seamless>
                       {js`
-                        <Block
-                          styleContextConfig={{
-                            typography: 6,
-                          }}
-                        >
-                          Example
-                        </Block>
+                        <Block headingLevel={6}>Example</Block>
                       `}
                     </CodeBlock>
                   ),

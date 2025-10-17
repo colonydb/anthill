@@ -1,5 +1,5 @@
 .container {
-  background: light-dark(var(--color-gray-t7), var(--color-gray-s7));
-  border-radius: 0.5rlh;
-  padding: 0.5rlh;
+  background: var(--context-background);
+  border-radius: var(--context-border-radius);
+  padding: var(--context-spacing);
 }

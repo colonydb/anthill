@@ -84,7 +84,7 @@ const InlinePage = () => (
                   label: "Specimen",
                   content: (
                     <Specimen seamless>
-                      <Inline hue="green">Example</Inline>
+                      <Inline color="green">Example</Inline>
                     </Specimen>
                   ),
                 },
@@ -94,7 +94,7 @@ const InlinePage = () => (
                   content: (
                     <CodeBlock language="tsx" seamless>
                       {js`
-                        <Inline hue="green">Example</Inline>
+                        <Inline color="green">Example</Inline>
                       `}
                     </CodeBlock>
                   ),
@@ -180,13 +180,7 @@ const InlinePage = () => (
                   label: "Specimen",
                   content: (
                     <Specimen seamless>
-                      <Inline
-                        styleContextConfig={{
-                          typography: 6,
-                        }}
-                      >
-                        Example
-                      </Inline>
+                      <Inline headingLevel={6}>Example</Inline>
                     </Specimen>
                   ),
                 },
@@ -196,11 +190,7 @@ const InlinePage = () => (
                   content: (
                     <CodeBlock language="tsx" seamless>
                       {js`
-                        <Inline
-                          styleContextConfig={{
-                            typography: 6,
-                          }}
-                        >
+                        <Inline headingLevel={6}>
                           Example
                         </Inline>
                       `}

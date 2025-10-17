@@ -26,7 +26,7 @@ export const TabBlock = ({ items, onChange, seamless }: Props) => {
 
   const buttonsStyleContextConfig = useMemo<StyleContextConfig>(
     () => ({
-      typography: (value) => clampRange(value + 1, 4, 5),
+      headingLevel: (value) => clampRange(value + 1, 5, 6),
     }),
     [],
   );
@@ -36,8 +36,8 @@ export const TabBlock = ({ items, onChange, seamless }: Props) => {
   const contentStyleContextConfig = useMemo<StyleContextConfig>(
     () => ({
       container: (value) => (seamless ? value : value + 1),
+      headingLevel: (value) => (seamless ? value : value + 1),
       spacing: (value) => (seamless ? value : value + 1),
-      typography: (value) => (seamless ? value : value + 1),
     }),
     [seamless],
   );
@@ -60,7 +60,7 @@ export const TabBlock = ({ items, onChange, seamless }: Props) => {
         ))}
       </div>
       {item?.content !== null && item?.content !== undefined ? (
-        <Block className={styles.content} styleContextConfig={contentStyleContextConfig}>
+        <Block className={styles.content} {...contentStyleContextConfig}>
           {item?.content}
         </Block>
       ) : null}

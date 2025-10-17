@@ -29,21 +29,21 @@ export const FormFooter = ({ buttons, children, tagName: Tag = "footer" }: Props
           : null}
         {formContext?.status === "pending" ? (
           <div className={styles.status}>
-            <Inline hue="gray">
+            <Inline color="gray">
               <Icon symbol="Processing" /> Processing…
             </Inline>
           </div>
         ) : null}
         {formContext?.status === "error" ? (
           <div className={styles.status}>
-            <Inline hue="red">
+            <Inline color="red">
               <Icon symbol="Warning" /> {issueCount === 1 ? "1 issue" : `${issueCount} issues`}
             </Inline>
           </div>
         ) : null}
         {formContext?.status === "success" ? (
           <div className={styles.status}>
-            <Inline hue="green">
+            <Inline color="green">
               <Icon symbol="Tick" /> Success!
             </Inline>
           </div>

@@ -4,13 +4,12 @@ import clsx from "clsx";
 import type { ReactNode } from "react";
 import styles from "./Action.module.css";
 import type { BaseFont, Hue } from "./index.js";
-import { formatColor } from "./utils/formatColor.js";
+import { useStyleContext } from "./useStyleContext.js";
 
 type Props = {
-  dangerous?: boolean;
+  color?: Hue;
   disabled?: boolean;
   fontSize?: BaseFont;
-  hue?: Hue;
   icon: ReactNode;
   id?: string;
   muted?: boolean;
@@ -34,49 +33,45 @@ type Props = {
       }
   );
 
-export const Action = ({
-  dangerous = false,
-  disabled,
-  fontSize,
-  hue,
-  icon,
-  id,
-  muted,
-  padded,
-  title,
-  ...props
-}: Props) =>
-  "href" in props ? (
+export const Action = ({ color, disabled, fontSize, icon, id, muted, padded, title, ...props }: Props) => {
+  const { styleContextClassName, StyleContextProvider } = useStyleContext({
+    color,
+    muted,
+  });
+  const content = (
+    <StyleContextProvider>
+      {icon}
+      {"children" in props && props.children ? <span className={styles.label}>{props.children}</span> : null}
+    </StyleContextProvider>
+  );
+  return "href" in props ? (
     <a
-      className={clsx(styles.action, dangerous ? styles.dangerous : undefined, padded ? styles.padded : undefined)}
+      className={clsx(styleContextClassName, styles.action, padded ? styles.padded : undefined)}
       href={disabled ? undefined : props.href}
       id={id}
       ref={props.ref}
       style={{
-        "--color": formatColor(hue, muted),
         font: fontSize ? `var(--font-${fontSize})` : undefined,
       }}
       target={props.external ? "_blank" : undefined}
       title={title}
     >
-      {icon}
-      {"children" in props && props.children ? <span className={styles.label}>{props.children}</span> : null}
+      {content}
     </a>
   ) : (
     <button
-      className={clsx(styles.action, dangerous ? styles.dangerous : undefined, padded ? styles.padded : undefined)}
+      className={clsx(styleContextClassName, styles.action, padded ? styles.padded : undefined)}
       disabled={disabled ?? false}
       id={id}
       onClick={props.onClick}
       ref={props.ref}
       style={{
-        "--color": formatColor(hue, muted),
         font: fontSize ? `var(--font-${fontSize})` : undefined,
       }}
       title={title}
       type="button"
     >
-      {icon}
-      {"children" in props && props.children ? <span className={styles.label}>{props.children}</span> : null}
+      {content}
     </button>
   );
+};

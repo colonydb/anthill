@@ -27,8 +27,8 @@ export const RegularField = ({ children, description, errors, inputId, label, na
 
   const styleContextConfig = useMemo<StyleContextConfig>(
     () => ({
+      headingLevel: (value) => clampRange(value, 3, 5),
       spacing: (value) => clampRange(value, 3, 6),
-      typography: (value) => clampRange(value, 3, 5),
     }),
     [],
   );
@@ -50,7 +50,7 @@ export const RegularField = ({ children, description, errors, inputId, label, na
               )}
               {required ? (
                 <div>
-                  <Inline font="small-italic" hue="gray">
+                  <Inline font="small-italic" color="gray">
                     Required
                   </Inline>
                 </div>

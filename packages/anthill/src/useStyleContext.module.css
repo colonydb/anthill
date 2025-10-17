@@ -1,31 +1,307 @@
+.background-gray {
+  --context-background-hue: var(--config-brand-color-h);
+  --context-background-chroma: var(--config-gray-c);
+}
+
+.background-red {
+  --context-background-hue: var(--color-red-h);
+  --context-background-chroma: initial;
+}
+
+.background-orange {
+  --context-background-hue: var(--color-orange-h);
+  --context-background-chroma: initial;
+}
+
+.background-yellow {
+  --context-background-hue: var(--color-yellow-h);
+  --context-background-chroma: initial;
+}
+
+.background-lime {
+  --context-background-hue: var(--color-lime-h);
+  --context-background-chroma: initial;
+}
+
+.background-green {
+  --context-background-hue: var(--color-green-h);
+  --context-background-chroma: initial;
+}
+
+.background-teal {
+  --context-background-hue: var(--color-teal-h);
+  --context-background-chroma: initial;
+}
+
+.background-cyan {
+  --context-background-hue: var(--color-cyan-h);
+  --context-background-chroma: initial;
+}
+
+.background-blue {
+  --context-background-hue: var(--color-blue-h);
+  --context-background-chroma: initial;
+}
+
+.background-violet {
+  --context-background-hue: var(--color-violet-h);
+  --context-background-chroma: initial;
+}
+
+.background-magenta {
+  --context-background-hue: var(--color-magenta-h);
+  --context-background-chroma: initial;
+}
+
+.color-default {
+  --context-color: light-dark(var(--color-black), var(--color-white));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-black), var(--color-white)),
+      var(--context-background) 60%
+    );
+  }
+}
+
+.color-gray {
+  --context-color: light-dark(var(--color-gray-s2), var(--color-gray-t2));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-gray-s2), var(--color-gray-t2)),
+      var(--context-background) 30%
+    );
+  }
+}
+
+.color-red {
+  --context-color: light-dark(var(--color-red-s2), var(--color-red-t2));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-red-s2), var(--color-red-t2)),
+      var(--context-background) 30%
+    );
+  }
+}
+
+.color-orange {
+  --context-color: light-dark(var(--color-orange-s2), var(--color-orange-t2));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-orange-s2), var(--color-orange-t2)),
+      var(--context-background) 30%
+    );
+  }
+}
+
+.color-yellow {
+  --context-color: light-dark(var(--color-yellow-s2), var(--color-yellow-t2));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-yellow-s2), var(--color-yellow-t2)),
+      var(--context-background) 30%
+    );
+  }
+}
+
+.color-lime {
+  --context-color: light-dark(var(--color-lime-s2), var(--color-lime-t2));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-lime-s2), var(--color-lime-t2)),
+      var(--context-background) 30%
+    );
+  }
+}
+
+.color-green {
+  --context-color: light-dark(var(--color-green-s2), var(--color-green-t2));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-green-s2), var(--color-green-t2)),
+      var(--context-background) 30%
+    );
+  }
+}
+
+.color-teal {
+  --context-color: light-dark(var(--color-teal-s2), var(--color-teal-t2));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-teal-s2), var(--color-teal-t2)),
+      var(--context-background) 30%
+    );
+  }
+}
+
+.color-cyan {
+  --context-color: light-dark(var(--color-cyan-s2), var(--color-cyan-t2));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-cyan-s2), var(--color-cyan-t2)),
+      var(--context-background) 30%
+    );
+  }
+}
+
+.color-blue {
+  --context-color: light-dark(var(--color-blue-s2), var(--color-blue-t2));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-blue-s2), var(--color-blue-t2)),
+      var(--context-background) 30%
+    );
+  }
+}
+
+.color-violet {
+  --context-color: light-dark(var(--color-violet-s2), var(--color-violet-t2));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-violet-s2), var(--color-violet-t2)),
+      var(--context-background) 30%
+    );
+  }
+}
+
+.color-magenta {
+  --context-color: light-dark(var(--color-magenta-s2), var(--color-magenta-t2));
+  &.muted {
+    --context-color: color-mix(
+      in oklch,
+      light-dark(var(--color-magenta-s2), var(--color-magenta-t2)),
+      var(--context-background) 30%
+    );
+  }
+}
+
 .container0 {
-  --context-background: light-dark(var(--color-gray-t9), var(--color-gray-s9));
-  --context-border: 1px solid light-dark(var(--color-gray-t5), var(--color-gray-s7));
+  --context-background: light-dark(
+    oklch(var(--color-t9-l) var(--context-background-chroma, var(--color-t9-c)) var(--context-background-hue)),
+    oklch(var(--color-s9-l) var(--context-background-chroma, var(--color-s9-c)) var(--context-background-hue))
+  );
+  --context-border: 1px solid
+    light-dark(
+      oklch(var(--color-t5-l) var(--context-background-chroma, var(--color-t5-c)) var(--context-background-hue)),
+      oklch(var(--color-s7-l) var(--context-background-chroma, var(--color-s7-c)) var(--context-background-hue))
+    );
   --context-border-radius: var(--space-00);
 }
 
 .container1 {
-  --context-background: light-dark(var(--color-gray-t8), var(--color-gray-s8));
-  --context-border: 1px solid light-dark(var(--color-gray-t4), var(--color-gray-s6));
+  --context-background: light-dark(
+    oklch(var(--color-t8-l) var(--context-background-chroma, var(--color-t8-c)) var(--context-background-hue)),
+    oklch(var(--color-s8-l) var(--context-background-chroma, var(--color-s8-c)) var(--context-background-hue))
+  );
+  --context-border: 1px solid
+    light-dark(
+      oklch(var(--color-t4-l) var(--context-background-chroma, var(--color-t4-c)) var(--context-background-hue)),
+      oklch(var(--color-s6-l) var(--context-background-chroma, var(--color-s6-c)) var(--context-background-hue))
+    );
   --context-border-radius: var(--space-n1);
 }
 
 .container2 {
-  --context-background: light-dark(var(--color-gray-t7), var(--color-gray-s7));
-  --context-border: 1px solid light-dark(var(--color-gray-t3), var(--color-gray-s5));
+  --context-background: light-dark(
+    oklch(var(--color-t7-l) var(--context-background-chroma, var(--color-t7-c)) var(--context-background-hue)),
+    oklch(var(--color-s7-l) var(--context-background-chroma, var(--color-s7-c)) var(--context-background-hue))
+  );
+  --context-border: 1px solid
+    light-dark(
+      oklch(var(--color-t3-l) var(--context-background-chroma, var(--color-t3-c)) var(--context-background-hue)),
+      oklch(var(--color-s5-l) var(--context-background-chroma, var(--color-s5-c)) var(--context-background-hue))
+    );
   --context-border-radius: var(--space-n2);
 }
 
 .container3 {
-  --context-background: light-dark(var(--color-gray-t6), var(--color-gray-s6));
-  --context-border: 1px solid light-dark(var(--color-gray-t2), var(--color-gray-s4));
+  --context-background: light-dark(
+    oklch(var(--color-t6-l) var(--context-background-chroma, var(--color-t6-c)) var(--context-background-hue)),
+    oklch(var(--color-s6-l) var(--context-background-chroma, var(--color-s6-c)) var(--context-background-hue))
+  );
+  --context-border: 1px solid
+    light-dark(
+      oklch(var(--color-t2-l) var(--context-background-chroma, var(--color-t2-c)) var(--context-background-hue)),
+      oklch(var(--color-s4-l) var(--context-background-chroma, var(--color-s4-c)) var(--context-background-hue))
+    );
   --context-border-radius: var(--space-n3);
 }
 
 .container4 {
-  --context-background: light-dark(var(--color-gray-t5), var(--color-gray-s5));
-  --context-border: 1px solid light-dark(var(--color-gray-t1), var(--color-gray-s3));
+  --context-background: light-dark(
+    oklch(var(--color-t5-l) var(--context-background-chroma, var(--color-t5-c)) var(--context-background-hue)),
+    oklch(var(--color-s5-l) var(--context-background-chroma, var(--color-s5-c)) var(--context-background-hue))
+  );
+  --context-border: 1px solid
+    light-dark(
+      oklch(var(--color-t1-l) var(--context-background-chroma, var(--color-t1-c)) var(--context-background-hue)),
+      oklch(var(--color-s3-l) var(--context-background-chroma, var(--color-s3-c)) var(--context-background-hue))
+    );
   --context-border-radius: var(--space-n4);
+}
+
+.headingLevel1 {
+  --context-body-font: var(--font-regular);
+  --context-bold-font: var(--font-regular-bold);
+  --context-bold-italic-font: var(--font-regular-bold-italic);
+  --context-heading-font: var(--font-title);
+  --context-italic-font: var(--font-regular-italic);
+  --context-monospace-font: var(--font-regular-monospace);
+}
+
+.headingLevel2 {
+  --context-body-font: var(--font-regular);
+  --context-bold-font: var(--font-regular-bold);
+  --context-bold-italic-font: var(--font-regular-bold-italic);
+  --context-heading-font: var(--font-heading);
+  --context-italic-font: var(--font-regular-italic);
+  --context-monospace-font: var(--font-regular-monospace);
+}
+
+.headingLevel3 {
+  --context-body-font: var(--font-regular);
+  --context-bold-font: var(--font-regular-bold);
+  --context-bold-italic-font: var(--font-regular-bold-italic);
+  --context-heading-font: var(--font-subheading);
+  --context-italic-font: var(--font-regular-italic);
+  --context-monospace-font: var(--font-regular-monospace);
+}
+
+.headingLevel4 {
+  --context-body-font: var(--font-regular);
+  --context-bold-font: var(--font-regular-bold);
+  --context-bold-italic-font: var(--font-regular-bold-italic);
+  --context-heading-font: var(--font-regular-bold);
+  --context-italic-font: var(--font-regular-italic);
+  --context-monospace-font: var(--font-regular-monospace);
+}
+
+.headingLevel5 {
+  --context-body-font: var(--font-small);
+  --context-bold-font: var(--font-small-bold);
+  --context-bold-italic-font: var(--font-small-bold-italic);
+  --context-heading-font: var(--font-small-bold);
+  --context-italic-font: var(--font-small-italic);
+  --context-monospace-font: var(--font-small-monospace);
+}
+
+.headingLevel6 {
+  --context-body-font: var(--font-tiny);
+  --context-bold-font: var(--font-tiny-bold);
+  --context-bold-italic-font: var(--font-tiny-bold-italic);
+  --context-heading-font: var(--font-tiny-bold);
+  --context-italic-font: var(--font-tiny-italic);
+  --context-monospace-font: var(--font-tiny-monospace);
 }
 
 .spacing0 {
@@ -56,56 +332,6 @@
   --context-spacing: var(--space-n3);
 }
 
-.typography0 {
-  --context-body-font: var(--font-regular);
-  --context-bold-font: var(--font-regular-bold);
-  --context-bold-italic-font: var(--font-regular-bold-italic);
-  --context-heading-font: var(--font-title);
-  --context-italic-font: var(--font-regular-italic);
-  --context-monospace-font: var(--font-regular-monospace);
-}
-
-.typography1 {
-  --context-body-font: var(--font-regular);
-  --context-bold-font: var(--font-regular-bold);
-  --context-bold-italic-font: var(--font-regular-bold-italic);
-  --context-heading-font: var(--font-heading);
-  --context-italic-font: var(--font-regular-italic);
-  --context-monospace-font: var(--font-regular-monospace);
-}
-
-.typography2 {
-  --context-body-font: var(--font-regular);
-  --context-bold-font: var(--font-regular-bold);
-  --context-bold-italic-font: var(--font-regular-bold-italic);
-  --context-heading-font: var(--font-subheading);
-  --context-italic-font: var(--font-regular-italic);
-  --context-monospace-font: var(--font-regular-monospace);
-}
-
-.typography3 {
-  --context-body-font: var(--font-regular);
-  --context-bold-font: var(--font-regular-bold);
-  --context-bold-italic-font: var(--font-regular-bold-italic);
-  --context-heading-font: var(--font-regular-bold);
-  --context-italic-font: var(--font-regular-italic);
-  --context-monospace-font: var(--font-regular-monospace);
-}
-
-.typography4 {
-  --context-body-font: var(--font-small);
-  --context-bold-font: var(--font-small-bold);
-  --context-bold-italic-font: var(--font-small-bold-italic);
-  --context-heading-font: var(--font-small-bold);
-  --context-italic-font: var(--font-small-italic);
-  --context-monospace-font: var(--font-small-monospace);
-}
-
-.typography5 {
-  --context-body-font: var(--font-tiny);
-  --context-bold-font: var(--font-tiny-bold);
-  --context-bold-italic-font: var(--font-tiny-bold-italic);
-  --context-heading-font: var(--font-tiny-bold);
-  --context-italic-font: var(--font-tiny-italic);
-  --context-monospace-font: var(--font-tiny-monospace);
+.base {
+  color: var(--context-color);
 }

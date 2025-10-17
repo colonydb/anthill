@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { type JSX, type ReactNode, useMemo } from "react";
 import styles from "./Header.module.css";
-import type { StyleContextConfig } from "./index.js";
+import type { HeadingLevel, StyleContextConfig } from "./index.js";
 import { useStyleContext } from "./useStyleContext.js";
 import { clampRange } from "./utils/clampRange.js";
 
@@ -11,7 +11,7 @@ type Props = {
   actions?: ReactNode;
   children: ReactNode;
   description?: ReactNode;
-  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  headingLevel?: HeadingLevel;
   id?: string;
   tagName?: keyof JSX.IntrinsicElements;
 };
@@ -19,8 +19,8 @@ type Props = {
 export const Header = ({ actions, children, description, headingLevel, id, tagName: Tag = "header" }: Props) => {
   const styleContextConfig = useMemo<StyleContextConfig>(
     () => ({
+      headingLevel: (value) => headingLevel ?? value,
       spacing: (value) => clampRange(value, 5, 6),
-      typography: (value) => (headingLevel ? headingLevel - 1 : value),
     }),
     [headingLevel],
   );

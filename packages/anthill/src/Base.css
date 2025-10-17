@@ -97,8 +97,8 @@
 
   /* colors */
 
-  --color-white: #fff;
-  --color-black: #000;
+  --color-white: oklch(1 var(--config-gray-c) var(--config-brand-color-h));
+  --color-black: oklch(0 var(--config-gray-c) var(--config-brand-color-h));
 
   --color-accent: oklch(var(--config-brand-color-l) var(--config-brand-color-c) var(--config-brand-color-h));
   --color-contrast: oklch(from var(--color-accent) clamp(0, (l / 0.623 - 1) * -infinity, 1) 0 h);
@@ -399,7 +399,8 @@
   --context-background: light-dark(var(--color-gray-t9), var(--color-gray-s9));
   --context-body-font: var(--font-regular);
   --context-border-radius: var(--space-00);
-  --context-border: 1px solid light-dark(var(--color-gray-t5), var(--color-gray-s5));
+  --context-border: 1px solid light-dark(var(--color-gray-t5), var(--color-gray-s7));
+  --context-color: light-dark(var(--color-black), var(--color-white));
   --context-heading-font: var(--font-heading);
   --context-spacing: var(--space-p3);
 }
@@ -408,7 +409,7 @@
   accent-color: var(--color-accent);
   background: light-dark(var(--color-gray-t8), var(--color-gray-s8));
   color-scheme: light dark;
-  color: light-dark(var(--color-black), var(--color-white));
+  color: var(--context-color);
   font: var(--font-regular);
 }
 

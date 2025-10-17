@@ -14,8 +14,8 @@ type Props = {
 export const Main = ({ children, header, tagName: Tag = "main" }: Props) => {
   const styleContextConfig = useMemo<StyleContextConfig>(
     () => ({
+      headingLevel: (value) => value + 1,
       spacing: (value) => value + 1,
-      typography: (value) => value + 1,
     }),
     [],
   );
@@ -23,7 +23,7 @@ export const Main = ({ children, header, tagName: Tag = "main" }: Props) => {
   return (
     <Tag className={styles.container}>
       <div>{header}</div>
-      <Block styleContextConfig={styleContextConfig}>{children}</Block>
+      <Block {...styleContextConfig}>{children}</Block>
     </Tag>
   );
 };

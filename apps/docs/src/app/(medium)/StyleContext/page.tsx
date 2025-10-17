@@ -1,6 +1,6 @@
 "use client";
 
-import type { StyleContextConfig } from "@colonydb/anthill";
+import type { Hue, StyleContextConfig } from "@colonydb/anthill";
 import { Block } from "@colonydb/anthill/Block";
 import { Card } from "@colonydb/anthill/Card";
 import { CardContent } from "@colonydb/anthill/CardContent";
@@ -15,13 +15,16 @@ import js from "dedent";
 import { useMemo, useState } from "react";
 
 const StyleContextPage = () => {
+  const [background, setBackground] = useState<Hue>("gray");
+  const [color, setColor] = useState<Hue | "default">("default");
   const [container, setContainer] = useState(0);
+  const [muted, setMuted] = useState(false);
   const [spacing, setSpacing] = useState(0);
-  const [typography, setTypography] = useState(0);
+  const [headingLevel, setHeadingLevel] = useState(1);
 
   const styleContextConfig = useMemo<StyleContextConfig>(
-    () => ({ container, spacing, typography }),
-    [container, spacing, typography],
+    () => ({ background, color, container, muted, spacing, headingLevel }),
+    [background, color, container, muted, spacing, headingLevel],
   );
 
   return (
@@ -40,11 +43,13 @@ const StyleContextPage = () => {
                   const styleContext = useContext(StyleContext);
                   return (
                     <div>
+                      color: {styleContext.color}
+                      <br />
                       container: {styleContext.container}
                       <br />
                       spacing: {styleContext.spacing}
                       <br />
-                      typography: {styleContext.typography}
+                      headingLevel: {styleContext.headingLevel}
                     </div>
                   );
                 };
@@ -62,7 +67,7 @@ const StyleContextPage = () => {
                   const styleContextConfig = useMemo<StyleContextConfig>({
                     container: (value) => value + 1,
                     spacing: (value) => value + 1,
-                    typography: (value) => value + 1,
+                    headingLevel: (value) => value + 1,
                   }, []);
 
                   const { styleContext, styleContextClassName, StyleContextProvider } = useStyleContext(styleContextConfig);
@@ -74,7 +79,7 @@ const StyleContextPage = () => {
                         <br />
                         spacing: {styleContext.spacing}
                         <br />
-                        typography: {styleContext.typography}
+                        headingLevel: {styleContext.headingLevel}
                       </StyleContextProvider>
                     </div>
                   );
@@ -87,6 +92,65 @@ const StyleContextPage = () => {
           <CardContent>
             <Section title={<Heading>Configuration</Heading>}>
               <Stack>
+                <RegularField label="Background">
+                  <TileSelect
+                    name="background"
+                    options={(
+                      [
+                        "gray",
+                        "red",
+                        "orange",
+                        "yellow",
+                        "lime",
+                        "green",
+                        "teal",
+                        "cyan",
+                        "blue",
+                        "violet",
+                        "magenta",
+                      ] as const
+                    ).map((value) => ({ label: value, value }))}
+                    onChange={(value) => {
+                      setBackground(value === null ? "gray" : value);
+                    }}
+                    value={background}
+                  />
+                </RegularField>
+                <RegularField label="Color">
+                  <TileSelect
+                    name="color"
+                    options={(
+                      [
+                        "default",
+                        "gray",
+                        "red",
+                        "orange",
+                        "yellow",
+                        "lime",
+                        "green",
+                        "teal",
+                        "cyan",
+                        "blue",
+                        "violet",
+                        "magenta",
+                      ] as const
+                    ).map((value) => ({ label: value, value }))}
+                    onChange={(value) => {
+                      setColor(value === null ? "default" : value);
+                    }}
+                    value={color}
+                  />
+                </RegularField>
+                <RegularField label="Muted">
+                  <TileSelect
+                    name="muted"
+                    options={(["false", "true"] as const).map((value) => ({ label: value, value }))}
+                    onChange={(value) => {
+                      setMuted(value === "true");
+                    }}
+                    value={muted.toString()}
+                  />
+                </RegularField>
                 <RegularField label="Container">
                   <TileSelect
                     name="container"
@@ -109,16 +173,16 @@ const StyleContextPage = () => {
                     value={spacing.toString()}
                   />
                 </RegularField>
-                <RegularField label="Typography">
+                <RegularField label="Heading Level">
                   <TileSelect
-                    name="typography"
-                    options={[0, 1, 2, 3, 4, 5]
+                    name="headingLevel"
+                    options={[1, 2, 3, 4, 5, 6]
                       .map((value) => value.toString())
                       .map((value) => ({ label: value, value }))}
                     onChange={(value) => {
-                      setTypography(value === null ? 0 : parseInt(value));
+                      setHeadingLevel(value === null ? 1 : parseInt(value));
                     }}
-                    value={typography.toString()}
+                    value={headingLevel.toString()}
                   />
                 </RegularField>
               </Stack>
@@ -133,7 +197,7 @@ const StyleContextPage = () => {
                     font: "var(--context-body-font)",
                     padding: "var(--context-spacing)",
                   }}
-                  styleContextConfig={styleContextConfig}
+                  {...styleContextConfig}
                 >
                   <div style={{ font: "var(--context-heading-font)" }}>Heading</div>
                   <div style={{ marginTop: "var(--context-spacing)" }}>

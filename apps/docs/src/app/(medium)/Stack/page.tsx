@@ -271,7 +271,7 @@ const StackPage = () => (
                   label: "Specimen",
                   content: (
                     <Specimen resetStyleContext seamless>
-                      <Stack hue="blue">
+                      <Stack color="blue">
                         Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque
                         consequatur deleniti pariatur et sed voluptas iure.
                       </Stack>
@@ -284,7 +284,7 @@ const StackPage = () => (
                   content: (
                     <CodeBlock language="tsx" seamless>
                       {js`
-                        <Stack hue="blue">
+                        <Stack color="blue">
                           Labore et nostrum necessitatibus est sequi aut. Eligendi autem deleniti ut nemo. Neque consequatur
                           deleniti pariatur et sed voluptas iure.
                         </Stack>

@@ -28,8 +28,8 @@ export const Specimen = ({ center, children, id, resetStyleContext = false, seam
       resetStyleContext
         ? {
             container: 0,
+            headingLevel: 1,
             spacing: 0,
-            typography: 0,
           }
         : seamless
           ? undefined
@@ -42,7 +42,7 @@ export const Specimen = ({ center, children, id, resetStyleContext = false, seam
   const contentStyleContextConfig = useMemo<StyleContextConfig>(
     () => ({
       container: (value) => (seamless ? value : value + 1),
-      typography: (value) => (seamless ? value : value + 1),
+      headingLevel: (value) => (seamless ? value : value + 1),
     }),
     [seamless],
   );
@@ -60,7 +60,7 @@ export const Specimen = ({ center, children, id, resetStyleContext = false, seam
       id={id}
     >
       <StyleContextProvider>
-        <Block styleContextConfig={contentStyleContextConfig}>{children}</Block>
+        <Block {...contentStyleContextConfig}>{children}</Block>
       </StyleContextProvider>
     </div>
   );

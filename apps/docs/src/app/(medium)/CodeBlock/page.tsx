@@ -77,7 +77,7 @@ const CodeBlockPage = async () => {
                 ]}
               />
             </Section>
-            <Section title={<Heading>JSON</Heading>}>
+            <Section title={<Heading>Full HTML File</Heading>}>
               <TabBlock
                 items={[
                   {
@@ -95,8 +95,8 @@ const CodeBlockPage = async () => {
                     content: (
                       <CodeBlock language="tsx" seamless>
                         {js`
-                        <CodeBlock language="json">{json\`{ "foo": "bar" }\`}</CodeBlock>
-                      `}
+                          <CodeBlock language="html">{htmlExample}</CodeBlock>
+                        `}
                       </CodeBlock>
                     ),
                   },

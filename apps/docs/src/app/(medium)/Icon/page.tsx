@@ -79,32 +79,6 @@ const IconPage = () => (
               ]}
             />
           </Section>
-          <Section title={<Heading>Coloured</Heading>}>
-            <TabBlock
-              items={[
-                {
-                  key: "specimen",
-                  label: "Specimen",
-                  content: (
-                    <Specimen center seamless>
-                      <Icon hue="green" symbol="Mail" />
-                    </Specimen>
-                  ),
-                },
-                {
-                  key: "code",
-                  label: "Code",
-                  content: (
-                    <CodeBlock language="tsx" seamless>
-                      {js`
-                        <Icon hue="green" symbol="Mail" />
-                      `}
-                    </CodeBlock>
-                  ),
-                },
-              ]}
-            />
-          </Section>
           <Section title={<Heading>Hero Font Size</Heading>}>
             <TabBlock
               items={[

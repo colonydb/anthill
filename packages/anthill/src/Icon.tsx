@@ -1,17 +1,16 @@
+"use client";
+
 import styles from "./Icon.module.css";
-import type { BaseFont, Hue, IconSymbol } from "./index.js";
-import { formatColor } from "./utils/formatColor.js";
+import type { BaseFont, IconSymbol } from "./index.js";
 
 type Props = {
   fontSize?: BaseFont;
-  hue?: Hue;
   id?: string;
-  muted?: boolean;
   symbol: IconSymbol;
   title?: string;
 };
 
-export const Icon = ({ fontSize, hue, id, muted, symbol, title }: Props) => (
+export const Icon = ({ fontSize, id, symbol, title }: Props) => (
   <svg
     aria-hidden={title ? "false" : "true"}
     className={styles.icon}
@@ -19,7 +18,6 @@ export const Icon = ({ fontSize, hue, id, muted, symbol, title }: Props) => (
     id={id}
     role="img"
     style={{
-      color: formatColor(hue, muted),
       font: fontSize ? `var(--font-${fontSize})` : undefined,
     }}
   >

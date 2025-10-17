@@ -1,16 +1,25 @@
-import type { ComponentProps } from "react";
+"use client";
+
+import type { ComponentProps, ReactNode } from "react";
 import styles from "./Banner.module.css";
+import { Block } from "./Block.js";
+import type { Hue } from "./index.js";
 import { Section } from "./Section.js";
 
-type Props = Omit<ComponentProps<typeof Section>, "muted">;
+type Props = {
+  hue?: Hue;
+  title?: ReactNode;
+} & Pick<ComponentProps<typeof Block>, "children" | "headingLevel" | "tagName" | "lang" | "tabIndex">;
 
-export const Banner = ({ hue = "gray", ...props }: Props) => (
-  <div
+export const Banner = ({ hue, title, children, tagName = "aside", ...props }: Props) => (
+  <Block
+    background={hue}
     className={styles.container}
-    style={{
-      background: `light-dark(var(--color-${hue}-t7), var(--color-${hue}-s7))`,
-    }}
+    color={hue}
+    container={(value) => value + 1}
+    tagName={tagName}
+    {...props}
   >
-    <Section hue={hue} tagName="aside" {...props} />
-  </div>
+    <Section title={title}>{children}</Section>
+  </Block>
 );

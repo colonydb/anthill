@@ -231,48 +231,6 @@ const ActionPage = () => (
               ]}
             />
           </Section>
-          <Section title={<Heading>Dangerous</Heading>}>
-            <TabBlock
-              items={[
-                {
-                  key: "specimen",
-                  label: "Specimen",
-                  content: (
-                    <Specimen seamless>
-                      <Action
-                        dangerous
-                        icon={<Icon symbol="External" />}
-                        onClick={() => {
-                          window.alert("Hello!");
-                        }}
-                      >
-                        Action
-                      </Action>
-                    </Specimen>
-                  ),
-                },
-                {
-                  key: "code",
-                  label: "Code",
-                  content: (
-                    <CodeBlock language="tsx" seamless>
-                      {js`
-                    <Action
-                      dangerous
-                      icon={<Icon symbol="External" />}
-                      onClick={() => {
-                        window.alert("Hello!");
-                      }}
-                    >
-                      Action
-                    </Action>
-                  `}
-                    </CodeBlock>
-                  ),
-                },
-              ]}
-            />
-          </Section>
           <Section title={<Heading>Padded</Heading>}>
             <TabBlock
               items={[
@@ -324,7 +282,7 @@ const ActionPage = () => (
                   content: (
                     <Specimen seamless>
                       <Action
-                        hue="blue"
+                        color="blue"
                         icon={<Icon symbol="External" />}
                         onClick={() => {
                           window.alert("Hello!");
@@ -341,16 +299,16 @@ const ActionPage = () => (
                   content: (
                     <CodeBlock language="tsx" seamless>
                       {js`
-                    <Action
-                      hue="blue"
-                      icon={<Icon symbol="External" />}
-                      onClick={() => {
-                        window.alert("Hello!");
-                      }}
-                    >
-                      Action
-                    </Action>
-                  `}
+                        <Action
+                          color="blue"
+                          icon={<Icon symbol="External" />}
+                          onClick={() => {
+                            window.alert("Hello!");
+                          }}
+                        >
+                          Action
+                        </Action>
+                      `}
                     </CodeBlock>
                   ),
                 },
