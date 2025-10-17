@@ -11,7 +11,7 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "fix": "turbo fix",
-    "health-check": "pnpm dlx sherif && pnpm dlx knip --workspace apps/docs --files --dependencies",
+    "health-check": "pnpm dlx sherif && pnpm dlx knip --workspace apps/docs --files --dependencies && pnpm build && pnpm dlx publint packages/anthill",
     "lint": "turbo --log-order=grouped lint",
     "release": "git push && pnpm dlx open-cli \"https://github.com/colonydb/anthill/releases/new?tag=v$(jq '.version' ./packages/anthill/package.json --raw-output)&title=v$(jq '.version' ./packages/anthill/package.json --raw-output)\"",
     "test": "turbo --log-order=grouped test"

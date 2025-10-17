@@ -22,25 +22,15 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js"
     },
     "./icons": {
-      "types": "./dist/icons/index.d.ts",
-      "import": "./dist/icons/index.js",
-      "require": "./dist/icons/index.cjs"
-    },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "import": "./dist/utils/index.js",
-      "require": "./dist/utils/index.cjs"
+      "types": "./dist/icons/index.d.ts"
     },
     "./*.css": "./dist/*.css",
     "./*": {
       "types": "./dist/*.d.ts",
-      "import": "./dist/*.js",
-      "require": "./dist/*.cjs"
+      "import": "./dist/*.js"
     }
   },
   "files": ["dist", "LICENSE", "README.md"],
@@ -53,7 +43,10 @@
     "valibot": "^1.1.0"
   },
   "private": false,
-  "repository": "https://github.com/colonydb/anthill",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colonydb/anthill.git"
+  },
   "scripts": {
     "build": "rslib build",
     "dev": "rslib build --watch",
