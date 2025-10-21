@@ -155,6 +155,32 @@ const StringInputPage = () => (
               ]}
             />
           </Section>
+          <Section title={<Heading>Seamless</Heading>}>
+            <TabBlock
+              items={[
+                {
+                  key: "specimen",
+                  label: "Specimen",
+                  content: (
+                    <Specimen seamless>
+                      <StringInput name="example1" placeholder="example" seamless />
+                    </Specimen>
+                  ),
+                },
+                {
+                  key: "code",
+                  label: "Code",
+                  content: (
+                    <CodeBlock language="tsx" seamless>
+                      {js`
+                        <StringInput name="example1" placeholder="example" seamless />
+                      `}
+                    </CodeBlock>
+                  ),
+                },
+              ]}
+            />
+          </Section>
         </CardContent>
       </Card>
     </Stack>

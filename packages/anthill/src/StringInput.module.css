@@ -1,9 +1,12 @@
 .input {
   --shadow-color: color-mix(in oklch, var(--color-black) 20%, transparent);
+
   background: var(--context-background);
   border-radius: var(--space-n4);
   box-shadow: inset 1px 1px 3px var(--shadow-color);
   display: block;
+  field-sizing: content;
+  min-height: calc(var(--context-spacing) * 2 + 1lh);
   outline-color: transparent;
   padding: var(--context-spacing);
   transition: outline-color 0.2s;
@@ -19,6 +22,24 @@
   }
 
   &:focus-visible {
+    outline-offset: 2px;
+    outline: 2px solid var(--color-accent);
+    text-decoration: unset;
+  }
+}
+
+.seamless {
+  field-sizing: content;
+  outline-color: transparent;
+  transition: outline-color 0.2s;
+  vertical-align: top;
+
+  &::placeholder {
+    color: light-dark(var(--color-gray-t3), var(--color-gray-s3));
+  }
+
+  &:focus-visible {
+    border-radius: var(--space-n4);
     outline-offset: 2px;
     outline: 2px solid var(--color-accent);
     text-decoration: unset;
