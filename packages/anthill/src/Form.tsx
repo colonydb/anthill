@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
+import { type ReactNode, useCallback, useMemo, useState } from "react";
 import type { InferInput } from "valibot";
 import styles from "./Form.module.css";
 import { FormContext } from "./FormContext.js";
@@ -55,42 +55,41 @@ export const Form = <Schema extends FormSchema>({
 }: Props<Schema>) => {
   const [data, setData] = useState(initialData);
 
-  const [clientResult, setClientResult] = useState<FormResult<Schema> | null>(null);
-  const [serverResult, setServerResult] = useState<FormResult<Schema> | null>(null);
-
-  const [clientIsPending, setClientIsPending] = useState(false);
-  const [serverIsPending, setServerIsPending] = useState(false);
+  const [result, setResult] = useState<FormResult<Schema> | null>(null);
+  const [isPending, setIsPending] = useState(false);
 
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
-  const formAction = useCallback(
-    async (formData: FormData) => {
-      setServerIsPending(true);
-      const result = await action({ data, formData });
-      if (result.ok && onSuccess) onSuccess(result);
-      setServerResult(result);
-      setServerIsPending(false);
-    },
-    [action, data, onSuccess],
-  );
+  const formAction = useCallback(async () => {
+    setResult(null);
+    setIsPending(true);
 
-  const onSubmit = useCallback(
-    (event: FormEvent<HTMLFormElement>) => {
-      setClientResult(null);
-      setClientIsPending(true);
+    setTimeout(async () => {
+      const clientResult = parseData(data, schema);
 
-      const result = parseData(data, schema);
+      if (clientResult.ok === false) {
+        setResult(clientResult);
+        setIsPending(false);
+      } else {
+        const serverResult = await action(clientResult.data);
 
-      if (result.ok === false) {
-        event.preventDefault();
-        setClientResult(result);
+        if (serverResult.ok) {
+          if (onSuccess) onSuccess(serverResult);
+
+          setShowSuccess(true);
+
+          if (repeatable) {
+            setTimeout(() => {
+              setShowSuccess(false);
+            }, 400);
+          }
+        }
+
+        setResult(serverResult);
+        setIsPending(false);
       }
-    },
-    [data, schema],
-  );
-
-  const result = clientResult ?? serverResult;
-  const isPending = clientIsPending || serverIsPending;
+    }, 400);
+  }, [action, onSuccess, data, repeatable, schema]);
 
   const content = useMemo<ReactNode>(
     () =>
@@ -142,42 +141,10 @@ export const Form = <Schema extends FormSchema>({
     }
   }, [data, disabled, id, isPending, result, schema, showSuccess]);
 
-  useEffect(() => {
-    let timeout: number | undefined;
-
-    if (clientIsPending === true) {
-      timeout = setTimeout(() => {
-        setClientIsPending(false);
-      }, 400);
-    }
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [clientIsPending]);
-
-  useEffect(() => {
-    let timeout: number;
-
-    if (isPending === false && result?.ok === true) {
-      setShowSuccess(true);
-      if (repeatable) {
-        timeout = setTimeout(() => {
-          setShowSuccess(false);
-        }, 400);
-      }
-    }
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [isPending, repeatable, result?.ok]);
-
   return (
     <form
       action={isPending ? undefined : formAction}
       className={seamless ? styles.seamless : styles.container}
-      onSubmit={onSubmit}
       id={id}
       noValidate
     >

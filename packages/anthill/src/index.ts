@@ -14,10 +14,9 @@ export type Font = BaseFont | `${BodyFont}-${FontVariant}`;
 
 export type FontVariant = "bold" | "italic" | "bold-italic" | "monospace";
 
-export type FormAction<Schema extends FormSchema = FormSchema> = (context: {
-  formData: FormData;
-  data: InferInput<Schema>;
-}) => Promise<FormResult<Schema>>;
+export type FormAction<Schema extends FormSchema = FormSchema> = (
+  data: InferOutput<Schema>,
+) => Promise<FormResult<Schema>>;
 
 export type FormErrors<Schema extends FormSchema = FormSchema> = {
   count: number;

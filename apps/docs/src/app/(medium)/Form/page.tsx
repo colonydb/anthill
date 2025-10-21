@@ -47,7 +47,7 @@ const FormPage = () => (
                   content: (
                     <Specimen seamless>
                       <Form
-                        action={async ({ data }) => ({ ok: true, data })}
+                        action={async (data) => ({ ok: true, data })}
                         id="basicExample"
                         initialData={{ foo: "" }}
                         schema={v.object({
@@ -103,7 +103,7 @@ const FormPage = () => (
                   content: (
                     <Specimen seamless>
                       <Form
-                        action={async ({ data }) => ({ ok: true, data })}
+                        action={async (data) => ({ ok: true, data })}
                         id="seamlessExample"
                         initialData={{ foo: "" }}
                         repeatable
