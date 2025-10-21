@@ -25,5 +25,5 @@ jobs:
       - run: npm install -g npm@latest
       - run: pnpm build
         working-directory: ./packages/anthill
-      - run: npm publish
+      - run: pnpm publish --access public --no-git-checks
         working-directory: ./packages/anthill
