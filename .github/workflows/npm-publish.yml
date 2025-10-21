@@ -18,7 +18,12 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           run_install: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm install -g npm@latest
       - run: pnpm build
         working-directory: ./packages/anthill
-      - run: pnpm publish --access public --no-git-checks
+      - run: npm publish
         working-directory: ./packages/anthill
