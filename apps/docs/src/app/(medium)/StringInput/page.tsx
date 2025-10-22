@@ -35,7 +35,7 @@ const StringInputPage = () => (
                   label: "Specimen",
                   content: (
                     <Specimen seamless>
-                      <StringInput name="example1" />
+                      <StringInput name="basic" />
                     </Specimen>
                   ),
                 },
@@ -45,33 +45,7 @@ const StringInputPage = () => (
                   content: (
                     <CodeBlock language="tsx" seamless>
                       {js`
-                        <StringInput name="example1" />
-                      `}
-                    </CodeBlock>
-                  ),
-                },
-              ]}
-            />
-          </Section>
-          <Section title={<Heading>Specific ID</Heading>}>
-            <TabBlock
-              items={[
-                {
-                  key: "specimen",
-                  label: "Specimen",
-                  content: (
-                    <Specimen seamless>
-                      <StringInput id="foo" name="example2" />
-                    </Specimen>
-                  ),
-                },
-                {
-                  key: "code",
-                  label: "Code",
-                  content: (
-                    <CodeBlock language="tsx" seamless>
-                      {js`
-                        <StringInput id="foo" name="example2" />
+                        <StringInput name="basic" />
                       `}
                     </CodeBlock>
                   ),
@@ -88,7 +62,6 @@ const StringInputPage = () => (
                   content: (
                     <Specimen seamless>
                       <StringInput
-                        name="example3"
                         onChange={(value) => {
                           console.log(value);
                         }}
@@ -103,7 +76,6 @@ const StringInputPage = () => (
                     <CodeBlock language="tsx" seamless>
                       {js`
                         <StringInput
-                          name="example3"
                           onChange={(value) => {
                             console.log(value);
                           }}
@@ -125,7 +97,6 @@ const StringInputPage = () => (
                     <StatefulSpecimen initialState={"foo" as string} seamless>
                       {(state, setState) => (
                         <StringInput
-                          name="example4"
                           onChange={(value) => {
                             setState(value);
                           }}
@@ -142,7 +113,6 @@ const StringInputPage = () => (
                     <CodeBlock language="tsx" seamless>
                       {js`
                         <StringInput
-                          name="example4"
                           onChange={(value) => {
                             setState(value);
                           }}
@@ -163,7 +133,7 @@ const StringInputPage = () => (
                   label: "Specimen",
                   content: (
                     <Specimen seamless>
-                      <StringInput name="example1" placeholder="example" seamless />
+                      <StringInput name="seamless" placeholder="example" seamless />
                     </Specimen>
                   ),
                 },
@@ -173,7 +143,37 @@ const StringInputPage = () => (
                   content: (
                     <CodeBlock language="tsx" seamless>
                       {js`
-                        <StringInput name="example1" placeholder="example" seamless />
+                        <StringInput name="seamless" placeholder="example" seamless />
+                      `}
+                    </CodeBlock>
+                  ),
+                },
+              ]}
+            />
+          </Section>
+          <Section title={<Heading>Persisted Value</Heading>}>
+            <TabBlock
+              items={[
+                {
+                  key: "specimen",
+                  label: "Specimen",
+                  content: (
+                    <Specimen seamless>
+                      <StringInput name="persistedValue1" persistedValue="hello" />
+                      <StringInput name="persistedValue2" persistedValue="hello" placeholder="example" seamless />
+                    </Specimen>
+                  ),
+                },
+                {
+                  key: "code",
+                  label: "Code",
+                  content: (
+                    <CodeBlock language="tsx" seamless>
+                      {js`
+                        <>
+                          <StringInput name="persistedValue1" persistedValue="hello" />
+                          <StringInput name="persistedValue2" persistedValue="hello" placeholder="example" seamless />
+                        </>
                       `}
                     </CodeBlock>
                   ),

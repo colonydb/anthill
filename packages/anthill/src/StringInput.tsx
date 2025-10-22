@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { type Dispatch, useContext, useMemo, useState } from "react";
+import { type Dispatch, useContext, useMemo } from "react";
 import { FormContext } from "./FormContext.js";
 import type { StyleContextConfig } from "./index.js";
 import styles from "./StringInput.module.css";
@@ -12,14 +12,23 @@ type Props = {
   autoFocus?: boolean;
   disabled?: boolean;
   id?: string;
-  name?: string;
+  type?: "email" | "text";
 } & (
   | {
-      value: string;
+      name?: string;
       onChange: Dispatch<string>;
+      persistedValue?: undefined;
+      value: string;
     }
   | {
+      name?: string;
+      onChange: Dispatch<string>;
+      persistedValue?: string;
+    }
+  | {
+      name: string;
       onChange?: Dispatch<string>;
+      persistedValue?: string;
     }
 ) &
   (
@@ -27,18 +36,16 @@ type Props = {
         allowBlank?: boolean;
         seamless: true;
         placeholder: string;
-        type?: "text";
       }
     | {
         allowBlank?: true;
         seamless?: false;
         placeholder?: string;
-        type?: "email" | "text";
       }
   );
 
 export const StringInput = ({
-  allowBlank,
+  allowBlank = false,
   autoFocus,
   disabled,
   id,
@@ -60,14 +67,19 @@ export const StringInput = ({
 
   const { styleContextClassName } = useStyleContext(styleContextConfig);
 
-  const currentValue =
+  const resolvedValue =
     "value" in props
       ? props.value
-      : form && name && name in form.data && typeof form.data[name] === "string"
+      : form?.data && name && name in form.data && typeof form.data[name] === "string"
         ? form.data[name]
         : undefined;
 
-  const [resolvedDefaultValue] = useState(currentValue);
+  const resolvedPersistedValue =
+    "persistedValue" in props
+      ? props.persistedValue
+      : form?.persistedData && name && name in form.persistedData && typeof form.persistedData[name] === "string"
+        ? form.persistedData[name]
+        : undefined;
 
   const resolvedId = id ?? (form?.id && name ? `${form.id}:${name}` : name);
 
@@ -77,7 +89,6 @@ export const StringInput = ({
     <Tag
       autoFocus={autoFocus ?? false}
       className={clsx(styleContextClassName, seamless ? styles.seamless : styles.input)}
-      defaultValue={currentValue === undefined ? resolvedDefaultValue : undefined}
       disabled={disabled || form?.disabled}
       id={resolvedId}
       key={resolvedId}
@@ -85,11 +96,12 @@ export const StringInput = ({
       onBlur={
         seamless
           ? (event) => {
-              if (event.currentTarget.value === resolvedDefaultValue) return;
-              if (allowBlank === false && event.currentTarget.value.trim() === "") {
-                event.currentTarget.value = resolvedDefaultValue ?? "";
-              } else if (event.currentTarget.form) {
-                event.currentTarget.form.requestSubmit();
+              if (event.currentTarget.value !== resolvedPersistedValue) {
+                if (allowBlank === false && event.currentTarget.value.trim() === "") {
+                  event.currentTarget.value = resolvedPersistedValue ?? "";
+                } else if (event.currentTarget.form) {
+                  event.currentTarget.form.requestSubmit();
+                }
               }
             }
           : undefined
@@ -104,7 +116,7 @@ export const StringInput = ({
           }
         } else if (event.key === "Escape") {
           event.preventDefault();
-          if (seamless) event.currentTarget.value = resolvedDefaultValue ?? "";
+          if (seamless) event.currentTarget.value = resolvedPersistedValue ?? "";
           event.currentTarget.blur();
         }
       }}
@@ -119,8 +131,8 @@ export const StringInput = ({
         }
       }}
       placeholder={placeholder}
-      type={type}
-      value={currentValue}
+      type={Tag === "input" ? type : undefined}
+      value={resolvedValue}
     />
   );
 };
