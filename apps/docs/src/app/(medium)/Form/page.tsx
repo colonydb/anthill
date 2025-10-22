@@ -94,7 +94,7 @@ const FormPage = () => (
               ]}
             />
           </Section>
-          <Section title={<Heading>Seamless</Heading>}>
+          <Section title={<Heading>Inline</Heading>}>
             <TabBlock
               items={[
                 {
@@ -104,15 +104,13 @@ const FormPage = () => (
                     <Specimen seamless>
                       <Form
                         action={async (data) => ({ ok: true, data })}
-                        id="seamlessExample"
-                        initialData={{ foo: "" }}
-                        repeatable
+                        id="inlineExample"
                         schema={v.object({
                           foo: v.pipe(v.string(), v.nonEmpty()),
                         })}
-                        seamless
+                        inline
                       >
-                        <StringInput name="foo" />
+                        <StringInput name="foo" seamless placeholder="bar" />
                         <FormStatus iconOnly />
                       </Form>
                     </Specimen>
@@ -125,20 +123,17 @@ const FormPage = () => (
                     <CodeBlock language="tsx" seamless>
                       {js`
                         <Form
-                          action={async ({ data }) => ({ ok: true, data })}
-                          id="seamlessExample"
-                          initialData={{ foo: "" }}
+                          action={async (data) => ({ ok: true, data })}
+                          id="inlineExample"
                           schema={v.object({
                             foo: v.pipe(v.string(), v.nonEmpty()),
                           })}
+                          inline
                         >
-                          <Stack>
-                            <FormErrorBanner />
-                            <RegularField label="Foo" name="foo">
-                              <StringInput name="foo" />
-                            </RegularField>
-                            <FormFooter buttons={[{ content: <Button submit>Submit</Button>, key: "submit" }]} />
-                          </Stack>
+                          <RegularField label="Foo" name="foo">
+                            <StringInput name="foo" />
+                          </RegularField>
+                          <FormStatus />
                         </Form>
                       `}
                     </CodeBlock>
@@ -341,6 +336,56 @@ const FormPage = () => (
                           >
                             Extra info
                           </FormFooter>
+                        </Form>
+                      `}
+                    </CodeBlock>
+                  ),
+                },
+              ]}
+            />
+          </Section>
+          <Section title={<Heading>Persisted Data</Heading>}>
+            <TabBlock
+              items={[
+                {
+                  key: "specimen",
+                  label: "Specimen",
+                  content: (
+                    <Specimen seamless>
+                      <Form
+                        action={async (data) => ({ ok: true, data })}
+                        id="persistedDataExample"
+                        inline
+                        initialPersistedData={{ foo: "bar" }}
+                        repeatable
+                        schema={v.object({
+                          foo: v.pipe(v.string(), v.nonEmpty()),
+                        })}
+                      >
+                        <StringInput name="foo" seamless placeholder="bar" />
+                        <FormStatus iconOnly />
+                      </Form>
+                    </Specimen>
+                  ),
+                },
+                {
+                  key: "code",
+                  label: "Code",
+                  content: (
+                    <CodeBlock language="tsx" seamless>
+                      {js`
+                        <Form
+                          action={async (data) => ({ ok: true, data })}
+                          id="persistedDataExample"
+                          inline
+                          initialPersistedData={{ foo: "bar" }}
+                          repeatable
+                          schema={v.object({
+                            foo: v.pipe(v.string(), v.nonEmpty()),
+                          })}
+                        >
+                          <StringInput name="foo" seamless placeholder="bar" />
+                          <FormStatus iconOnly />
                         </Form>
                       `}
                     </CodeBlock>

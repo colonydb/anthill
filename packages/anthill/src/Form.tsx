@@ -1,10 +1,11 @@
 "use client";
 
+import clsx from "clsx";
 import { type ReactNode, useCallback, useMemo, useState } from "react";
-import type { InferInput } from "valibot";
+import type { InferInput, InferOutput } from "valibot";
 import styles from "./Form.module.css";
 import { FormContext } from "./FormContext.js";
-import type { FormAction, FormResult, FormSchema, FormState } from "./index.js";
+import type { FormAction, FormErrors, FormResult, FormSchema, FormState } from "./index.js";
 import { parseData } from "./utils/parseData.js";
 
 type Props<Schema extends FormSchema> = {
@@ -19,14 +20,26 @@ type Props<Schema extends FormSchema> = {
 
   id: string;
 
-  initialData?: Partial<InferInput<Schema>>;
-
-  onSuccess?: (result: FormResult<Schema> & { ok: true }) => void;
+  inline?: boolean;
 
   /**
-   * If present, render a success state after a successful submission.
+   * The initial client-side state of the form.
+   *
+   * This defaults to `initialPersistedData` (if present).
    */
-  renderSuccess?: (result: FormResult<Schema> & { ok: true }) => ReactNode;
+  initialData?: Partial<InferInput<Schema>>;
+
+  /**
+   * The initial server-side state of the form, if known.
+   */
+  initialPersistedData?: InferOutput<Schema>;
+
+  onSuccess?: (data: InferOutput<Schema>) => void;
+
+  /**
+   * If present, render a custom success state after the form is successfully submitted.
+   */
+  renderSuccess?: (data: InferOutput<Schema>) => ReactNode;
 
   /**
    * If true, the form will be reset after successful submission.
@@ -37,8 +50,6 @@ type Props<Schema extends FormSchema> = {
    * Valibot schema used to validate the form data.
    */
   schema: Schema;
-
-  seamless?: boolean;
 };
 
 export const Form = <Schema extends FormSchema>({
@@ -46,105 +57,74 @@ export const Form = <Schema extends FormSchema>({
   children,
   disabled,
   id,
-  initialData = {},
+  inline = false,
+  initialData,
+  initialPersistedData,
   onSuccess,
   renderSuccess,
   repeatable = false,
   schema,
-  seamless = false,
 }: Props<Schema>) => {
-  const [data, setData] = useState(initialData);
-
-  const [result, setResult] = useState<FormResult<Schema> | null>(null);
-  const [isPending, setIsPending] = useState(false);
-
-  const [showSuccess, setShowSuccess] = useState<boolean>(false);
+  const [data, setData] = useState<Partial<InferInput<Schema>>>(initialData ?? initialPersistedData ?? {});
+  const [persistedData, setPersistedData] = useState<InferOutput<Schema> | undefined>(initialPersistedData);
+  const [errors, setErrors] = useState<FormErrors<Schema> | null>(null);
+  const [status, setStatus] = useState<"idle" | "pending" | "success" | "error">("idle");
 
   const formAction = useCallback(async () => {
-    setResult(null);
-    setIsPending(true);
+    setErrors(null);
+    setStatus("pending");
 
     setTimeout(async () => {
       const clientResult = parseData(data, schema);
 
       if (clientResult.ok === false) {
-        setResult(clientResult);
-        setIsPending(false);
+        setErrors(clientResult.errors);
+        setStatus("error");
       } else {
         const serverResult = await action(clientResult.data);
 
-        if (serverResult.ok) {
-          if (onSuccess) onSuccess(serverResult);
+        if (serverResult.ok === false) {
+          setErrors(serverResult.errors);
+          setStatus("error");
+        } else if (serverResult.ok === true) {
+          setPersistedData(serverResult.data);
+          setStatus("success");
 
-          setShowSuccess(true);
+          if (onSuccess) onSuccess(serverResult);
 
           if (repeatable) {
             setTimeout(() => {
-              setShowSuccess(false);
+              setStatus("idle");
             }, 400);
           }
         }
-
-        setResult(serverResult);
-        setIsPending(false);
       }
     }, 400);
   }, [action, onSuccess, data, repeatable, schema]);
 
-  const content = useMemo<ReactNode>(
-    () =>
-      isPending === false && result?.ok === true && showSuccess && renderSuccess ? renderSuccess(result) : children,
-    [children, isPending, renderSuccess, result, showSuccess],
+  const context = useMemo<FormState<Schema>>(
+    () => ({
+      data,
+      disabled: status === "pending" || status === "success" ? true : (disabled ?? false),
+      errors,
+      id,
+      persistedData,
+      schema,
+      setData,
+      status,
+    }),
+    [data, disabled, errors, id, persistedData, schema, status],
   );
 
-  const context = useMemo<FormState<Schema>>(() => {
-    if (isPending) {
-      return {
-        data,
-        disabled: true,
-        errors: null,
-        id,
-        schema,
-        setData,
-        status: "pending",
-      };
-    } else if (result?.ok === false) {
-      return {
-        data,
-        disabled: disabled ?? false,
-        errors: result.errors,
-        id,
-        schema,
-        setData,
-        status: "error",
-      };
-    } else if (result?.ok === true && showSuccess) {
-      return {
-        data,
-        disabled: true,
-        errors: null,
-        id,
-        schema,
-        setData,
-        status: "success",
-      };
-    } else {
-      return {
-        data,
-        disabled: disabled ?? false,
-        errors: null,
-        id,
-        schema,
-        setData,
-        status: "idle",
-      };
-    }
-  }, [data, disabled, id, isPending, result, schema, showSuccess]);
+  const content = useMemo<ReactNode>(
+    () => (status === "success" && persistedData && renderSuccess ? renderSuccess(persistedData) : children),
+    [children, persistedData, renderSuccess, status],
+  );
 
   return (
     <form
-      action={isPending ? undefined : formAction}
-      className={seamless ? styles.seamless : styles.container}
+      action={status === "pending" ? undefined : formAction}
+      className={clsx(styles.container, inline ? styles.inline : null)}
       id={id}
       noValidate
     >

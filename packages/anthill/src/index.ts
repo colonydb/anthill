@@ -27,10 +27,6 @@ export type FormErrors<Schema extends FormSchema = FormSchema> = {
 export type FormResult<Schema extends FormSchema = FormSchema> =
   | {
       data: InferOutput<Schema>;
-      ok?: null;
-    }
-  | {
-      data: InferOutput<Schema>;
       ok: true;
     }
   | {
@@ -44,6 +40,7 @@ export type FormState<Schema extends FormSchema = FormSchema> = {
   disabled: boolean;
   errors: FormErrors<Schema> | null;
   id: string;
+  persistedData?: InferOutput<Schema>;
   schema: Schema;
   setData: Dispatch<SetStateAction<Partial<InferInput<Schema>>>>;
   status: "idle" | "pending" | "error" | "success";
