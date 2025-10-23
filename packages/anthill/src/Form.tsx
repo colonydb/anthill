@@ -5,7 +5,7 @@ import { type ReactNode, useCallback, useMemo, useState } from "react";
 import type { InferInput, InferOutput } from "valibot";
 import styles from "./Form.module.css";
 import { FormContext } from "./FormContext.js";
-import type { FormAction, FormErrors, FormResult, FormSchema, FormState } from "./index.js";
+import type { FormAction, FormErrors, FormSchema, FormState } from "./index.js";
 import { parseData } from "./utils/parseData.js";
 
 type Props<Schema extends FormSchema> = {
