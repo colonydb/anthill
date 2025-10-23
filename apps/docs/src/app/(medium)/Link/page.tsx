@@ -109,6 +109,36 @@ const LinkPage = () => (
               ]}
             />
           </Section>
+          <Section title={<Heading>Padded</Heading>}>
+            <TabBlock
+              items={[
+                {
+                  key: "specimen",
+                  label: "Specimen",
+                  content: (
+                    <Specimen seamless>
+                      <Link href="https://example.com" padded>
+                        Example
+                      </Link>
+                    </Specimen>
+                  ),
+                },
+                {
+                  key: "code",
+                  label: "Code",
+                  content: (
+                    <CodeBlock language="tsx" seamless>
+                      {js`
+                        <Link href="https://example.com" padded>
+                          Example
+                        </Link>
+                      `}
+                    </CodeBlock>
+                  ),
+                },
+              ]}
+            />
+          </Section>
         </CardContent>
       </Card>
     </Stack>

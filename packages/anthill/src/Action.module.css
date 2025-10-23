@@ -14,7 +14,7 @@
   vertical-align: bottom;
 
   &.padded {
-    padding: 0.5rlh 2ch;
+    padding: 0.5lh;
   }
 
   @media screen and (hover: hover) {

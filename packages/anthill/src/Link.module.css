@@ -8,6 +8,10 @@
     outline-color 0.2s,
     text-decoration-color 0.2s;
 
+  &.padded {
+    padding: 0.5lh;
+  }
+
   @media screen and (hover: hover) {
     &:hover {
       text-decoration-color: transparent;
