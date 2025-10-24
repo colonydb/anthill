@@ -7,6 +7,7 @@ import type { StyleContextConfig } from "./index.js";
 import styles from "./StringInput.module.css";
 import { useStyleContext } from "./useStyleContext.js";
 import { clampRange } from "./utils/clampRange.js";
+import { resolveInputValues } from "./utils/resolveInputValues.js";
 
 type Props = {
   autoFocus?: boolean;
@@ -67,19 +68,11 @@ export const StringInput = ({
 
   const { styleContextClassName } = useStyleContext(styleContextConfig);
 
-  const resolvedValue =
-    "value" in props
-      ? props.value
-      : form?.data && name && name in form.data && typeof form.data[name] === "string"
-        ? form.data[name]
-        : undefined;
-
-  const resolvedPersistedValue =
-    "persistedValue" in props
-      ? props.persistedValue
-      : form?.persistedData && name && name in form.persistedData && typeof form.persistedData[name] === "string"
-        ? form.persistedData[name]
-        : undefined;
+  const { resolvedValue, resolvedPersistedValue } = resolveInputValues(
+    props,
+    form,
+    (value) => typeof value === "string",
+  );
 
   const resolvedId = id ?? (form?.id && name ? `${form.id}:${name}` : name);
 
