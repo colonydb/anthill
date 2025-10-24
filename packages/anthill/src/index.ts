@@ -1,5 +1,13 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { ErrorMessage, InferInput, InferOutput, ObjectEntries, ObjectIssue, ObjectSchema } from "valibot";
+import type {
+  ErrorMessage,
+  InferInput,
+  InferOutput,
+  ObjectEntries,
+  ObjectIssue,
+  ObjectSchema,
+  ObjectSchemaAsync,
+} from "valibot";
 import type * as icons from "./icons/index.js";
 
 export type BaseFont = "hero" | "title" | "heading" | "subheading" | BodyFont;
@@ -46,7 +54,9 @@ export type FormState<Schema extends FormSchema = FormSchema> = {
   status: "idle" | "pending" | "error" | "success";
 };
 
-export type FormSchema = ObjectSchema<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>;
+export type FormSchema =
+  | ObjectSchema<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>
+  | ObjectSchemaAsync<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>;
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 

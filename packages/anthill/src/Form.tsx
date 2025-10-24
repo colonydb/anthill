@@ -75,7 +75,7 @@ export const Form = <Schema extends FormSchema>({
     setStatus("pending");
 
     setTimeout(async () => {
-      const clientResult = parseData(data, schema);
+      const clientResult = await parseData(data, schema);
 
       if (clientResult.ok === false) {
         setErrors(clientResult.errors);
