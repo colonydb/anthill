@@ -1,10 +1,13 @@
 import { type BaseIssue, getDotPath } from "valibot";
-import type { FormErrors, FormSchema } from "../index.js";
+import type { FormErrors } from "../index.js";
 
-export const gatherFormErrors = <Schema extends FormSchema>(
-  issues: Array<BaseIssue<unknown>>,
-  errors: FormErrors<Schema>,
-) => {
+export const gatherFormErrors = (issues: Array<BaseIssue<unknown>>) => {
+  const errors: FormErrors = {
+    count: 0,
+    nested: {},
+    root: [],
+  };
+
   const { nested, root } = errors;
 
   for (const issue of issues) {
@@ -12,11 +15,14 @@ export const gatherFormErrors = <Schema extends FormSchema>(
 
     errors.count += 1;
 
-    if (name && name in nested && nested[name]) {
-      nested[name].push({
-        key: errors.count.toString(10),
-        message: issue.message,
-      });
+    if (name) {
+      nested[name] = [
+        ...(Array.isArray(nested[name]) ? nested[name] : []),
+        {
+          key: errors.count.toString(10),
+          message: issue.message,
+        },
+      ];
     } else {
       root.push({
         key: errors.count.toString(10),
@@ -24,6 +30,14 @@ export const gatherFormErrors = <Schema extends FormSchema>(
       });
     }
 
-    if (issue.issues) gatherFormErrors<Schema>(issue.issues, errors);
+    if (issue.issues) {
+      const subErrors = gatherFormErrors(issue.issues);
+
+      errors.count += subErrors.count;
+      errors.nested = { ...errors.nested, ...subErrors.nested };
+      errors.root = [...errors.root, ...subErrors.root];
+    }
   }
+
+  return errors;
 };

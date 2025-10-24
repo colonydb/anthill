@@ -3,10 +3,10 @@ import type {
   ErrorMessage,
   InferInput,
   InferOutput,
+  LazySchemaAsync,
   ObjectEntries,
   ObjectIssue,
   ObjectSchema,
-  ObjectSchemaAsync,
 } from "valibot";
 import type * as icons from "./icons/index.js";
 
@@ -26,9 +26,9 @@ export type FormAction<Schema extends FormSchema = FormSchema> = (
   data: InferOutput<Schema>,
 ) => Promise<FormResult<Schema>>;
 
-export type FormErrors<Schema extends FormSchema = FormSchema> = {
+export type FormErrors = {
   count: number;
-  nested: Record<keyof InferOutput<Schema>, Array<{ key: string; message: string }>>;
+  nested: { [Path: string]: Array<{ key: string; message: string }> };
   root: Array<{ key: string; message: string }>;
 };
 
@@ -39,14 +39,14 @@ export type FormResult<Schema extends FormSchema = FormSchema> =
     }
   | {
       data: InferOutput<Schema>;
-      errors: FormErrors<Schema>;
+      errors: FormErrors;
       ok: false;
     };
 
 export type FormState<Schema extends FormSchema = FormSchema> = {
   data: Partial<InferInput<Schema>>;
   disabled: boolean;
-  errors: FormErrors<Schema> | null;
+  errors: FormErrors | null;
   id: string;
   persistedData?: InferOutput<Schema>;
   schema: Schema;
@@ -55,8 +55,8 @@ export type FormState<Schema extends FormSchema = FormSchema> = {
 };
 
 export type FormSchema =
-  | ObjectSchema<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>
-  | ObjectSchemaAsync<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>;
+  | LazySchemaAsync<ObjectSchema<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>>
+  | ObjectSchema<ObjectEntries, ErrorMessage<ObjectIssue> | undefined>;
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 

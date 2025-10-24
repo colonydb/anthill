@@ -67,7 +67,7 @@ export const Form = <Schema extends FormSchema>({
 }: Props<Schema>) => {
   const [data, setData] = useState<Partial<InferInput<Schema>>>(initialData ?? initialPersistedData ?? {});
   const [persistedData, setPersistedData] = useState<InferOutput<Schema> | undefined>(initialPersistedData);
-  const [errors, setErrors] = useState<FormErrors<Schema> | null>(null);
+  const [errors, setErrors] = useState<FormErrors | null>(null);
   const [status, setStatus] = useState<"idle" | "pending" | "success" | "error">("idle");
 
   const formAction = useCallback(async () => {
