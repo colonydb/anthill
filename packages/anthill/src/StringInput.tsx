@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import objectPath from "object-path";
 import { type Dispatch, useContext, useMemo } from "react";
 import { FormContext } from "./FormContext.js";
 import type { StyleContextConfig } from "./index.js";
@@ -121,10 +122,11 @@ export const StringInput = ({
         const value = event.target.value;
         if (onChange) onChange(value);
         if (form && name) {
-          form.setData((current) => ({
-            ...current,
-            [name]: value,
-          }));
+          form.setData((current) => {
+            const newValue = structuredClone(current);
+            objectPath.set(newValue, name, value);
+            return newValue;
+          });
         }
       }}
       placeholder={placeholder}
