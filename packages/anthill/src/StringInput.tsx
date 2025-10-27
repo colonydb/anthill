@@ -86,6 +86,7 @@ export const StringInput = ({
       autoFocus={autoFocus ?? false}
       className={clsx(styleContextClassName, seamless ? styles.seamless : styles.input)}
       disabled={disabled || form?.disabled}
+      defaultValue={"value" in props === false && resolvedValue === undefined ? resolvedPersistedValue : undefined}
       id={resolvedId}
       key={resolvedId}
       name={name}
